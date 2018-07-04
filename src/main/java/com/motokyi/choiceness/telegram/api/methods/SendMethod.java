@@ -2,9 +2,11 @@ package com.motokyi.choiceness.telegram.api.methods;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class SendMethod {
 
