@@ -16,7 +16,8 @@ import lombok.EqualsAndHashCode;
  * disable_web_page_preview	  Boolean	          Optional	Disables link previews for links in this message
  * disable_notification	      Boolean	          Optional	Sends the message silently. Users will receive a notification with no sound.
  * reply_to_message_id	      Integer	          Optional	If the message is a reply, ID of the original message
- * reply_markup	              InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply	Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ * reply_markup	              InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
+ *                                                Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  */
 
 @Data
@@ -26,4 +27,11 @@ public class SendMessage extends SendMethod {
 
     private String text;
 
+    public SendMessage(String chatId) {
+        super(chatId);
+    }
+
+    public SendMessage(Long chatId) {
+        super(chatId);
+    }
 }

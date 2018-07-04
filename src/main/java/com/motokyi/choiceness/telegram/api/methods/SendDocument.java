@@ -19,7 +19,8 @@ import java.io.File;
  * parse_mode	        String	            Optional	Send Markdown or HTML, if you want Telegram apps to show bold, italic, fixed-width text or inline URLs in the media caption.
  * disable_notification	Boolean	            Optional	Sends the message silently. Users will receive a notification with no sound.
  * reply_to_message_id	Integer	            Optional	If the message is a reply, ID of the original message
- * reply_markup	        InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply	Optional	Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ * reply_markup	        InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
+ *                                          Optional	Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  **/
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -31,4 +32,12 @@ public class SendDocument extends SendMethod {
 
     @JsonProperty("document")
     private String documentId;
+
+    public SendDocument(String chatId) {
+        super(chatId);
+    }
+
+    public SendDocument(Long chatId) {
+        super(chatId);
+    }
 }

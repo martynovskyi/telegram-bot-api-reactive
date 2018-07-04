@@ -14,6 +14,7 @@ public abstract class SendMethod {
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
+
     @JsonProperty(CHAT_ID)
     private String chatId;
 
@@ -31,4 +32,12 @@ public abstract class SendMethod {
 
     @JsonProperty(REPLY_MARKUP)
     private String replyMarkup;
+
+    public SendMethod(String chatId) {
+        this.chatId = chatId;
+    }
+
+    public SendMethod(Long chatId) {
+        this.chatId = String.valueOf(chatId);
+    }
 }
