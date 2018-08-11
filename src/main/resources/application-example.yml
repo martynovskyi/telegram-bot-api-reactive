@@ -1,6 +1,5 @@
-
 telegram:
-  api-host: https://api.telegram.org/bot
-  bot:
-    token: <token>
-    name: <bot-name>
+  bots: # collection of bots
+  - name:  # name of bot, must me unique
+    api-host: https://api.telegram.org/bot  #optional
+    token: <> # bot token

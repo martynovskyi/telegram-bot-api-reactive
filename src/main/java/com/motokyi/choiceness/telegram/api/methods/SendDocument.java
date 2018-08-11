@@ -3,9 +3,10 @@ package com.motokyi.choiceness.telegram.api.methods;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.EqualsAndHashCode;
+import com.motokyi.choiceness.telegram.api.types.Message;
+import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 
@@ -21,11 +22,9 @@ import java.io.File;
  * disable_notification	Boolean	            Optional	Sends the message silently. Users will receive a notification with no sound.
  * reply_to_message_id	Integer	            Optional	If the message is a reply, ID of the original message
  * reply_markup	        InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
- *                                          Optional	Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ * Optional	Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  **/
 @Getter
-@Setter
-@EqualsAndHashCode(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendDocument extends SendMethod {
 
@@ -35,11 +34,52 @@ public class SendDocument extends SendMethod {
     @JsonProperty("document")
     private String documentId;
 
-    public SendDocument(String chatId) {
-        super(chatId);
+    public SendDocument(String chatId, TelegramBotRT rt) {
+        super(chatId, rt);
     }
 
-    public SendDocument(Long chatId) {
-        super(chatId);
+    public SendDocument(Long chatId, TelegramBotRT rt) {
+        super(chatId, rt);
+    }
+
+    @Override
+    public TLResponce<Message> send() {
+        return rt.send(this);
+    }
+
+
+    public SendDocument setDocument(File documentFile) {
+        this.documentFile = documentFile;
+        return this;
+    }
+
+    public SendDocument setDocument(String documentId) {
+        this.documentId = documentId;
+        return this;
+    }
+
+    public SendDocument setParseMode(String parseMode) {
+        super.parseMode = parseMode;
+        return this;
+    }
+
+    public SendDocument setDisableWebPagePreview(Boolean disableWebPagePreview) {
+        super.disableWebPagePreview = disableWebPagePreview;
+        return this;
+    }
+
+    public SendDocument setDisableNotification(Boolean disableNotification) {
+        super.disableNotification = disableNotification;
+        return this;
+    }
+
+    public SendDocument setReplyToMessageId(Long replyToMessageId) {
+        super.replyToMessageId = replyToMessageId;
+        return this;
+    }
+
+    public SendDocument setReplyMarkup(String replyMarkup) {
+        super.replyMarkup = replyMarkup;
+        return this;
     }
 }

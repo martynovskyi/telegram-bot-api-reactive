@@ -1,9 +1,10 @@
 package com.motokyi.choiceness.telegram.api.methods;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.EqualsAndHashCode;
+import com.motokyi.choiceness.telegram.api.types.Message;
+import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.Getter;
-import lombok.Setter;
 
 
 /**
@@ -18,22 +19,55 @@ import lombok.Setter;
  * disable_notification	      Boolean	          Optional	Sends the message silently. Users will receive a notification with no sound.
  * reply_to_message_id	      Integer	          Optional	If the message is a reply, ID of the original message
  * reply_markup	              InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
- *                                                Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ * Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  */
 
 @Getter
-@Setter
-@EqualsAndHashCode(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendMessage extends SendMethod {
 
     private String text;
 
-    public SendMessage(String chatId) {
-        super(chatId);
+    public SendMessage(String chatId, TelegramBotRT rt) {
+        super(chatId, rt);
     }
 
-    public SendMessage(Long chatId) {
-        super(chatId);
+    public SendMessage(Long chatId, TelegramBotRT rt) {
+        super(chatId, rt);
+    }
+
+    @Override
+    public TLResponce<Message> send() {
+        return rt.send(this);
+    }
+
+    public SendMessage setText(String text) {
+        this.text = text;
+        return this;
+    }
+
+    public SendMessage setParseMode(String parseMode) {
+        super.parseMode = parseMode;
+        return this;
+    }
+
+    public SendMessage setDisableWebPagePreview(Boolean disableWebPagePreview) {
+        super.disableWebPagePreview = disableWebPagePreview;
+        return this;
+    }
+
+    public SendMessage setDisableNotification(Boolean disableNotification) {
+        super.disableNotification = disableNotification;
+        return this;
+    }
+
+    public SendMessage setReplyToMessageId(Long replyToMessageId) {
+        super.replyToMessageId = replyToMessageId;
+        return this;
+    }
+
+    public SendMessage setReplyMarkup(String replyMarkup) {
+        super.replyMarkup = replyMarkup;
+        return this;
     }
 }

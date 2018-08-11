@@ -2,11 +2,12 @@ package com.motokyi.choiceness.telegram.api.methods;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.choiceness.telegram.api.types.Message;
+import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
-@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class SendMethod {
 
@@ -17,29 +18,36 @@ public abstract class SendMethod {
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
 
+    protected final TelegramBotRT rt;
+
     @JsonProperty(CHAT_ID)
-    private String chatId;
+    protected String chatId;
 
     @JsonProperty(PARSE_MODE)
-    private String parseMode;
+    protected String parseMode;
 
     @JsonProperty(DISABLE_WEB_PAGE_PREVIEW)
-    private Boolean disableWebPagePreview;
+    protected Boolean disableWebPagePreview;
 
     @JsonProperty(DISABLE_NOTIFICATION)
-    private Boolean disableNotification;
+    protected Boolean disableNotification;
 
     @JsonProperty(REPLY_TO_MESSAGE_ID)
-    private Long replyToMessageId;
+    protected Long replyToMessageId;
 
     @JsonProperty(REPLY_MARKUP)
-    private String replyMarkup;
+    protected String replyMarkup;
 
-    public SendMethod(String chatId) {
+    SendMethod(String chatId, TelegramBotRT rt) {
         this.chatId = chatId;
+        this.rt = rt;
     }
 
-    public SendMethod(Long chatId) {
+    SendMethod(Long chatId, TelegramBotRT rt) {
         this.chatId = String.valueOf(chatId);
+        this.rt = rt;
     }
+
+    public abstract TLResponce<Message> send();
+
 }

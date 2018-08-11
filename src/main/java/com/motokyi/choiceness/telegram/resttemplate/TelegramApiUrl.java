@@ -1,11 +1,13 @@
-package com.motokyi.choiceness.telegram.components;
+package com.motokyi.choiceness.telegram.resttemplate;
 
-import com.motokyi.choiceness.telegram.components.properties.TelegramProperties;
+import com.motokyi.choiceness.telegram.components.properties.TelegramBotProperties;
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
-@Component
+import static org.springframework.util.StringUtils.isEmpty;
+
 public class TelegramApiUrl {
+    private static final String API_HOST = "https://api.telegram.org";
+
     private static final String GET_ME = "/getMe";
     private static final String GET_CHAT = "/getChat?chat_id={chat_id}";
     private static final String GET_UPDATES = "/getUpdates";
@@ -14,13 +16,10 @@ public class TelegramApiUrl {
     private static final String SEND_PHOTO = "/sendPhoto";
     private static final String SEND_AUDIO = "/sendAudio";
     private static final String SEND_DOCUMENT = "/sendDocument";
+    private static final String SEND_ANIMATION = "/sendAnimation";
     private static final String SEND_VIDEO = "/sendVideo";
     private static final String SEND_VOICE = "/sendVoice";
     private static final String SEND_VIDEO_NOTE = "/sendVideoNote";
-
-    private static final String CHAT_ID = "?chat_id=";
-    private static final String TEXT = "&text=";
-
 
     @Getter
     private final String me;
@@ -39,14 +38,19 @@ public class TelegramApiUrl {
     @Getter
     private final String sendDocument;
     @Getter
+    private final String sendAnimation;
+    @Getter
     private final String sendVideo;
     @Getter
     private final String sendVoice;
     @Getter
     private final String sendVideoNote;
 
-    public TelegramApiUrl(TelegramProperties properties) {
-        String host = properties.apiHost + properties.bot.token;
+    public TelegramApiUrl(TelegramBotProperties properties) {
+
+        String host = (isEmpty(properties.apiHost) ? API_HOST : properties.apiHost)
+                + "/bot"
+                + properties.token;
 
         this.chat = host + GET_CHAT;
         this.me = host + GET_ME;
@@ -56,32 +60,9 @@ public class TelegramApiUrl {
         this.sendPhoto = host + SEND_PHOTO;
         this.sendAudio = host + SEND_AUDIO;
         this.sendDocument = host + SEND_DOCUMENT;
+        this.sendAnimation = host + SEND_ANIMATION;
         this.sendVideo = host + SEND_VIDEO;
         this.sendVoice = host + SEND_VOICE;
         this.sendVideoNote = host + SEND_VIDEO_NOTE;
-    }
-
-    public String getSendMessage(String chatTag, String message) {
-        return sendMessage + CHAT_ID + chatTag + TEXT + message;
-    }
-
-    public String getSendMessage(Long chatId, String message) {
-        return sendMessage + CHAT_ID + chatId + TEXT + message;
-    }
-
-    public String getSendDocument(Long chatId) {
-        return sendDocument + CHAT_ID + chatId;
-    }
-
-    public String getSendDocument(String chatTag) {
-        return sendDocument + CHAT_ID + chatTag;
-    }
-
-    public String getSendPhoto(Long chatId) {
-        return sendPhoto + CHAT_ID + chatId;
-    }
-
-    public String getSendPhoto(String chatTag) {
-        return sendPhoto + CHAT_ID + chatTag;
     }
 }
