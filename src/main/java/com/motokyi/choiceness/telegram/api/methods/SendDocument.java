@@ -27,11 +27,13 @@ import java.io.File;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendDocument extends SendMethod {
+    public static final String DOCUMENT_ID = "document";
+
 
     @JsonIgnore
     private File documentFile;
 
-    @JsonProperty("document")
+    @JsonProperty(DOCUMENT_ID)
     private String documentId;
 
     public SendDocument(String chatId, TelegramBotRT rt) {

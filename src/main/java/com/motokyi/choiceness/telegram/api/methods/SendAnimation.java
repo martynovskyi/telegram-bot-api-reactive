@@ -32,10 +32,17 @@ import java.io.File;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendAnimation extends SendMethod {
 
+    public static final String ANIMATION_ID = "animation";
+    public static final String THUMB_ID = "thumb";
+    public static final String DURATION = "duration";
+    public static final String WIDTH = "width";
+    public static final String HEIGHT = "height";
+    public static final String CAPTION = "caption";
+
     @JsonIgnore
     private File animationFile;
 
-    @JsonProperty("animation")
+    @JsonProperty(ANIMATION_ID)
     private String animationId;
 
     private Integer duration;
@@ -47,7 +54,7 @@ public class SendAnimation extends SendMethod {
     @JsonIgnore
     private File thumb;
 
-    @JsonProperty("thumb")
+    @JsonProperty(THUMB_ID)
     private String thumbId;
 
     private String caption;
@@ -65,12 +72,12 @@ public class SendAnimation extends SendMethod {
         return rt.send(this);
     }
 
-    public SendAnimation setDocument(File animationFile) {
+    public SendAnimation setAnimation(File animationFile) {
         this.animationFile = animationFile;
         return this;
     }
 
-    public SendAnimation setDocument(String animationId) {
+    public SendAnimation setAnimation(String animationId) {
         this.animationId = animationId;
         return this;
     }

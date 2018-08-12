@@ -28,11 +28,12 @@ import java.io.File;
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendPhoto extends SendMethod {
+    public static final String PHOTO_ID = "photo";
 
     @JsonIgnore
     private File photoFile;
 
-    @JsonProperty("photo")
+    @JsonProperty(PHOTO_ID)
     private String photoId;
 
     public SendPhoto(String chatId, TelegramBotRT rt) {

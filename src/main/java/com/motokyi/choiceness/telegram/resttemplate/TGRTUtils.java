@@ -1,5 +1,6 @@
 package com.motokyi.choiceness.telegram.resttemplate;
 
+import com.motokyi.choiceness.telegram.api.methods.SendAnimation;
 import com.motokyi.choiceness.telegram.api.methods.SendMethod;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.http.HttpHeaders;
@@ -13,61 +14,53 @@ public final class TGRTUtils {
 
     public static final HttpHeaders multipartHeaders = new HttpHeaders(),
             bodyHeaders = new HttpHeaders(),
-            jpgHeaders = new HttpHeaders(),
-            pngHeaders = new HttpHeaders();
+            jpgHeader = new HttpHeaders(),
+            pngHeader = new HttpHeaders(),
+            gifHeader = new HttpHeaders();
 
     static {
-        jpgHeaders.setContentType(MediaType.IMAGE_JPEG);
-        pngHeaders.setContentType(MediaType.IMAGE_PNG);
+        jpgHeader.setContentType(MediaType.IMAGE_JPEG);
+        pngHeader.setContentType(MediaType.IMAGE_PNG);
+        gifHeader.setContentType(MediaType.IMAGE_GIF);
         bodyHeaders.setContentType(MediaType.APPLICATION_JSON);
         multipartHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
     }
 
-    public static void insertData(SendMethod send, MultiValueMap<String, Object> parts) {
+    public static void insertMethodParams(SendMethod send, MultiValueMap<String, Object> parts) {
         if (StringUtils.isEmpty(send.getChatId())) {
             // TODO: 04.07.18 Exception flow
             throw new RuntimeException();
         }
 
-        addChatId(send, parts);
+        insertString(SendMethod.CHAT_ID, send.getChatId(), parts);
+        insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), parts);
+        insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), parts);
+        insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), parts);
+        insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup(), parts);
+    }
 
-        addReplyMessageId(send, parts);
+    public static void insertAnimationParams(SendAnimation send, MultiValueMap<String, Object> parts) {
 
-        addDisableNotification(send, parts);
+        insertMethodParams(send, parts);
 
-        addDisableWebPagePreview(send, parts);
-
-        addReplyMarkup(send, parts);
+        insertString(SendAnimation.ANIMATION_ID, send.getAnimationId(), parts);
+        insertString(SendAnimation.THUMB_ID, send.getThumbId(), parts);
+        insertObject(SendAnimation.DURATION, send.getDuration(), parts);
+        insertObject(SendAnimation.WIDTH, send.getWidth(), parts);
+        insertObject(SendAnimation.HEIGHT, send.getHeight(), parts);
+        insertObject(SendAnimation.CAPTION, send.getCaption(), parts);
 
     }
 
-    public static void addChatId(SendMethod send, MultiValueMap<String, Object> parts) {
-        if (!StringUtils.isEmpty(send.getChatId())) {
-            parts.add(SendMethod.REPLY_MARKUP, send.getChatId());
+    public static void insertString(String key, String value, MultiValueMap<String, Object> parts) {
+        if (StringUtils.hasText(value)) {
+            parts.add(key, value);
         }
     }
 
-    public static void addReplyMarkup(SendMethod send, MultiValueMap<String, Object> parts) {
-        if (!StringUtils.isEmpty(send.getReplyMarkup())) {
-            parts.add(SendMethod.REPLY_MARKUP, send.getReplyMarkup());
-        }
-    }
-
-    public static void addDisableWebPagePreview(SendMethod send, MultiValueMap<String, Object> parts) {
-        if (!StringUtils.isEmpty(send.getDisableWebPagePreview())) {
-            parts.add(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview());
-        }
-    }
-
-    public static void addDisableNotification(SendMethod send, MultiValueMap<String, Object> parts) {
-        if (!StringUtils.isEmpty(send.getDisableNotification())) {
-            parts.add(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification());
-        }
-    }
-
-    public static void addReplyMessageId(SendMethod send, MultiValueMap<String, Object> parts) {
-        if (!StringUtils.isEmpty(send.getReplyToMessageId())) {
-            parts.add(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId());
+    public static void insertObject(String key, Object value, MultiValueMap<String, Object> parts) {
+        if (value != null) {
+            parts.add(key, value);
         }
     }
 
@@ -75,15 +68,19 @@ public final class TGRTUtils {
         String extension = FilenameUtils.getExtension(file.getAbsolutePath());
         switch (extension.toLowerCase()) {
             case "jpg": {
-                return jpgHeaders;
+                return jpgHeader;
             }
 
             case "jpeg": {
-                return jpgHeaders;
+                return jpgHeader;
             }
 
             case "png": {
-                return pngHeaders;
+                return pngHeader;
+            }
+
+            case "gif": {
+                return gifHeader;
             }
 
             default: {

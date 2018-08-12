@@ -1,6 +1,9 @@
 package com.motokyi.choiceness.telegram.resttemplate;
 
-import com.motokyi.choiceness.telegram.api.methods.*;
+import com.motokyi.choiceness.telegram.api.methods.SendAnimation;
+import com.motokyi.choiceness.telegram.api.methods.SendDocument;
+import com.motokyi.choiceness.telegram.api.methods.SendMessage;
+import com.motokyi.choiceness.telegram.api.methods.SendPhoto;
 import com.motokyi.choiceness.telegram.api.types.Chat;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TLResponce;
@@ -14,9 +17,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
-
-import java.io.File;
 
 import static com.motokyi.choiceness.telegram.resttemplate.TGRTUtils.*;
 
@@ -70,71 +72,78 @@ public class TelegramBotRT implements TelegramRT {
         return rt.exchange(
                 url.getSendMessage(),
                 HttpMethod.POST,
-                new HttpEntity<>(message),
+                new HttpEntity<>(message, bodyHeaders),
                 new ParameterizedTypeReference<TLResponce<Message>>() {
                 }).getBody();
     }
 
     @Override
     public TLResponce<Message> send(SendPhoto photo) {
-        if (photo.getPhotoId() != null) {
-            return rt.exchange(
-                    url.getSendPhoto(),
-                    HttpMethod.POST,
-                    new HttpEntity<>(photo, bodyHeaders),
-                    new ParameterizedTypeReference<TLResponce<Message>>() {
-                    }).getBody();
-        }
         return rt.exchange(
                 url.getSendPhoto(),
                 HttpMethod.POST,
-                createHttpEntity(photo.getPhotoFile(), photo, "photo"),
+                createHttpEntity(photo),
                 new ParameterizedTypeReference<TLResponce<Message>>() {
                 }).getBody();
     }
 
     public TLResponce<Message> send(SendDocument document) {
-        if (document.getDocumentId() != null) {
-            return rt.exchange(
-                    url.getSendDocument(),
-                    HttpMethod.POST,
-                    new HttpEntity<>(document, bodyHeaders),
-                    new ParameterizedTypeReference<TLResponce<Message>>() {
-                    }).getBody();
-        }
-
         return rt.exchange(
                 url.getSendDocument(),
                 HttpMethod.POST,
-                createHttpEntity(document.getDocumentFile(), document, "document"),
+                createHttpEntity(document),
                 new ParameterizedTypeReference<TLResponce<Message>>() {
                 }).getBody();
     }
 
     public TLResponce<Message> send(SendAnimation animation) {
-        if (animation.getAnimationId() != null) {
-            return rt.exchange(
-                    url.getSendDocument(),
-                    HttpMethod.POST,
-                    new HttpEntity<>(animation, bodyHeaders),
-                    new ParameterizedTypeReference<TLResponce<Message>>() {
-                    }).getBody();
-        }
-
         return rt.exchange(
-                url.getSendDocument(),
+                url.getSendAnimation(),
                 HttpMethod.POST,
-                createHttpEntity(animation.getAnimationFile(), animation, "animation"),
+                createHttpEntity(animation),
                 new ParameterizedTypeReference<TLResponce<Message>>() {
                 }).getBody();
     }
 
-    private HttpEntity<MultiValueMap<String, Object>> createHttpEntity(File image, SendMethod send, String partName) {
+    private HttpEntity<?> createHttpEntity(SendPhoto photo) {
+        if (StringUtils.hasText(photo.getPhotoId())) {
+            return new HttpEntity<>(photo, bodyHeaders);
+        }
+
         MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
+        insertMethodParams(photo, parts);
+        parts.add(SendPhoto.PHOTO_ID, new HttpEntity<>(
+                new FileSystemResource(photo.getPhotoFile()),
+                getHeadersByFile(photo.getPhotoFile())
+        ));
+        return new HttpEntity<>(parts, multipartHeaders);
+    }
 
-        insertData(send, parts);
-        parts.add(partName, new HttpEntity<>(new FileSystemResource(image), getHeadersByFile(image)));
+    private HttpEntity<?> createHttpEntity(SendDocument document) {
+        if (StringUtils.hasText(document.getDocumentId())) {
+            return new HttpEntity<>(document, bodyHeaders);
+        }
 
+        MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
+        insertMethodParams(document, parts);
+        parts.add(SendDocument.DOCUMENT_ID, new HttpEntity<>(
+                new FileSystemResource(document.getDocumentFile()),
+                getHeadersByFile(document.getDocumentFile())
+        ));
+        return new HttpEntity<>(parts, multipartHeaders);
+    }
+
+    private HttpEntity<?> createHttpEntity(SendAnimation animation) {
+        if (StringUtils.hasText(animation.getAnimationId())) {
+            return new HttpEntity<>(animation, bodyHeaders);
+        }
+
+        MultiValueMap<String, Object> parts = new LinkedMultiValueMap<>();
+        insertAnimationParams(animation, parts);
+        parts.add(SendAnimation.ANIMATION_ID, new HttpEntity<>(
+                new FileSystemResource(animation.getAnimationFile()),
+                getHeadersByFile(animation.getAnimationFile())
+        ));
         return new HttpEntity<>(parts, multipartHeaders);
     }
 
