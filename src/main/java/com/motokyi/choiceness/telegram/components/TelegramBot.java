@@ -1,14 +1,14 @@
 package com.motokyi.choiceness.telegram.components;
 
-import com.motokyi.choiceness.telegram.api.methods.SendAnimation;
-import com.motokyi.choiceness.telegram.api.methods.SendDocument;
-import com.motokyi.choiceness.telegram.api.methods.SendMessage;
-import com.motokyi.choiceness.telegram.api.methods.SendPhoto;
+import com.motokyi.choiceness.telegram.api.methods.*;
 import com.motokyi.choiceness.telegram.api.types.Chat;
 import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.Update;
 import com.motokyi.choiceness.telegram.api.types.User;
 import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 public class TelegramBot implements TGBot {
@@ -17,6 +17,16 @@ public class TelegramBot implements TGBot {
     @Override
     public TLResponce<User> getMe() {
         return rt.getMe();
+    }
+
+    @Override
+    public TLResponce<List<Update>> getAllUpdates() {
+        return rt.getUpdates();
+    }
+
+    @Override
+    public GetUpdates getUpdates() {
+        return new GetUpdates(rt);
     }
 
     @Override

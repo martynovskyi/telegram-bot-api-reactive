@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
 import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.Getter;
 
@@ -132,7 +133,7 @@ public class SendAnimation extends SendMethod {
         return this;
     }
 
-    public SendAnimation setReplyMarkup(String replyMarkup) {
+    public SendAnimation setReplyMarkup(ReplyMarkup replyMarkup) {
         super.replyMarkup = replyMarkup;
         return this;
     }

@@ -1,7 +1,10 @@
 package com.motokyi.choiceness.telegram.resttemplate;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.choiceness.telegram.api.methods.SendAnimation;
+import com.motokyi.choiceness.telegram.api.methods.SendMessage;
 import com.motokyi.choiceness.telegram.api.methods.SendMethod;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -10,6 +13,9 @@ import org.springframework.util.StringUtils;
 
 import java.io.File;
 
+import static java.util.Objects.isNull;
+
+@Slf4j
 public final class TGRTUtils {
 
     public static final HttpHeaders multipartHeaders = new HttpHeaders(),
@@ -36,7 +42,20 @@ public final class TGRTUtils {
         insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), parts);
         insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), parts);
         insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), parts);
-        insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup(), parts);
+        if (!isNull(send.getReplyMarkup())) {
+            try {
+                insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup().value(), parts);
+            } catch (JsonProcessingException e) {
+                log.error("Converting issue", e);
+            }
+        }
+    }
+
+    public static void insertMessageParams(SendMessage send, MultiValueMap<String, Object> parts) {
+
+        insertMethodParams(send, parts);
+        insertString(SendMessage.TEXT, send.getText(), parts);
+
     }
 
     public static void insertAnimationParams(SendAnimation send, MultiValueMap<String, Object> parts) {

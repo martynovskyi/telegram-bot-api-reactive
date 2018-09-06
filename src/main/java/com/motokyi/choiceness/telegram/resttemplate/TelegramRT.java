@@ -1,19 +1,17 @@
 package com.motokyi.choiceness.telegram.resttemplate;
 
-import com.motokyi.choiceness.telegram.api.methods.SendAnimation;
-import com.motokyi.choiceness.telegram.api.methods.SendDocument;
-import com.motokyi.choiceness.telegram.api.methods.SendMessage;
-import com.motokyi.choiceness.telegram.api.methods.SendPhoto;
-import com.motokyi.choiceness.telegram.api.types.Chat;
-import com.motokyi.choiceness.telegram.api.types.Message;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
-import com.motokyi.choiceness.telegram.api.types.User;
+import com.motokyi.choiceness.telegram.api.methods.*;
+import com.motokyi.choiceness.telegram.api.types.*;
+
+import java.util.List;
 
 public interface TelegramRT {
 
     TLResponce<User> getMe();
 
-    void getUpdates();
+    TLResponce<List<Update>> getUpdates();
+
+    TLResponce<List<Update>> getUpdates(GetUpdates getUpdates);
 
     TLResponce<Chat> getChat(Long chatId);
 

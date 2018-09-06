@@ -1,24 +1,19 @@
 package com.motokyi.choiceness.telegram.resttemplate;
 
-import com.motokyi.choiceness.telegram.api.methods.SendAnimation;
-import com.motokyi.choiceness.telegram.api.methods.SendDocument;
-import com.motokyi.choiceness.telegram.api.methods.SendMessage;
-import com.motokyi.choiceness.telegram.api.methods.SendPhoto;
-import com.motokyi.choiceness.telegram.api.types.Chat;
-import com.motokyi.choiceness.telegram.api.types.Message;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
-import com.motokyi.choiceness.telegram.api.types.User;
+import com.motokyi.choiceness.telegram.api.methods.*;
+import com.motokyi.choiceness.telegram.api.types.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 import static com.motokyi.choiceness.telegram.resttemplate.TGRTUtils.*;
 
@@ -27,6 +22,7 @@ import static com.motokyi.choiceness.telegram.resttemplate.TGRTUtils.*;
 public class TelegramBotRT implements TelegramRT {
 
     private final RestTemplate rt;
+
     private final TelegramApiUrl url;
 
     @Override
@@ -62,9 +58,21 @@ public class TelegramBotRT implements TelegramRT {
     }
 
     @Override
-    public void getUpdates() {
-        ResponseEntity<String> result = rt.exchange(url.getUpdates(), HttpMethod.POST, HttpEntity.EMPTY, String.class);
-        log.info(result.getBody());
+    public TLResponce<List<Update>> getUpdates() {
+        return rt.exchange(url.getUpdates(),
+                HttpMethod.GET,
+                HttpEntity.EMPTY,
+                new ParameterizedTypeReference<TLResponce<List<Update>>>() {
+                }).getBody();
+    }
+
+    @Override
+    public TLResponce<List<Update>> getUpdates(GetUpdates getUpdates) {
+        return rt.exchange(url.getUpdates(),
+                HttpMethod.POST,
+                new HttpEntity<>(getUpdates, bodyHeaders),
+                new ParameterizedTypeReference<TLResponce<List<Update>>>() {
+                }).getBody();
     }
 
     @Override
@@ -87,6 +95,7 @@ public class TelegramBotRT implements TelegramRT {
                 }).getBody();
     }
 
+    @Override
     public TLResponce<Message> send(SendDocument document) {
         return rt.exchange(
                 url.getSendDocument(),
@@ -96,6 +105,7 @@ public class TelegramBotRT implements TelegramRT {
                 }).getBody();
     }
 
+    @Override
     public TLResponce<Message> send(SendAnimation animation) {
         return rt.exchange(
                 url.getSendAnimation(),

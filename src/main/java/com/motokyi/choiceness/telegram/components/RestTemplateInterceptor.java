@@ -8,7 +8,7 @@ import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
 
-@Slf4j
+@Slf4j(topic = "RTI")
 public class RestTemplateInterceptor implements ClientHttpRequestInterceptor {
 
     @Override
@@ -16,8 +16,8 @@ public class RestTemplateInterceptor implements ClientHttpRequestInterceptor {
             HttpRequest request,
             byte[] body,
             ClientHttpRequestExecution execution) throws IOException {
-
-        log.info(new String(body));
+        log.info("{}:::{}", request.getMethodValue(), request.getURI());
+        log.info("Body:::{}", new String(body));
         ClientHttpResponse response = execution.execute(request, body);
         return response;
     }

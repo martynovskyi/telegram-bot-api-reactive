@@ -1,9 +1,11 @@
 package com.motokyi.choiceness.telegram.api.methods;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
 import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.Getter;
 
@@ -18,6 +20,7 @@ public abstract class SendMethod {
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
 
+    @JsonIgnore
     protected final TelegramBotRT rt;
 
     @JsonProperty(CHAT_ID)
@@ -36,7 +39,7 @@ public abstract class SendMethod {
     protected Long replyToMessageId;
 
     @JsonProperty(REPLY_MARKUP)
-    protected String replyMarkup;
+    protected ReplyMarkup replyMarkup;
 
     SendMethod(String chatId, TelegramBotRT rt) {
         this.chatId = chatId;

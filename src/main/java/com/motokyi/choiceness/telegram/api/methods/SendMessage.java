@@ -3,9 +3,9 @@ package com.motokyi.choiceness.telegram.api.methods;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
 import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
 import lombok.Getter;
-
 
 /**
  * Use this method to send text messages. On success, the sent Message is returned.
@@ -19,12 +19,13 @@ import lombok.Getter;
  * disable_notification	      Boolean	          Optional	Sends the message silently. Users will receive a notification with no sound.
  * reply_to_message_id	      Integer	          Optional	If the message is a reply, ID of the original message
  * reply_markup	              InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
- * Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ *                                                Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  */
-
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendMessage extends SendMethod {
+    public static final String TEXT = "text";
+
 
     private String text;
 
@@ -66,7 +67,7 @@ public class SendMessage extends SendMethod {
         return this;
     }
 
-    public SendMessage setReplyMarkup(String replyMarkup) {
+    public SendMessage setReplyMarkup(ReplyMarkup replyMarkup) {
         super.replyMarkup = replyMarkup;
         return this;
     }
