@@ -2,10 +2,14 @@ package com.motokyi.choiceness.telegram.api.methods;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.motokyi.choiceness.telegram.api.types.Message;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
+import reactor.core.Disposable;
+import reactor.core.publisher.Mono;
+
+import java.util.function.Consumer;
 
 /**
  * Use this method to send text messages. On success, the sent Message is returned.
@@ -26,20 +30,24 @@ import lombok.Getter;
 public class SendMessage extends SendMethod {
     public static final String TEXT = "text";
 
-
     private String text;
 
-    public SendMessage(String chatId, TelegramBotRT rt) {
+    public SendMessage(String chatId, TGBotWebClient rt) {
         super(chatId, rt);
     }
 
-    public SendMessage(Long chatId, TelegramBotRT rt) {
+    public SendMessage(Long chatId, TGBotWebClient rt) {
         super(chatId, rt);
     }
 
     @Override
-    public TLResponce<Message> send() {
-        return rt.send(this);
+    public Mono<TGResponce<Message>> send() {
+        return wc.send(this);
+    }
+
+    @Override
+    public Disposable subscribe(Consumer<TGResponce<Message>> consumer) {
+        return wc.send(this).subscribe(consumer);
     }
 
     public SendMessage setText(String text) {

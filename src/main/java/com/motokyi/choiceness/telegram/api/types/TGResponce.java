@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Data
 @NoArgsConstructor
-public class TLResponce<T> {
+public class TGResponce<T> {
 
     private boolean ok;
 

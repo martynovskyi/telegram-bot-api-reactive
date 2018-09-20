@@ -4,10 +4,11 @@ package com.motokyi.choiceness.telegram.api.methods;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.Update;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetUpdates {
     @JsonIgnore
-    private final TelegramBotRT rt;
+    private final TGBotWebClient rt;
 
     private Long offset;
 
@@ -41,11 +42,11 @@ public class GetUpdates {
     @JsonProperty("allowed_updates")
     private List<String> allowedUpdates;
 
-    public GetUpdates(TelegramBotRT rt) {
+    public GetUpdates(TGBotWebClient rt) {
         this.rt = rt;
     }
 
-    private TLResponce<List<Update>> send() {
+    public Mono<TGResponce<List<Update>>> send() {
         return rt.getUpdates(this);
     }
 

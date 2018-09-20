@@ -2,22 +2,23 @@ package com.motokyi.choiceness.telegram.components;
 
 import com.motokyi.choiceness.telegram.api.methods.*;
 import com.motokyi.choiceness.telegram.api.types.Chat;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.Update;
 import com.motokyi.choiceness.telegram.api.types.User;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 public interface TGBot {
-    TLResponce<User> getMe();
+    Mono<TGResponce<User>> getMe();
 
-    TLResponce<List<Update>> getAllUpdates();
+    Mono<TGResponce<List<Update>>> getAllUpdates();
 
     GetUpdates getUpdates();
 
-    TLResponce<Chat> getChat(Long chatId);
+    Mono<TGResponce<Chat>> getChat(Long chatId);
 
-    TLResponce<Chat> getChat(String chatTag);
+    Mono<TGResponce<Chat>> getChat(String chatTag);
 
     SendMessage sendMessage(Long chatId);
 

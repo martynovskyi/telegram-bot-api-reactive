@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
+import reactor.core.Disposable;
+import reactor.core.publisher.Mono;
 
 import java.io.File;
+import java.util.function.Consumer;
 
 /**
  * Use this method to send animation files (GIF or H.264/MPEG-4 AVC video without sound). On success, the sent Message is returned. Bots can currently send animation files of up to 50 MB in size, this limit may be changed in the future.
@@ -60,17 +63,22 @@ public class SendAnimation extends SendMethod {
 
     private String caption;
 
-    public SendAnimation(String chatId, TelegramBotRT rt) {
+    public SendAnimation(String chatId, TGBotWebClient rt) {
         super(chatId, rt);
     }
 
-    public SendAnimation(Long chatId, TelegramBotRT rt) {
+    public SendAnimation(Long chatId, TGBotWebClient rt) {
         super(chatId, rt);
     }
 
     @Override
-    public TLResponce<Message> send() {
-        return rt.send(this);
+    public Mono<TGResponce<Message>> send() {
+        return wc.send(this);
+    }
+
+    @Override
+    public Disposable subscribe(Consumer<TGResponce<Message>> consumer) {
+        return wc.send(this).subscribe(consumer);
     }
 
     public SendAnimation setAnimation(File animationFile) {

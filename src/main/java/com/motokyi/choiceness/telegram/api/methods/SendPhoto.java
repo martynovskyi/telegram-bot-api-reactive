@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
+import reactor.core.Disposable;
+import reactor.core.publisher.Mono;
 
 import java.io.File;
+import java.util.function.Consumer;
 
 /**
  * Use this method to send photos. On success, the sent Message is returned.
@@ -37,17 +40,22 @@ public class SendPhoto extends SendMethod {
     @JsonProperty(PHOTO_ID)
     private String photoId;
 
-    public SendPhoto(String chatId, TelegramBotRT rt) {
+    public SendPhoto(String chatId, TGBotWebClient rt) {
         super(chatId, rt);
     }
 
-    public SendPhoto(Long chatId, TelegramBotRT rt) {
+    public SendPhoto(Long chatId, TGBotWebClient rt) {
         super(chatId, rt);
     }
 
     @Override
-    public TLResponce<Message> send() {
-        return rt.send(this);
+    public Mono<TGResponce<Message>> send() {
+        return wc.send(this);
+    }
+
+    @Override
+    public Disposable subscribe(Consumer<TGResponce<Message>> consumer) {
+        return wc.send(this).subscribe(consumer);
     }
 
     public SendPhoto setPhoto(File photoFile) {

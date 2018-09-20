@@ -2,10 +2,8 @@ package com.motokyi.choiceness.telegram.components;
 
 import com.motokyi.choiceness.telegram.components.properties.TelegramBotProperties;
 import com.motokyi.choiceness.telegram.components.properties.TelegramProperties;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramApiUrl;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Collection;
 import java.util.Map;
@@ -16,14 +14,12 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class BotFactory implements TGBotFactory {
     private static final Map<String, TGBot> BOTS = new ConcurrentHashMap<>();
-    private final RestTemplate restTemplate;
 
-    public BotFactory(TelegramProperties properties, RestTemplate rt) {
-        this.restTemplate = rt;
+    public BotFactory(TelegramProperties properties) {
         if (properties != null && properties.bots != null && !properties.bots.isEmpty()) {
             for (TelegramBotProperties bot : properties.bots) {
                 if (bot.isValid()) {
-                    BOTS.put(bot.name, new TelegramBot(new TelegramBotRT(rt, new TelegramApiUrl(bot))));
+                    BOTS.put(bot.name, new TelegramBot(new TGBotWebClient(bot)));
                 }
             }
         }

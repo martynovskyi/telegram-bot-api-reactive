@@ -4,10 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
+import reactor.core.Disposable;
+import reactor.core.publisher.Mono;
+
+import java.util.function.Consumer;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -21,7 +25,7 @@ public abstract class SendMethod {
     public static final String REPLY_MARKUP = "reply_markup";
 
     @JsonIgnore
-    protected final TelegramBotRT rt;
+    protected final TGBotWebClient wc;
 
     @JsonProperty(CHAT_ID)
     protected String chatId;
@@ -41,16 +45,17 @@ public abstract class SendMethod {
     @JsonProperty(REPLY_MARKUP)
     protected ReplyMarkup replyMarkup;
 
-    SendMethod(String chatId, TelegramBotRT rt) {
+    SendMethod(String chatId, TGBotWebClient wc) {
         this.chatId = chatId;
-        this.rt = rt;
+        this.wc = wc;
     }
 
-    SendMethod(Long chatId, TelegramBotRT rt) {
+    SendMethod(Long chatId, TGBotWebClient wc) {
         this.chatId = String.valueOf(chatId);
-        this.rt = rt;
+        this.wc = wc;
     }
 
-    public abstract TLResponce<Message> send();
+    public abstract Mono<TGResponce<Message>> send();
 
+    public abstract Disposable subscribe(Consumer<TGResponce<Message>> consumer);
 }

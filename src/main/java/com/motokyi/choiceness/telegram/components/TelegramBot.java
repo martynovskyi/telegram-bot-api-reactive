@@ -2,25 +2,26 @@ package com.motokyi.choiceness.telegram.components;
 
 import com.motokyi.choiceness.telegram.api.methods.*;
 import com.motokyi.choiceness.telegram.api.types.Chat;
-import com.motokyi.choiceness.telegram.api.types.TLResponce;
+import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.Update;
 import com.motokyi.choiceness.telegram.api.types.User;
-import com.motokyi.choiceness.telegram.resttemplate.TelegramBotRT;
+import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.RequiredArgsConstructor;
+import reactor.core.publisher.Mono;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 public class TelegramBot implements TGBot {
-    private final TelegramBotRT rt;
+    private final TGBotWebClient rt;
 
     @Override
-    public TLResponce<User> getMe() {
+    public Mono<TGResponce<User>> getMe() {
         return rt.getMe();
     }
 
     @Override
-    public TLResponce<List<Update>> getAllUpdates() {
+    public Mono<TGResponce<List<Update>>> getAllUpdates() {
         return rt.getUpdates();
     }
 
@@ -30,12 +31,12 @@ public class TelegramBot implements TGBot {
     }
 
     @Override
-    public TLResponce<Chat> getChat(Long chatId) {
+    public Mono<TGResponce<Chat>> getChat(Long chatId) {
         return rt.getChat(chatId);
     }
 
     @Override
-    public TLResponce<Chat> getChat(String chatTag) {
+    public Mono<TGResponce<Chat>> getChat(String chatTag) {
         return rt.getChat(chatTag);
     }
 
