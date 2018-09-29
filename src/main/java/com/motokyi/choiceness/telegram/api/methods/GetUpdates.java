@@ -8,9 +8,15 @@ import com.motokyi.choiceness.telegram.api.types.TGResponce;
 import com.motokyi.choiceness.telegram.api.types.Update;
 import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+import reactor.core.Disposable;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.function.Consumer;
+
+import static java.util.Objects.isNull;
 
 /**
  * Use this method to receive incoming updates using long polling (wiki). An Array of Update objects is returned.
@@ -27,11 +33,12 @@ import java.util.List;
  * 1. This method will not work if an outgoing webhook is set up.
  * 2. In order to avoid getting duplicate updates, recalculate offset after each server response.
  */
+@Slf4j
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetUpdates {
     @JsonIgnore
-    private final TGBotWebClient rt;
+    private final TGBotWebClient wc;
 
     private Long offset;
 
@@ -42,12 +49,55 @@ public class GetUpdates {
     @JsonProperty("allowed_updates")
     private List<String> allowedUpdates;
 
-    public GetUpdates(TGBotWebClient rt) {
-        this.rt = rt;
+    public GetUpdates(TGBotWebClient wc) {
+        this.wc = wc;
     }
 
     public Mono<TGResponce<List<Update>>> send() {
-        return rt.getUpdates(this);
+        return wc.getUpdates(this);
     }
 
+    public Flux<Update> updateStream() {
+        if (isNull(this.timeout)) {
+            this.timeout = 30;
+        }
+        return wc.getUpdates(this)
+                .doOnNext(e -> {
+                    log.info("Responce Size: {}", e.getResult().size());
+//                    log.info("Responce: {}", e.getResult());
+                    this.offset = null;
+                    if (e.isOk() && !e.getResult().isEmpty()) {
+                        this.offset = e.getResult().get(e.getResult().size() - 1).getUpdateId() + 1;
+                    }
+                })
+//                .delaySubscription(Duration.ofSeconds(60))
+                .repeat()
+                .map(TGResponce::getResult)
+                .flatMap(Flux::fromIterable);
+
+    }
+
+    public Disposable subscribe(Consumer<TGResponce<List<Update>>> consumer) {
+        return wc.getUpdates(this).subscribe(consumer);
+    }
+
+    public GetUpdates setOffset(Long offset) {
+        this.offset = offset;
+        return this;
+    }
+
+    public GetUpdates setLimit(Integer limit) {
+        this.limit = limit;
+        return this;
+    }
+
+    public GetUpdates setTimeout(Integer timeout) {
+        this.timeout = timeout;
+        return this;
+    }
+
+    public GetUpdates setAllowedUpdates(List<String> allowedUpdates) {
+        this.allowedUpdates = allowedUpdates;
+        return this;
+    }
 }

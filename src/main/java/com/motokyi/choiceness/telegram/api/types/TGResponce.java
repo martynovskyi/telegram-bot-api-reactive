@@ -4,15 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Optional;
-
 @Data
 @NoArgsConstructor
 public class TGResponce<T> {
 
     private boolean ok;
 
-    private Optional<T> result;
+    private T result;
 
     @JsonProperty("error_code")
     private Integer errorCode;

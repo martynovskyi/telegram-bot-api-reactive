@@ -37,14 +37,9 @@ public class TGBotWebClient implements TGWebClient {
     }
 
     @Override
-    public Mono<TGResponce<Chat>> getChat(Long chatId) {
-        return getChat(String.valueOf(chatId));
-    }
-
-    @Override
-    public Mono<TGResponce<Chat>> getChat(String chatTag) {
+    public Mono<TGResponce<Chat>> getChat(String chatId) {
         return wc.get()
-                .uri(TGApiUrl.GET_CHAT, chatTag)
+                .uri(TGApiUrl.GET_CHAT, chatId)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<TGResponce<Chat>>() {
@@ -65,6 +60,7 @@ public class TGBotWebClient implements TGWebClient {
         return wc.post()
                 .uri(TGApiUrl.GET_UPDATES)
                 .syncBody(getUpdates)
+                .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<TGResponce<List<Update>>>() {
                 });

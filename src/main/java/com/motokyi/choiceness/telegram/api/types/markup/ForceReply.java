@@ -16,7 +16,7 @@ import lombok.Data;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ForceReply extends ReplyMarkup {
+public class ForceReply extends KeyboardMarkup {
     @JsonProperty("force_reply")
     private Boolean forceReply;
 

@@ -2,6 +2,7 @@ package com.motokyi.choiceness.telegram.webclient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.choiceness.telegram.api.methods.*;
+import com.motokyi.choiceness.telegram.exception.RequiredDataMissedTGException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.core.io.FileSystemResource;
@@ -21,17 +22,16 @@ public final class TGWebClientUtils {
 
     public static void insertMethodParams(SendMethod send, MultipartBodyBuilder builder) {
         if (StringUtils.isEmpty(send.getChatId())) {
-            // TODO: 04.07.18 Exception flow
-            throw new RuntimeException();
+            throw new RequiredDataMissedTGException(SendMessage.CHAT_ID);
         }
 
         insertString(SendMethod.CHAT_ID, send.getChatId(), builder);
         insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
         insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
         insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
-        if (nonNull(send.getReplyMarkup())) {
+        if (nonNull(send.getKeyboardMarkup())) {
             try {
-                insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
+                insertString(SendMethod.REPLY_MARKUP, send.getKeyboardMarkup().value(), builder);
             } catch (JsonProcessingException e) {
                 log.error("Converting issue", e);
             }
@@ -69,18 +69,18 @@ public final class TGWebClientUtils {
     }
 
     public static ExchangeFilterFunction logRequest(Logger logger) {
-        return (clientRequest, next) -> {
-            logger.info("Request: {} {}", clientRequest.method(), clientRequest.url());
-            clientRequest.headers()
+        return (request, next) -> {
+            logger.info("Request: {} {}", request.method(), request.url());
+            request.headers()
                     .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
-            return next.exchange(clientRequest);
+            return next.exchange(request);
         };
     }
 
     public static ExchangeFilterFunction logResponse(Logger logger) {
-        return ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
-            logger.info("Response Status {}", clientResponse.statusCode());
-            return Mono.just(clientResponse);
+        return ExchangeFilterFunction.ofResponseProcessor(response -> {
+            logger.info("Response Status {}", response.statusCode());
+            return Mono.just(response);
         });
     }
 

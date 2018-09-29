@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TGResponce;
-import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
+import com.motokyi.choiceness.telegram.api.types.markup.KeyboardMarkup;
 import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
 import reactor.core.Disposable;
@@ -89,8 +89,8 @@ public class SendDocument extends SendMethod {
         return this;
     }
 
-    public SendDocument setReplyMarkup(ReplyMarkup replyMarkup) {
-        super.replyMarkup = replyMarkup;
+    public SendDocument setReplyMarkup(KeyboardMarkup keyboardMarkup) {
+        super.keyboardMarkup = keyboardMarkup;
         return this;
     }
 }

@@ -14,8 +14,6 @@ public interface TGWebClient {
 
     Mono<TGResponce<List<Update>>> getUpdates(GetUpdates getUpdates);
 
-    Mono<TGResponce<Chat>> getChat(Long chatId);
-
     Mono<TGResponce<Chat>> getChat(String chatTag);
 
     Mono<TGResponce<Message>> send(SendMessage message);

@@ -32,7 +32,7 @@ public class TelegramBot implements TGBot {
 
     @Override
     public Mono<TGResponce<Chat>> getChat(Long chatId) {
-        return rt.getChat(chatId);
+        return rt.getChat(String.valueOf(chatId));
     }
 
     @Override

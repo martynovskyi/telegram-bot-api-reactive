@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class InlineKeyboardMarkup extends ReplyMarkup {
+public class InlineKeyboardMarkup extends KeyboardMarkup {
 
     @JsonProperty("inline_keyboard")
     private List<List<InlineKeyboardButton>> keyboard;

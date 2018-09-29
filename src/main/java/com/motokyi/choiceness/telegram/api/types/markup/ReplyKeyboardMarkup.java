@@ -20,9 +20,9 @@ import java.util.List;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ReplyKeyboardMarkup extends ReplyMarkup {
+public class ReplyKeyboardMarkup extends KeyboardMarkup {
 
-    private List<KeyboardButton> keyboard;
+    private List<List<KeyboardButton>> keyboard;
 
     @JsonProperty("resize_keyboard")
     private Boolean resizeKeyboard;

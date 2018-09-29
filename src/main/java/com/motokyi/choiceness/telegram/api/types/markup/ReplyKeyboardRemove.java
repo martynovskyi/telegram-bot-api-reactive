@@ -18,7 +18,7 @@ import lombok.Data;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ReplyKeyboardRemove extends ReplyMarkup {
+public class ReplyKeyboardRemove extends KeyboardMarkup {
     @JsonProperty("remove_keyboard")
     private Boolean removeKeyboard = Boolean.TRUE;
 

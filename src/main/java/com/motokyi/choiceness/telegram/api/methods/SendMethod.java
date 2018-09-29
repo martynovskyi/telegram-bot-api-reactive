@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TGResponce;
-import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
+import com.motokyi.choiceness.telegram.api.types.markup.KeyboardMarkup;
 import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
 import reactor.core.Disposable;
@@ -43,7 +43,7 @@ public abstract class SendMethod {
     protected Long replyToMessageId;
 
     @JsonProperty(REPLY_MARKUP)
-    protected ReplyMarkup replyMarkup;
+    protected KeyboardMarkup keyboardMarkup;
 
     SendMethod(String chatId, TGBotWebClient wc) {
         this.chatId = chatId;

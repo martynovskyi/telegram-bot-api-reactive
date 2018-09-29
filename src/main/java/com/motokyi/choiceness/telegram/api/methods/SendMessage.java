@@ -3,7 +3,7 @@ package com.motokyi.choiceness.telegram.api.methods;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.motokyi.choiceness.telegram.api.types.Message;
 import com.motokyi.choiceness.telegram.api.types.TGResponce;
-import com.motokyi.choiceness.telegram.api.types.markup.ReplyMarkup;
+import com.motokyi.choiceness.telegram.api.types.markup.KeyboardMarkup;
 import com.motokyi.choiceness.telegram.webclient.TGBotWebClient;
 import lombok.Getter;
 import reactor.core.Disposable;
@@ -75,8 +75,8 @@ public class SendMessage extends SendMethod {
         return this;
     }
 
-    public SendMessage setReplyMarkup(ReplyMarkup replyMarkup) {
-        super.replyMarkup = replyMarkup;
+    public SendMessage setReplyMarkup(KeyboardMarkup keyboardMarkup) {
+        super.keyboardMarkup = keyboardMarkup;
         return this;
     }
 }
