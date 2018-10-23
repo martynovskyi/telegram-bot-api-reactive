@@ -88,8 +88,8 @@ public class SendPhoto extends SendMethod {
         return this;
     }
 
-    public SendPhoto setReplyMarkup(KeyboardMarkup keyboardMarkup) {
-        super.keyboardMarkup = keyboardMarkup;
+    public SendPhoto setReplyMarkup(KeyboardMarkup replyMarkup) {
+        super.replyMarkup = replyMarkup;
         return this;
     }
 }

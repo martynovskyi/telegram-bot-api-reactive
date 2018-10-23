@@ -1,7 +1,9 @@
 package com.motokyi.tg.botapi.webclient;
 
 import com.motokyi.tg.botapi.components.properties.TelegramBotProperties;
+import com.motokyi.tg.botapi.exception.RequiredConfigMissedTGException;
 
+import static java.util.Objects.isNull;
 import static org.springframework.util.StringUtils.isEmpty;
 
 public class TGApiUrl {
@@ -17,10 +19,13 @@ public class TGApiUrl {
     public static final String SEND_VIDEO = "/sendVideo";
     public static final String SEND_VOICE = "/sendVoice";
     public static final String SEND_VIDEO_NOTE = "/sendVideoNote";
-    private static final String API_HOST = "https://api.telegram.org";
-    private static final String BOT_PREFIX = "/bot";
+    public static final String API_HOST = "https://api.telegram.org";
+    public static final String BOT_PREFIX = "/bot";
 
     public static String createHostUrl(TelegramBotProperties properties) {
+        if (isNull(properties) || isEmpty(properties.token)) {
+            throw new RequiredConfigMissedTGException("Properties not correct. Token is empty or props is null.");
+        }
 
         return (isEmpty(properties.apiHost) ? API_HOST : properties.apiHost)
                 + BOT_PREFIX

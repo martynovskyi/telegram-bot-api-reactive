@@ -3,6 +3,7 @@ package com.motokyi.tg.botapi.api.types.markup;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Upon receiving a message with this object, Telegram clients will display a reply interface to the user (act as if
@@ -15,6 +16,7 @@ import lombok.Data;
  * selective	Boolean   Optional. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ForceReply extends KeyboardMarkup {
     @JsonProperty("force_reply")

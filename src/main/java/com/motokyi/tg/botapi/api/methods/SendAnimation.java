@@ -141,8 +141,8 @@ public class SendAnimation extends SendMethod {
         return this;
     }
 
-    public SendAnimation setReplyMarkup(KeyboardMarkup keyboardMarkup) {
-        super.keyboardMarkup = keyboardMarkup;
+    public SendAnimation setReplyMarkup(KeyboardMarkup replyMarkup) {
+        super.replyMarkup = replyMarkup;
         return this;
     }
 }

@@ -10,7 +10,7 @@ import static java.util.Objects.nonNull;
 import static java.util.Optional.ofNullable;
 
 @Builder
-public class UpdateProcessor {
+public class UpdateHandler {
     private final Consumer<Message>
             messageConsumer,
             editedMessageConsumer,

@@ -75,8 +75,8 @@ public class SendMessage extends SendMethod {
         return this;
     }
 
-    public SendMessage setReplyMarkup(KeyboardMarkup keyboardMarkup) {
-        super.keyboardMarkup = keyboardMarkup;
+    public SendMessage setReplyMarkup(KeyboardMarkup replyMarkup) {
+        super.replyMarkup = replyMarkup;
         return this;
     }
 }

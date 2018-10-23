@@ -11,15 +11,13 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-import static com.motokyi.tg.botapi.webclient.TGApiUrl.createHostUrl;
-
 @Slf4j
 public class TGBotWebClient implements TGWebClient {
     private final WebClient wc;
 
     public TGBotWebClient(TelegramBotProperties botProperties) {
         this.wc = WebClient.builder()
-                .baseUrl(createHostUrl(botProperties))
+                .baseUrl(TGApiUrl.createHostUrl(botProperties))
                 .filter(TGWebClientUtils.logRequest(log))
                 .filter(TGWebClientUtils.logResponse(log))
                 .build();

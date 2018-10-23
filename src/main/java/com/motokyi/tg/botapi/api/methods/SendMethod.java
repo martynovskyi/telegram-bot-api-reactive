@@ -43,7 +43,7 @@ public abstract class SendMethod {
     protected Long replyToMessageId;
 
     @JsonProperty(REPLY_MARKUP)
-    protected KeyboardMarkup keyboardMarkup;
+    protected KeyboardMarkup replyMarkup;
 
     SendMethod(String chatId, TGBotWebClient wc) {
         this.chatId = chatId;

@@ -26,12 +26,13 @@ public final class TGWebClientUtils {
         }
 
         insertString(SendMethod.CHAT_ID, send.getChatId(), builder);
+        insertString(SendMethod.PARSE_MODE, send.getParseMode(), builder);
         insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
         insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
         insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
-        if (nonNull(send.getKeyboardMarkup())) {
+        if (nonNull(send.getReplyMarkup())) {
             try {
-                insertString(SendMethod.REPLY_MARKUP, send.getKeyboardMarkup().value(), builder);
+                insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
             } catch (JsonProcessingException e) {
                 log.error("Converting issue", e);
             }
@@ -57,13 +58,13 @@ public final class TGWebClientUtils {
     }
 
     public static void insertString(String key, String value, MultipartBodyBuilder builder) {
-        if (hasText(value) && hasText(value)) {
+        if (hasText(key) && hasText(value)) {
             builder.part(key, value);
         }
     }
 
     public static void insertObject(String key, Object value, MultipartBodyBuilder builder) {
-        if (nonNull(value) && hasText(key)) {
+        if (hasText(key) && nonNull(value)) {
             builder.part(key, value);
         }
     }

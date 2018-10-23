@@ -89,8 +89,8 @@ public class SendDocument extends SendMethod {
         return this;
     }
 
-    public SendDocument setReplyMarkup(KeyboardMarkup keyboardMarkup) {
-        super.keyboardMarkup = keyboardMarkup;
+    public SendDocument setReplyMarkup(KeyboardMarkup replyMarkup) {
+        super.replyMarkup = replyMarkup;
         return this;
     }
 }

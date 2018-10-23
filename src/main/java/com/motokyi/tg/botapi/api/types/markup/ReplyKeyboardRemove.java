@@ -3,6 +3,7 @@ package com.motokyi.tg.botapi.api.types.markup;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Upon receiving a message with this object, Telegram clients will remove the current custom keyboard and display
@@ -17,6 +18,7 @@ import lombok.Data;
  * Example: A user votes in a poll, bot returns confirmation message in reply to the vote and removes the keyboard for that user, while still showing the keyboard with poll options to users who haven't voted yet.
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReplyKeyboardRemove extends KeyboardMarkup {
     @JsonProperty("remove_keyboard")
