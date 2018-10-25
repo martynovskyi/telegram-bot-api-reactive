@@ -34,7 +34,7 @@ import java.util.function.Consumer;
  **/
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendAnimation extends SendMethod {
+public class SendAnimation extends SendMethod<TGResponce<Message>> {
 
     public static final String ANIMATION_ID = "animation";
     public static final String THUMB_ID = "thumb";

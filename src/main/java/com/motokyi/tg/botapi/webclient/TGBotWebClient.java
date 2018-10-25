@@ -106,4 +106,15 @@ public class TGBotWebClient implements TGWebClient {
                 .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
                 });
     }
+
+    @Override
+    public Mono<TGResponce<Message>> forwardMessage(ForwardMessage forwardMessage) {
+        return wc.post()
+                .uri(TGApiUrl.FORWARD_MESSAGE)
+                .syncBody(forwardMessage)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
+                });
+    }
 }

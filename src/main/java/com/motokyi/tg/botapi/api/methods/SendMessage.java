@@ -27,7 +27,7 @@ import java.util.function.Consumer;
  */
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendMessage extends SendMethod {
+public class SendMessage extends SendMethod<TGResponce<Message>> {
     public static final String TEXT = "text";
 
     private String text;

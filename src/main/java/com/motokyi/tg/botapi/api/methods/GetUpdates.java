@@ -36,10 +36,7 @@ import static java.util.Objects.isNull;
 @Slf4j
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetUpdates {
-    @JsonIgnore
-    private final TGBotWebClient wc;
-
+public class GetUpdates extends TGApiMethod<TGResponce<List<Update>>> {
     private Long offset;
 
     private Integer limit;
@@ -50,11 +47,11 @@ public class GetUpdates {
     private List<String> allowedUpdates;
 
     public GetUpdates(TGBotWebClient wc) {
-        this.wc = wc;
+        super(wc);
     }
 
     public Mono<TGResponce<List<Update>>> send() {
-        return wc.getUpdates(this);
+        return super.wc.getUpdates(this);
     }
 
     public Flux<Update> updateStream() {

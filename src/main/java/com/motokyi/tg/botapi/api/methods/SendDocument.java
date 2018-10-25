@@ -30,7 +30,7 @@ import java.util.function.Consumer;
  **/
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendDocument extends SendMethod {
+public class SendDocument extends SendMethod<TGResponce<Message>> {
     public static final String DOCUMENT_ID = "document";
 
 

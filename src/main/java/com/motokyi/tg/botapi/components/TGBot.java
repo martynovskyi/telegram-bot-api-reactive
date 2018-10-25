@@ -1,10 +1,7 @@
 package com.motokyi.tg.botapi.components;
 
 import com.motokyi.tg.botapi.api.methods.*;
-import com.motokyi.tg.botapi.api.types.Chat;
-import com.motokyi.tg.botapi.api.types.TGResponce;
-import com.motokyi.tg.botapi.api.types.Update;
-import com.motokyi.tg.botapi.api.types.User;
+import com.motokyi.tg.botapi.api.types.*;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -35,4 +32,8 @@ public interface TGBot {
     SendAnimation sendAnimation(Long chatId);
 
     SendAnimation sendAnimation(String chatTag);
+
+    ForwardMessage forwardMessage(String chatId, Message message);
+
+    ForwardMessage forwardMessage(String chatId, Long fromChatId, Long messageId);
 }

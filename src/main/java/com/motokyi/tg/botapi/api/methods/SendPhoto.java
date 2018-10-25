@@ -31,7 +31,7 @@ import java.util.function.Consumer;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendPhoto extends SendMethod {
+public class SendPhoto extends SendMethod<TGResponce<Message>> {
     public static final String PHOTO_ID = "photo";
 
     @JsonIgnore

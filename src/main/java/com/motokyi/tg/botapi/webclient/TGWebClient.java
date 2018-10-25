@@ -23,4 +23,6 @@ public interface TGWebClient {
     Mono<TGResponce<Message>> send(SendDocument document);
 
     Mono<TGResponce<Message>> send(SendAnimation document);
+
+    Mono<TGResponce<Message>> forwardMessage(ForwardMessage forwardMessage);
 }

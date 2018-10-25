@@ -15,7 +15,7 @@ import java.util.function.Consumer;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class SendMethod {
+public abstract class SendMethod<T> extends TGApiMethod<T> {
 
     public static final String CHAT_ID = "chat_id";
     public static final String PARSE_MODE = "parse_mode";
@@ -23,9 +23,6 @@ public abstract class SendMethod {
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
-
-    @JsonIgnore
-    protected final TGBotWebClient wc;
 
     @JsonProperty(CHAT_ID)
     protected String chatId;
@@ -46,16 +43,13 @@ public abstract class SendMethod {
     protected KeyboardMarkup replyMarkup;
 
     SendMethod(String chatId, TGBotWebClient wc) {
+        super(wc);
         this.chatId = chatId;
-        this.wc = wc;
+
     }
 
     SendMethod(Long chatId, TGBotWebClient wc) {
+        super(wc);
         this.chatId = String.valueOf(chatId);
-        this.wc = wc;
     }
-
-    public abstract Mono<TGResponce<Message>> send();
-
-    public abstract Disposable subscribe(Consumer<TGResponce<Message>> consumer);
 }
