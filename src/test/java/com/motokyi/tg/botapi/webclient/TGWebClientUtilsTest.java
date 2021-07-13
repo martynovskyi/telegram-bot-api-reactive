@@ -3,20 +3,20 @@ package com.motokyi.tg.botapi.webclient;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
 import com.motokyi.tg.botapi.api.methods.SendMessage;
 import com.motokyi.tg.botapi.api.methods.SendMethod;
-import com.motokyi.tg.botapi.api.methods.SendPhoto;
 import com.motokyi.tg.botapi.api.types.markup.InlineKeyboardMarkup;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.client.MultipartBodyBuilder;
-import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.reactive.function.BodyInserter;
-import org.springframework.web.reactive.function.BodyInserters;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TGWebClientUtilsTest {
 
@@ -27,7 +27,7 @@ class TGWebClientUtilsTest {
     private static SendAnimation sendAnimation;
 
     @BeforeAll
-    private static void init() {
+    static void init() {
         createSendMessage();
         createSendAnimation();
 
