@@ -1,7 +1,16 @@
 package com.motokyi.tg.botapi.components;
 
-import com.motokyi.tg.botapi.api.methods.*;
-import com.motokyi.tg.botapi.api.types.*;
+import com.motokyi.tg.botapi.api.methods.ForwardMessage;
+import com.motokyi.tg.botapi.api.methods.GetUpdates;
+import com.motokyi.tg.botapi.api.methods.SendAnimation;
+import com.motokyi.tg.botapi.api.methods.SendDocument;
+import com.motokyi.tg.botapi.api.methods.SendMessage;
+import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.types.Chat;
+import com.motokyi.tg.botapi.api.types.Message;
+import com.motokyi.tg.botapi.api.types.TGResponce;
+import com.motokyi.tg.botapi.api.types.Update;
+import com.motokyi.tg.botapi.api.types.User;
 import com.motokyi.tg.botapi.webclient.TGBotWebClient;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
@@ -39,7 +48,7 @@ public class TelegramBot implements TGBot {
 
     @Override
     public SendMessage sendMessage(Long chatId) {
-        return new SendMessage(chatId, wc);
+        return new SendMessage(String.valueOf(chatId), wc);
     }
 
     @Override
@@ -59,7 +68,7 @@ public class TelegramBot implements TGBot {
 
     @Override
     public SendPhoto sendPhoto(Long chatId) {
-        return new SendPhoto(chatId, wc);
+        return new SendPhoto(String.valueOf(chatId), wc);
     }
 
     @Override
@@ -69,7 +78,7 @@ public class TelegramBot implements TGBot {
 
     @Override
     public SendAnimation sendAnimation(Long chatId) {
-        return new SendAnimation(chatId, wc);
+        return new SendAnimation(String.valueOf(chatId), wc);
     }
 
     @Override

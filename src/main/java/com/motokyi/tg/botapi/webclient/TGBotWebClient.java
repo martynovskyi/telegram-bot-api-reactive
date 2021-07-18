@@ -1,7 +1,16 @@
 package com.motokyi.tg.botapi.webclient;
 
-import com.motokyi.tg.botapi.api.methods.*;
-import com.motokyi.tg.botapi.api.types.*;
+import com.motokyi.tg.botapi.api.methods.ForwardMessage;
+import com.motokyi.tg.botapi.api.methods.GetUpdates;
+import com.motokyi.tg.botapi.api.methods.SendAnimation;
+import com.motokyi.tg.botapi.api.methods.SendDocument;
+import com.motokyi.tg.botapi.api.methods.SendMessage;
+import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.types.Chat;
+import com.motokyi.tg.botapi.api.types.Message;
+import com.motokyi.tg.botapi.api.types.TGResponce;
+import com.motokyi.tg.botapi.api.types.Update;
+import com.motokyi.tg.botapi.api.types.User;
 import com.motokyi.tg.botapi.components.properties.TelegramBotProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
@@ -29,7 +38,7 @@ public class TGBotWebClient implements TGWebClient {
                 .uri(TGApiUrl.GET_ME)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<User>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -39,7 +48,7 @@ public class TGBotWebClient implements TGWebClient {
                 .uri(TGApiUrl.GET_CHAT, chatId)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<Chat>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -48,7 +57,7 @@ public class TGBotWebClient implements TGWebClient {
         return wc.get()
                 .uri(TGApiUrl.GET_UPDATES)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<List<Update>>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -56,10 +65,10 @@ public class TGBotWebClient implements TGWebClient {
     public Mono<TGResponce<List<Update>>> getUpdates(GetUpdates getUpdates) {
         return wc.post()
                 .uri(TGApiUrl.GET_UPDATES)
-                .syncBody(getUpdates)
+                .bodyValue(getUpdates)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<List<Update>>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -67,10 +76,10 @@ public class TGBotWebClient implements TGWebClient {
     public Mono<TGResponce<Message>> send(SendMessage message) {
         return wc.post()
                 .uri(TGApiUrl.SEND_MESSAGE)
-                .syncBody(message)
+                .bodyValue(message)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -81,7 +90,7 @@ public class TGBotWebClient implements TGWebClient {
                 .body(TGWebClientUtils.createBody(photo))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -92,7 +101,7 @@ public class TGBotWebClient implements TGWebClient {
                 .body(TGWebClientUtils.createBody(document))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -103,7 +112,7 @@ public class TGBotWebClient implements TGWebClient {
                 .body(TGWebClientUtils.createBody(animation))
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 
@@ -111,10 +120,10 @@ public class TGBotWebClient implements TGWebClient {
     public Mono<TGResponce<Message>> forwardMessage(ForwardMessage forwardMessage) {
         return wc.post()
                 .uri(TGApiUrl.FORWARD_MESSAGE)
-                .syncBody(forwardMessage)
+                .bodyValue(forwardMessage)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<TGResponce<Message>>() {
+                .bodyToMono(new ParameterizedTypeReference<>() {
                 });
     }
 }

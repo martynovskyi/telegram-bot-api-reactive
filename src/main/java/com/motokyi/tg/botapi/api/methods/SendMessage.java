@@ -37,7 +37,7 @@ public class SendMessage extends SendMethod<TGResponce<Message>> {
     }
 
     public SendMessage(Long chatId, TGBotWebClient rt) {
-        super(chatId, rt);
+        super(String.valueOf(chatId), rt);
     }
 
     @Override

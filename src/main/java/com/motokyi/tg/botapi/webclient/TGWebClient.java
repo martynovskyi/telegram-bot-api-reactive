@@ -1,7 +1,16 @@
 package com.motokyi.tg.botapi.webclient;
 
-import com.motokyi.tg.botapi.api.methods.*;
-import com.motokyi.tg.botapi.api.types.*;
+import com.motokyi.tg.botapi.api.methods.ForwardMessage;
+import com.motokyi.tg.botapi.api.methods.GetUpdates;
+import com.motokyi.tg.botapi.api.methods.SendAnimation;
+import com.motokyi.tg.botapi.api.methods.SendDocument;
+import com.motokyi.tg.botapi.api.methods.SendMessage;
+import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.types.Chat;
+import com.motokyi.tg.botapi.api.types.Message;
+import com.motokyi.tg.botapi.api.types.TGResponce;
+import com.motokyi.tg.botapi.api.types.Update;
+import com.motokyi.tg.botapi.api.types.User;
 import reactor.core.publisher.Mono;
 
 import java.util.List;

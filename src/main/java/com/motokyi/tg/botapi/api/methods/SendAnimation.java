@@ -68,7 +68,7 @@ public class SendAnimation extends SendMethod<TGResponce<Message>> {
     }
 
     public SendAnimation(Long chatId, TGBotWebClient rt) {
-        super(chatId, rt);
+        super(String.valueOf(chatId), rt);
     }
 
     @Override

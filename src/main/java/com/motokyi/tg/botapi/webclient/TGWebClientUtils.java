@@ -1,7 +1,11 @@
 package com.motokyi.tg.botapi.webclient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.motokyi.tg.botapi.api.methods.*;
+import com.motokyi.tg.botapi.api.methods.SendAnimation;
+import com.motokyi.tg.botapi.api.methods.SendDocument;
+import com.motokyi.tg.botapi.api.methods.SendMessage;
+import com.motokyi.tg.botapi.api.methods.SendMethod;
+import com.motokyi.tg.botapi.api.methods.SendPhoto;
 import com.motokyi.tg.botapi.exception.RequiredDataMissedTGException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -20,8 +24,8 @@ import static org.springframework.util.StringUtils.hasText;
 @Slf4j
 public final class TGWebClientUtils {
 
-    public static void insertMethodParams(SendMethod send, MultipartBodyBuilder builder) {
-        if (StringUtils.isEmpty(send.getChatId())) {
+    public static void insertMethodParams(SendMethod<?> send, MultipartBodyBuilder builder) {
+        if (!StringUtils.hasText(send.getChatId())) {
             throw new RequiredDataMissedTGException(SendMessage.CHAT_ID);
         }
 
@@ -87,7 +91,7 @@ public final class TGWebClientUtils {
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendPhoto photo) {
         if (StringUtils.hasText(photo.getPhotoId())) {
-            return BodyInserters.fromObject(photo);
+            return BodyInserters.fromValue(photo);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         insertMethodParams(photo, builder);
@@ -97,7 +101,7 @@ public final class TGWebClientUtils {
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendDocument document) {
         if (StringUtils.hasText(document.getDocumentId())) {
-            return BodyInserters.fromObject(document);
+            return BodyInserters.fromValue(document);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         insertMethodParams(document, builder);
@@ -107,7 +111,7 @@ public final class TGWebClientUtils {
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendAnimation animation) {
         if (StringUtils.hasText(animation.getAnimationId())) {
-            return BodyInserters.fromObject(animation);
+            return BodyInserters.fromValue(animation);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         insertAnimationParams(animation, builder);

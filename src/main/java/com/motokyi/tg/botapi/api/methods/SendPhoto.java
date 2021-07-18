@@ -44,10 +44,6 @@ public class SendPhoto extends SendMethod<TGResponce<Message>> {
         super(chatId, rt);
     }
 
-    public SendPhoto(Long chatId, TGBotWebClient rt) {
-        super(chatId, rt);
-    }
-
     @Override
     public Mono<TGResponce<Message>> send() {
         return wc.send(this);

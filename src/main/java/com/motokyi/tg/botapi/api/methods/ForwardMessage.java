@@ -1,18 +1,14 @@
 package com.motokyi.tg.botapi.api.methods;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.botapi.api.types.Message;
 import com.motokyi.tg.botapi.api.types.TGResponce;
-import com.motokyi.tg.botapi.api.types.Update;
 import com.motokyi.tg.botapi.webclient.TGBotWebClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 
-import java.io.File;
-import java.util.List;
 import java.util.function.Consumer;
 
 /**

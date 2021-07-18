@@ -1,7 +1,6 @@
 package com.motokyi.tg.botapi.api.methods;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.botapi.api.types.TGResponce;
@@ -56,22 +55,23 @@ public class GetUpdates extends TGApiMethod<TGResponce<List<Update>>> {
 
     public Flux<Update> updateStream() {
         if (isNull(this.timeout)) {
-            this.timeout = 30;
+            this.timeout = 50;
         }
         return wc.getUpdates(this)
-                .doOnNext(e -> {
-                    log.info("Responce Size: {}", e.getResult().size());
-//                    log.info("Responce: {}", e.getResult());
-                    this.offset = null;
-                    if (e.isOk() && !e.getResult().isEmpty()) {
-                        this.offset = e.getResult().get(e.getResult().size() - 1).getUpdateId() + 1;
-                    }
-                })
-//                .delaySubscription(Duration.ofSeconds(60))
+                .doOnNext(this.calculateOffset())
                 .repeat()
                 .map(TGResponce::getResult)
                 .flatMap(Flux::fromIterable);
 
+    }
+
+    private Consumer<TGResponce<List<Update>>> calculateOffset() {
+        return (TGResponce<List<Update>> e) -> {
+            this.offset = null;
+            if (e.isOk() && !e.getResult().isEmpty()) {
+                this.offset = e.getResult().get(e.getResult().size() - 1).getUpdateId() + 1;
+            }
+        };
     }
 
     public Disposable subscribe(Consumer<TGResponce<List<Update>>> consumer) {

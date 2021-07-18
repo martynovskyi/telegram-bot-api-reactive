@@ -45,7 +45,7 @@ public class SendDocument extends SendMethod<TGResponce<Message>> {
     }
 
     public SendDocument(Long chatId, TGBotWebClient rt) {
-        super(chatId, rt);
+        super(String.valueOf(chatId), rt);
     }
 
     @Override

@@ -59,7 +59,7 @@ class TGWebClientUtilsTest {
                 .setReplyMarkup(new InlineKeyboardMarkup());
     }
 
-    private void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
+    private void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod<?> method) {
         assertAll("SendMethod",
                 () -> assertEquals(CHAT_ID, result.getFirst(SendMethod.CHAT_ID).getBody()),
                 () -> assertEquals(method.getReplyToMessageId(), result.getFirst(SendMethod.REPLY_TO_MESSAGE_ID).getBody()),
