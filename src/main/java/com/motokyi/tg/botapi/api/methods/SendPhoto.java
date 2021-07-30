@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.botapi.api.types.Message;
-import com.motokyi.tg.botapi.api.types.TGResponce;
+import com.motokyi.tg.botapi.api.types.Response;
 import com.motokyi.tg.botapi.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.botapi.webclient.TGBotWebClient;
+import com.motokyi.tg.botapi.webclient.BotClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
@@ -31,7 +31,7 @@ import java.util.function.Consumer;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class SendPhoto extends SendMethod<TGResponce<Message>> {
+public class SendPhoto extends SendMethod<Response<Message>> {
     public static final String PHOTO_ID = "photo";
 
     @JsonIgnore
@@ -40,18 +40,18 @@ public class SendPhoto extends SendMethod<TGResponce<Message>> {
     @JsonProperty(PHOTO_ID)
     private String photoId;
 
-    public SendPhoto(String chatId, TGBotWebClient rt) {
+    public SendPhoto(String chatId, BotClient rt) {
         super(chatId, rt);
     }
 
     @Override
-    public Mono<TGResponce<Message>> send() {
-        return wc.send(this);
+    public Mono<Response<Message>> send() {
+        return client.send(this);
     }
 
     @Override
-    public Disposable subscribe(Consumer<TGResponce<Message>> consumer) {
-        return wc.send(this).subscribe(consumer);
+    public Disposable subscribe(Consumer<Response<Message>> consumer) {
+        return client.send(this).subscribe(consumer);
     }
 
     public SendPhoto setPhoto(File photoFile) {

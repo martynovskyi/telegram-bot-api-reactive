@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class TGResponce<T> {
+public class Response<T> {
 
     private boolean ok;
 

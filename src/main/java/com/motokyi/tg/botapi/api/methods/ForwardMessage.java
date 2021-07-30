@@ -3,8 +3,8 @@ package com.motokyi.tg.botapi.api.methods;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.botapi.api.types.Message;
-import com.motokyi.tg.botapi.api.types.TGResponce;
-import com.motokyi.tg.botapi.webclient.TGBotWebClient;
+import com.motokyi.tg.botapi.api.types.Response;
+import com.motokyi.tg.botapi.webclient.BotClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
@@ -23,7 +23,7 @@ import java.util.function.Consumer;
  **/
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class ForwardMessage extends TGApiMethod<TGResponce<Message>> {
+public class ForwardMessage extends BotMethod<Response<Message>> {
 
     @JsonProperty(SendMethod.CHAT_ID)
     protected String chatId;
@@ -37,14 +37,14 @@ public class ForwardMessage extends TGApiMethod<TGResponce<Message>> {
     @JsonProperty("message_id")
     protected Long messageId;
 
-    public ForwardMessage(String chatId, Message message, TGBotWebClient wc) {
+    public ForwardMessage(String chatId, Message message, BotClient wc) {
         super(wc);
         this.chatId = chatId;
         this.fromChatId = message.getChat().getId();
         this.messageId = message.getMessageId();
     }
 
-    public ForwardMessage(String chatId, Long fromChatId, Long messageId, TGBotWebClient wc) {
+    public ForwardMessage(String chatId, Long fromChatId, Long messageId, BotClient wc) {
         super(wc);
         this.chatId = chatId;
         this.fromChatId = fromChatId;
@@ -72,12 +72,12 @@ public class ForwardMessage extends TGApiMethod<TGResponce<Message>> {
     }
 
     @Override
-    public Mono<TGResponce<Message>> send() {
-        return wc.forwardMessage(this);
+    public Mono<Response<Message>> send() {
+        return client.forwardMessage(this);
     }
 
     @Override
-    public Disposable subscribe(Consumer<TGResponce<Message>> consumer) {
-        return wc.forwardMessage(this).subscribe(consumer);
+    public Disposable subscribe(Consumer<Response<Message>> consumer) {
+        return client.forwardMessage(this).subscribe(consumer);
     }
 }

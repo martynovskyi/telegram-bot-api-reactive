@@ -3,12 +3,12 @@ package com.motokyi.tg.botapi.api.methods;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.botapi.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.botapi.webclient.TGBotWebClient;
+import com.motokyi.tg.botapi.webclient.BotClient;
 import lombok.Getter;
 
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class SendMethod<T> extends TGApiMethod<T> {
+public abstract class SendMethod<T> extends BotMethod<T> {
 
     public static final String CHAT_ID = "chat_id";
     public static final String PARSE_MODE = "parse_mode";
@@ -35,7 +35,7 @@ public abstract class SendMethod<T> extends TGApiMethod<T> {
     @JsonProperty(REPLY_MARKUP)
     protected KeyboardMarkup replyMarkup;
 
-    SendMethod(String chatId, TGBotWebClient wc) {
+    SendMethod(String chatId, BotClient wc) {
         super(wc);
         this.chatId = chatId;
     }

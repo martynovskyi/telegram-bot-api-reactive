@@ -6,7 +6,7 @@ import com.motokyi.tg.botapi.api.methods.SendDocument;
 import com.motokyi.tg.botapi.api.methods.SendMessage;
 import com.motokyi.tg.botapi.api.methods.SendMethod;
 import com.motokyi.tg.botapi.api.methods.SendPhoto;
-import com.motokyi.tg.botapi.exception.RequiredDataMissedTGException;
+import com.motokyi.tg.botapi.exception.RequiredDataMissedException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.springframework.core.io.FileSystemResource;
@@ -22,11 +22,11 @@ import static java.util.Objects.nonNull;
 import static org.springframework.util.StringUtils.hasText;
 
 @Slf4j
-public final class TGWebClientUtils {
+public final class ClientUtils {
 
     public static void insertMethodParams(SendMethod<?> send, MultipartBodyBuilder builder) {
         if (!StringUtils.hasText(send.getChatId())) {
-            throw new RequiredDataMissedTGException(SendMessage.CHAT_ID);
+            throw new RequiredDataMissedException(SendMessage.CHAT_ID);
         }
 
         insertString(SendMethod.CHAT_ID, send.getChatId(), builder);
@@ -76,8 +76,8 @@ public final class TGWebClientUtils {
     public static ExchangeFilterFunction logRequest(Logger logger) {
         return (request, next) -> {
             logger.info("Request: {} {}", request.method(), request.url());
-            request.headers()
-                    .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
+//            request.headers()
+//                    .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
             return next.exchange(request);
         };
     }
@@ -85,6 +85,8 @@ public final class TGWebClientUtils {
     public static ExchangeFilterFunction logResponse(Logger logger) {
         return ExchangeFilterFunction.ofResponseProcessor(response -> {
             logger.info("Response Status {}", response.statusCode());
+//            response.headers().asHttpHeaders()
+//                    .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
             return Mono.just(response);
         });
     }

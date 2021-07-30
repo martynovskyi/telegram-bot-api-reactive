@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class TGWebClientUtilsTest {
+class ClientUtilsTest {
 
     private final static String CHAT_ID = "fake-chat-" + UUID.randomUUID();
     public static final String KEY = "key";
@@ -84,7 +84,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertString() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertString(KEY, VALUE, builder);
+        ClientUtils.insertString(KEY, VALUE, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertEquals(VALUE, result.getFirst(KEY).getBody());
     }
@@ -92,8 +92,8 @@ class TGWebClientUtilsTest {
     @Test
     void insertString_empty() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertString(null, VALUE, builder);
-        TGWebClientUtils.insertString(KEY, null, builder);
+        ClientUtils.insertString(null, VALUE, builder);
+        ClientUtils.insertString(KEY, null, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertTrue(result.isEmpty());
     }
@@ -102,7 +102,7 @@ class TGWebClientUtilsTest {
     void insertObject() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         Object value = new Object();
-        TGWebClientUtils.insertObject(KEY, value, builder);
+        ClientUtils.insertObject(KEY, value, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertEquals(value, result.getFirst(KEY).getBody());
     }
@@ -110,8 +110,8 @@ class TGWebClientUtilsTest {
     @Test
     void insertObject_empty() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertObject(null, VALUE, builder);
-        TGWebClientUtils.insertObject(KEY, null, builder);
+        ClientUtils.insertObject(null, VALUE, builder);
+        ClientUtils.insertObject(KEY, null, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertTrue(result.isEmpty());
     }
@@ -120,7 +120,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertMethodParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertMethodParams(sendMessage, builder);
+        ClientUtils.insertMethodParams(sendMessage, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendMessage);
     }
@@ -128,7 +128,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertMethodParams_empty() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertMethodParams(new SendMessage(CHAT_ID, null), builder);
+        ClientUtils.insertMethodParams(new SendMessage(CHAT_ID, null), builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
     }
@@ -136,7 +136,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertMessageParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertMessageParams(sendMessage, builder);
+        ClientUtils.insertMessageParams(sendMessage, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendMessage);
         assertEquals(sendMessage.getText(), result.getFirst(SendMessage.TEXT).getBody());
@@ -145,7 +145,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertMessageParams_empty() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertMessageParams(new SendMessage(CHAT_ID, null), builder);
+        ClientUtils.insertMessageParams(new SendMessage(CHAT_ID, null), builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
         assertNull(result.getFirst(SendMessage.TEXT));
@@ -154,7 +154,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertAnimationParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertAnimationParams(sendAnimation, builder);
+        ClientUtils.insertAnimationParams(sendAnimation, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendAnimation);
         assertAll("SendAnimation",
@@ -170,7 +170,7 @@ class TGWebClientUtilsTest {
     @Test
     void insertAnimationParams_empty() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        TGWebClientUtils.insertAnimationParams(new SendAnimation(CHAT_ID, null), builder);
+        ClientUtils.insertAnimationParams(new SendAnimation(CHAT_ID, null), builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
         assertAll("SendAnimation empty",

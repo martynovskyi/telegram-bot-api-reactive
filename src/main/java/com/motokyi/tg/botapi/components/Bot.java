@@ -1,4 +1,4 @@
-package com.motokyi.tg.botapi.webclient;
+package com.motokyi.tg.botapi.components;
 
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
@@ -15,23 +15,34 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public interface TGWebClient {
-
+public interface Bot {
     Mono<Response<User>> getMe();
 
-    Mono<Response<List<Update>>> getUpdates();
+    Mono<Response<List<Update>>> getAllUpdates();
 
-    Mono<Response<List<Update>>> getUpdates(GetUpdates getUpdates);
+    GetUpdates getUpdates();
+
+    Mono<Response<Chat>> getChat(Long chatId);
 
     Mono<Response<Chat>> getChat(String chatTag);
 
-    Mono<Response<Message>> send(SendMessage message);
+    SendMessage sendMessage(Long chatId);
 
-    Mono<Response<Message>> send(SendPhoto document);
+    SendMessage sendMessage(String chatTag);
 
-    Mono<Response<Message>> send(SendDocument document);
+    SendDocument sendDocument(Long chatId);
 
-    Mono<Response<Message>> send(SendAnimation document);
+    SendDocument sendDocument(String chatTag);
 
-    Mono<Response<Message>> forwardMessage(ForwardMessage forwardMessage);
+    SendPhoto sendPhoto(Long chatId);
+
+    SendPhoto sendPhoto(String chatTag);
+
+    SendAnimation sendAnimation(Long chatId);
+
+    SendAnimation sendAnimation(String chatTag);
+
+    ForwardMessage forwardMessage(String chatId, Message message);
+
+    ForwardMessage forwardMessage(String chatId, Long fromChatId, Long messageId);
 }

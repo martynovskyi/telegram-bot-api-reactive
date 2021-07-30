@@ -1,12 +1,12 @@
 package com.motokyi.tg.botapi.webclient;
 
 import com.motokyi.tg.botapi.components.properties.TelegramBotProperties;
-import com.motokyi.tg.botapi.exception.RequiredConfigMissedTGException;
+import com.motokyi.tg.botapi.exception.RequiredConfigMissedException;
 
 import static java.util.Objects.isNull;
 import static org.springframework.util.StringUtils.hasText;
 
-public class TGApiUrl {
+public class ApiUrls {
     public static final String GET_ME = "/getMe";
     public static final String GET_CHAT = "/getChat?chat_id={chat_id}";
     public static final String GET_UPDATES = "/getUpdates";
@@ -24,7 +24,7 @@ public class TGApiUrl {
 
     public static String createHostUrl(TelegramBotProperties properties) {
         if (isNull(properties) || !hasText(properties.token)) {
-            throw new RequiredConfigMissedTGException("Properties not correct. Token is empty or props is null.");
+            throw new RequiredConfigMissedException("Properties not correct. Token is empty or props is null.");
         }
 
         return (hasText(properties.apiHost) ? properties.apiHost : API_HOST)

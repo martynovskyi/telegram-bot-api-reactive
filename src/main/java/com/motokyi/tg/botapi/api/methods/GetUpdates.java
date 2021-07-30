@@ -3,9 +3,9 @@ package com.motokyi.tg.botapi.api.methods;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.motokyi.tg.botapi.api.types.TGResponce;
+import com.motokyi.tg.botapi.api.types.Response;
 import com.motokyi.tg.botapi.api.types.Update;
-import com.motokyi.tg.botapi.webclient.TGBotWebClient;
+import com.motokyi.tg.botapi.webclient.BotClient;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
@@ -35,7 +35,7 @@ import static java.util.Objects.isNull;
 @Slf4j
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class GetUpdates extends TGApiMethod<TGResponce<List<Update>>> {
+public class GetUpdates extends BotMethod<Response<List<Update>>> {
     private Long offset;
 
     private Integer limit;
@@ -45,28 +45,28 @@ public class GetUpdates extends TGApiMethod<TGResponce<List<Update>>> {
     @JsonProperty("allowed_updates")
     private List<String> allowedUpdates;
 
-    public GetUpdates(TGBotWebClient wc) {
+    public GetUpdates(BotClient wc) {
         super(wc);
     }
 
-    public Mono<TGResponce<List<Update>>> send() {
-        return super.wc.getUpdates(this);
+    public Mono<Response<List<Update>>> send() {
+        return super.client.getUpdates(this);
     }
 
     public Flux<Update> updateStream() {
         if (isNull(this.timeout)) {
             this.timeout = 50;
         }
-        return wc.getUpdates(this)
+        return client.getUpdates(this)
                 .doOnNext(this.calculateOffset())
                 .repeat()
-                .map(TGResponce::getResult)
+                .map(Response::getResult)
                 .flatMap(Flux::fromIterable);
 
     }
 
-    private Consumer<TGResponce<List<Update>>> calculateOffset() {
-        return (TGResponce<List<Update>> e) -> {
+    private Consumer<Response<List<Update>>> calculateOffset() {
+        return (Response<List<Update>> e) -> {
             this.offset = null;
             if (e.isOk() && !e.getResult().isEmpty()) {
                 this.offset = e.getResult().get(e.getResult().size() - 1).getUpdateId() + 1;
@@ -74,8 +74,8 @@ public class GetUpdates extends TGApiMethod<TGResponce<List<Update>>> {
         };
     }
 
-    public Disposable subscribe(Consumer<TGResponce<List<Update>>> consumer) {
-        return wc.getUpdates(this).subscribe(consumer);
+    public Disposable subscribe(Consumer<Response<List<Update>>> consumer) {
+        return client.getUpdates(this).subscribe(consumer);
     }
 
     public GetUpdates setOffset(Long offset) {
