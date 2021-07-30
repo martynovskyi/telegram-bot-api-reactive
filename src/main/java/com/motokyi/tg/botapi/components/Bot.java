@@ -1,5 +1,6 @@
 package com.motokyi.tg.botapi.components;
 
+import com.motokyi.tg.botapi.api.methods.EditMessageReplyMarkup;
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
@@ -45,4 +46,8 @@ public interface Bot {
     ForwardMessage forwardMessage(String chatId, Message message);
 
     ForwardMessage forwardMessage(String chatId, Long fromChatId, Long messageId);
+
+    EditMessageReplyMarkup editMessageReplyMarkup(Long chatId, Long messageId);
+
+    Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId);
 }

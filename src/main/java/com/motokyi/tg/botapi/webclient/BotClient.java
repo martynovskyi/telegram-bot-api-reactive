@@ -1,5 +1,6 @@
 package com.motokyi.tg.botapi.webclient;
 
+import com.motokyi.tg.botapi.api.methods.EditMessageReplyMarkup;
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
@@ -21,7 +22,7 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @Slf4j
-public class BotClient implements TGWebClient {
+public class BotClient implements BotWebClient {
     private final WebClient wc;
 
     public BotClient(TelegramBotProperties botProperties) {
@@ -121,6 +122,28 @@ public class BotClient implements TGWebClient {
         return wc.post()
                 .uri(ApiUrls.FORWARD_MESSAGE)
                 .bodyValue(forwardMessage)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<>() {
+                });
+    }
+
+    @Override
+    public Mono<Response<Message>> editMessageReplyMarkup(EditMessageReplyMarkup editMessageReplyMarkup) {
+        return wc.post()
+                .uri(ApiUrls.EDIT_MESSAGE_REPLY_MARKUP)
+                .bodyValue(editMessageReplyMarkup)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<>() {
+                });
+
+    }
+
+    @Override
+    public Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId) {
+        return wc.get()
+                .uri(ApiUrls.DELETE_MESSAGE, chatId, messageId)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(new ParameterizedTypeReference<>() {

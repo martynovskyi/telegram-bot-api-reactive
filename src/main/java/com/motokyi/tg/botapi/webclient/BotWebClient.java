@@ -1,5 +1,6 @@
 package com.motokyi.tg.botapi.webclient;
 
+import com.motokyi.tg.botapi.api.methods.EditMessageReplyMarkup;
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
@@ -15,7 +16,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
-public interface TGWebClient {
+public interface BotWebClient {
 
     Mono<Response<User>> getMe();
 
@@ -34,4 +35,8 @@ public interface TGWebClient {
     Mono<Response<Message>> send(SendAnimation document);
 
     Mono<Response<Message>> forwardMessage(ForwardMessage forwardMessage);
+
+    Mono<Response<Message>> editMessageReplyMarkup(EditMessageReplyMarkup editMessageReplyMarkup);
+
+    Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId);
 }

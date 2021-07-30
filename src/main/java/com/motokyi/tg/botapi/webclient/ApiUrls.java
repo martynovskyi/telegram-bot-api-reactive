@@ -19,6 +19,8 @@ public class ApiUrls {
     public static final String SEND_VIDEO = "/sendVideo";
     public static final String SEND_VOICE = "/sendVoice";
     public static final String SEND_VIDEO_NOTE = "/sendVideoNote";
+    public static final String EDIT_MESSAGE_REPLY_MARKUP = "/editMessageReplyMarkup";
+    public static final String DELETE_MESSAGE = "/deleteMessage?chat_id={chat_id}&message_id={message_id}";
     public static final String API_HOST = "https://api.telegram.org";
     public static final String BOT_PREFIX = "/bot";
 

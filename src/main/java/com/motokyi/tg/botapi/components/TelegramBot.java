@@ -1,5 +1,6 @@
 package com.motokyi.tg.botapi.components;
 
+import com.motokyi.tg.botapi.api.methods.EditMessageReplyMarkup;
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
@@ -94,5 +95,15 @@ public class TelegramBot implements Bot {
     @Override
     public ForwardMessage forwardMessage(String chatId, Long fromChatId, Long messageId) {
         return new ForwardMessage(chatId, fromChatId, messageId, client);
+    }
+
+    @Override
+    public EditMessageReplyMarkup editMessageReplyMarkup(Long chatId, Long messageId) {
+        return new EditMessageReplyMarkup(String.valueOf(chatId), String.valueOf(messageId), client);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId) {
+        return client.deleteMessage(chatId, messageId);
     }
 }
