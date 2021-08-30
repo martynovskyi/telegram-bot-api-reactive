@@ -60,6 +60,7 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
         return client.getUpdates(this)
                 .doOnNext(this.calculateOffset())
                 .repeat()
+                .filter(Response::isOk)
                 .map(Response::getResult)
                 .flatMap(Flux::fromIterable);
 

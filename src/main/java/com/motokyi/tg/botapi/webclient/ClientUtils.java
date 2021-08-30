@@ -9,14 +9,18 @@ import com.motokyi.tg.botapi.api.methods.SendPhoto;
 import com.motokyi.tg.botapi.exception.RequiredDataMissedException;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
+import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import reactor.core.publisher.Mono;
+
+import java.util.function.Function;
 
 import static java.util.Objects.nonNull;
 import static org.springframework.util.StringUtils.hasText;
@@ -119,5 +123,20 @@ public final class ClientUtils {
         insertAnimationParams(animation, builder);
         builder.part(SendAnimation.ANIMATION_ID, new FileSystemResource(animation.getAnimationFile()));
         return BodyInserters.fromMultipartData(builder.build());
+    }
+
+    public static <T, C> Function<ClientResponse, Mono<T>> responseHandler(final Class<C> cls,
+                                                                           ParameterizedTypeReference<T> typeRef) {
+        return responseHandler(cls.getName(), typeRef);
+    }
+
+    public static <T> Function<ClientResponse, Mono<T>> responseHandler(final String method,
+                                                                        final ParameterizedTypeReference<T> typeRef) {
+        return clientResponse -> {
+            if (clientResponse.statusCode().isError()) {
+                log.warn("{} got error {}", method, clientResponse.statusCode());
+            }
+            return clientResponse.bodyToMono(typeRef);
+        };
     }
 }

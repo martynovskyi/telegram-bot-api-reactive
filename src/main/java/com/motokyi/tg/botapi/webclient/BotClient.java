@@ -38,9 +38,9 @@ public class BotClient implements BotWebClient {
         return wc.get()
                 .uri(ApiUrls.GET_ME)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler("GetMe",
+                        new ParameterizedTypeReference<Response<User>>() {
+                        }));
     }
 
     @Override
@@ -48,18 +48,18 @@ public class BotClient implements BotWebClient {
         return wc.get()
                 .uri(ApiUrls.GET_CHAT, chatId)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler("GetChat",
+                        new ParameterizedTypeReference<Response<Chat>>() {
+                        }));
     }
 
     @Override
     public Mono<Response<List<Update>>> getUpdates() {
         return wc.get()
                 .uri(ApiUrls.GET_UPDATES)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler("GetUpdates",
+                        new ParameterizedTypeReference<Response<List<Update>>>() {
+                        }));
     }
 
     @Override
@@ -68,20 +68,20 @@ public class BotClient implements BotWebClient {
                 .uri(ApiUrls.GET_UPDATES)
                 .bodyValue(getUpdates)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler(getUpdates.getClass(),
+                        new ParameterizedTypeReference<Response<List<Update>>>() {
+                        }));
     }
 
     @Override
     public Mono<Response<Message>> send(SendMessage message) {
         return wc.post()
                 .uri(ApiUrls.SEND_MESSAGE)
-                .bodyValue(message)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .bodyValue(message)
+                .exchangeToMono(ClientUtils.responseHandler(message.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
     }
 
     @Override
@@ -90,9 +90,9 @@ public class BotClient implements BotWebClient {
                 .uri(ApiUrls.SEND_PHOTO)
                 .body(ClientUtils.createBody(photo))
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler(photo.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
     }
 
     @Override
@@ -101,9 +101,9 @@ public class BotClient implements BotWebClient {
                 .uri(ApiUrls.SEND_DOCUMENT)
                 .body(ClientUtils.createBody(document))
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler(document.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
     }
 
     @Override
@@ -112,9 +112,9 @@ public class BotClient implements BotWebClient {
                 .uri(ApiUrls.SEND_ANIMATION)
                 .body(ClientUtils.createBody(animation))
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler(animation.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
     }
 
     @Override
@@ -123,9 +123,9 @@ public class BotClient implements BotWebClient {
                 .uri(ApiUrls.FORWARD_MESSAGE)
                 .bodyValue(forwardMessage)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler(forwardMessage.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
     }
 
     @Override
@@ -134,10 +134,9 @@ public class BotClient implements BotWebClient {
                 .uri(ApiUrls.EDIT_MESSAGE_REPLY_MARKUP)
                 .bodyValue(editMessageReplyMarkup)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
-
+                .exchangeToMono(ClientUtils.responseHandler(editMessageReplyMarkup.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
     }
 
     @Override
@@ -145,8 +144,9 @@ public class BotClient implements BotWebClient {
         return wc.get()
                 .uri(ApiUrls.DELETE_MESSAGE, chatId, messageId)
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(new ParameterizedTypeReference<>() {
-                });
+                .exchangeToMono(ClientUtils.responseHandler("DeleteMessage",
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
     }
+
 }
