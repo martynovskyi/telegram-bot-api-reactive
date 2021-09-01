@@ -23,12 +23,13 @@ import java.util.function.Consumer;
  * disable_notification	      Boolean	          Optional	Sends the message silently. Users will receive a notification with no sound.
  * reply_to_message_id	      Integer	          Optional	If the message is a reply, ID of the original message
  * reply_markup	              InlineKeyboardMarkup or ReplyKeyboardMarkup or ReplyKeyboardRemove or ForceReply
- *                                                Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
+ * Optional Additional interface options. A JSON-serialized object for an inline keyboard, custom reply keyboard, instructions to remove reply keyboard or to force a reply from the user.
  */
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class SendMessage extends SendMethod<Response<Message>> {
     public static final String TEXT = "text";
+    public static final int TEXT_LENGTH_LIMIT = 4096;
 
     private String text;
 
@@ -42,6 +43,9 @@ public class SendMessage extends SendMethod<Response<Message>> {
 
     @Override
     public Mono<Response<Message>> send() {
+        if (text.length() > TEXT_LENGTH_LIMIT) {
+            this.text = text.substring(0, TEXT_LENGTH_LIMIT);
+        }
         return client.send(this);
     }
 
