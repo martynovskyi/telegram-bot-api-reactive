@@ -18,8 +18,11 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import reactor.netty.http.client.HttpClientRequest;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
 
 @Slf4j
 public class BotClient implements BotWebClient {
@@ -66,6 +69,13 @@ public class BotClient implements BotWebClient {
     public Mono<Response<List<Update>>> getUpdates(GetUpdates getUpdates) {
         return wc.post()
                 .uri(ApiUrls.GET_UPDATES)
+                .httpRequest(req -> {
+                    HttpClientRequest reactorRequest = req.getNativeRequest();
+                    final int timeout = Objects.nonNull(getUpdates.getTimeout()) && getUpdates.getTimeout() > 0
+                            ? getUpdates.getTimeout() + 5
+                            : 60;
+                    reactorRequest.responseTimeout(Duration.ofSeconds(timeout));
+                })
                 .bodyValue(getUpdates)
                 .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(getUpdates.getClass(),
