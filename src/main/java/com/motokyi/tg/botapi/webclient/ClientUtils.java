@@ -78,19 +78,25 @@ public final class ClientUtils {
     }
 
     public static ExchangeFilterFunction logRequest(Logger logger) {
-        return (request, next) -> {
-            logger.info("Request: {} {}", request.method(), request.url());
-//            request.headers()
-//                    .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
-            return next.exchange(request);
-        };
+        return ExchangeFilterFunction.ofRequestProcessor(request -> {
+            final String[] urlFragments = request.url().getPath().split("/");
+            logger.debug("HTTP: {} {}", request.method(), urlFragments[urlFragments.length - 1]);
+            if (logger.isTraceEnabled()) {
+                request.headers()
+                        .forEach((name, values) -> values.forEach(value -> logger.trace("Request Header: {}={}", name, value)));
+                request.attributes().forEach((key, value) -> logger.trace("Attr: {} {}", key, value));
+            }
+            return Mono.just(request);
+        });
     }
 
     public static ExchangeFilterFunction logResponse(Logger logger) {
         return ExchangeFilterFunction.ofResponseProcessor(response -> {
-            logger.info("Response Status {}", response.statusCode());
-//            response.headers().asHttpHeaders()
-//                    .forEach((name, values) -> values.forEach(value -> logger.info("{}={}", name, value)));
+            logger.debug("HTTP: {}", response.statusCode());
+            if (logger.isTraceEnabled()) {
+                response.headers().asHttpHeaders()
+                        .forEach((name, values) -> values.forEach(value -> logger.trace("Response Header: {}={}", name, value)));
+            }
             return Mono.just(response);
         });
     }
