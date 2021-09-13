@@ -55,12 +55,12 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
 
     public Flux<Update> updateStream() {
         if (isNull(this.timeout)) {
-            this.timeout = 50;
+            this.timeout = 180;
         }
+        log.debug("Timeout {} sec", timeout);
         return client.getUpdates(this)
                 .doOnNext(this.calculateOffset())
                 .repeat()
-                .filter(Response::isOk)
                 .map(Response::getResult)
                 .flatMap(Flux::fromIterable);
 

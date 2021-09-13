@@ -1,8 +1,11 @@
 package com.motokyi.tg.botapi.components.tools;
 
+import com.motokyi.tg.botapi.api.types.ChatMemberUpdated;
 import com.motokyi.tg.botapi.api.types.ChosenInlineResult;
 import com.motokyi.tg.botapi.api.types.InlineQuery;
 import com.motokyi.tg.botapi.api.types.Message;
+import com.motokyi.tg.botapi.api.types.Poll;
+import com.motokyi.tg.botapi.api.types.PollAnswer;
 import com.motokyi.tg.botapi.api.types.PreCheckoutQuery;
 import com.motokyi.tg.botapi.api.types.ShippingQuery;
 import com.motokyi.tg.botapi.api.types.Update;
@@ -29,6 +32,10 @@ public class UpdateHandler {
     private final Consumer<CallbackQuery> callbackQueryConsumer;
     private final Consumer<ShippingQuery> shippingQueryConsumer;
     private final Consumer<PreCheckoutQuery> preCheckoutQueryConsumer;
+    private final Consumer<Poll> pollConsumer;
+    private final Consumer<PollAnswer> pollAnswerConsumer;
+    private final Consumer<ChatMemberUpdated> myChatMemberConsumer;
+    private final Consumer<ChatMemberUpdated> chatMemberConsumer;
 
     public void apply(Update update) {
         if (nonNull(update)) {
@@ -41,6 +48,10 @@ public class UpdateHandler {
             ofNullable(update.getCallbackQuery()).ifPresent(handleSafe(this.callbackQueryConsumer));
             ofNullable(update.getShippingQuery()).ifPresent(handleSafe(this.shippingQueryConsumer));
             ofNullable(update.getPreCheckoutQuery()).ifPresent(handleSafe(this.preCheckoutQueryConsumer));
+            ofNullable(update.getPoll()).ifPresent(handleSafe(this.pollConsumer));
+            ofNullable(update.getPollAnswer()).ifPresent(handleSafe(this.pollAnswerConsumer));
+            ofNullable(update.getMyChatMember()).ifPresent(handleSafe(this.myChatMemberConsumer));
+            ofNullable(update.getChatMember()).ifPresent(handleSafe(this.chatMemberConsumer));
         }
     }
 
