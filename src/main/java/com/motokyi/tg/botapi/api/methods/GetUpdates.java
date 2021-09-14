@@ -55,7 +55,7 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
 
     public Flux<Update> updateStream() {
         if (isNull(this.timeout)) {
-            this.timeout = 180;
+            this.timeout = 50;
         }
         log.debug("Timeout {} sec", timeout);
         return client.getUpdates(this)
