@@ -12,6 +12,11 @@ import reactor.core.publisher.Mono;
 
 import java.util.function.Consumer;
 
+/**
+ * Use this method to edit only the reply markup of messages.
+ * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ * See <a href="EditMessageReplyMarkup">https://core.telegram.org/bots/api#editmessagereplymarkup</a>
+ **/
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EditMessageReplyMarkup extends BotMethod<Response<Message>> {

@@ -14,12 +14,6 @@ import java.util.function.Consumer;
 /**
  * Use this method to forward messages of any kind. On success, the sent Message is returned.
  * See <a href="ForwardMessage">https://core.telegram.org/bots/api#forwardmessage</a>
- * <p>
- * Field	            Type	            Required    Description
- * chat_id	            Integer or String	Yes	        Unique identifier for the target chat or username of the target channel (in the format @channelusername)
- * from_chat_id	        Integer or String	Yes	        Unique identifier for the chat where the original message was sent (or channel username in the format @channelusername)
- * disable_notification	Boolean	            Optional	Sends the message silently. Users will receive a notification with no sound.
- * message_id	        Integer	            Yes	        Message identifier in the chat specified in from_chat_id
  **/
 @Getter
 @JsonInclude(JsonInclude.Include.NON_NULL)
