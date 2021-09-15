@@ -140,7 +140,11 @@ public final class ClientUtils {
                                                                         final ParameterizedTypeReference<T> typeRef) {
         return clientResponse -> {
             if (clientResponse.statusCode().isError()) {
-                log.warn("{} got error {}", method, clientResponse.statusCode());
+                log.warn("Method {} got error {}", method, clientResponse.statusCode());
+            }
+            if (clientResponse.statusCode().is5xxServerError()) {
+                log.warn("Attempt to recover after {}", clientResponse.statusCode());
+                return Mono.empty();
             }
             return clientResponse.bodyToMono(typeRef);
         };

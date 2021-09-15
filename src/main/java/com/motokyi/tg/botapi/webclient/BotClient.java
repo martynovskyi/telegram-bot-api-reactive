@@ -158,5 +158,4 @@ public class BotClient implements BotWebClient {
                         new ParameterizedTypeReference<Response<Boolean>>() {
                         }));
     }
-
 }
