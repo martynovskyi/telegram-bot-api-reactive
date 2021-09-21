@@ -1,17 +1,21 @@
 package com.motokyi.tg.botapi.webclient;
 
+import com.motokyi.tg.botapi.api.methods.DeleteMyCommands;
 import com.motokyi.tg.botapi.api.methods.EditMessageReplyMarkup;
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
+import com.motokyi.tg.botapi.api.methods.GetMyCommands;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
 import com.motokyi.tg.botapi.api.methods.SendDocument;
 import com.motokyi.tg.botapi.api.methods.SendMessage;
 import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.methods.SetMyCommands;
 import com.motokyi.tg.botapi.api.types.Chat;
 import com.motokyi.tg.botapi.api.types.Message;
 import com.motokyi.tg.botapi.api.types.Response;
 import com.motokyi.tg.botapi.api.types.Update;
 import com.motokyi.tg.botapi.api.types.User;
+import com.motokyi.tg.botapi.api.types.command.BotCommand;
 import com.motokyi.tg.botapi.components.properties.TelegramBotProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
@@ -124,6 +128,39 @@ public class BotClient implements BotWebClient {
                 .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(animation.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> send(SetMyCommands commands) {
+        return wc.post()
+                .uri(ApiUrls.SET_MY_COMMANDS)
+                .bodyValue(commands)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchangeToMono(ClientUtils.responseHandler(commands.getClass(),
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> send(DeleteMyCommands deleteCommands) {
+        return wc.post()
+                .uri(ApiUrls.DELETE_MY_COMMANDS)
+                .bodyValue(deleteCommands)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchangeToMono(ClientUtils.responseHandler(deleteCommands.getClass(),
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<List<BotCommand>>> send(GetMyCommands getMyCommands) {
+        return wc.post()
+                .uri(ApiUrls.GET_MY_COMMANDS)
+                .bodyValue(getMyCommands)
+                .accept(MediaType.APPLICATION_JSON)
+                .exchangeToMono(ClientUtils.responseHandler(getMyCommands.getClass(),
+                        new ParameterizedTypeReference<Response<List<BotCommand>>>() {
                         }));
     }
 

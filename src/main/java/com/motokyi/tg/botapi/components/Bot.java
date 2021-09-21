@@ -7,11 +7,14 @@ import com.motokyi.tg.botapi.api.methods.SendAnimation;
 import com.motokyi.tg.botapi.api.methods.SendDocument;
 import com.motokyi.tg.botapi.api.methods.SendMessage;
 import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.methods.SetMyCommands;
 import com.motokyi.tg.botapi.api.types.Chat;
 import com.motokyi.tg.botapi.api.types.Message;
 import com.motokyi.tg.botapi.api.types.Response;
 import com.motokyi.tg.botapi.api.types.Update;
 import com.motokyi.tg.botapi.api.types.User;
+import com.motokyi.tg.botapi.api.types.command.BotCommand;
+import com.motokyi.tg.botapi.api.types.command.BotCommandScope;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -50,4 +53,10 @@ public interface Bot {
     EditMessageReplyMarkup editMessageReplyMarkup(Long chatId, Long messageId);
 
     Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId);
+
+    SetMyCommands setMyCommands();
+
+    Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope);
+
+    Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope);
 }

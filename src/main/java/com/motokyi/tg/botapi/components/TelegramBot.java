@@ -1,17 +1,22 @@
 package com.motokyi.tg.botapi.components;
 
+import com.motokyi.tg.botapi.api.methods.DeleteMyCommands;
 import com.motokyi.tg.botapi.api.methods.EditMessageReplyMarkup;
 import com.motokyi.tg.botapi.api.methods.ForwardMessage;
+import com.motokyi.tg.botapi.api.methods.GetMyCommands;
 import com.motokyi.tg.botapi.api.methods.GetUpdates;
 import com.motokyi.tg.botapi.api.methods.SendAnimation;
 import com.motokyi.tg.botapi.api.methods.SendDocument;
 import com.motokyi.tg.botapi.api.methods.SendMessage;
 import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.methods.SetMyCommands;
 import com.motokyi.tg.botapi.api.types.Chat;
 import com.motokyi.tg.botapi.api.types.Message;
 import com.motokyi.tg.botapi.api.types.Response;
 import com.motokyi.tg.botapi.api.types.Update;
 import com.motokyi.tg.botapi.api.types.User;
+import com.motokyi.tg.botapi.api.types.command.BotCommand;
+import com.motokyi.tg.botapi.api.types.command.BotCommandScope;
 import com.motokyi.tg.botapi.webclient.BotClient;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
@@ -105,5 +110,20 @@ public class TelegramBot implements Bot {
     @Override
     public Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId) {
         return client.deleteMessage(chatId, messageId);
+    }
+
+    @Override
+    public SetMyCommands setMyCommands() {
+        return new SetMyCommands(client);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope) {
+        return new DeleteMyCommands(client).setScope(scope).send();
+    }
+
+    @Override
+    public Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope) {
+        return new GetMyCommands(client).setScope(scope).send();
     }
 }
