@@ -11,7 +11,9 @@ import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.util.retry.Retry;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -50,6 +52,7 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
         return client.getUpdates(this)
                 .doOnNext(this.calculateOffset())
                 .repeat()
+                .retryWhen(Retry.backoff(100, Duration.ofSeconds(5)))
                 .map(Response::getResult)
                 .flatMap(Flux::fromIterable);
 
