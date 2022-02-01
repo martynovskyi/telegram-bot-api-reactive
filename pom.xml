@@ -8,7 +8,7 @@
     <artifactId>telegram-bot-api-reactive</artifactId>
     <version>0.1-SNAPSHOT</version>
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -19,7 +19,6 @@
         <spring-boot.version>2.5.2</spring-boot.version>
         <junit-bom.version>5.7.2</junit-bom.version>
         <commons-io.version>2.10.0</commons-io.version>
-        <guava.version>30.1.1-jre</guava.version>
     </properties>
     <dependencies>
         <!--SPRING-->
