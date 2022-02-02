@@ -16,19 +16,15 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <spring-boot.version>2.5.2</spring-boot.version>
-        <junit-bom.version>5.7.2</junit-bom.version>
-        <commons-io.version>2.10.0</commons-io.version>
+        <spring-boot.version>2.6.3</spring-boot.version>
+        <junit-bom.version>5.8.2</junit-bom.version>
+        <commons-io.version>2.11.0</commons-io.version>
     </properties>
     <dependencies>
         <!--SPRING-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-json</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
