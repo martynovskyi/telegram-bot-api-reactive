@@ -34,6 +34,8 @@ public interface Bot {
 
     SendMessage sendMessage(String chatTag);
 
+    Mono<Response<Message>> sendMessage(Long chatId, String text);
+
     SendDocument sendDocument(Long chatId);
 
     SendDocument sendDocument(String chatTag);

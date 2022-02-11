@@ -63,6 +63,11 @@ public class TelegramBot implements Bot {
     }
 
     @Override
+    public Mono<Response<Message>> sendMessage(Long chatId, String text) {
+        return client.send(sendMessage(chatId).setText(text));
+    }
+
+    @Override
     public SendDocument sendDocument(Long chatId) {
         return new SendDocument(chatId, client);
     }
