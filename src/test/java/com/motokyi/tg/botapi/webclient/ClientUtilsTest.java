@@ -12,17 +12,11 @@ import org.springframework.util.MultiValueMap;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ClientUtilsTest {
 
     private final static String CHAT_ID = "fake-chat-" + UUID.randomUUID();
-    public static final String KEY = "key";
-    public static final String VALUE = "value";
     private static SendMessage sendMessage;
     private static SendAnimation sendAnimation;
 
@@ -80,43 +74,6 @@ class ClientUtilsTest {
                 () -> assertNull(result.getFirst(SendMethod.REPLY_MARKUP))
         );
     }
-
-    @Test
-    void insertString() {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        ClientUtils.insertString(KEY, VALUE, builder);
-        MultiValueMap<String, HttpEntity<?>> result = builder.build();
-        assertEquals(VALUE, result.getFirst(KEY).getBody());
-    }
-
-    @Test
-    void insertString_empty() {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        ClientUtils.insertString(null, VALUE, builder);
-        ClientUtils.insertString(KEY, null, builder);
-        MultiValueMap<String, HttpEntity<?>> result = builder.build();
-        assertTrue(result.isEmpty());
-    }
-
-    @Test
-    void insertObject() {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        Object value = new Object();
-        ClientUtils.insertObject(KEY, value, builder);
-        MultiValueMap<String, HttpEntity<?>> result = builder.build();
-        assertEquals(value, result.getFirst(KEY).getBody());
-    }
-
-    @Test
-    void insertObject_empty() {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        ClientUtils.insertObject(null, VALUE, builder);
-        ClientUtils.insertObject(KEY, null, builder);
-        MultiValueMap<String, HttpEntity<?>> result = builder.build();
-        assertTrue(result.isEmpty());
-    }
-
-
     @Test
     void insertMethodParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();

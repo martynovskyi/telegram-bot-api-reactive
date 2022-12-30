@@ -3,6 +3,7 @@ package com.motokyi.tg.botapi.webclient;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.tg.botapi.api.methods.*;
 import com.motokyi.tg.botapi.exception.RequiredDataMissedException;
+import com.motokyi.tg.botapi.utils.MultipartBodyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -28,14 +29,14 @@ public final class ClientUtils {
             throw new RequiredDataMissedException(SendMessage.CHAT_ID);
         }
 
-        insertString(SendMethod.CHAT_ID, send.getChatId(), builder);
-        insertString(SendMethod.PARSE_MODE, send.getParseMode(), builder);
-        insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
-        insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
-        insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
+        MultipartBodyUtils.insertString(SendMethod.CHAT_ID, send.getChatId(), builder);
+        MultipartBodyUtils.insertString(SendMethod.PARSE_MODE, send.getParseMode(), builder);
+        MultipartBodyUtils.insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
+        MultipartBodyUtils.insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
+        MultipartBodyUtils.insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
         if (nonNull(send.getReplyMarkup())) {
             try {
-                insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
+                MultipartBodyUtils.insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
             } catch (JsonProcessingException e) {
                 log.error("Converting issue", e);
             }
@@ -45,31 +46,19 @@ public final class ClientUtils {
     public static void insertMessageParams(SendMessage send, MultipartBodyBuilder builder) {
 
         insertMethodParams(send, builder);
-        insertString(SendMessage.TEXT, send.getText(), builder);
+        MultipartBodyUtils.insertString(SendMessage.TEXT, send.getText(), builder);
     }
 
     public static void insertAnimationParams(SendAnimation send, MultipartBodyBuilder builder) {
 
         insertMethodParams(send, builder);
 
-        insertString(SendAnimation.ANIMATION_ID, send.getAnimationId(), builder);
-        insertString(SendAnimation.THUMB_ID, send.getThumbId(), builder);
-        insertObject(SendAnimation.DURATION, send.getDuration(), builder);
-        insertObject(SendAnimation.WIDTH, send.getWidth(), builder);
-        insertObject(SendAnimation.HEIGHT, send.getHeight(), builder);
-        insertObject(SendAnimation.CAPTION, send.getCaption(), builder);
-    }
-
-    public static void insertString(String key, String value, MultipartBodyBuilder builder) {
-        if (StringUtils.isNotBlank(key) && StringUtils.isNotBlank(value)) {
-            builder.part(key, value);
-        }
-    }
-
-    public static void insertObject(String key, Object value, MultipartBodyBuilder builder) {
-        if (StringUtils.isNotBlank(key) && nonNull(value)) {
-            builder.part(key, value);
-        }
+        MultipartBodyUtils.insertString(SendAnimation.ANIMATION_ID, send.getAnimationId(), builder);
+        MultipartBodyUtils.insertString(SendAnimation.THUMB_ID, send.getThumbId(), builder);
+        MultipartBodyUtils.insertObject(SendAnimation.DURATION, send.getDuration(), builder);
+        MultipartBodyUtils.insertObject(SendAnimation.WIDTH, send.getWidth(), builder);
+        MultipartBodyUtils.insertObject(SendAnimation.HEIGHT, send.getHeight(), builder);
+        MultipartBodyUtils.insertObject(SendAnimation.CAPTION, send.getCaption(), builder);
     }
 
     public static ExchangeFilterFunction logRequest(Logger logger) {
