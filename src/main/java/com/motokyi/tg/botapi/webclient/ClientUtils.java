@@ -1,19 +1,15 @@
 package com.motokyi.tg.botapi.webclient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.motokyi.tg.botapi.api.methods.SendAnimation;
-import com.motokyi.tg.botapi.api.methods.SendDocument;
-import com.motokyi.tg.botapi.api.methods.SendMessage;
-import com.motokyi.tg.botapi.api.methods.SendMethod;
-import com.motokyi.tg.botapi.api.methods.SendPhoto;
+import com.motokyi.tg.botapi.api.methods.*;
 import com.motokyi.tg.botapi.exception.RequiredDataMissedException;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
-import org.springframework.util.StringUtils;
 import org.springframework.web.reactive.function.BodyInserter;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.ClientResponse;
@@ -23,13 +19,12 @@ import reactor.core.publisher.Mono;
 import java.util.function.Function;
 
 import static java.util.Objects.nonNull;
-import static org.springframework.util.StringUtils.hasText;
 
 @Slf4j
 public final class ClientUtils {
 
     public static void insertMethodParams(SendMethod<?> send, MultipartBodyBuilder builder) {
-        if (!StringUtils.hasText(send.getChatId())) {
+        if (StringUtils.isBlank(send.getChatId())) {
             throw new RequiredDataMissedException(SendMessage.CHAT_ID);
         }
 
@@ -66,13 +61,13 @@ public final class ClientUtils {
     }
 
     public static void insertString(String key, String value, MultipartBodyBuilder builder) {
-        if (hasText(key) && hasText(value)) {
+        if (StringUtils.isNotBlank(key) && StringUtils.isNotBlank(value)) {
             builder.part(key, value);
         }
     }
 
     public static void insertObject(String key, Object value, MultipartBodyBuilder builder) {
-        if (hasText(key) && nonNull(value)) {
+        if (StringUtils.isNotBlank(key) && nonNull(value)) {
             builder.part(key, value);
         }
     }
@@ -102,7 +97,7 @@ public final class ClientUtils {
     }
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendPhoto photo) {
-        if (StringUtils.hasText(photo.getPhotoId())) {
+        if (StringUtils.isNotBlank(photo.getPhotoId())) {
             return BodyInserters.fromValue(photo);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
@@ -112,7 +107,7 @@ public final class ClientUtils {
     }
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendDocument document) {
-        if (StringUtils.hasText(document.getDocumentId())) {
+        if (StringUtils.isNotBlank(document.getDocumentId())) {
             return BodyInserters.fromValue(document);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
@@ -122,7 +117,7 @@ public final class ClientUtils {
     }
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendAnimation animation) {
-        if (StringUtils.hasText(animation.getAnimationId())) {
+        if (StringUtils.isNotBlank(animation.getAnimationId())) {
             return BodyInserters.fromValue(animation);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();

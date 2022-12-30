@@ -1,7 +1,7 @@
 package com.motokyi.tg.botapi.components.properties;
 
 import lombok.Setter;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 @Setter
 public class TelegramBotProperties {
@@ -10,6 +10,6 @@ public class TelegramBotProperties {
     public String apiHost;
 
     public boolean isValid() {
-        return StringUtils.hasText(name) && StringUtils.hasText(token);
+        return StringUtils.isNotBlank(name) && StringUtils.isNotBlank(token);
     }
 }

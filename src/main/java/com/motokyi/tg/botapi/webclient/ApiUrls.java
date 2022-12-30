@@ -2,9 +2,9 @@ package com.motokyi.tg.botapi.webclient;
 
 import com.motokyi.tg.botapi.components.properties.TelegramBotProperties;
 import com.motokyi.tg.botapi.exception.RequiredConfigMissedException;
+import org.apache.commons.lang3.StringUtils;
 
 import static java.util.Objects.isNull;
-import static org.springframework.util.StringUtils.hasText;
 
 public class ApiUrls {
     public static final String GET_ME = "/getMe";
@@ -28,11 +28,11 @@ public class ApiUrls {
     public static final String BOT_PREFIX = "/bot";
 
     public static String createHostUrl(TelegramBotProperties properties) {
-        if (isNull(properties) || !hasText(properties.token)) {
+        if (isNull(properties) || !StringUtils.isNotBlank(properties.token)) {
             throw new RequiredConfigMissedException("Properties not correct. Token is empty or props is null.");
         }
 
-        return (hasText(properties.apiHost) ? properties.apiHost : API_HOST)
+        return (StringUtils.isNotBlank(properties.apiHost) ? properties.apiHost : API_HOST)
                 + BOT_PREFIX
                 + properties.token;
     }
