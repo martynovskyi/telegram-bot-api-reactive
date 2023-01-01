@@ -3,7 +3,7 @@ package com.motokyi.tg.bot_api.api.methods;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
 
 @Getter
@@ -35,8 +35,8 @@ public abstract class SendMethod<T> extends BotMethod<T> {
     @JsonProperty(REPLY_MARKUP)
     protected KeyboardMarkup replyMarkup;
 
-    SendMethod(String chatId, BotClient wc) {
-        super(wc);
+    SendMethod(String chatId, BotApiClient apiClient) {
+        super(apiClient);
         this.chatId = chatId;
     }
 }

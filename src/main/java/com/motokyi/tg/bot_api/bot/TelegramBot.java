@@ -4,7 +4,7 @@ import com.motokyi.tg.bot_api.api.methods.*;
 import com.motokyi.tg.bot_api.api.types.*;
 import com.motokyi.tg.bot_api.api.types.command.BotCommand;
 import com.motokyi.tg.bot_api.api.types.command.BotCommandScope;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
@@ -12,7 +12,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class TelegramBot implements Bot {
-    private final BotClient client;
+    private final BotApiClient client;
 
     @Override
     public Mono<Response<User>> getMe() {
@@ -56,7 +56,7 @@ public class TelegramBot implements Bot {
 
     @Override
     public SendDocument sendDocument(Long chatId) {
-        return new SendDocument(chatId, client);
+        return new SendDocument(String.valueOf(chatId), client);
     }
 
     @Override

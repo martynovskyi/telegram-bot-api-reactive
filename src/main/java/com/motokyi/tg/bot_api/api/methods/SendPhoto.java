@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.Message;
 import com.motokyi.tg.bot_api.api.types.Response;
 import com.motokyi.tg.bot_api.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
@@ -30,8 +30,8 @@ public class SendPhoto extends SendMethod<Response<Message>> {
     @JsonProperty(PHOTO_ID)
     private String photoId;
 
-    public SendPhoto(String chatId, BotClient rt) {
-        super(chatId, rt);
+    public SendPhoto(String chatId, BotApiClient apiClient) {
+        super(chatId, apiClient);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.motokyi.tg.bot_api.bot;
 
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClientBuilder;
 import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
 import com.motokyi.tg.bot_api.config.properties.TelegramProperties;
 import lombok.extern.slf4j.Slf4j;
@@ -23,7 +23,7 @@ public class TelegramBotFactory implements BotFactory {
             for (TelegramBotProperties bot : properties.bots) {
                 log.info("Found bot: {}, valid: {}", bot.name, bot.isValid());
                 if (bot.isValid()) {
-                    BOTS.put(bot.name, new TelegramBot(new BotClient(bot)));
+                    BOTS.put(bot.name, new TelegramBot(BotApiClientBuilder.build(bot)));
                 }
             }
         }

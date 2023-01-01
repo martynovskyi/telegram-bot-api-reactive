@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.Message;
 import com.motokyi.tg.bot_api.api.types.Response;
 import com.motokyi.tg.bot_api.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
@@ -32,7 +32,7 @@ public class EditMessageReplyMarkup extends BotMethod<Response<Message>> {
     @JsonProperty(SendMethod.REPLY_MARKUP)
     private KeyboardMarkup replyMarkup;
 
-    public EditMessageReplyMarkup(String chatId, String messageId, BotClient client) {
+    public EditMessageReplyMarkup(String chatId, String messageId, BotApiClient client) {
         super(client);
         this.chatId = chatId;
         this.messageId = messageId;

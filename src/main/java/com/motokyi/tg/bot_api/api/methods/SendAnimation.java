@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.Message;
 import com.motokyi.tg.bot_api.api.types.Response;
 import com.motokyi.tg.bot_api.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
@@ -49,12 +49,8 @@ public class SendAnimation extends SendMethod<Response<Message>> {
 
     private String caption;
 
-    public SendAnimation(String chatId, BotClient rt) {
-        super(chatId, rt);
-    }
-
-    public SendAnimation(Long chatId, BotClient rt) {
-        super(String.valueOf(chatId), rt);
+    public SendAnimation(String chatId, BotApiClient apiClient) {
+        super(chatId, apiClient);
     }
 
     @Override

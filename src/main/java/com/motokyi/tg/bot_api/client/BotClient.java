@@ -4,11 +4,9 @@ import com.motokyi.tg.bot_api.api.ApiUrls;
 import com.motokyi.tg.bot_api.api.methods.*;
 import com.motokyi.tg.bot_api.api.types.*;
 import com.motokyi.tg.bot_api.api.types.command.BotCommand;
-import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClientRequest;
@@ -18,22 +16,17 @@ import java.util.List;
 import java.util.Objects;
 
 @Slf4j
-public class BotClient implements BotApiClient {
+class BotClient implements BotApiClient {
     private final WebClient wc;
 
-    public BotClient(TelegramBotProperties botProperties) {
-        this.wc = WebClient.builder()
-                .baseUrl(ClientUtils.createHostUrl(botProperties))
-                .filter(ClientUtils.logRequest(log))
-                .filter(ClientUtils.logResponse(log))
-                .build();
+    BotClient(WebClient webClient) {
+        this.wc = webClient;
     }
 
     @Override
     public Mono<Response<User>> getMe() {
         return wc.get()
                 .uri(ApiUrls.GET_ME)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler("GetMe",
                         new ParameterizedTypeReference<Response<User>>() {
                         }));
@@ -43,7 +36,6 @@ public class BotClient implements BotApiClient {
     public Mono<Response<Chat>> getChat(String chatId) {
         return wc.get()
                 .uri(ApiUrls.GET_CHAT, chatId)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler("GetChat",
                         new ParameterizedTypeReference<Response<Chat>>() {
                         }));
@@ -70,7 +62,6 @@ public class BotClient implements BotApiClient {
                     reactorRequest.responseTimeout(Duration.ofSeconds(timeout));
                 })
                 .bodyValue(getUpdates)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(getUpdates.getClass(),
                         new ParameterizedTypeReference<Response<List<Update>>>() {
                         }));
@@ -80,7 +71,6 @@ public class BotClient implements BotApiClient {
     public Mono<Response<Message>> send(SendMessage message) {
         return wc.post()
                 .uri(ApiUrls.SEND_MESSAGE)
-                .accept(MediaType.APPLICATION_JSON)
                 .bodyValue(message)
                 .exchangeToMono(ClientUtils.responseHandler(message.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
@@ -92,7 +82,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.SEND_PHOTO)
                 .body(ClientUtils.createBody(photo))
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(photo.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
                         }));
@@ -103,7 +92,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.SEND_DOCUMENT)
                 .body(ClientUtils.createBody(document))
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(document.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
                         }));
@@ -114,7 +102,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.SEND_ANIMATION)
                 .body(ClientUtils.createBody(animation))
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(animation.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
                         }));
@@ -125,7 +112,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.SET_MY_COMMANDS)
                 .bodyValue(commands)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(commands.getClass(),
                         new ParameterizedTypeReference<Response<Boolean>>() {
                         }));
@@ -136,7 +122,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.DELETE_MY_COMMANDS)
                 .bodyValue(deleteCommands)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(deleteCommands.getClass(),
                         new ParameterizedTypeReference<Response<Boolean>>() {
                         }));
@@ -147,7 +132,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.GET_MY_COMMANDS)
                 .bodyValue(getMyCommands)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(getMyCommands.getClass(),
                         new ParameterizedTypeReference<Response<List<BotCommand>>>() {
                         }));
@@ -158,7 +142,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.FORWARD_MESSAGE)
                 .bodyValue(forwardMessage)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(forwardMessage.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
                         }));
@@ -169,7 +152,6 @@ public class BotClient implements BotApiClient {
         return wc.post()
                 .uri(ApiUrls.EDIT_MESSAGE_REPLY_MARKUP)
                 .bodyValue(editMessageReplyMarkup)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler(editMessageReplyMarkup.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
                         }));
@@ -179,7 +161,6 @@ public class BotClient implements BotApiClient {
     public Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId) {
         return wc.get()
                 .uri(ApiUrls.DELETE_MESSAGE, chatId, messageId)
-                .accept(MediaType.APPLICATION_JSON)
                 .exchangeToMono(ClientUtils.responseHandler("DeleteMessage",
                         new ParameterizedTypeReference<Response<Boolean>>() {
                         }));

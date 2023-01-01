@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.Response;
 import com.motokyi.tg.bot_api.api.types.Update;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
@@ -36,7 +36,7 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
     @JsonProperty("allowed_updates")
     private List<String> allowedUpdates;
 
-    public GetUpdates(BotClient wc) {
+    public GetUpdates(BotApiClient wc) {
         super(wc);
     }
 

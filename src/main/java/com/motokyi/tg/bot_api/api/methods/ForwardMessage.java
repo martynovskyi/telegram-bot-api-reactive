@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.Message;
 import com.motokyi.tg.bot_api.api.types.Response;
-import com.motokyi.tg.bot_api.client.BotClient;
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
 import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
@@ -31,15 +31,15 @@ public class ForwardMessage extends BotMethod<Response<Message>> {
     @JsonProperty("message_id")
     protected Long messageId;
 
-    public ForwardMessage(String chatId, Message message, BotClient wc) {
-        super(wc);
+    public ForwardMessage(String chatId, Message message, BotApiClient apiClient) {
+        super(apiClient);
         this.chatId = chatId;
         this.fromChatId = message.getChat().getId();
         this.messageId = message.getMessageId();
     }
 
-    public ForwardMessage(String chatId, Long fromChatId, Long messageId, BotClient wc) {
-        super(wc);
+    public ForwardMessage(String chatId, Long fromChatId, Long messageId, BotApiClient apiClient) {
+        super(apiClient);
         this.chatId = chatId;
         this.fromChatId = fromChatId;
         this.messageId = messageId;
