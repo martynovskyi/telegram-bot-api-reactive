@@ -15,4 +15,4 @@ Telegram Bot API based on spring reactor
 
 Usage
 
-[WebClient](./src/main/java/com/motokyi/tg/botapi/webclient/BotWebClient.java)
+[WebClient](./src/main/java/com/motokyi/tg/bot_api/client/BotWebClient.java)
