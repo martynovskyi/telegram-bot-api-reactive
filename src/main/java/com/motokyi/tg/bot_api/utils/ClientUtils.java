@@ -141,12 +141,12 @@ public final class ClientUtils {
     }
 
     public static String createHostUrl(TelegramBotProperties properties) {
-        if (isNull(properties) || !StringUtils.isNotBlank(properties.token)) {
+        if (isNull(properties) || !StringUtils.isNotBlank(properties.getToken())) {
             throw new RequiredConfigMissedException("Properties not correct. Token is empty or props is null.");
         }
 
-        return (StringUtils.isNotBlank(properties.apiHost) ? properties.apiHost : ApiUrls.API_HOST)
+        return (StringUtils.isNotBlank(properties.getApiHost()) ? properties.getApiHost() : ApiUrls.API_HOST)
                 + ApiUrls.BOT_PREFIX
-                + properties.token;
+                + properties.getToken();
     }
 }

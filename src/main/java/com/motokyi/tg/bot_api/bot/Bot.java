@@ -8,6 +8,9 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+/**
+ * Convenient facade for all Bot API
+ */
 public interface Bot {
     Mono<Response<User>> getMe();
 

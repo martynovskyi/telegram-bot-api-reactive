@@ -1,46 +1,64 @@
 package com.motokyi.tg.bot_api.bot;
 
+import com.motokyi.tg.bot_api.client.BotApiClient;
 import com.motokyi.tg.bot_api.client.BotApiClientBuilder;
 import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
 import com.motokyi.tg.bot_api.config.properties.TelegramProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.*;
 
-@Component
+import static java.util.Objects.nonNull;
+
 @Slf4j
+@Component //todo motokyi 07.01.2023: rid of annotations
 public class TelegramBotFactory implements BotFactory {
-    private static final Map<String, Bot> BOTS = new ConcurrentHashMap<>();
+    private final Map<String, BotApiClient> clients;
+    private final Map<String, Bot> bots;
 
     public TelegramBotFactory(TelegramProperties properties) {
         log.info("Reading bot config");
-        if (properties != null && properties.bots != null && !properties.bots.isEmpty()) {
-            for (TelegramBotProperties bot : properties.bots) {
-                log.info("Found bot: {}, valid: {}", bot.name, bot.isValid());
+        Map<String, Bot> bots = new HashMap<>();
+        Map<String, BotApiClient> clients = new HashMap<>();
+        if (nonNull(properties)
+                && nonNull(properties.getBots())
+                && !properties.getBots().isEmpty()) {
+            for (TelegramBotProperties bot : properties.getBots()) {
+                log.info("Found bot: {}, valid: {}", bot.getName(), bot.isValid());
                 if (bot.isValid()) {
-                    BOTS.put(bot.name, new TelegramBot(BotApiClientBuilder.build(bot)));
+                    BotApiClient client = BotApiClientBuilder.build(bot);
+                    clients.put(bot.getName(), client);
+                    bots.put(bot.getName(), new TelegramBot(client));
                 }
             }
         }
+        this.bots = Collections.unmodifiableMap(bots);
+        this.clients = Collections.unmodifiableMap(clients);
     }
 
     @Override
-    public Optional<Bot> get(String botName) {
-        return Optional.ofNullable(BOTS.get(botName));
+    public Optional<Bot> getBot(String botName) {
+        return Optional.ofNullable(bots.get(botName));
     }
 
+    @Override
+    public Optional<BotApiClient> getClient(String botName) {
+        return Optional.ofNullable(clients.get(botName));
+    }
+
+    @Override
     public Set<String> botNames() {
-        return BOTS.keySet();
-
+        return bots.keySet();
     }
 
+    @Override
     public Collection<Bot> bots() {
-        return BOTS.values();
+        return bots.values();
+    }
 
+    @Override
+    public Collection<BotApiClient> clients() {
+        return clients.values();
     }
 }
