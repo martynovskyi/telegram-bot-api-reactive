@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.Response;
 import com.motokyi.tg.bot_api.api.types.Update;
 import com.motokyi.tg.bot_api.client.BotApiClient;
+import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 /**
  * Use this method to receive incoming updates using long polling. An Array of Update objects is returned.
@@ -52,7 +54,10 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
         return client.getUpdates(this)
                 .doOnNext(this.calculateOffset())
                 .repeat()
-                .retryWhen(Retry.backoff(100, Duration.ofSeconds(5)))
+                .retryWhen(Retry.backoff(5, Duration.ofSeconds(timeout))
+                        .filter(throwable -> throwable instanceof TooManyRequestsException))
+                .retryWhen(Retry.backoff(100, Duration.ofSeconds(5))
+                        .filter(throwable -> !(throwable instanceof TooManyRequestsException)))
                 .map(Response::getResult)
                 .flatMap(Flux::fromIterable);
 
@@ -61,7 +66,7 @@ public class GetUpdates extends BotMethod<Response<List<Update>>> {
     private Consumer<Response<List<Update>>> calculateOffset() {
         return (Response<List<Update>> e) -> {
             this.offset = null;
-            if (e.isOk() && !e.getResult().isEmpty()) {
+            if (nonNull(e) && e.isOk() && !e.getResult().isEmpty()) {
                 this.offset = e.getResult().get(e.getResult().size() - 1).getUpdateId() + 1;
             }
         };

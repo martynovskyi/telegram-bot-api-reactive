@@ -6,6 +6,7 @@ import com.motokyi.tg.bot_api.api.methods.*;
 import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
 import com.motokyi.tg.bot_api.exception.RequiredDataMissedException;
+import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -82,10 +83,12 @@ public final class ClientUtils {
 
     public static ExchangeFilterFunction logResponse(Logger logger) {
         return ExchangeFilterFunction.ofResponseProcessor(response -> {
-            logger.debug("HTTP: {}", response.statusCode());
+            logger.debug("HTTP: {} | Content Length {}", response.statusCode(), response.headers().contentLength());
             if (logger.isTraceEnabled()) {
-                response.headers().asHttpHeaders()
-                        .forEach((name, values) -> values.forEach(value -> logger.trace("Response Header: {}={}", name, value)));
+                response.headers()
+                        .asHttpHeaders()
+                        .forEach((header, values) ->
+                                values.forEach(value -> logger.trace("Response Header: {}={}", header, value)));
             }
             return Mono.just(response);
         });
@@ -131,10 +134,15 @@ public final class ClientUtils {
         return clientResponse -> {
             if (clientResponse.statusCode().isError()) {
                 log.warn("Method {} got error {}", method, clientResponse.statusCode());
-            }
-            if (clientResponse.statusCode().is5xxServerError()) {
-                log.warn("Attempt to recover after {}", clientResponse.statusCode());
-                return Mono.empty();
+
+                if (clientResponse.statusCode().is5xxServerError()) {
+                    log.warn("Attempt to recover after {}", clientResponse.statusCode());
+                    return Mono.empty();
+                }
+                if (429 == clientResponse.statusCode().value()) {
+                    log.warn("Recover after {}", clientResponse.statusCode());
+                    return Mono.error(new TooManyRequestsException());
+                }
             }
             return clientResponse.bodyToMono(typeRef);
         };
