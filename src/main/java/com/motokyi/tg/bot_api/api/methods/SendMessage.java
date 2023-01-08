@@ -37,7 +37,7 @@ public class SendMessage extends SendMethod<Response<Message>> {
 
     @Override
     public Disposable subscribe(Consumer<Response<Message>> consumer) {
-        return client.send(this).subscribe(consumer);
+        return send().subscribe(consumer);
     }
 
     public SendMessage setText(String text) {
