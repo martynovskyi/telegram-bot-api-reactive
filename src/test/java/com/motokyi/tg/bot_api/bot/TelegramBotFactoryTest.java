@@ -1,8 +1,8 @@
 package com.motokyi.tg.bot_api.bot;
 
 import com.motokyi.tg.bot_api.client.BotApiClient;
+import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
-import com.motokyi.tg.bot_api.config.properties.TelegramProperties;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -44,7 +44,7 @@ class TelegramBotFactoryTest {
 
     @Test
     void botNames() {
-        TelegramProperties properties = buildValidProperties();
+        TelegramBotProperties properties = buildValidProperties();
         BotFactory botFactory = new TelegramBotFactory(properties);
         var names = botFactory.botNames();
         assertEquals(properties.getBots().size(), names.size());
@@ -52,7 +52,7 @@ class TelegramBotFactoryTest {
 
     @Test
     void bots() {
-        TelegramProperties properties = buildValidProperties();
+        TelegramBotProperties properties = buildValidProperties();
         BotFactory botFactory = new TelegramBotFactory(properties);
         var bots = botFactory.bots();
         assertEquals(properties.getBots().size(), bots.size());
@@ -60,32 +60,32 @@ class TelegramBotFactoryTest {
 
     @Test
     void clients() {
-        TelegramProperties properties = buildValidProperties();
+        TelegramBotProperties properties = buildValidProperties();
         BotFactory botFactory = new TelegramBotFactory(properties);
         var clients = botFactory.clients();
         assertEquals(properties.getBots().size(), clients.size());
     }
 
-    private static TelegramProperties buildValidProperties() {
-        TelegramProperties result = new TelegramProperties();
-        var bots = new ArrayList<TelegramBotProperties>();
+    private static TelegramBotProperties buildValidProperties() {
+        TelegramBotProperties result = new TelegramBotProperties();
+        var bots = new ArrayList<BotConfigProperty>();
         bots.add(buildBotProperties(TEST_BOT));
         bots.add(buildBotProperties("other_bot"));
         result.setBots(bots);
         return result;
     }
 
-    private static TelegramBotProperties buildBotProperties(String name) {
-        TelegramBotProperties botProperties = new TelegramBotProperties();
+    private static BotConfigProperty buildBotProperties(String name) {
+        BotConfigProperty botProperties = new BotConfigProperty();
         botProperties.setName(name);
         botProperties.setToken(UUID.randomUUID().toString());
         return botProperties;
     }
 
-    private static TelegramProperties buildInvalidProperties() {
-        TelegramProperties result = new TelegramProperties();
-        var bots = new ArrayList<TelegramBotProperties>();
-        TelegramBotProperties botProperties = new TelegramBotProperties();
+    private static TelegramBotProperties buildInvalidProperties() {
+        TelegramBotProperties result = new TelegramBotProperties();
+        var bots = new ArrayList<BotConfigProperty>();
+        BotConfigProperty botProperties = new BotConfigProperty();
         botProperties.setName(TEST_BOT);
         bots.add(botProperties);
         result.setBots(bots);

@@ -5,7 +5,7 @@ import com.motokyi.tg.bot_api.api.methods.SendAnimation;
 import com.motokyi.tg.bot_api.api.methods.SendMessage;
 import com.motokyi.tg.bot_api.api.methods.SendMethod;
 import com.motokyi.tg.bot_api.api.types.markup.InlineKeyboardMarkup;
-import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
+import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
 import org.junit.jupiter.api.BeforeAll;
@@ -157,13 +157,13 @@ class ClientUtilsTest {
     @Test
     void createHostUrl_emptyProperties() {
         assertThrows(RequiredConfigMissedException.class, () ->
-                ClientUtils.createHostUrl(new TelegramBotProperties()));
+                ClientUtils.createHostUrl(new BotConfigProperty()));
 
     }
 
     @Test
     void createHostUrl_validProperties() {
-        TelegramBotProperties properties = new TelegramBotProperties();
+        BotConfigProperty properties = new BotConfigProperty();
         properties.setName(BOT_NAME);
         properties.setToken(BOT_TOKEN);
         assertTrue(properties.isValid());
@@ -176,7 +176,7 @@ class ClientUtilsTest {
     @Test
     void createHostUrl_validPropertiesWithApiHost() {
         String apiHost = "protocol://hostname.io";
-        TelegramBotProperties properties = new TelegramBotProperties();
+        BotConfigProperty properties = new BotConfigProperty();
         properties.setName(BOT_NAME);
         properties.setToken(BOT_TOKEN);
         properties.setApiHost(apiHost);

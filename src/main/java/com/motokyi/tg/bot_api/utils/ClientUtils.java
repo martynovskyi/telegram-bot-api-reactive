@@ -3,7 +3,7 @@ package com.motokyi.tg.bot_api.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.tg.bot_api.api.ApiUrls;
 import com.motokyi.tg.bot_api.api.methods.*;
-import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
+import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
 import com.motokyi.tg.bot_api.exception.RequiredDataMissedException;
 import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
@@ -148,7 +148,7 @@ public final class ClientUtils {
         };
     }
 
-    public static String createHostUrl(TelegramBotProperties properties) {
+    public static String createHostUrl(BotConfigProperty properties) {
         if (isNull(properties) || !StringUtils.isNotBlank(properties.getToken())) {
             throw new RequiredConfigMissedException("Properties not correct. Token is empty or props is null.");
         }
