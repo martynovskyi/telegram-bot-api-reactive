@@ -1,10 +1,9 @@
 
 .gradle
-
-build
-
 .idea
 
+build/
+target/
 *.class
 
 logs/
