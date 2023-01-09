@@ -1,10 +1,11 @@
 package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.api.ApiUrls;
-import com.motokyi.tg.bot_api.api.methods.*;
+import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.api.types.*;
 import com.motokyi.tg.bot_api.api.types.command.BotCommand;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -16,12 +17,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Slf4j
+@RequiredArgsConstructor
 class BotClient implements BotApiClient {
     private final WebClient wc;
-
-    BotClient(WebClient webClient) {
-        this.wc = webClient;
-    }
 
     @Override
     public Mono<Response<User>> getMe() {

@@ -1,6 +1,6 @@
 package com.motokyi.tg.bot_api.bot;
 
-import com.motokyi.tg.bot_api.api.methods.*;
+import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.types.*;
 import com.motokyi.tg.bot_api.api.types.command.BotCommand;
 import com.motokyi.tg.bot_api.api.types.command.BotCommandScope;
@@ -51,7 +51,7 @@ public class TelegramBot implements Bot {
 
     @Override
     public Mono<Response<Message>> sendMessage(Long chatId, String text) {
-        return client.send(sendMessage(chatId).setText(text));
+        return new SendMessage(String.valueOf(chatId), client).text(text).send();
     }
 
     @Override
@@ -111,11 +111,11 @@ public class TelegramBot implements Bot {
 
     @Override
     public Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope) {
-        return new DeleteMyCommands(client).setScope(scope).send();
+        return new DeleteMyCommands(client).scope(scope).send();
     }
 
     @Override
     public Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope) {
-        return new GetMyCommands(client).setScope(scope).send();
+        return new GetMyCommands(client).scope(scope).send();
     }
 }

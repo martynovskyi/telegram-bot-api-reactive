@@ -1,14 +1,15 @@
-package com.motokyi.tg.bot_api.api.methods;
+package com.motokyi.tg.bot_api.api.method.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.types.markup.KeyboardMarkup;
-import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public abstract class SendMethod<T> extends BotMethod<T> {
+public abstract class SendMethod {
 
     public static final String CHAT_ID = "chat_id";
     public static final String PARSE_MODE = "parse_mode";
@@ -35,8 +36,7 @@ public abstract class SendMethod<T> extends BotMethod<T> {
     @JsonProperty(REPLY_MARKUP)
     protected KeyboardMarkup replyMarkup;
 
-    SendMethod(String chatId, BotApiClient apiClient) {
-        super(apiClient);
+    SendMethod(String chatId) {
         this.chatId = chatId;
     }
 }

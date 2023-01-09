@@ -2,7 +2,7 @@ package com.motokyi.tg.bot_api.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.tg.bot_api.api.ApiUrls;
-import com.motokyi.tg.bot_api.api.methods.*;
+import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
 import com.motokyi.tg.bot_api.exception.RequiredDataMissedException;
@@ -31,7 +31,7 @@ import static java.util.Objects.nonNull;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ClientUtils {
 
-    public static void insertMethodParams(SendMethod<?> send, MultipartBodyBuilder builder) {
+    public static void insertMethodParams(SendMethod send, MultipartBodyBuilder builder) {
         if (StringUtils.isBlank(send.getChatId())) {
             throw new RequiredDataMissedException(SendMessage.CHAT_ID);
         }
@@ -74,8 +74,10 @@ public final class ClientUtils {
             logger.debug("HTTP: {} {}", request.method(), urlFragments[urlFragments.length - 1]);
             if (logger.isTraceEnabled()) {
                 request.headers()
-                        .forEach((name, values) -> values.forEach(value -> logger.trace("Request Header: {}={}", name, value)));
-                request.attributes().forEach((key, value) -> logger.trace("Attr: {} {}", key, value));
+                        .forEach((name, values) ->
+                                values.forEach(value -> logger.trace("Request Header: {}={}", name, value)));
+                request.attributes()
+                        .forEach((key, value) -> logger.trace("Attr: {} {}", key, value));
             }
             return Mono.just(request);
         });

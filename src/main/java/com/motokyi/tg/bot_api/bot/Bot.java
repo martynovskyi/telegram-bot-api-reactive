@@ -1,6 +1,6 @@
 package com.motokyi.tg.bot_api.bot;
 
-import com.motokyi.tg.bot_api.api.methods.*;
+import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.types.*;
 import com.motokyi.tg.bot_api.api.types.command.BotCommand;
 import com.motokyi.tg.bot_api.api.types.command.BotCommandScope;

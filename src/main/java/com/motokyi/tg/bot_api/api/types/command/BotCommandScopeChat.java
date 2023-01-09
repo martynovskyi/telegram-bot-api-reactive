@@ -1,11 +1,13 @@
 package com.motokyi.tg.bot_api.api.types.command;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.motokyi.tg.bot_api.api.methods.SendMethod;
-import lombok.Data;
+import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class BotCommandScopeChat extends BotCommandScope {
 

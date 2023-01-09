@@ -1,9 +1,9 @@
 package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.api.ApiUrls;
-import com.motokyi.tg.bot_api.api.methods.SendAnimation;
-import com.motokyi.tg.bot_api.api.methods.SendMessage;
-import com.motokyi.tg.bot_api.api.methods.SendMethod;
+import com.motokyi.tg.bot_api.api.method.SendAnimation;
+import com.motokyi.tg.bot_api.api.method.SendMessage;
+import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
 import com.motokyi.tg.bot_api.api.types.markup.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
@@ -30,41 +30,42 @@ class ClientUtilsTest {
     static void init() {
         createSendMessage();
         createSendAnimation();
-
     }
-
 
     private static void createSendMessage() {
         sendMessage = new SendMessage(CHAT_ID, null)
-                .setText(UUID.randomUUID().toString())
-                .setParseMode(UUID.randomUUID().toString())
-                .setReplyToMessageId(11011L)
-                .setDisableNotification(true)
-                .setDisableWebPagePreview(true)
-                .setReplyMarkup(new InlineKeyboardMarkup());
+                .text(UUID.randomUUID().toString())
+                .parseMode(UUID.randomUUID().toString())
+                .replyToMessageId(11011L)
+                .disableNotification(true)
+                .disableWebPagePreview(true)
+                .replyMarkup(new InlineKeyboardMarkup());
     }
 
     private static void createSendAnimation() {
         sendAnimation = new SendAnimation(CHAT_ID, null)
-                .setAnimation(UUID.randomUUID().toString())
-                .setThumbId(UUID.randomUUID().toString())
-                .setDuration(2018)
-                .setWidth(800)
-                .setHeight(800)
-                .setCaption(UUID.randomUUID().toString())
-                .setParseMode(UUID.randomUUID().toString())
-                .setReplyToMessageId(11011L)
-                .setDisableNotification(true)
-                .setDisableWebPagePreview(true)
-                .setReplyMarkup(new InlineKeyboardMarkup());
+                .animation(UUID.randomUUID().toString())
+                .thumbId(UUID.randomUUID().toString())
+                .duration(2018)
+                .width(800)
+                .height(800)
+                .caption(UUID.randomUUID().toString())
+                .parseMode(UUID.randomUUID().toString())
+                .replyToMessageId(11011L)
+                .disableNotification(true)
+                .disableWebPagePreview(true)
+                .replyMarkup(new InlineKeyboardMarkup());
     }
 
-    private void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod<?> method) {
+    private void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
         assertAll("SendMethod",
                 () -> assertEquals(CHAT_ID, result.getFirst(SendMethod.CHAT_ID).getBody()),
-                () -> assertEquals(method.getReplyToMessageId(), result.getFirst(SendMethod.REPLY_TO_MESSAGE_ID).getBody()),
-                () -> assertEquals(method.getDisableNotification(), result.getFirst(SendMethod.DISABLE_NOTIFICATION).getBody()),
-                () -> assertEquals(method.getDisableWebPagePreview(), result.getFirst(SendMethod.DISABLE_WEB_PAGE_PREVIEW).getBody()),
+                () -> assertEquals(method.getReplyToMessageId(),
+                        result.getFirst(SendMethod.REPLY_TO_MESSAGE_ID).getBody()),
+                () -> assertEquals(method.getDisableNotification(),
+                        result.getFirst(SendMethod.DISABLE_NOTIFICATION).getBody()),
+                () -> assertEquals(method.getDisableWebPagePreview(),
+                        result.getFirst(SendMethod.DISABLE_WEB_PAGE_PREVIEW).getBody()),
                 () -> assertEquals(method.getParseMode(), result.getFirst(SendMethod.PARSE_MODE).getBody()),
                 () -> assertNotNull(result.getFirst(SendMethod.REPLY_MARKUP).getBody())
         );
@@ -122,7 +123,8 @@ class ClientUtilsTest {
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendAnimation);
         assertAll("SendAnimation",
-                () -> assertEquals(sendAnimation.getAnimationId(), result.getFirst(SendAnimation.ANIMATION_ID).getBody()),
+                () -> assertEquals(sendAnimation.getAnimationId(),
+                        result.getFirst(SendAnimation.ANIMATION_ID).getBody()),
                 () -> assertEquals(sendAnimation.getThumbId(), result.getFirst(SendAnimation.THUMB_ID).getBody()),
                 () -> assertEquals(sendAnimation.getDuration(), result.getFirst(SendAnimation.DURATION).getBody()),
                 () -> assertEquals(sendAnimation.getWidth(), result.getFirst(SendAnimation.WIDTH).getBody()),
@@ -151,14 +153,12 @@ class ClientUtilsTest {
     void createHostUrl_nullProperties() {
         assertThrows(RequiredConfigMissedException.class, () ->
                 ClientUtils.createHostUrl(null));
-
     }
 
     @Test
     void createHostUrl_emptyProperties() {
         assertThrows(RequiredConfigMissedException.class, () ->
                 ClientUtils.createHostUrl(new BotConfigProperty()));
-
     }
 
     @Test
@@ -170,7 +170,6 @@ class ClientUtilsTest {
 
         String hostUrl = ClientUtils.createHostUrl(properties);
         assertEquals(ApiUrls.API_HOST + ApiUrls.BOT_PREFIX + BOT_TOKEN, hostUrl);
-
     }
 
     @Test
@@ -184,6 +183,5 @@ class ClientUtilsTest {
 
         String hostUrl = ClientUtils.createHostUrl(properties);
         assertEquals(apiHost + ApiUrls.BOT_PREFIX + BOT_TOKEN, hostUrl);
-
     }
 }
