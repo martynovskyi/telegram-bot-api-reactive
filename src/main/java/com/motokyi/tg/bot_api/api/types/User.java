@@ -6,15 +6,10 @@ import lombok.Data;
 
 /**
  * This object represents a Telegram user or bot.
+ * <p>
  * See <a href="User">https://core.telegram.org/bots/api#user</a>
  * <p>
- * Field         Type	 Description
- * id            Integer Unique identifier for this user or bot
- * is_bot        Boolean True, if this user is a bot
- * first_name    String	 User‘s or bot’s first name
- * last_name	 String	 Optional. User‘s or bot’s last name
- * username	     String	 Optional. User‘s or bot’s username
- * language_code String	 Optional. IETF language tag of the user's language
+ * Bot API 6.4
  */
 @Data
 public class User {
@@ -35,4 +30,19 @@ public class User {
 
     @JsonProperty("language_code")
     private String languageCode;
+
+    @JsonProperty("is_premium")
+    private Boolean isPremium;
+
+    @JsonProperty("added_to_attachment_menu")
+    private Boolean addedToAttachmentMenu;
+
+    @JsonProperty("can_join_groups")
+    private Boolean canJoinGroups;
+
+    @JsonProperty("can_read_all_group_messages")
+    private Boolean canReadAllGroupMessages;
+
+    @JsonProperty("supports_inline_queries")
+    private Boolean supportsInlineQueries;
 }
