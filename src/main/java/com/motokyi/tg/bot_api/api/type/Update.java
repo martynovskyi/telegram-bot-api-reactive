@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.api.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.UpdateType;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import lombok.Data;
 
@@ -8,6 +9,8 @@ import lombok.Data;
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
  * See <a href="Update">https://core.telegram.org/bots/api#update</a>
+ * <p>
+ * Bot API 6.4
  */
 
 @Data
@@ -15,40 +18,46 @@ public class Update {
     @JsonProperty("update_id")
     private Long updateId;
 
+    @JsonProperty(UpdateType.MESSAGE)
     private Message message;
 
-    @JsonProperty("edited_message")
+    @JsonProperty(UpdateType.EDITED_MESSAGE)
     private Message editedMessage;
 
-    @JsonProperty("channel_post")
+    @JsonProperty(UpdateType.CHANNEL_POST)
     private Message channelPost;
 
-    @JsonProperty("edited_channel_post")
+    @JsonProperty(UpdateType.EDITED_CHANNEL_POST)
     private Message editedChannelPost;
 
-    @JsonProperty("inline_query")
+    @JsonProperty(UpdateType.INLINE_QUERY)
     private InlineQuery inlineQuery;
 
-    @JsonProperty("chosen_inline_result")
+    @JsonProperty(UpdateType.CHOSEN_INLINE_RESULT)
     private ChosenInlineResult chosenInlineResult;
 
-    @JsonProperty("callback_query")
+    @JsonProperty(UpdateType.CALLBACK_QUERY)
     private CallbackQuery callbackQuery;
 
-    @JsonProperty("shipping_query")
+    @JsonProperty(UpdateType.SHIPPING_QUERY)
     private ShippingQuery shippingQuery;
 
-    @JsonProperty("pre_checkout_query")
+    @JsonProperty(UpdateType.PRE_CHECKOUT_QUERY)
     private PreCheckoutQuery preCheckoutQuery;
 
+    @JsonProperty(UpdateType.POLL)
     private Poll poll;
 
-    @JsonProperty("poll_answer")
+    @JsonProperty(UpdateType.POLL_ANSWER)
     private PollAnswer pollAnswer;
 
-    @JsonProperty("my_chat_member")
+    @JsonProperty(UpdateType.MY_CHAT_MEMBER)
     private ChatMemberUpdated myChatMember;
 
-    @JsonProperty("chat_member")
+    @JsonProperty(UpdateType.CHAT_MEMBER)
     private ChatMemberUpdated chatMember;
+
+
+    @JsonProperty(UpdateType.CHAT_JOIN_REQUEST)
+    private ChatJoinRequest chatJoinRequest;
 }
