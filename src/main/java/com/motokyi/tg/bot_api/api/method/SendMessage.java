@@ -1,10 +1,10 @@
 package com.motokyi.tg.bot_api.api.method;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.motokyi.tg.bot_api.api.BotConstants;
-import com.motokyi.tg.bot_api.api.types.Message;
-import com.motokyi.tg.bot_api.api.types.Response;
-import com.motokyi.tg.bot_api.api.types.markup.KeyboardMarkup;
+import com.motokyi.tg.bot_api.api.constant.BotConstants;
+import com.motokyi.tg.bot_api.api.type.Message;
+import com.motokyi.tg.bot_api.api.type.Response;
+import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 

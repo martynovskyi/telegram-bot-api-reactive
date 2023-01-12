@@ -1,8 +1,8 @@
 package com.motokyi.tg.bot_api.api.method;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.motokyi.tg.bot_api.api.types.Response;
-import com.motokyi.tg.bot_api.api.types.Update;
+import com.motokyi.tg.bot_api.api.type.Response;
+import com.motokyi.tg.bot_api.api.type.Update;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
 import lombok.RequiredArgsConstructor;

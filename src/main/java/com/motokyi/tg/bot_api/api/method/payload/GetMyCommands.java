@@ -2,7 +2,7 @@ package com.motokyi.tg.bot_api.api.method.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.motokyi.tg.bot_api.api.types.command.BotCommandScope;
+import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
 import lombok.Getter;
 import lombok.Setter;
 

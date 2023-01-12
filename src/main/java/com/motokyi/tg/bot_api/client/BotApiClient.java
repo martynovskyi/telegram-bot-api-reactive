@@ -1,8 +1,8 @@
 package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.api.method.payload.*;
-import com.motokyi.tg.bot_api.api.types.*;
-import com.motokyi.tg.bot_api.api.types.command.BotCommand;
+import com.motokyi.tg.bot_api.api.type.*;
+import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import reactor.core.publisher.Mono;
 
 import java.util.List;

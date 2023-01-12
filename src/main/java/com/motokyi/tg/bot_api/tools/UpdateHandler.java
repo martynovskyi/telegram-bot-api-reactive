@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.tools;
 
-import com.motokyi.tg.bot_api.api.types.*;
-import com.motokyi.tg.bot_api.api.types.markup.CallbackQuery;
+import com.motokyi.tg.bot_api.api.type.*;
+import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 

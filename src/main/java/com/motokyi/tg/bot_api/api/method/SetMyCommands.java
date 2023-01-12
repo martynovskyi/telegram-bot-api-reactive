@@ -1,9 +1,9 @@
 package com.motokyi.tg.bot_api.api.method;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.motokyi.tg.bot_api.api.types.Response;
-import com.motokyi.tg.bot_api.api.types.command.BotCommand;
-import com.motokyi.tg.bot_api.api.types.command.BotCommandScope;
+import com.motokyi.tg.bot_api.api.type.Response;
+import com.motokyi.tg.bot_api.api.type.command.BotCommand;
+import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;

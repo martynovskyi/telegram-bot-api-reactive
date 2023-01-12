@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.motokyi.tg.bot_api.api.ApiUrls;
+import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;

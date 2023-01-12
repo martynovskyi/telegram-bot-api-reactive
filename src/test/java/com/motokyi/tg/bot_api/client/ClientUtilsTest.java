@@ -1,10 +1,10 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.api.ApiUrls;
+import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.SendAnimation;
 import com.motokyi.tg.bot_api.api.method.SendMessage;
 import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
-import com.motokyi.tg.bot_api.api.types.markup.InlineKeyboardMarkup;
+import com.motokyi.tg.bot_api.api.type.markup.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
