@@ -27,7 +27,11 @@ public interface Bot {
 
     SendMessage sendMessage(@NotNull String chatTag);
 
+    SendMessage sendMessage(@NotNull Chat chat);
+
     Mono<Response<Message>> sendMessage(@NotNull Long chatId, @NotNull String text);
+
+    Mono<Response<Message>> sendMessage(@NotNull Chat chat, @NotNull String text);
 
     SendDocument sendDocument(@NotNull Long chatId);
 

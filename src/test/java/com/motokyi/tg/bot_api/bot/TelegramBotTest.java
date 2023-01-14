@@ -19,9 +19,10 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class TelegramBotTest {
+    private static final String TEST_TEXT = "Test text";
     private static final Long CHAT_ID = 2023L;
     private static final String CHAT_TAG = "test_chat";
-    public static final long MESSAGE_ID = 5445L;
+    private static final long MESSAGE_ID = 5445L;
     @Mock
     BotApiClient webClient;
 
@@ -80,19 +81,54 @@ class TelegramBotTest {
     }
 
     @Test
+    void sendMessage_toChat() {
+        Chat chat = buildChat();
+        SendMessage sendMessage = bot.sendMessage(chat);
+        assertNotNull(sendMessage);
+        assertEquals(String.valueOf(chat.getId()), sendMessage.getChatId());
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void sendMessage_toNullChat() {
+        assertThrows(IllegalArgumentException.class, () -> bot.sendMessage((Chat) null));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
     void sendMessage_withText() {
-        String text = "text";
-        bot.sendMessage(CHAT_ID, text);
+        bot.sendMessage(CHAT_ID, TEST_TEXT);
         ArgumentCaptor<SendMessage> messageCaptor = ArgumentCaptor.forClass(SendMessage.class);
         verify(webClient).send(messageCaptor.capture());
         SendMessage message = messageCaptor.getValue();
         assertAll(
                 () -> assertNotNull(message),
                 () -> assertEquals(String.valueOf(CHAT_ID), message.getChatId()),
-                () -> assertEquals(text, message.getText())
+                () -> assertEquals(TEST_TEXT, message.getText())
         );
         verifyNoMoreInteractions(webClient);
     }
+
+    @Test
+    void sendMessage_toChatWithText() {
+        bot.sendMessage(buildChat(), TEST_TEXT);
+        ArgumentCaptor<SendMessage> messageCaptor = ArgumentCaptor.forClass(SendMessage.class);
+        verify(webClient).send(messageCaptor.capture());
+        SendMessage message = messageCaptor.getValue();
+        assertAll(
+                () -> assertNotNull(message),
+                () -> assertEquals(String.valueOf(CHAT_ID), message.getChatId()),
+                () -> assertEquals(TEST_TEXT, message.getText())
+        );
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void sendMessage_toNullChatWithText() {
+        assertThrows(IllegalArgumentException.class, () -> bot.sendMessage((Chat) null, TEST_TEXT));
+        verifyNoMoreInteractions(webClient);
+    }
+
 
     @Test
     void sendDocument() {
@@ -248,9 +284,14 @@ class TelegramBotTest {
     private static Message buildMessage() {
         Message message = new Message();
         message.setMessageId(MESSAGE_ID);
+        message.setChat(buildChat());
+        return message;
+    }
+
+    @NotNull
+    private static Chat buildChat() {
         Chat chat = new Chat();
         chat.setId(CHAT_ID);
-        message.setChat(chat);
-        return message;
+        return chat;
     }
 }

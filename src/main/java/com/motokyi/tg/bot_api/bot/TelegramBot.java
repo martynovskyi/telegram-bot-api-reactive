@@ -10,9 +10,11 @@ import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 public class TelegramBot implements Bot {
+    public static final String VALUE_MUST_BE_NOT_NULL = " value must be @NotNull";
     private final BotApiClient client;
 
     @Override
@@ -51,8 +53,19 @@ public class TelegramBot implements Bot {
     }
 
     @Override
+    public SendMessage sendMessage(@NotNull Chat chat) {
+        Objects.requireNonNull(chat, () -> "Chat" + VALUE_MUST_BE_NOT_NULL);
+        return new SendMessage(String.valueOf(chat.getId()), client);
+    }
+
+    @Override
     public Mono<Response<Message>> sendMessage(@NotNull Long chatId, @NotNull String text) {
         return new SendMessage(String.valueOf(chatId), client).text(text).send();
+    }
+
+    @Override
+    public Mono<Response<Message>> sendMessage(@NotNull Chat chat, @NotNull String text) {
+        return sendMessage(chat).text(text).send();
     }
 
     @Override

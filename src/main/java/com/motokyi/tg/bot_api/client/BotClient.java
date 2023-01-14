@@ -173,7 +173,6 @@ class BotClient implements BotApiClient {
                 .exchangeToMono(ClientUtils.responseHandler(setWebhook.getClass(),
                         new ParameterizedTypeReference<Response<Boolean>>() {
                         }));
-
     }
 
     @Override
