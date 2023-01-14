@@ -4,6 +4,7 @@ import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.type.*;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
+import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -18,39 +19,45 @@ public interface Bot {
 
     GetUpdates getUpdates();
 
-    Mono<Response<Chat>> getChat(Long chatId);
+    Mono<Response<Chat>> getChat(@NotNull Long chatId);
 
-    Mono<Response<Chat>> getChat(String chatTag);
+    Mono<Response<Chat>> getChat(@NotNull String chatTag);
 
-    SendMessage sendMessage(Long chatId);
+    SendMessage sendMessage(@NotNull Long chatId);
 
-    SendMessage sendMessage(String chatTag);
+    SendMessage sendMessage(@NotNull String chatTag);
 
-    Mono<Response<Message>> sendMessage(Long chatId, String text);
+    Mono<Response<Message>> sendMessage(@NotNull Long chatId, @NotNull String text);
 
-    SendDocument sendDocument(Long chatId);
+    SendDocument sendDocument(@NotNull Long chatId);
 
-    SendDocument sendDocument(String chatTag);
+    SendDocument sendDocument(@NotNull String chatTag);
 
-    SendPhoto sendPhoto(Long chatId);
+    SendPhoto sendPhoto(@NotNull Long chatId);
 
-    SendPhoto sendPhoto(String chatTag);
+    SendPhoto sendPhoto(@NotNull String chatTag);
 
-    SendAnimation sendAnimation(Long chatId);
+    SendAnimation sendAnimation(@NotNull Long chatId);
 
-    SendAnimation sendAnimation(String chatTag);
+    SendAnimation sendAnimation(@NotNull String chatTag);
 
-    ForwardMessage forwardMessage(String chatId, Message message);
+    ForwardMessage forwardMessage(@NotNull String chatId, @NotNull Message message);
 
-    ForwardMessage forwardMessage(String chatId, Long fromChatId, Long messageId);
+    ForwardMessage forwardMessage(@NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId);
 
-    EditMessageReplyMarkup editMessageReplyMarkup(Long chatId, Long messageId);
+    EditMessageReplyMarkup editMessageReplyMarkup(@NotNull Long chatId, @NotNull Long messageId);
 
-    Mono<Response<Boolean>> deleteMessage(Long chatId, Long messageId);
+    Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
 
     SetMyCommands setMyCommands();
 
-    Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope);
+    Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope);
 
-    Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope);
+    Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope);
+
+    SetWebhook setWebhook(@NotNull String url);
+
+    DeleteWebhook deleteWebhook();
+
+    Mono<Response<WebhookInfo>> getWebhookInfo();
 }

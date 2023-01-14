@@ -5,19 +5,21 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 ### Supported methods
 
 - getUpdates
+- setWebhook
+- getWebhookInfo
+- deleteWebhook
+- getChat
 - sendMessage
 - sendDocument
 - sendAnimation
 - sendPhoto
 - forwardMessage
 - editMessageReplyMarkup
+- deleteMessage
 - getMyCommands
 - setMyCommands
 - deleteMyCommands
-
-Usage
-
-[WebClient](./src/main/java/com/motokyi/tg/bot_api/client/BotWebClient.java)
+-
 
 ### Configuration
 
@@ -26,10 +28,11 @@ application.yml
 ```yaml
 telegram:
   bots:
-    - name: test_bot
-      token: 5151515151:bot-token-check-bot-father
+    - name: test_bot # unique | required | 
+      token: 5151515151:ask-bot-father # required | bot token from BotFather
+      apiHost: http://gateway.me/ # optional | default: https://api.telegram.org
     - name: example_bot
-      token: 0101010101:bot-token-check-bot-father
+      token: 0101010101:ask-bot-father
 ```
 
 ### Usage

@@ -220,6 +220,30 @@ class TelegramBotTest {
         verifyNoMoreInteractions(webClient);
     }
 
+    @Test
+    void setWebhook() {
+        String url = "https://example.com";
+        SetWebhook setWebhook = bot.setWebhook(url);
+        assertNotNull(setWebhook);
+        assertEquals(url, setWebhook.getUrl());
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void deleteWebhook() {
+        DeleteWebhook deleteWebhook = bot.deleteWebhook();
+        assertNotNull(deleteWebhook);
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void getWebhookInfo() {
+        bot.getWebhookInfo();
+        verify(webClient).getWebhookInfo();
+        verifyNoMoreInteractions(webClient);
+    }
+
+
     @NotNull
     private static Message buildMessage() {
         Message message = new Message();
