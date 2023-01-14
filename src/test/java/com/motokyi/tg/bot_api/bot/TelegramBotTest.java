@@ -91,7 +91,7 @@ class TelegramBotTest {
 
     @Test
     void sendMessage_toNullChat() {
-        assertThrows(IllegalArgumentException.class, () -> bot.sendMessage((Chat) null));
+        assertThrows(NullPointerException.class, () -> bot.sendMessage((Chat) null));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -125,7 +125,7 @@ class TelegramBotTest {
 
     @Test
     void sendMessage_toNullChatWithText() {
-        assertThrows(IllegalArgumentException.class, () -> bot.sendMessage((Chat) null, TEST_TEXT));
+        assertThrows(NullPointerException.class, () -> bot.sendMessage((Chat) null, TEST_TEXT));
         verifyNoMoreInteractions(webClient);
     }
 
