@@ -129,7 +129,6 @@ class TelegramBotTest {
         verifyNoMoreInteractions(webClient);
     }
 
-
     @Test
     void sendDocument() {
         SendDocument sendDocument = bot.sendDocument(CHAT_ID);
@@ -278,7 +277,6 @@ class TelegramBotTest {
         verify(webClient).getWebhookInfo();
         verifyNoMoreInteractions(webClient);
     }
-
 
     @NotNull
     private static Message buildMessage() {
