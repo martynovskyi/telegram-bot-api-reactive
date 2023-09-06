@@ -21,6 +21,14 @@
         <commons-io.version>2.11.0</commons-io.version>
         <jackson-parent.version>2.14</jackson-parent.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/martynovskyi/telegram-bot-api-reactive</url>
+        </repository>
+    </distributionManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

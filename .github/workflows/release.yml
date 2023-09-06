@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - vt1.*
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Set up JDK 19
+        uses: actions/setup-java@v3
+        with:
+          java-version: '19'
+          distribution: 'adopt'
+      - uses: actions/checkout@v3
+      - name: Build and release
+        run: mvn --batch-mode deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PACKAGE_TOKEN }}
