@@ -2,10 +2,8 @@ name: Release
 
 on:
   push:
-    branches:
-      - master
     tags:
-      - vt1.*
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   publish:

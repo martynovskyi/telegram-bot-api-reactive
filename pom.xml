@@ -6,7 +6,7 @@
 
     <groupId>com.motokyi.tg</groupId>
     <artifactId>telegram-bot-api-reactive</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
+    <version>0.3.2</version>
     <properties>
         <java.version>19</java.version>
         <maven.compiler.release>${java.version}</maven.compiler.release>
