@@ -5,6 +5,8 @@ import com.motokyi.tg.bot_api.client.BotApiClientBuilder;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.jetbrains.annotations.Nullable;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.*;
 
@@ -14,8 +16,10 @@ import static java.util.Objects.nonNull;
 public class TelegramBotFactory implements BotFactory {
     private final Map<String, BotApiClient> clients;
     private final Map<String, Bot> bots;
-
-    public TelegramBotFactory(TelegramBotProperties properties) {
+    public TelegramBotFactory(TelegramBotProperties properties){
+        this(properties, null);
+    }
+    public TelegramBotFactory(TelegramBotProperties properties, @Nullable WebClient.Builder webClientBuilder) {
         log.info("Reading bot config");
         Map<String, Bot> bots = new HashMap<>();
         Map<String, BotApiClient> clients = new HashMap<>();
@@ -25,7 +29,10 @@ public class TelegramBotFactory implements BotFactory {
             for (BotConfigProperty bot : properties.getBots()) {
                 log.info("Found bot: {}, valid: {}", bot.getName(), bot.isValid());
                 if (bot.isValid()) {
-                    BotApiClient client = BotApiClientBuilder.build(bot);
+                    BotApiClient client = new BotApiClientBuilder()
+                            .withBotProperties(bot)
+                            .withWebClientBuilder(webClientBuilder)
+                            .build();
                     clients.put(bot.getName(), client);
                     bots.put(bot.getName(), new TelegramBot(client));
                 }

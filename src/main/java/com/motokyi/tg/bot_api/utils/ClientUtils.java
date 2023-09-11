@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
-import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
+import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.exception.RequiredDataMissedException;
 import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
 import lombok.AccessLevel;
@@ -150,9 +150,9 @@ public final class ClientUtils {
         };
     }
 
-    public static String createHostUrl(BotConfigProperty properties) {
-        if (isNull(properties) || !StringUtils.isNotBlank(properties.getToken())) {
-            throw new RequiredConfigMissedException("Properties not correct. Token is empty or props is null.");
+    public static String createBotUrl(BotConfigProperty properties) {
+        if (isNull(properties) || !properties.isValid()) {
+            throw new MissedBotConfigException("Properties not correct. Token is empty or props is null.");
         }
 
         return (StringUtils.isNotBlank(properties.getApiHost()) ? properties.getApiHost() : ApiUrls.API_HOST)

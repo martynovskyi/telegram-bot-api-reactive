@@ -6,7 +6,7 @@ import com.motokyi.tg.bot_api.api.method.SendMessage;
 import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
 import com.motokyi.tg.bot_api.api.type.markup.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
-import com.motokyi.tg.bot_api.exception.RequiredConfigMissedException;
+import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ClientUtilsTest {
 
+    private static final String API_HOST = "protocol://hostname.io";
     private static final String BOT_NAME = "test_bot";
     private static final String BOT_TOKEN = UUID.randomUUID().toString();
     private final static String CHAT_ID = "fake-chat-" + UUID.randomUUID();
@@ -151,37 +152,40 @@ class ClientUtilsTest {
 
     @Test
     void createHostUrl_nullProperties() {
-        assertThrows(RequiredConfigMissedException.class, () ->
-                ClientUtils.createHostUrl(null));
+        assertThrows(MissedBotConfigException.class, () ->
+                ClientUtils.createBotUrl(null));
     }
 
     @Test
     void createHostUrl_emptyProperties() {
-        assertThrows(RequiredConfigMissedException.class, () ->
-                ClientUtils.createHostUrl(new BotConfigProperty()));
+        assertThrows(MissedBotConfigException.class, () ->
+                ClientUtils.createBotUrl(new BotConfigProperty()));
     }
 
     @Test
     void createHostUrl_validProperties() {
-        BotConfigProperty properties = new BotConfigProperty();
-        properties.setName(BOT_NAME);
-        properties.setToken(BOT_TOKEN);
+        BotConfigProperty properties = buildValid();
+        properties.setApiHost(null);
         assertTrue(properties.isValid());
 
-        String hostUrl = ClientUtils.createHostUrl(properties);
+        String hostUrl = ClientUtils.createBotUrl(properties);
         assertEquals(ApiUrls.API_HOST + ApiUrls.BOT_PREFIX + BOT_TOKEN, hostUrl);
     }
 
     @Test
     void createHostUrl_validPropertiesWithApiHost() {
-        String apiHost = "protocol://hostname.io";
+        BotConfigProperty properties = buildValid();
+        assertTrue(properties.isValid());
+
+        String hostUrl = ClientUtils.createBotUrl(properties);
+        assertEquals(API_HOST + ApiUrls.BOT_PREFIX + BOT_TOKEN, hostUrl);
+    }
+
+    private static BotConfigProperty buildValid() {
         BotConfigProperty properties = new BotConfigProperty();
         properties.setName(BOT_NAME);
         properties.setToken(BOT_TOKEN);
-        properties.setApiHost(apiHost);
-        assertTrue(properties.isValid());
-
-        String hostUrl = ClientUtils.createHostUrl(properties);
-        assertEquals(apiHost + ApiUrls.BOT_PREFIX + BOT_TOKEN, hostUrl);
+        properties.setApiHost(API_HOST);
+        return properties;
     }
 }
