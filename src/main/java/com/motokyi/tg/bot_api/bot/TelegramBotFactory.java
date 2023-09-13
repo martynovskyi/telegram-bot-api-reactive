@@ -16,9 +16,12 @@ import static java.util.Objects.nonNull;
 public class TelegramBotFactory implements BotFactory {
     private final Map<String, BotApiClient> clients;
     private final Map<String, Bot> bots;
-    public TelegramBotFactory(TelegramBotProperties properties){
+
+    @Deprecated
+    public TelegramBotFactory(TelegramBotProperties properties) {
         this(properties, null);
     }
+
     public TelegramBotFactory(TelegramBotProperties properties, @Nullable WebClient.Builder webClientBuilder) {
         log.info("Reading bot config");
         Map<String, Bot> bots = new HashMap<>();

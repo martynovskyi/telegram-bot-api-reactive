@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.type.input.InputFile;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class SetWebhook {
     @JsonProperty("secret_token")
     private String secretToken;
 
-    public SetWebhook(String url) {
+    public SetWebhook(@NotNull String url) {
         this.url = url;
     }
 }

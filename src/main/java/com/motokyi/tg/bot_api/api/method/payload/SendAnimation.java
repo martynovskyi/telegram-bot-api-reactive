@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
@@ -43,7 +44,7 @@ public class SendAnimation extends SendMethod {
 
     private String caption;
 
-    public SendAnimation(String chatId) {
+    public SendAnimation(@NotNull String chatId) {
         super(chatId);
     }
 }
