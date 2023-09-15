@@ -17,7 +17,7 @@ public class User {
     private Long id;
 
     @JsonProperty("is_bot")
-    private Boolean bot;
+    private Boolean isBot;
 
     @JsonProperty("first_name")
     private String firstName;
