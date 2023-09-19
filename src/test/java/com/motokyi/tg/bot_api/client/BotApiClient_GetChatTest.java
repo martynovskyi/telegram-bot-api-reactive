@@ -6,8 +6,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetChat extends BotClientTest {
-    public static final String CHAT_ID = "test_chat";
+public class BotApiClient_GetChatTest extends BotClientTest {
+    private static final String CHAT_ID = "test_chat";
 
     @Test
     void unauthorized() throws InterruptedException {

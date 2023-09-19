@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_SendDocument extends BotClientTest {
-    public static final String CHAT_ID = "test_chat";
+public class BotApiClient_SendDocumentTest extends BotClientTest {
+    private static final String CHAT_ID = "test_chat";
 
     @Test
     void unauthorized() throws InterruptedException {

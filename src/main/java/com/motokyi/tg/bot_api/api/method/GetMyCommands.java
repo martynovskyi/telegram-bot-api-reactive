@@ -10,6 +10,10 @@ import reactor.core.publisher.Mono;
 
 import java.util.List;
 
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.GetMyCommands GetMyCommands} method with the ability
+ * to self-execution and chain setter
+ */
 @RequiredArgsConstructor
 public class GetMyCommands
         extends com.motokyi.tg.bot_api.api.method.payload.GetMyCommands

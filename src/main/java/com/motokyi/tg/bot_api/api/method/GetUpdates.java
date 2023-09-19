@@ -18,6 +18,10 @@ import java.util.function.Consumer;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.GetUpdates GetUpdates} method with the ability to
+ * self-execution and chain setter and update stream
+ */
 @Slf4j
 @RequiredArgsConstructor
 public class GetUpdates

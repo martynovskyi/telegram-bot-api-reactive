@@ -8,7 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SetWebhook SetWebhook} method with the ability to
+ * self-execution and chain setter
+ */
 public class SetWebhook
         extends com.motokyi.tg.bot_api.api.method.payload.SetWebhook
         implements BotMethod<Response<Boolean>> {

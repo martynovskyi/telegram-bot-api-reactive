@@ -9,7 +9,10 @@ import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SetMyCommands SetMyCommands} method with the ability
+ * to self-execution and chain setter
+ */
 @RequiredArgsConstructor
 public class SetMyCommands
         extends com.motokyi.tg.bot_api.api.method.payload.SetMyCommands

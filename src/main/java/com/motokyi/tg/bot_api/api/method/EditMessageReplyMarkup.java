@@ -7,6 +7,10 @@ import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.EditMessageReplyMarkup EditMessageReplyMarkup}
+ * method with the ability to self-execution and chain setter
+ */
 public class EditMessageReplyMarkup
         extends com.motokyi.tg.bot_api.api.method.payload.EditMessageReplyMarkup
         implements BotMethod<Response<Message>> {

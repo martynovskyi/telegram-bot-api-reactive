@@ -8,7 +8,10 @@ import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
 import java.io.File;
-
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendDocument SendDocument} method with the ability
+ * to self-execution and chain setter
+ */
 public class SendDocument
         extends com.motokyi.tg.bot_api.api.method.payload.SendDocument
         implements BotMethod<Response<Message>> {

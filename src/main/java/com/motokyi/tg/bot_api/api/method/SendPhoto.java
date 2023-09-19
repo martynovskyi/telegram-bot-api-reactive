@@ -8,7 +8,10 @@ import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
 import java.io.File;
-
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendPhoto SendPhoto} method with the ability to
+ * self-execution and chain setter
+ */
 public class SendPhoto
         extends com.motokyi.tg.bot_api.api.method.payload.SendPhoto
         implements BotMethod<Response<Message>> {

@@ -6,6 +6,10 @@ import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.ForwardMessage ForwardMessage} method with the ability
+ * to self-execution and chain setter
+ */
 public class ForwardMessage
         extends com.motokyi.tg.bot_api.api.method.payload.ForwardMessage
         implements BotMethod<Response<Message>> {

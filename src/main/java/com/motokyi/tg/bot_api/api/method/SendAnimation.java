@@ -9,6 +9,10 @@ import reactor.core.publisher.Mono;
 
 import java.io.File;
 
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendAnimation SendAnimation} method with the ability
+ * to self-execution and chain setter
+ */
 public class SendAnimation
         extends com.motokyi.tg.bot_api.api.method.payload.SendAnimation
         implements BotMethod<Response<Message>> {

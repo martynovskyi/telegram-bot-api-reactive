@@ -16,36 +16,36 @@ import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public abstract class BotClientTest {
+public class BotClientTest {
 
-    static MockWebServer mockTelegramApi;
+    static MockWebServer mockServer;
 
     BotClient botClient;
 
     @BeforeAll
-    static void setUp() throws IOException {
-        mockTelegramApi = new MockWebServer();
-        mockTelegramApi.start();
+    public static void setUp() throws IOException {
+        mockServer = new MockWebServer();
+        mockServer.start();
     }
 
     @AfterAll
-    static void tearDown() throws IOException {
-        mockTelegramApi.shutdown();
+    public static void tearDown() throws IOException {
+        mockServer.shutdown();
     }
 
     @BeforeEach
-    void initialize() {
+    public void initialize() {
         String baseUrl = String.format("http://%s:%s",
-                mockTelegramApi.getHostName(),
-                mockTelegramApi.getPort());
+                mockServer.getHostName(),
+                mockServer.getPort());
         botClient = new BotClient(WebClient.create(baseUrl));
     }
 
     <T> RecordedRequest unauthorizedTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) throws InterruptedException {
-        mockTelegramApi.enqueue(MockServerUtils.mockUnauthorized());
+        mockServer.enqueue(MockServerUtils.mockUnauthorized());
 
         var userResponse = request.get().block();
-        RecordedRequest serverRequest = mockTelegramApi.takeRequest();
+        RecordedRequest serverRequest = mockServer.takeRequest();
         assertAll(
                 () -> assertFalse(userResponse.isOk()),
                 () -> assertNull(userResponse.getResult()),

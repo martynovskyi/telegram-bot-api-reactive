@@ -14,14 +14,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetMe extends BotClientTest {
+public class BotApiClient_GetMeTest extends BotClientTest {
     @Test
     void successful() throws InterruptedException {
         Map<String, Object> properties = Map.of("id", 123456789L, "username", "unitTest", "is_bot",true);
-        mockTelegramApi.enqueue(MockServerUtils.mock200(properties));
+        mockServer.enqueue(MockServerUtils.mock200(properties));
 
         Response<User> userResponse = botClient.getMe().block();
-        RecordedRequest request = mockTelegramApi.takeRequest();
+        RecordedRequest request = mockServer.takeRequest();
         assertAll(
                 () -> assertTrue(userResponse.isOk()),
                 () -> assertNotNull(userResponse.getResult()),

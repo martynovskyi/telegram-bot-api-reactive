@@ -7,6 +7,10 @@ import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.RequiredArgsConstructor;
 import reactor.core.publisher.Mono;
 
+/***
+ * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands DeleteMyCommands} method with
+ * the ability to self-execution and chain setter
+ */
 @RequiredArgsConstructor
 public class DeleteMyCommands
         extends com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands

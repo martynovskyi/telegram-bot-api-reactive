@@ -19,7 +19,6 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - getMyCommands
 - setMyCommands
 - deleteMyCommands
--
 
 ### Configuration
 
