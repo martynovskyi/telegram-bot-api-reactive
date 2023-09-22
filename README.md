@@ -4,10 +4,13 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 
 ### Supported methods
 
+- Bot Commands
+    - [getMyCommands](https://core.telegram.org/bots/api#getmycommands)
+    - [setMyCommands](https://core.telegram.org/bots/api#setmycommands)
+    - [deleteMyCommands](https://core.telegram.org/bots/api#deletemycommands)
+- Bot Info
+    - [getMe](https://core.telegram.org/bots/api#getme)
 - getUpdates
-- setWebhook
-- getWebhookInfo
-- deleteWebhook
 - getChat
 - sendMessage
 - sendDocument
@@ -16,9 +19,10 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - forwardMessage
 - editMessageReplyMarkup
 - deleteMessage
-- getMyCommands
-- setMyCommands
-- deleteMyCommands
+- Webhook
+    - setWebhook
+    - getWebhookInfo
+    - deleteWebhook
 
 ### Configuration
 

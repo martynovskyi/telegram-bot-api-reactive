@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @RequiredArgsConstructor
 public class TelegramBot implements Bot {
-    public static final String VALUE_MUST_BE_NOT_NULL = " value must be @NotNull";
+    public static final String VALUE_MUST_BE_NOT_NULL = " value must be Not Null";
     private final BotApiClient client;
 
     @Override
@@ -54,7 +54,7 @@ public class TelegramBot implements Bot {
 
     @Override
     public SendMessage sendMessage(@NotNull Chat chat) {
-        Objects.requireNonNull(chat, () -> "Chat" + VALUE_MUST_BE_NOT_NULL);
+        Objects.requireNonNull(chat, "Chat" + VALUE_MUST_BE_NOT_NULL);
         return new SendMessage(String.valueOf(chat.getId()), client);
     }
 
@@ -119,18 +119,57 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public SetMyCommands setMyCommands() {
-        return new SetMyCommands(client);
+    public Mono<Response<List<BotCommand>>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.GetMyCommands getCommandsPayload) {
+        Objects.requireNonNull(getCommandsPayload, "GetMyCommands" + VALUE_MUST_BE_NOT_NULL);
+        return client.send(getCommandsPayload);
     }
 
     @Override
-    public Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope) {
-        return new DeleteMyCommands(client).scope(scope).send();
+    public GetMyCommands getMyCommands() {
+        return new GetMyCommands(client);
     }
 
     @Override
     public Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope) {
         return new GetMyCommands(client).scope(scope).send();
+    }
+
+    @Override
+    public Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope, @NotNull String languageCode) {
+        return new GetMyCommands(client).scope(scope).languageCode(languageCode).send();
+    }
+
+    @Override
+    public Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.SetMyCommands commandsPayload) {
+        Objects.requireNonNull(commandsPayload, "SetMyCommands" + VALUE_MUST_BE_NOT_NULL);
+        return client.send(commandsPayload);
+    }
+
+    @Override
+    public SetMyCommands setMyCommands() {
+        return new SetMyCommands(client);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands deleteCommandsPayload) {
+        Objects.requireNonNull(deleteCommandsPayload, "DeleteMyCommands" + VALUE_MUST_BE_NOT_NULL);
+        return client.send(deleteCommandsPayload);
+    }
+
+    @Override
+    public DeleteMyCommands deleteMyCommands() {
+        return new DeleteMyCommands(client);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope) {
+
+        return new DeleteMyCommands(client).scope(scope).send();
+    }
+
+    @Override
+    public Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope, @NotNull String languageCode) {
+        return new DeleteMyCommands(client).scope(scope).languageCode(languageCode).send();
     }
 
     @Override

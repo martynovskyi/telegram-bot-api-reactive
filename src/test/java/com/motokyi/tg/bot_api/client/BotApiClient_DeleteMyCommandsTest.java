@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.MockServerUtils;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands;
 import com.motokyi.tg.bot_api.api.type.Response;
@@ -34,12 +35,13 @@ public class BotApiClient_DeleteMyCommandsTest extends BotClientTest {
                 () -> assertTrue(request.getBodySize() > 1),
                 () -> assertThatJson(request.getBody().readUtf8())
                         .isObject()
-                        .containsEntry(DeleteMyCommands.LANGUAGE_CODE_PROP, languageCode)
+                        .containsEntry(ApiProperties.LANGUAGE_CODE, languageCode)
                         .node("scope")
                         .isObject()
                         .containsEntry("type", BotCommandScopes.DEFAULT.getType())
         );
     }
+
     @Test
     void unauthorized() throws InterruptedException {
         unauthorizedTest(() -> botClient.send(new DeleteMyCommands()), ApiUrls.DELETE_MY_COMMANDS, HttpMethod.POST);

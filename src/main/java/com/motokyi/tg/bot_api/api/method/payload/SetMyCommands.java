@@ -10,10 +10,15 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.motokyi.tg.bot_api.api.constant.ApiProperties.LANGUAGE_CODE;
+
 /**
  * Use this method to change the list of the bot's commands.
  * See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
  * See <a href="SetMyCommands">https://core.telegram.org/bots/api#setmycommands</a>
+ * <p>
+ *
+ * @version Bot API 6.9
  */
 
 @Getter
@@ -25,6 +30,6 @@ public class SetMyCommands {
 
     private BotCommandScope scope;
 
-    @JsonProperty("language_code")
+    @JsonProperty(LANGUAGE_CODE)
     private String languageCode;
 }

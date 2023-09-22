@@ -1,5 +1,6 @@
 package com.motokyi.tg.bot_api.client;
 
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.SendAnimation;
 import com.motokyi.tg.bot_api.api.method.SendMessage;
@@ -60,26 +61,26 @@ class ClientUtilsTest {
 
     private void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
         assertAll("SendMethod",
-                () -> assertEquals(CHAT_ID, result.getFirst(SendMethod.CHAT_ID).getBody()),
+                () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
                 () -> assertEquals(method.getReplyToMessageId(),
-                        result.getFirst(SendMethod.REPLY_TO_MESSAGE_ID).getBody()),
+                        result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID).getBody()),
                 () -> assertEquals(method.getDisableNotification(),
-                        result.getFirst(SendMethod.DISABLE_NOTIFICATION).getBody()),
+                        result.getFirst(ApiProperties.DISABLE_NOTIFICATION).getBody()),
                 () -> assertEquals(method.getDisableWebPagePreview(),
-                        result.getFirst(SendMethod.DISABLE_WEB_PAGE_PREVIEW).getBody()),
-                () -> assertEquals(method.getParseMode(), result.getFirst(SendMethod.PARSE_MODE).getBody()),
-                () -> assertNotNull(result.getFirst(SendMethod.REPLY_MARKUP).getBody())
+                        result.getFirst(ApiProperties.DISABLE_WEB_PAGE_PREVIEW).getBody()),
+                () -> assertEquals(method.getParseMode(), result.getFirst(ApiProperties.PARSE_MODE).getBody()),
+                () -> assertNotNull(result.getFirst(ApiProperties.REPLY_MARKUP).getBody())
         );
     }
 
     private void assertAllEmptyMethod(MultiValueMap<String, HttpEntity<?>> result) {
         assertAll("SendMethod empty.",
-                () -> assertEquals(CHAT_ID, result.getFirst(SendMethod.CHAT_ID).getBody()),
-                () -> assertNull(result.getFirst(SendMethod.REPLY_TO_MESSAGE_ID)),
-                () -> assertNull(result.getFirst(SendMethod.DISABLE_NOTIFICATION)),
-                () -> assertNull(result.getFirst(SendMethod.DISABLE_WEB_PAGE_PREVIEW)),
-                () -> assertNull(result.getFirst(SendMethod.PARSE_MODE)),
-                () -> assertNull(result.getFirst(SendMethod.REPLY_MARKUP))
+                () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
+                () -> assertNull(result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID)),
+                () -> assertNull(result.getFirst(ApiProperties.DISABLE_NOTIFICATION)),
+                () -> assertNull(result.getFirst(ApiProperties.DISABLE_WEB_PAGE_PREVIEW)),
+                () -> assertNull(result.getFirst(ApiProperties.PARSE_MODE)),
+                () -> assertNull(result.getFirst(ApiProperties.REPLY_MARKUP))
         );
     }
 

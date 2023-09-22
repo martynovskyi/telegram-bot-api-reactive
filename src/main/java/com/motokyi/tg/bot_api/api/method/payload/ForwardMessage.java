@@ -2,6 +2,7 @@ package com.motokyi.tg.bot_api.api.method.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.Message;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,13 +16,13 @@ import lombok.Setter;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ForwardMessage {
 
-    @JsonProperty(SendMethod.CHAT_ID)
+    @JsonProperty(ApiProperties.CHAT_ID)
     protected String chatId;
 
     @JsonProperty("from_chat_id")
     protected Long fromChatId;
 
-    @JsonProperty(SendMethod.DISABLE_NOTIFICATION)
+    @JsonProperty(ApiProperties.DISABLE_NOTIFICATION)
     protected Boolean disableNotification;
 
     @JsonProperty("message_id")

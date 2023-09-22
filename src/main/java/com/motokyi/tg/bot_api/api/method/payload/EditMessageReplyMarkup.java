@@ -2,6 +2,7 @@ package com.motokyi.tg.bot_api.api.method.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import lombok.Setter;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EditMessageReplyMarkup {
-    @JsonProperty(SendMethod.CHAT_ID)
+    @JsonProperty(ApiProperties.CHAT_ID)
     private String chatId;
 
     @JsonProperty("message_id")
@@ -24,7 +25,7 @@ public class EditMessageReplyMarkup {
     @JsonProperty("inline_message_id")
     private String inlineMessageId;
 
-    @JsonProperty(SendMethod.REPLY_MARKUP)
+    @JsonProperty(ApiProperties.REPLY_MARKUP)
     private KeyboardMarkup replyMarkup;
 
     public EditMessageReplyMarkup(String chatId, String messageId) {

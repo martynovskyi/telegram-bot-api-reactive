@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
@@ -33,17 +34,17 @@ public final class ClientUtils {
 
     public static void insertMethodParams(SendMethod send, MultipartBodyBuilder builder) {
         if (StringUtils.isBlank(send.getChatId())) {
-            throw new RequiredDataMissedException(SendMessage.CHAT_ID);
+            throw new RequiredDataMissedException(ApiProperties.CHAT_ID);
         }
 
-        MultipartBodyUtils.insertString(SendMethod.CHAT_ID, send.getChatId(), builder);
-        MultipartBodyUtils.insertString(SendMethod.PARSE_MODE, send.getParseMode(), builder);
-        MultipartBodyUtils.insertObject(SendMethod.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
-        MultipartBodyUtils.insertObject(SendMethod.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
-        MultipartBodyUtils.insertObject(SendMethod.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
+        MultipartBodyUtils.insertString(ApiProperties.CHAT_ID, send.getChatId(), builder);
+        MultipartBodyUtils.insertString(ApiProperties.PARSE_MODE, send.getParseMode(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
         if (nonNull(send.getReplyMarkup())) {
             try {
-                MultipartBodyUtils.insertString(SendMethod.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
+                MultipartBodyUtils.insertString(ApiProperties.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
             } catch (JsonProcessingException e) {
                 log.error("Converting issue", e);
             }

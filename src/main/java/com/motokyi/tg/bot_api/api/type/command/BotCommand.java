@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
  * This object represents a bot command.
  * See <a href="BotCommand">https://core.telegram.org/bots/api#botcommand</a>
  * <p>
+ *
+ * @version Bot API 6.9
  */
 @Data
 @AllArgsConstructor

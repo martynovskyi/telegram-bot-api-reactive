@@ -3,14 +3,10 @@ package com.motokyi.tg.bot_api.bot;
 import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.type.Chat;
 import com.motokyi.tg.bot_api.api.type.Message;
-import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
-import com.motokyi.tg.bot_api.client.BotApiClient;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,16 +14,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class TelegramBotTest {
-    private static final String TEST_TEXT = "Test text";
-    private static final Long CHAT_ID = 2023L;
-    private static final String CHAT_TAG = "test_chat";
-    private static final long MESSAGE_ID = 5445L;
-    @Mock
-    BotApiClient webClient;
+class TelegramBotTest extends TelegramBotTestSetup {
 
-    @InjectMocks
-    private TelegramBot bot;
 
     @Test
     void getMe() {
@@ -217,41 +205,6 @@ class TelegramBotTest {
     void deleteMessage() {
         bot.deleteMessage(CHAT_ID, MESSAGE_ID);
         verify(webClient).deleteMessage(CHAT_ID, MESSAGE_ID);
-        verifyNoMoreInteractions(webClient);
-    }
-
-    @Test
-    void setMyCommands() {
-        SetMyCommands setMyCommands = bot.setMyCommands();
-        assertNotNull(setMyCommands);
-        verifyNoMoreInteractions(webClient);
-    }
-
-    @Test
-    void deleteMyCommands() {
-        BotCommandScope scope = new BotCommandScope();
-        bot.deleteMyCommands(scope);
-        ArgumentCaptor<DeleteMyCommands> deleteCaptor = ArgumentCaptor.forClass(DeleteMyCommands.class);
-        verify(webClient).send(deleteCaptor.capture());
-        DeleteMyCommands deleteMyCommands = deleteCaptor.getValue();
-        assertAll(
-                () -> assertNotNull(deleteMyCommands),
-                () -> assertEquals(scope, deleteMyCommands.getScope())
-        );
-        verifyNoMoreInteractions(webClient);
-    }
-
-    @Test
-    void getMyCommands() {
-        BotCommandScope scope = new BotCommandScope();
-        bot.getMyCommands(scope);
-        ArgumentCaptor<GetMyCommands> deleteCaptor = ArgumentCaptor.forClass(GetMyCommands.class);
-        verify(webClient).send(deleteCaptor.capture());
-        GetMyCommands getMyCommands = deleteCaptor.getValue();
-        assertAll(
-                () -> assertNotNull(getMyCommands),
-                () -> assertEquals(scope, getMyCommands.getScope())
-        );
         verifyNoMoreInteractions(webClient);
     }
 
