@@ -11,16 +11,19 @@ import lombok.EqualsAndHashCode;
  * user-friendly step-by-step interfaces without having to sacrifice privacy mode.
  * See <a href="ForceReply">https://core.telegram.org/bots/api#forcereply</a>
  * <p>
- * Field        Type	  Description
- * force_reply	True	  Shows reply interface to the user, as if they manually selected the bot‘s message and tapped ’Reply'
- * selective	Boolean   Optional. Use this parameter if you want to force reply from specific users only. Targets: 1) users that are @mentioned in the text of the Message object; 2) if the bot's message is a reply (has reply_to_message_id), sender of the original message.
+ *
+ * @version Bot API 6.9
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ForceReply extends KeyboardMarkup {
+
     @JsonProperty("force_reply")
     private Boolean forceReply;
+
+    @JsonProperty("input_field_placeholder")
+    private String inputFieldPlaceholder;
 
     private Boolean selective;
 }

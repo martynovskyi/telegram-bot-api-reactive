@@ -3,7 +3,7 @@ package com.motokyi.tg.bot_api.api.method.payload;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
-import com.motokyi.tg.bot_api.api.type.Message;
+import com.motokyi.tg.bot_api.api.type.message.Message;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,7 +25,7 @@ public class ForwardMessage {
     @JsonProperty(ApiProperties.DISABLE_NOTIFICATION)
     protected Boolean disableNotification;
 
-    @JsonProperty("message_id")
+    @JsonProperty(ApiProperties.MESSAGE_ID)
     protected Long messageId;
 
     public ForwardMessage(String chatId, Message message) {

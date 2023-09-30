@@ -40,7 +40,7 @@ public class MockServerUtils {
         return new MockResponse()
                 .setResponseCode(200)
                 .addHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                .setBody("{ \"ok\": true, \"result\": " +  getJsonValue(value) + " }");
+                .setBody("{ \"ok\": true, \"result\": " + getJsonValue(value) + " }");
     }
 
     public static MockResponse mockUnauthorized() {

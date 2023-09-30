@@ -6,15 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Represents the scope of bot commands, covering a specific chat.
+ * <p>
+ * See <a href="BotCommandScopeChat">https://core.telegram.org/bots/api#botcommandscopechat</a>
+ * <p>
+ *
+ * @version Bot API 6.9
+ */
 @Getter
 @Setter
 @NoArgsConstructor
 public class BotCommandScopeChat extends BotCommandScope {
 
     @JsonProperty(ApiProperties.CHAT_ID)
-    private Integer chatId;
+    private String chatId;
 
-    public BotCommandScopeChat(String type, Integer chatId) {
+    public BotCommandScopeChat(String type, String chatId) {
         super(type);
         this.chatId = chatId;
     }

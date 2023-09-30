@@ -1,6 +1,8 @@
 package com.motokyi.tg.bot_api.api.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
+import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
 
 /**
@@ -26,7 +28,7 @@ public class ChosenInlineResult {
 
     private Location location;
 
-    @JsonProperty("inline_message_id")
+    @JsonProperty(ApiProperties.INLINE_MESSAGE_ID)
     private String inlineMessageId;
 
     private String query;

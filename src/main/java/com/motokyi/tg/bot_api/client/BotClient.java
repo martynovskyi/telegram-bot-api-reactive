@@ -2,8 +2,13 @@ package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.*;
-import com.motokyi.tg.bot_api.api.type.*;
+import com.motokyi.tg.bot_api.api.type.Response;
+import com.motokyi.tg.bot_api.api.type.update.Update;
+import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
+import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
+import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.user.User;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

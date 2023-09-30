@@ -2,11 +2,12 @@ package com.motokyi.tg.bot_api.api.method;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.constant.BotConstants;
-import com.motokyi.tg.bot_api.api.type.Message;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
+import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
+
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendMessage SendMessage} method with the ability
  * to self-execution and chain setter

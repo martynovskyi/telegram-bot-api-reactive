@@ -1,7 +1,15 @@
 package com.motokyi.tg.bot_api.tools;
 
-import com.motokyi.tg.bot_api.api.type.*;
+import com.motokyi.tg.bot_api.api.type.ChosenInlineResult;
+import com.motokyi.tg.bot_api.api.type.update.Update;
+import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
+import com.motokyi.tg.bot_api.api.type.inline.InlineQuery;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
+import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.payment.PreCheckoutQuery;
+import com.motokyi.tg.bot_api.api.type.payment.ShippingQuery;
+import com.motokyi.tg.bot_api.api.type.poll.Poll;
+import com.motokyi.tg.bot_api.api.type.poll.PollAnswer;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
 

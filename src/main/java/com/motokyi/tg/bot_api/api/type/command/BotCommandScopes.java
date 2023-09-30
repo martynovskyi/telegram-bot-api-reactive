@@ -13,6 +13,8 @@ package com.motokyi.tg.bot_api.api.type.command;
  * <p>
  * See <a href="BotCommandScope">https://core.telegram.org/bots/api#botcommandscope</a>
  * <p>
+ *
+ * @version Bot API 6.9
  */
 public class BotCommandScopes {
     public static final BotCommandScope DEFAULT = new BotCommandScope("default");
@@ -20,15 +22,15 @@ public class BotCommandScopes {
     public static final BotCommandScope ALL_GROUP_CHATS = new BotCommandScope("all_group_chats");
     public static final BotCommandScope ALL_CHAT_ADMINISTRATORS = new BotCommandScope("all_chat_administrators");
 
-    public static BotCommandScopeChat chat(Integer chatId) {
+    public static BotCommandScopeChat chat(String chatId) {
         return new BotCommandScopeChat("chat", chatId);
     }
 
-    public static BotCommandScopeChat chatAdministrators(Integer chatId) {
+    public static BotCommandScopeChat chatAdministrators(String chatId) {
         return new BotCommandScopeChat("chat_administrators", chatId);
     }
 
-    public static BotCommandScopeChatMember ChatMember(Integer chatId, Integer userId) {
+    public static BotCommandScopeChatMember ChatMember(String chatId, Integer userId) {
         return new BotCommandScopeChatMember("chat_member", chatId, userId);
     }
 }

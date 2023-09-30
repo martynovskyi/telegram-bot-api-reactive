@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.MockServerUtils;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.DeleteWebhook;
 import com.motokyi.tg.bot_api.api.type.Response;
@@ -31,9 +32,10 @@ public class BotApiClient_DeleteWebhookTest extends BotClientTest {
                 () -> assertTrue(request.getBodySize() > 1),
                 () -> assertThatJson(request.getBody().readUtf8())
                         .isObject()
-                        .containsEntry(DeleteWebhook.DROP_PENDING_UPDATES_PROP, true)
+                        .containsEntry(ApiProperties.DROP_PENDING_UPDATES_PROP, true)
         );
     }
+
     @Test
     void unauthorized() throws InterruptedException {
         unauthorizedTest(() -> botClient.send(new DeleteWebhook()), ApiUrls.DELETE_WEBHOOK, HttpMethod.POST);

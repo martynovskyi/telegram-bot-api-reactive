@@ -9,7 +9,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.util.DefaultUriBuilderFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings("ClassNamingConvention")
 public class BotApiClient_DeleteMessageTest extends BotClientTest {
@@ -21,7 +20,7 @@ public class BotApiClient_DeleteMessageTest extends BotClientTest {
     void successful() throws InterruptedException {
         mockServer.enqueue(MockServerUtils.mockValue(Boolean.TRUE));
 
-        Response<Boolean> userResponse = botClient.deleteMessage(CHAT_ID,MESSAGE_ID).block();
+        Response<Boolean> userResponse = botClient.deleteMessage(CHAT_ID, MESSAGE_ID).block();
         RecordedRequest request = mockServer.takeRequest();
 
         assertAll(
@@ -33,8 +32,9 @@ public class BotApiClient_DeleteMessageTest extends BotClientTest {
                 () -> assertEquals(0, request.getBodySize())
         );
     }
+
     @Test
     void unauthorized() throws InterruptedException {
-        unauthorizedTest(() -> botClient.deleteMessage(CHAT_ID,MESSAGE_ID), OK_PATH, HttpMethod.GET);
+        unauthorizedTest(() -> botClient.deleteMessage(CHAT_ID, MESSAGE_ID), OK_PATH, HttpMethod.GET);
     }
 }

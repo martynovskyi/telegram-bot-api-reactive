@@ -3,7 +3,7 @@ package com.motokyi.tg.bot_api.bot.module;
 import com.motokyi.tg.bot_api.api.method.DeleteWebhook;
 import com.motokyi.tg.bot_api.api.method.SetWebhook;
 import com.motokyi.tg.bot_api.api.type.Response;
-import com.motokyi.tg.bot_api.api.type.WebhookInfo;
+import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 

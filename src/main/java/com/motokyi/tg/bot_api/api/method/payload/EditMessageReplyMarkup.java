@@ -19,10 +19,10 @@ public class EditMessageReplyMarkup {
     @JsonProperty(ApiProperties.CHAT_ID)
     private String chatId;
 
-    @JsonProperty("message_id")
+    @JsonProperty(ApiProperties.MESSAGE_ID)
     private String messageId;
 
-    @JsonProperty("inline_message_id")
+    @JsonProperty(ApiProperties.INLINE_MESSAGE_ID)
     private String inlineMessageId;
 
     @JsonProperty(ApiProperties.REPLY_MARKUP)

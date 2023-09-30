@@ -1,8 +1,8 @@
 package com.motokyi.tg.bot_api.bot;
 
 import com.motokyi.tg.bot_api.api.method.*;
-import com.motokyi.tg.bot_api.api.type.Chat;
-import com.motokyi.tg.bot_api.api.type.Message;
+import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.message.Message;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

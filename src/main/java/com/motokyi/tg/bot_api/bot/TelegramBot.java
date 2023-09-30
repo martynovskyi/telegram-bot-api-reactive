@@ -1,9 +1,14 @@
 package com.motokyi.tg.bot_api.bot;
 
 import com.motokyi.tg.bot_api.api.method.*;
-import com.motokyi.tg.bot_api.api.type.*;
+import com.motokyi.tg.bot_api.api.type.Response;
+import com.motokyi.tg.bot_api.api.type.update.Update;
+import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
+import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
+import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.user.User;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;

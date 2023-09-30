@@ -2,9 +2,9 @@ package com.motokyi.tg.bot_api.bot.module;
 
 import com.motokyi.tg.bot_api.api.method.ForwardMessage;
 import com.motokyi.tg.bot_api.api.method.SendMessage;
-import com.motokyi.tg.bot_api.api.type.Chat;
-import com.motokyi.tg.bot_api.api.type.Message;
 import com.motokyi.tg.bot_api.api.type.Response;
+import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.message.Message;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 

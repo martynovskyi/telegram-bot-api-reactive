@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.bot.module;
 
 import com.motokyi.tg.bot_api.api.type.Response;
-import com.motokyi.tg.bot_api.api.type.User;
+import com.motokyi.tg.bot_api.api.type.user.User;
 import reactor.core.publisher.Mono;
 
 /**

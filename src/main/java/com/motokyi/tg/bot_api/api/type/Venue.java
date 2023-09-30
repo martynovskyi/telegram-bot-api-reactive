@@ -7,11 +7,8 @@ import lombok.Data;
  * This object represents a venue.
  * See <a href="Venue">https://core.telegram.org/bots/api#venue</a>
  * <p>
- * Field	        Type	    Description
- * location	        Location	Venue location
- * title	        String	    Name of the venue
- * address	        String	    Address of the venue
- * foursquare_id	String	    Optional. Foursquare identifier of the venue
+ *
+ * @version Bot API 6.9
  */
 @Data
 public class Venue {
@@ -22,7 +19,16 @@ public class Venue {
 
     private String address;
 
-    @JsonProperty("foursquareId")
+    @JsonProperty("foursquare_id")
     private String foursquareId;
+
+    @JsonProperty("foursquare_type")
+    private String foursquareType;
+
+    @JsonProperty("google_place_id")
+    private String googlePlaceId;
+
+    @JsonProperty("google_place_type")
+    private String googlePlaceType;
 
 }
