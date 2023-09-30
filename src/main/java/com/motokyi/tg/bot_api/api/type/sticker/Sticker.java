@@ -37,7 +37,7 @@ public class Sticker {
     private String setName;
 
     @JsonProperty("mask_position")
-    private MaskPosition naskPosition;
+    private MaskPosition maskPosition;
 
     @JsonProperty(ApiProperties.FILE_SIZE)
     private Integer fileSize;
