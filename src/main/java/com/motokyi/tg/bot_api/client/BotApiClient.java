@@ -2,13 +2,17 @@ package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.api.type.Response;
-import com.motokyi.tg.bot_api.api.type.update.Update;
-import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
+import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
+import com.motokyi.tg.bot_api.api.type.bot.BotName;
+import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.update.Update;
+import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
@@ -16,6 +20,18 @@ import java.util.List;
 public interface BotApiClient {
 
     Mono<Response<User>> getMe();
+
+    Mono<Response<BotName>> getMyName(@Nullable String languageCode);
+
+    Mono<Response<Boolean>> setMyName(@Nullable String name, @Nullable String languageCode);
+
+    Mono<Response<BotDescription>> getMyDescription(@Nullable String languageCode);
+
+    Mono<Response<Boolean>> setMyDescription(@Nullable String description, @Nullable String languageCode);
+
+    Mono<Response<BotShortDescription>> getMyShortDescription(@Nullable String languageCode);
+
+    Mono<Response<Boolean>> setMyShortDescription(String shortDescription, String languageCode);
 
     Mono<Response<List<Update>>> getUpdates();
 
@@ -48,4 +64,5 @@ public interface BotApiClient {
     Mono<Response<Boolean>> send(@NotNull DeleteWebhook deleteWebhook);
 
     Mono<Response<WebhookInfo>> getWebhookInfo();
+
 }

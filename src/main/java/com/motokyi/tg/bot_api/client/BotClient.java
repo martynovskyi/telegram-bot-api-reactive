@@ -1,15 +1,21 @@
 package com.motokyi.tg.bot_api.client;
 
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.*;
 import com.motokyi.tg.bot_api.api.type.Response;
-import com.motokyi.tg.bot_api.api.type.update.Update;
-import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
+import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
+import com.motokyi.tg.bot_api.api.type.bot.BotName;
+import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.update.Update;
+import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
+import com.motokyi.tg.bot_api.utils.RequestValidator;
+import com.motokyi.tg.bot_api.utils.UriUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
@@ -33,6 +39,78 @@ class BotClient implements BotApiClient {
                 .uri(ApiUrls.GET_ME)
                 .exchangeToMono(ClientUtils.responseHandler("GetMe",
                         new ParameterizedTypeReference<Response<User>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<BotName>> getMyName(String languageCode) {
+        return wc.get()
+                .uri(UriUtils.uriWithLanguageCode(ApiUrls.GET_MY_NAME, languageCode))
+                .exchangeToMono(ClientUtils.responseHandler("GetMyName",
+                        new ParameterizedTypeReference<Response<BotName>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyName(String name, String languageCode) {
+        RequestValidator.setMyName(name, languageCode);
+        return wc.get()
+                .uri(uri -> {
+                    uri.path(ApiUrls.SET_MY_NAME);
+                    UriUtils.nonBlankParam(uri, ApiProperties.NAME, name);
+                    UriUtils.nonBlankParam(uri, ApiProperties.LANGUAGE_CODE, languageCode);
+                    return uri.build();
+                })
+                .exchangeToMono(ClientUtils.responseHandler("SetMyName",
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<BotDescription>> getMyDescription(String languageCode) {
+        return wc.get()
+                .uri(UriUtils.uriWithLanguageCode(ApiUrls.GET_MY_DESCRIPTION, languageCode))
+                .exchangeToMono(ClientUtils.responseHandler("GetMyDescription",
+                        new ParameterizedTypeReference<Response<BotDescription>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyDescription(String description, String languageCode) {
+        RequestValidator.setMyDescription(description, languageCode);
+        return wc.get()
+                .uri(uri -> {
+                    uri.path(ApiUrls.SET_MY_DESCRIPTION);
+                    UriUtils.nonBlankParam(uri, ApiProperties.DESCRIPTION, description);
+                    UriUtils.nonBlankParam(uri, ApiProperties.LANGUAGE_CODE, languageCode);
+                    return uri.build();
+                })
+                .exchangeToMono(ClientUtils.responseHandler("SetMyDescription",
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<BotShortDescription>> getMyShortDescription(String languageCode) {
+        return wc.get()
+                .uri(UriUtils.uriWithLanguageCode(ApiUrls.GET_MY_SHORT_DESCRIPTION, languageCode))
+                .exchangeToMono(ClientUtils.responseHandler("GetMyShortDescription",
+                        new ParameterizedTypeReference<Response<BotShortDescription>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyShortDescription(String shortDescription, String languageCode) {
+        RequestValidator.setMyShortDescription(shortDescription, languageCode);
+        return wc.get()
+                .uri(uri -> {
+                    uri.path(ApiUrls.SET_MY_SHORT_DESCRIPTION);
+                    UriUtils.nonBlankParam(uri, ApiProperties.SHORT_DESCRIPTION, shortDescription);
+                    UriUtils.nonBlankParam(uri, ApiProperties.LANGUAGE_CODE, languageCode);
+                    return uri.build();
+                })
+                .exchangeToMono(ClientUtils.responseHandler("SetMyShortDescription",
+                        new ParameterizedTypeReference<Response<Boolean>>() {
                         }));
     }
 
@@ -198,5 +276,4 @@ class BotClient implements BotApiClient {
                         new ParameterizedTypeReference<Response<WebhookInfo>>() {
                         }));
     }
-
 }

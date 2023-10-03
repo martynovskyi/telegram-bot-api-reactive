@@ -2,12 +2,15 @@ package com.motokyi.tg.bot_api.bot;
 
 import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.type.Response;
-import com.motokyi.tg.bot_api.api.type.update.Update;
-import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
+import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
+import com.motokyi.tg.bot_api.api.type.bot.BotName;
+import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.update.Update;
+import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +28,66 @@ public class TelegramBot implements Bot {
     @Override
     public Mono<Response<User>> getMe() {
         return client.getMe();
+    }
+
+    @Override
+    public Mono<Response<BotName>> getMyName() {
+        return client.getMyName(null);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyName(String name) {
+        return client.setMyName(name, null);
+    }
+
+    @Override
+    public Mono<Response<BotName>> getMyName(String languageCode) {
+        return client.getMyName(languageCode);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyName(String name, String languageCode) {
+        return client.setMyName(name, languageCode);
+    }
+
+    @Override
+    public Mono<Response<BotDescription>> getMyDescription() {
+        return client.getMyDescription(null);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyDescription(String description) {
+        return client.setMyDescription(description, null);
+    }
+
+    @Override
+    public Mono<Response<BotDescription>> getMyDescription(String languageCode) {
+        return client.getMyDescription(languageCode);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyDescription(String description, String languageCode) {
+        return client.setMyDescription(description, languageCode);
+    }
+
+    @Override
+    public Mono<Response<BotShortDescription>> getMyShortDescription() {
+        return client.getMyShortDescription(null);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyShortDescription(String shortDescription) {
+        return client.setMyShortDescription(shortDescription, null);
+    }
+
+    @Override
+    public Mono<Response<BotShortDescription>> getMyShortDescription(String languageCode) {
+        return client.getMyShortDescription(languageCode);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> setMyShortDescription(String shortDescription, String languageCode) {
+        return client.setMyShortDescription(shortDescription, languageCode);
     }
 
     @Override
@@ -191,4 +254,5 @@ public class TelegramBot implements Bot {
     public Mono<Response<WebhookInfo>> getWebhookInfo() {
         return client.getWebhookInfo();
     }
+
 }

@@ -30,10 +30,10 @@ public final class ApiProperties {
     public static final String CAN_SEND_OTHER_MESSAGES = "can_send_other_messages";
     public static final String CAN_ADD_WEB_PAGE_PREVIEWS = "can_add_web_page_previews";
     public static final String CAPTION_ENTITIES = "caption_entities";
-
     public static final String CHAT_ID = "chat_id";
     public static final String CUSTOM_EMOJI_ID = "custom_emoji_id";
     public static final String CUSTOM_TITLE = "custom_title";
+    public static final String DESCRIPTION = "description";
     public static final String DISABLE_WEB_PAGE_PREVIEW = "disable_web_page_preview";
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String DROP_PENDING_UPDATES_PROP = "drop_pending_updates";
@@ -55,11 +55,13 @@ public final class ApiProperties {
     public static final String MIME_TYPE = "mime_type";
     public static final String MESSAGE_ID = "message_id";
     public static final String MESSAGE_THREAD_ID = "message_thread_id";
+    public static final String NAME = "name";
     public static final String PARSE_MODE = "parse_mode";
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
     public static final String REQUEST_ID = "request_id";
     public static final String SHIPPING_ADDRESS = "shipping_address";
+    public static final String SHORT_DESCRIPTION = "short_description";
     public static final String TOTAL_AMOUNT = "total_amount";
     public static final String USER_ID = "user_id";
     public static final String UNTIL_DATE = "until_date";

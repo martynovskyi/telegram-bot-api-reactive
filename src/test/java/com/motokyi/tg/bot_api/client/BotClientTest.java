@@ -56,4 +56,17 @@ public class BotClientTest {
         );
         return serverRequest;
     }
+
+    // TODO: 10/3/2023  create test for 429
+    // check response example
+    /*
+{
+  "ok": false,
+  "error_code": 429,
+  "description": "Too Many Requests: retry after 85489",
+  "parameters": {
+    "retry_after": 85489
+  }
+}
+     */
 }

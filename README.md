@@ -10,6 +10,11 @@ Currently, code/package structure is not finalized. Pretty raw implementations
     - [deleteMyCommands](https://core.telegram.org/bots/api#deletemycommands)
 - Bot Info
     - [getMe](https://core.telegram.org/bots/api#getme)
+    - [getMyName](https://core.telegram.org/bots/api#getmyname)
+    - [setMyName](https://core.telegram.org/bots/api#setmyname)
+    - [getMyDescription](https://core.telegram.org/bots/api#getmydescription)
+    - [getMyShortDescription](https://core.telegram.org/bots/api#getmyshortdescription)
+    - [setMyShortDescription](https://core.telegram.org/bots/api#setmyshortdescription)
 - getUpdates
 - getChat
 - sendMessage
@@ -20,9 +25,9 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - editMessageReplyMarkup
 - deleteMessage
 - Webhook
-    - setWebhook
-    - getWebhookInfo
-    - deleteWebhook
+    - [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+    - [getWebhookInfo](https://core.telegram.org/bots/api#getwebhookinfo)
+    - [deleteWebhook](https://core.telegram.org/bots/api#deletewebhook)
 
 ### Configuration
 

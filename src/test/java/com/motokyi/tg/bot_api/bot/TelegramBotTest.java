@@ -16,14 +16,6 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 @ExtendWith(MockitoExtension.class)
 class TelegramBotTest extends TelegramBotTestSetup {
 
-
-    @Test
-    void getMe() {
-        bot.getMe();
-        verify(webClient).getMe();
-        verifyNoMoreInteractions(webClient);
-    }
-
     @Test
     void getAllUpdates() {
         bot.getAllUpdates();

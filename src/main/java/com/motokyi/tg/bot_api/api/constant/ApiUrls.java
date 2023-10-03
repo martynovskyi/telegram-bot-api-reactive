@@ -2,6 +2,12 @@ package com.motokyi.tg.bot_api.api.constant;
 
 public final class ApiUrls {
     public static final String GET_ME = "/getMe";
+    public static final String GET_MY_NAME = "/getMyName";
+    public static final String SET_MY_NAME = "/setMyName";
+    public static final String GET_MY_DESCRIPTION = "/getMyDescription";
+    public static final String SET_MY_DESCRIPTION = "/setMyDescription";
+    public static final String GET_MY_SHORT_DESCRIPTION = "/getMyShortDescription";
+    public static final String SET_MY_SHORT_DESCRIPTION = "/setMyShortDescription";
     public static final String GET_CHAT = "/getChat?chat_id={chat_id}";
     public static final String GET_UPDATES = "/getUpdates";
     public static final String FORWARD_MESSAGE = "/forwardMessage";
