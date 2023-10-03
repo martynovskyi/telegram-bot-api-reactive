@@ -13,6 +13,7 @@ Currently, code/package structure is not finalized. Pretty raw implementations
     - [getMyName](https://core.telegram.org/bots/api#getmyname)
     - [setMyName](https://core.telegram.org/bots/api#setmyname)
     - [getMyDescription](https://core.telegram.org/bots/api#getmydescription)
+    - [setMyDescription](https://core.telegram.org/bots/api#setmydescription)
     - [getMyShortDescription](https://core.telegram.org/bots/api#getmyshortdescription)
     - [setMyShortDescription](https://core.telegram.org/bots/api#setmyshortdescription)
 - getUpdates
