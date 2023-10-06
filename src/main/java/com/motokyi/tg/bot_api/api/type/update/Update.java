@@ -1,9 +1,10 @@
 package com.motokyi.tg.bot_api.api.type.update;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.motokyi.tg.bot_api.api.type.inline.ChosenInlineResult;
+import com.motokyi.tg.bot_api.api.constant.UpdateType;
 import com.motokyi.tg.bot_api.api.type.chat.ChatJoinRequest;
 import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
+import com.motokyi.tg.bot_api.api.type.inline.ChosenInlineResult;
 import com.motokyi.tg.bot_api.api.type.inline.InlineQuery;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import com.motokyi.tg.bot_api.api.type.message.Message;
