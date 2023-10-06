@@ -23,15 +23,15 @@ public interface BotCommands {
 
     GetMyCommands getMyCommands();
 
-    Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope);
+    Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope);
 
-    Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope, @NotNull String languageCode);
+    Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope, String languageCode);
 
     Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands deleteCommandsPayload);
 
     DeleteMyCommands deleteMyCommands();
 
-    Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope);
+    Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope);
 
-    Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope, @NotNull String languageCode);
+    Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope, String languageCode);
 }

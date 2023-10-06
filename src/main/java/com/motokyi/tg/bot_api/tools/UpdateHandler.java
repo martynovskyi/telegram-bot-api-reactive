@@ -1,6 +1,6 @@
 package com.motokyi.tg.bot_api.tools;
 
-import com.motokyi.tg.bot_api.api.type.ChosenInlineResult;
+import com.motokyi.tg.bot_api.api.type.inline.ChosenInlineResult;
 import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
 import com.motokyi.tg.bot_api.api.type.inline.InlineQuery;

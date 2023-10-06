@@ -198,12 +198,12 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope) {
+    public Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope) {
         return new GetMyCommands(client).scope(scope).send();
     }
 
     @Override
-    public Mono<Response<List<BotCommand>>> getMyCommands(@NotNull BotCommandScope scope, @NotNull String languageCode) {
+    public Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope, String languageCode) {
         return new GetMyCommands(client).scope(scope).languageCode(languageCode).send();
     }
 
@@ -230,13 +230,13 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope) {
+    public Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope) {
 
         return new DeleteMyCommands(client).scope(scope).send();
     }
 
     @Override
-    public Mono<Response<Boolean>> deleteMyCommands(@NotNull BotCommandScope scope, @NotNull String languageCode) {
+    public Mono<Response<Boolean>> deleteMyCommands(BotCommandScope scope, String languageCode) {
         return new DeleteMyCommands(client).scope(scope).languageCode(languageCode).send();
     }
 
