@@ -1,4 +1,5 @@
-Telegram Bot API based on spring reactor
+Telegram Bot API based on Spring reactor
+Java 21
 
 Currently, code/package structure is not finalized. Pretty raw implementations
 
