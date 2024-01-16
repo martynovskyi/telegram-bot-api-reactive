@@ -11,6 +11,8 @@ import com.motokyi.tg.bot_api.api.type.game.Game;
 import com.motokyi.tg.bot_api.api.type.inline.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.media.*;
 import com.motokyi.tg.bot_api.api.type.message.origin.MessageOrigin;
+import com.motokyi.tg.bot_api.api.type.message.reply.ExternalReplyInfo;
+import com.motokyi.tg.bot_api.api.type.message.reply.TextQuote;
 import com.motokyi.tg.bot_api.api.type.passport.PassportData;
 import com.motokyi.tg.bot_api.api.type.payment.Invoice;
 import com.motokyi.tg.bot_api.api.type.payment.SuccessfulPayment;
@@ -46,14 +48,14 @@ public class Message {
 
     private User from;
 
-    @JsonProperty("sender_chat")
+    @JsonProperty(ApiProperties.SENDER_CHAT)
     private Chat senderChat;
 
     private Long date;
 
     private Chat chat;
 
-    @JsonProperty("forward_origin")
+    @JsonProperty(ApiProperties.FORWARD_ORIGIN)
     private MessageOrigin forwardOrigin;
 
     @JsonProperty("is_topic_message")
@@ -65,16 +67,18 @@ public class Message {
     @JsonProperty("reply_to_message")
     private Message replyToMessage;
 
-    //todo: private ExternalReplyInfo external_reply;
-    //todo: private TextQuote quote;
+    @JsonProperty(ApiProperties.EXTERNAL_REPLY)
+    private ExternalReplyInfo externalReply;
+
+    private TextQuote quote;
 
     @JsonProperty("via_bot")
     private User viaBot;
 
-    @JsonProperty("edit_date")
+    @JsonProperty(ApiProperties.EDIT_DATE)
     private Long editDate;
 
-    @JsonProperty("has_protected_content")
+    @JsonProperty(ApiProperties.HAS_PROTECTED_CONTENT)
     private Message hasProtectedContent;
 
     @JsonProperty("media_group_id")
@@ -95,7 +99,7 @@ public class Message {
 
     private Document document;
 
-    @JsonProperty("photo")
+    @JsonProperty(ApiProperties.PHOTO)
     private List<PhotoSize> photo;
 
     private Sticker sticker;
@@ -104,7 +108,7 @@ public class Message {
 
     private Video video;
 
-    @JsonProperty("video_note")
+    @JsonProperty(ApiProperties.VIDEO_NOTE)
     private VideoNote videoNote;
 
     private Voice voice;
@@ -114,7 +118,7 @@ public class Message {
     @JsonProperty("caption_entities")
     private List<MessageEntity> captionEntities;
 
-    @JsonProperty("has_media_spoiler")
+    @JsonProperty(ApiProperties.HAS_MEDIA_SPOILER)
     private Boolean hasMediaSpoiler;
 
     private Contact contact;
@@ -162,7 +166,7 @@ public class Message {
     @JsonProperty("migrate_from_chat_id")
     private Long migrateFromChatId;
 
-    @JsonProperty("pinned_message")
+    @JsonProperty(ApiProperties.PINNED_MESSAGE)
     private Message pinnedMessage;
 
     private Invoice invoice;
@@ -223,7 +227,7 @@ public class Message {
     @JsonProperty("video_chat_participants_invited")
     private VideoChatParticipantsInvited videoChatParticipantsInvited;
 
-    @JsonProperty("web_app_data")
+    @JsonProperty(ApiProperties.WEB_APP_DATA)
     private WebAppData webAppData;
 
     @JsonProperty(ApiProperties.REPLY_MARKUP)

@@ -41,15 +41,10 @@ public final class ApiProperties {
     public static final String DISABLE_WEB_PAGE_PREVIEW = "disable_web_page_preview";
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String DROP_PENDING_UPDATES_PROP = "drop_pending_updates";
-    public static final String INLINE_MESSAGE_ID = "inline_message_id";
-    public static final String INVOICE_PAYLOAD = "invoice_payload";
-    public static final String ICON_CUSTOM_EMOJI_ID = "icon_custom_emoji_id";
-    public static final String ICON_COLOR = "icon_color";
-    public static final String IS_ANONYMOUS = "is_anonymous";
-    public static final String IS_MEMBER = "is_member";
-    public static final String IS_UNCLAIMED = "is_unclaimed";
-    public static final String INVITE_LINK = "invite_link";
+    public static final String EXTERNAL_REPLY = "external_reply";
+    public static final String EDIT_DATE = "edit_date";
     public static final String EXPIRATION_DATE = "expiration_date";
+    public static final String FORWARD_ORIGIN = "forward_origin";
     public static final String FIRST_NAME = "first_name";
     public static final String FILE_ID = "file_id";
     public static final String FILE_UNIQUE_ID = "file_unique_id";
@@ -57,6 +52,17 @@ public final class ApiProperties {
     public static final String FILE_NAME = "file_name";
     public static final String GIVEAWAY_MESSAGE_ID = "giveaway_message_id";
     public static final String HAS_SPOILER = "has_spoiler";
+    public static final String HAS_MEDIA_SPOILER = "has_media_spoiler";
+    public static final String HAS_PROTECTED_CONTENT = "has_protected_content";
+    public static final String INLINE_MESSAGE_ID = "inline_message_id";
+    public static final String INVOICE_PAYLOAD = "invoice_payload";
+    public static final String ICON_CUSTOM_EMOJI_ID = "icon_custom_emoji_id";
+    public static final String ICON_COLOR = "icon_color";
+    public static final String IS_ANONYMOUS = "is_anonymous";
+    public static final String IS_MEMBER = "is_member";
+    public static final String IS_MANUAL = "is_manual";
+    public static final String IS_UNCLAIMED = "is_unclaimed";
+    public static final String INVITE_LINK = "invite_link";
     public static final String LANGUAGE_CODE = "language_code";
     public static final String LAST_NAME = "last_name";
     public static final String MIME_TYPE = "mime_type";
@@ -66,6 +72,8 @@ public final class ApiProperties {
     public static final String NEW_REACTION = "new_reaction";
     public static final String OLD_REACTION = "old_reaction";
     public static final String PARSE_MODE = "parse_mode";
+    public static final String PHOTO = "photo";
+    public static final String PINNED_MESSAGE = "pinned_message";
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
     public static final String REMOVE_DATE = "remove_date";
@@ -79,5 +87,7 @@ public final class ApiProperties {
     public static final String TOTAL_COUNT = "total_count";
     public static final String USER_ID = "user_id";
     public static final String UNTIL_DATE = "until_date";
+    public static final String VIDEO_NOTE = "video_note";
     public static final String WEB_APP = "web_app";
+    public static final String WEB_APP_DATA = "web_app_data";
 }

@@ -66,7 +66,7 @@ public class Chat {
     @JsonProperty(ApiProperties.INVITE_LINK)
     private String inviteLink;
 
-    @JsonProperty("pinned_message")
+    @JsonProperty(ApiProperties.PINNED_MESSAGE)
     private Message pinnedMessage;
 
     private ChatPermissions permissions;
@@ -83,7 +83,7 @@ public class Chat {
     @JsonProperty("has_hidden_members")
     private Boolean hasHiddenMembers;
 
-    @JsonProperty("has_protected_content")
+    @JsonProperty(ApiProperties.HAS_PROTECTED_CONTENT)
     private Boolean hasProtectedContent;
 
     @JsonProperty("sticker_set_name")
