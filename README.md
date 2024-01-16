@@ -66,3 +66,23 @@ public class Example {
     }
 }
 ```
+### Implementation details
+
+#### Client
+
+[Interface](src/main/java/com/motokyi/tg/bot_api/client/BotApiClient.java) and [Implementation](src/main/java/com/motokyi/tg/bot_api/client/BotClient.java)
+
+This is implementation of Telegram Bot API. Here build and executes all requests to Telegram.
+
+This layer uses method DTOs from `com.motokyi.tg.bot_api.api.method.payload` package
+
+#### Bot
+
+[Interface](src/main/java/com/motokyi/tg/bot_api/bot/Bot.java) and [Implementation](src/main/java/com/motokyi/tg/bot_api/bot/TelegramBot.java)
+
+This is abstraction built on top of Client. It allows to use chained construction to setup requests to Bot Api
+
+This layer uses methods from `com.motokyi.tg.bot_api.api.method` package. These methods are DTOs enhanced with the ability to self-execution and chained setters.
+
+
+

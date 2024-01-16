@@ -16,28 +16,28 @@ class TelegramBotFactoryTest {
 
     @Test
     void getBot_withValidBot() {
-        BotFactory botFactory = new TelegramBotFactory(buildValidProperties());
+        BotFactory botFactory = new TelegramBotFactory(buildValidProperties(), null);
         Optional<Bot> bot = botFactory.getBot(TEST_BOT);
         assertTrue(bot.isPresent());
     }
 
     @Test
     void getBot_withInvalidBot() {
-        BotFactory botFactory = new TelegramBotFactory(buildInvalidProperties());
+        BotFactory botFactory = new TelegramBotFactory(buildInvalidProperties(), null);
         Optional<Bot> bot = botFactory.getBot(TEST_BOT);
         assertFalse(bot.isPresent());
     }
 
     @Test
     void getClient_withValidBot() {
-        BotFactory botFactory = new TelegramBotFactory(buildValidProperties());
+        BotFactory botFactory = new TelegramBotFactory(buildValidProperties(), null);
         Optional<BotApiClient> bot = botFactory.getClient(TEST_BOT);
         assertTrue(bot.isPresent());
     }
 
     @Test
     void getClient_withInvalidBot() {
-        BotFactory botFactory = new TelegramBotFactory(buildInvalidProperties());
+        BotFactory botFactory = new TelegramBotFactory(buildInvalidProperties(), null);
         Optional<BotApiClient> bot = botFactory.getClient(TEST_BOT);
         assertFalse(bot.isPresent());
     }
@@ -45,7 +45,7 @@ class TelegramBotFactoryTest {
     @Test
     void botNames() {
         TelegramBotProperties properties = buildValidProperties();
-        BotFactory botFactory = new TelegramBotFactory(properties);
+        BotFactory botFactory = new TelegramBotFactory(properties, null);
         var names = botFactory.botNames();
         assertEquals(properties.getBots().size(), names.size());
     }
@@ -53,7 +53,7 @@ class TelegramBotFactoryTest {
     @Test
     void bots() {
         TelegramBotProperties properties = buildValidProperties();
-        BotFactory botFactory = new TelegramBotFactory(properties);
+        BotFactory botFactory = new TelegramBotFactory(properties, null);
         var bots = botFactory.bots();
         assertEquals(properties.getBots().size(), bots.size());
     }
@@ -61,7 +61,7 @@ class TelegramBotFactoryTest {
     @Test
     void clients() {
         TelegramBotProperties properties = buildValidProperties();
-        BotFactory botFactory = new TelegramBotFactory(properties);
+        BotFactory botFactory = new TelegramBotFactory(properties, null);
         var clients = botFactory.clients();
         assertEquals(properties.getBots().size(), clients.size());
     }
