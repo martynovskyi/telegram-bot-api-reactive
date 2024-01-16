@@ -6,6 +6,7 @@ public final class ApiProperties {
 
     public static final String ACTOR_CHAT = "actor_chat";
     public static final String ADD_DATE = "add_date";
+    public static final String AUTHOR_SIGNATURE = "author_signature";
     public static final String BOOST_ID = "boost_id";
     public static final String CAN_BE_EDITED = "can_be_edited";
     public static final String CAN_MANAGE_CHAT = "can_manage_chat";
@@ -71,6 +72,9 @@ public final class ApiProperties {
     public static final String REQUEST_ID = "request_id";
     public static final String SHIPPING_ADDRESS = "shipping_address";
     public static final String SHORT_DESCRIPTION = "short_description";
+    public static final String SENDER_CHAT = "sender_chat";
+    public static final String SENDER_USER = "sender_user";
+    public static final String SENDER_USER_NAME = "sender_user_name";
     public static final String TOTAL_AMOUNT = "total_amount";
     public static final String TOTAL_COUNT = "total_count";
     public static final String USER_ID = "user_id";

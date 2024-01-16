@@ -10,6 +10,7 @@ import com.motokyi.tg.bot_api.api.type.forum.*;
 import com.motokyi.tg.bot_api.api.type.game.Game;
 import com.motokyi.tg.bot_api.api.type.inline.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.media.*;
+import com.motokyi.tg.bot_api.api.type.message.origin.MessageOrigin;
 import com.motokyi.tg.bot_api.api.type.passport.PassportData;
 import com.motokyi.tg.bot_api.api.type.payment.Invoice;
 import com.motokyi.tg.bot_api.api.type.payment.SuccessfulPayment;
@@ -32,7 +33,7 @@ import java.util.List;
  * See <a href="Message">https://core.telegram.org/bots/api#message</a>
  * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
  */
 @Data
 public class Message {
@@ -41,7 +42,7 @@ public class Message {
     private Long messageId;
 
     @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
-    private Long message_thread_id;
+    private Long messageThreadId;
 
     private User from;
 
@@ -52,23 +53,8 @@ public class Message {
 
     private Chat chat;
 
-    @JsonProperty("forward_from")
-    private User forwardFrom;
-
-    @JsonProperty("forward_from_chat")
-    private Chat forwardFromChat;
-
-    @JsonProperty("forward_from_message_id")
-    private Long forwardFromMessageId;
-
-    @JsonProperty("forward_signature")
-    private String forwardSignature;
-
-    @JsonProperty("forward_sender_name")
-    private String forwardSenderName;
-
-    @JsonProperty("forward_date")
-    private Long forwardDate;
+    @JsonProperty("forward_origin")
+    private MessageOrigin forwardOrigin;
 
     @JsonProperty("is_topic_message")
     private Boolean isTopicMessage;
@@ -78,6 +64,9 @@ public class Message {
 
     @JsonProperty("reply_to_message")
     private Message replyToMessage;
+
+    //todo: private ExternalReplyInfo external_reply;
+    //todo: private TextQuote quote;
 
     @JsonProperty("via_bot")
     private User viaBot;
@@ -91,12 +80,14 @@ public class Message {
     @JsonProperty("media_group_id")
     private String mediaGroupId;
 
-    @JsonProperty("author_signature")
+    @JsonProperty(ApiProperties.AUTHOR_SIGNATURE)
     private String authorSignature;
 
     private String text;
 
     private List<MessageEntity> entities;
+
+    //todo: private LinkPreviewOptions link_preview_options;
 
     private Animation animation;
 
@@ -214,6 +205,11 @@ public class Message {
 
     @JsonProperty("general_forum_topic_unhidden")
     private GeneralForumTopicUnhidden generalForumTopicUnhidden;
+
+    //todo: private GiveawayCreated giveaway_created;
+    //todo: private Giveaway giveaway;
+    //todo: private GiveawayWinners giveaway_winners;
+    //todo: private GiveawayCompleted giveaway_completed;
 
     @JsonProperty("video_chat_scheduled")
     private VideoChatScheduled videoChatScheduled;
