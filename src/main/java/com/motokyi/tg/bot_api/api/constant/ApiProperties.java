@@ -4,6 +4,9 @@ public final class ApiProperties {
     private ApiProperties() {
     }
 
+    public static final String ACTOR_CHAT = "actor_chat";
+    public static final String ADD_DATE = "add_date";
+    public static final String BOOST_ID = "boost_id";
     public static final String CAN_BE_EDITED = "can_be_edited";
     public static final String CAN_MANAGE_CHAT = "can_manage_chat";
     public static final String CAN_DELETE_MESSAGES = "can_delete_messages";
@@ -43,12 +46,15 @@ public final class ApiProperties {
     public static final String ICON_COLOR = "icon_color";
     public static final String IS_ANONYMOUS = "is_anonymous";
     public static final String IS_MEMBER = "is_member";
+    public static final String IS_UNCLAIMED = "is_unclaimed";
     public static final String INVITE_LINK = "invite_link";
+    public static final String EXPIRATION_DATE = "expiration_date";
     public static final String FIRST_NAME = "first_name";
     public static final String FILE_ID = "file_id";
     public static final String FILE_UNIQUE_ID = "file_unique_id";
     public static final String FILE_SIZE = "file_size";
     public static final String FILE_NAME = "file_name";
+    public static final String GIVEAWAY_MESSAGE_ID = "giveaway_message_id";
     public static final String HAS_SPOILER = "has_spoiler";
     public static final String LANGUAGE_CODE = "language_code";
     public static final String LAST_NAME = "last_name";
@@ -56,13 +62,17 @@ public final class ApiProperties {
     public static final String MESSAGE_ID = "message_id";
     public static final String MESSAGE_THREAD_ID = "message_thread_id";
     public static final String NAME = "name";
+    public static final String NEW_REACTION = "new_reaction";
+    public static final String OLD_REACTION = "old_reaction";
     public static final String PARSE_MODE = "parse_mode";
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_MARKUP = "reply_markup";
+    public static final String REMOVE_DATE = "remove_date";
     public static final String REQUEST_ID = "request_id";
     public static final String SHIPPING_ADDRESS = "shipping_address";
     public static final String SHORT_DESCRIPTION = "short_description";
     public static final String TOTAL_AMOUNT = "total_amount";
+    public static final String TOTAL_COUNT = "total_count";
     public static final String USER_ID = "user_id";
     public static final String UNTIL_DATE = "until_date";
     public static final String WEB_APP = "web_app";

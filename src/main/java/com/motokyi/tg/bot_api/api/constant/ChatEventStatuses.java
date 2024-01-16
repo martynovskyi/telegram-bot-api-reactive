@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.api.constant;
 
-public final class ChatEventStatus {
-    private ChatEventStatus() {
+public final class ChatEventStatuses {
+    private ChatEventStatuses() {
     }
 
     public static final String KICKED = "kicked";

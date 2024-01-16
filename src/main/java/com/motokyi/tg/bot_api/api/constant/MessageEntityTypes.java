@@ -1,8 +1,9 @@
 package com.motokyi.tg.bot_api.api.constant;
 
-public final class MessageEntityType {
-    private MessageEntityType() {
+public final class MessageEntityTypes {
+    private MessageEntityTypes() {
     }
+
     public static final String MENTION = "mention";
     public static final String HASHTAG = "hashtag";
     public static final String CASHTAG = "cashtag";

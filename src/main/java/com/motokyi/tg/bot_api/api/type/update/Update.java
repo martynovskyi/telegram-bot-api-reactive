@@ -1,13 +1,16 @@
 package com.motokyi.tg.bot_api.api.type.update;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.motokyi.tg.bot_api.api.constant.UpdateType;
-import com.motokyi.tg.bot_api.api.type.chat.ChatJoinRequest;
+import com.motokyi.tg.bot_api.api.constant.UpdateTypes;
+import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostRemoved;
+import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostUpdated;
 import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
 import com.motokyi.tg.bot_api.api.type.inline.ChosenInlineResult;
 import com.motokyi.tg.bot_api.api.type.inline.InlineQuery;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.message.MessageReactionCountUpdated;
+import com.motokyi.tg.bot_api.api.type.message.MessageReactionUpdated;
 import com.motokyi.tg.bot_api.api.type.payment.PreCheckoutQuery;
 import com.motokyi.tg.bot_api.api.type.payment.ShippingQuery;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
@@ -20,7 +23,7 @@ import lombok.Data;
  * See <a href="Update">https://core.telegram.org/bots/api#update</a>
  * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
  */
 
 @Data
@@ -28,45 +31,55 @@ public class Update {
     @JsonProperty("update_id")
     private Long updateId;
 
-    @JsonProperty(UpdateType.MESSAGE)
+    @JsonProperty(UpdateTypes.MESSAGE)
     private Message message;
 
-    @JsonProperty(UpdateType.EDITED_MESSAGE)
+    @JsonProperty(UpdateTypes.EDITED_MESSAGE)
     private Message editedMessage;
 
-    @JsonProperty(UpdateType.CHANNEL_POST)
+    @JsonProperty(UpdateTypes.CHANNEL_POST)
     private Message channelPost;
 
-    @JsonProperty(UpdateType.EDITED_CHANNEL_POST)
+    @JsonProperty(UpdateTypes.EDITED_CHANNEL_POST)
     private Message editedChannelPost;
 
-    @JsonProperty(UpdateType.INLINE_QUERY)
+    @JsonProperty(UpdateTypes.MESSAGE_REACTION)
+    private MessageReactionUpdated messageReaction;
+
+    @JsonProperty(UpdateTypes.MESSAGE_REACTION_COUNT)
+    private MessageReactionCountUpdated messageReactionCountUpdated;
+
+    @JsonProperty(UpdateTypes.INLINE_QUERY)
     private InlineQuery inlineQuery;
 
-    @JsonProperty(UpdateType.CHOSEN_INLINE_RESULT)
+    @JsonProperty(UpdateTypes.CHOSEN_INLINE_RESULT)
     private ChosenInlineResult chosenInlineResult;
 
-    @JsonProperty(UpdateType.CALLBACK_QUERY)
+    @JsonProperty(UpdateTypes.CALLBACK_QUERY)
     private CallbackQuery callbackQuery;
 
-    @JsonProperty(UpdateType.SHIPPING_QUERY)
+    @JsonProperty(UpdateTypes.SHIPPING_QUERY)
     private ShippingQuery shippingQuery;
 
-    @JsonProperty(UpdateType.PRE_CHECKOUT_QUERY)
+    @JsonProperty(UpdateTypes.PRE_CHECKOUT_QUERY)
     private PreCheckoutQuery preCheckoutQuery;
 
-    @JsonProperty(UpdateType.POLL)
+    @JsonProperty(UpdateTypes.POLL)
     private Poll poll;
 
-    @JsonProperty(UpdateType.POLL_ANSWER)
+    @JsonProperty(UpdateTypes.POLL_ANSWER)
     private PollAnswer pollAnswer;
 
-    @JsonProperty(UpdateType.MY_CHAT_MEMBER)
+    @JsonProperty(UpdateTypes.MY_CHAT_MEMBER)
     private ChatMemberUpdated myChatMember;
 
-    @JsonProperty(UpdateType.CHAT_MEMBER)
+    @JsonProperty(UpdateTypes.CHAT_MEMBER)
     private ChatMemberUpdated chatMember;
 
-    @JsonProperty(UpdateType.CHAT_JOIN_REQUEST)
-    private ChatJoinRequest chatJoinRequest;
+    @JsonProperty(UpdateTypes.CHAT_BOOST)
+    private ChatBoostUpdated chatBoostUpdated;
+
+    @JsonProperty(UpdateTypes.REMOVED_CHAT_BOOST)
+    private ChatBoostRemoved chatBoostRemoved;
+
 }
