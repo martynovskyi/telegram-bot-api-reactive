@@ -28,6 +28,6 @@ public class MessageEntity {
     private String language;
 
     @JsonProperty(ApiProperties.CUSTOM_EMOJI_ID)
-    private String custom_emoji_id;
+    private String customEmojiId;
 
 }
