@@ -20,14 +20,14 @@ public class SendPhoto
     @JsonIgnore
     private final BotApiClient client;
 
-    @Override
-    public Mono<Response<Message>> send() {
-        return client.send(this);
-    }
-
     public SendPhoto(String chatId, BotApiClient client) {
         super(chatId);
         this.client = client;
+    }
+
+    @Override
+    public Mono<Response<Message>> send() {
+        return client.send(this);
     }
 
     public SendPhoto photo(File photoFile) {

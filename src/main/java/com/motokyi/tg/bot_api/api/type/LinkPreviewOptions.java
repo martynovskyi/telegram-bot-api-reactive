@@ -6,8 +6,9 @@ import lombok.Data;
 
 /**
  * Describes the options used for link preview generation.
- * @see <a href="https://core.telegram.org/bots/api#linkpreviewoptions">LinkPreviewOptions<a/>
+ *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#linkpreviewoptions">LinkPreviewOptions<a/>
  */
 @Data
 public class LinkPreviewOptions {

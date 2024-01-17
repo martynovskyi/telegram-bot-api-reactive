@@ -8,6 +8,10 @@ import com.motokyi.tg.bot_api.api.type.chat.ChatShared;
 import com.motokyi.tg.bot_api.api.type.chat.ProximityAlertTriggered;
 import com.motokyi.tg.bot_api.api.type.forum.*;
 import com.motokyi.tg.bot_api.api.type.game.Game;
+import com.motokyi.tg.bot_api.api.type.giveaway.Giveaway;
+import com.motokyi.tg.bot_api.api.type.giveaway.GiveawayCompleted;
+import com.motokyi.tg.bot_api.api.type.giveaway.GiveawayCreated;
+import com.motokyi.tg.bot_api.api.type.giveaway.GiveawayWinners;
 import com.motokyi.tg.bot_api.api.type.inline.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.media.*;
 import com.motokyi.tg.bot_api.api.type.message.origin.MessageOrigin;
@@ -30,8 +34,9 @@ import java.util.List;
 
 /**
  * This object represents a message.
- * @see <a href="Message">https://core.telegram.org/bots/api#message</a>
+ *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#message">Message</a>
  */
 @Data
 public class Message {
@@ -54,13 +59,13 @@ public class Message {
     @JsonProperty(ApiProperties.FORWARD_ORIGIN)
     private MessageOrigin forwardOrigin;
 
-    @JsonProperty("is_topic_message")
+    @JsonProperty(ApiProperties.IS_TOPIC_MESSAGE)
     private Boolean isTopicMessage;
 
-    @JsonProperty("is_automatic_forward")
+    @JsonProperty(ApiProperties.IS_AUTOMATIC_FORWARD)
     private Boolean isAutomaticForward;
 
-    @JsonProperty("reply_to_message")
+    @JsonProperty(ApiProperties.REPLY_TO_MESSAGE)
     private Message replyToMessage;
 
     @JsonProperty(ApiProperties.EXTERNAL_REPLY)
@@ -68,7 +73,7 @@ public class Message {
 
     private TextQuote quote;
 
-    @JsonProperty("via_bot")
+    @JsonProperty(ApiProperties.VIA_BOT)
     private User viaBot;
 
     @JsonProperty(ApiProperties.EDIT_DATE)
@@ -77,7 +82,7 @@ public class Message {
     @JsonProperty(ApiProperties.HAS_PROTECTED_CONTENT)
     private Message hasProtectedContent;
 
-    @JsonProperty("media_group_id")
+    @JsonProperty(ApiProperties.MEDIA_GROUP_ID)
     private String mediaGroupId;
 
     @JsonProperty(ApiProperties.AUTHOR_SIGNATURE)
@@ -112,7 +117,7 @@ public class Message {
 
     private String caption;
 
-    @JsonProperty("caption_entities")
+    @JsonProperty(ApiProperties.CAPTION_ENTITIES)
     private List<MessageEntity> captionEntities;
 
     @JsonProperty(ApiProperties.HAS_MEDIA_SPOILER)
@@ -130,22 +135,22 @@ public class Message {
 
     private Location location;
 
-    @JsonProperty("new_chat_members")
+    @JsonProperty(ApiProperties.NEW_CHAT_MEMBERS)
     private List<User> newChatMembers;
 
-    @JsonProperty("left_chat_member")
+    @JsonProperty(ApiProperties.LEFT_CHAT_MEMBER)
     private User leftChatMember;
 
-    @JsonProperty("new_chat_title")
+    @JsonProperty(ApiProperties.NEW_CHAT_TITLE)
     private String newChatTitle;
 
-    @JsonProperty("new_chat_photo")
+    @JsonProperty(ApiProperties.NEW_CHAT_PHOTO)
     private List<PhotoSize> newChatPhoto;
 
-    @JsonProperty("delete_chat_photo")
+    @JsonProperty(ApiProperties.DELETE_CHAT_PHOTO)
     private Boolean deleteChatPhoto;
 
-    @JsonProperty("group_chat_created")
+    @JsonProperty(ApiProperties.GROUP_CHAT_CREATED)
     private Boolean groupChatCreated;
 
     @JsonProperty("supergroup_chat_created")
@@ -207,10 +212,16 @@ public class Message {
     @JsonProperty("general_forum_topic_unhidden")
     private GeneralForumTopicUnhidden generalForumTopicUnhidden;
 
-    //todo: private GiveawayCreated giveaway_created;
-    //todo: private Giveaway giveaway;
-    //todo: private GiveawayWinners giveaway_winners;
-    //todo: private GiveawayCompleted giveaway_completed;
+    @JsonProperty(ApiProperties.GIVEAWAY_CREATED)
+    private GiveawayCreated giveawayCreated;
+
+    private Giveaway giveaway;
+
+    @JsonProperty(ApiProperties.GIVEAWAY_WINNERS)
+    private GiveawayWinners giveawayWinners;
+
+    @JsonProperty(ApiProperties.GIVEAWAY_COMPLETED)
+    private GiveawayCompleted giveawayCompleted;
 
     @JsonProperty("video_chat_scheduled")
     private VideoChatScheduled videoChatScheduled;

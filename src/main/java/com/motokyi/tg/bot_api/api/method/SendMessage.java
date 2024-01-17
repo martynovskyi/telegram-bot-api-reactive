@@ -22,16 +22,16 @@ public class SendMessage
     @JsonIgnore
     private final BotApiClient client;
 
+    public SendMessage(String chatId, BotApiClient apiClient) {
+        super(chatId);
+        this.client = apiClient;
+    }
+
     public Mono<Response<Message>> send() {
         if (super.getText().length() > BotConstants.TEXT_LENGTH_LIMIT) {
             super.setText(super.getText().substring(0, BotConstants.TEXT_LENGTH_LIMIT));
         }
         return client.send(this);
-    }
-
-    public SendMessage(String chatId, BotApiClient apiClient) {
-        super(chatId);
-        this.client = apiClient;
     }
 
     public SendMessage messageThreadId(String messageThreadId) {

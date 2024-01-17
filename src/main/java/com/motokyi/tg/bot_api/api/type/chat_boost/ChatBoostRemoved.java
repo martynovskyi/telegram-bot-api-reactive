@@ -7,10 +7,9 @@ import lombok.Data;
 
 /**
  * This object represents a boost removed from a chat.
- * See <a href="ChatBoostRemoved">https://core.telegram.org/bots/api#chatboostremoved</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatboostremoved">ChatBoostRemoved</a>
  */
 @Data
 public class ChatBoostRemoved {

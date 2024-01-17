@@ -40,6 +40,7 @@ public interface BotFactory {
      * @return bots
      */
     Collection<Bot> bots();
+
     /**
      * Get all Clients that are configured
      *

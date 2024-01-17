@@ -1,12 +1,10 @@
 package com.motokyi.tg.bot_api.api.constant;
 
 public final class ApiProperties {
-    private ApiProperties() {
-    }
-
     public static final String ACTOR_CHAT = "actor_chat";
     public static final String ADD_DATE = "add_date";
     public static final String ADDED_TO_ATTACHMENT_MENU = "added_to_attachment_menu";
+    public static final String ADDITIONAL_CHAT_COUNT = "additional_chat_count";
     public static final String AUTHOR_SIGNATURE = "author_signature";
     public static final String BOOST_ID = "boost_id";
     public static final String BUTTON_TEXT = "button_text";
@@ -39,11 +37,13 @@ public final class ApiProperties {
     public static final String CAN_ADD_WEB_PAGE_PREVIEWS = "can_add_web_page_previews";
     public static final String CAPTION_ENTITIES = "caption_entities";
     public static final String CHAT_ID = "chat_id";
+    public static final String COUNTRY_CODES = "country_codes";
     public static final String CUSTOM_EMOJI_ID = "custom_emoji_id";
     public static final String CUSTOM_TITLE = "custom_title";
     public static final String DESCRIPTION = "description";
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String DROP_PENDING_UPDATES_PROP = "drop_pending_updates";
+    public static final String DELETE_CHAT_PHOTO = "delete_chat_photo";
     public static final String EXTERNAL_REPLY = "external_reply";
     public static final String EDIT_DATE = "edit_date";
     public static final String ENTITIES = "entities";
@@ -56,37 +56,54 @@ public final class ApiProperties {
     public static final String FILE_UNIQUE_ID = "file_unique_id";
     public static final String FILE_SIZE = "file_size";
     public static final String FILE_NAME = "file_name";
+    public static final String GIVEAWAY_CREATED = "giveaway_created";
+    public static final String GIVEAWAY_COMPLETED = "giveaway_completed";
+    public static final String GIVEAWAY_MESSAGE = "giveaway_message";
     public static final String GIVEAWAY_MESSAGE_ID = "giveaway_message_id";
+    public static final String GIVEAWAY_WINNERS = "giveaway_winners";
+    public static final String GROUP_CHAT_CREATED = "group_chat_created";
     public static final String HAS_SPOILER = "has_spoiler";
     public static final String HAS_MEDIA_SPOILER = "has_media_spoiler";
+    public static final String HAS_PUBLIC_WINNERS = "has_public_winners";
     public static final String HAS_PROTECTED_CONTENT = "has_protected_content";
     public static final String INLINE_MESSAGE_ID = "inline_message_id";
     public static final String INVOICE_PAYLOAD = "invoice_payload";
     public static final String ICON_CUSTOM_EMOJI_ID = "icon_custom_emoji_id";
     public static final String ICON_COLOR = "icon_color";
     public static final String IS_ANONYMOUS = "is_anonymous";
+    public static final String IS_AUTOMATIC_FORWARD = "is_automatic_forward";
     public static final String IS_BOT = "is_bot";
     public static final String IS_DISABLED = "is_disabled";
     public static final String IS_MEMBER = "is_member";
     public static final String IS_MANUAL = "is_manual";
     public static final String IS_UNCLAIMED = "is_unclaimed";
     public static final String IS_PREMIUM = "is_premium";
+    public static final String IS_TOPIC_MESSAGE = "is_topic_message";
     public static final String INVITE_LINK = "invite_link";
     public static final String LANGUAGE_CODE = "language_code";
     public static final String LAST_NAME = "last_name";
     public static final String LINK_PREVIEW_OPTIONS = "link_preview_options";
+    public static final String LEFT_CHAT_MEMBER = "left_chat_member";
     public static final String MIME_TYPE = "mime_type";
+    public static final String MEDIA_GROUP_ID = "media_group_id";
     public static final String MESSAGE_ID = "message_id";
     public static final String MESSAGE_THREAD_ID = "message_thread_id";
     public static final String NAME = "name";
     public static final String NEW_REACTION = "new_reaction";
+    public static final String NEW_CHAT_MEMBERS = "new_chat_members";
+    public static final String NEW_CHAT_TITLE = "new_chat_title";
+    public static final String NEW_CHAT_PHOTO = "new_chat_photo";
     public static final String OLD_REACTION = "old_reaction";
+    public static final String ONLY_NEW_MEMBERS = "only_new_members";
     public static final String PARSE_MODE = "parse_mode";
     public static final String PHOTO = "photo";
     public static final String PREFER_SMALL_MEDIA = "prefer_small_media";
     public static final String PREFER_LARGE_MEDIA = "prefer_large_media";
     public static final String PINNED_MESSAGE = "pinned_message";
     public static final String PROTECT_CONTENT = "protect_content";
+    public static final String PRIZE_DESCRIPTION = "prize_description";
+    public static final String PREMIUM_SUBSCRIPTION_MONTH_COUNT = "premium_subscription_month_count";
+    public static final String REPLY_TO_MESSAGE = "reply_to_message";
     public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_PARAMETERS = "reply_parameters";
     public static final String REPLY_MARKUP = "reply_markup";
@@ -106,8 +123,15 @@ public final class ApiProperties {
     public static final String UPDATE_ID = "update_id";
     public static final String USERNAME = "username";
     public static final String UNTIL_DATE = "until_date";
+    public static final String UNCLAIMED_PRIZE_COUNT = "unclaimed_prize_count";
+    public static final String VIA_BOT = "via_bot";
     public static final String VIDEO_NOTE = "video_note";
+    public static final String WAS_REFUNDED = "was_refunded";
     public static final String WEB_APP = "web_app";
     public static final String WEB_APP_DATA = "web_app_data";
     public static final String WEB_APP_NAME = "web_app_name";
+    public static final String WINNER_COUNT = "winner_count";
+    public static final String WINNERS_SELECTION_DATE = "winners_selection_date";
+    private ApiProperties() {
+    }
 }

@@ -5,10 +5,10 @@ import lombok.Data;
 
 /**
  * This object represents a boost added to a chat or changed.
- * See <a href="ChatBoostUpdated">https://core.telegram.org/bots/api#chatboostupdated</a>
  * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatboostupdated">ChatBoostUpdated</a>
  */
 @Data
 public class ChatBoostUpdated {

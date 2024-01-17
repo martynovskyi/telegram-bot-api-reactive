@@ -11,8 +11,9 @@ import lombok.Data;
  * <li> ChatBoostSourcePremium
  * <li> ChatBoostSourceGiftCode
  * <li> ChatBoostSourceGiveaway
- * @see <a href="https://core.telegram.org/bots/api#chatboostsource">ChatBoostSource</a>
+ *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatboostsource">ChatBoostSource</a>
  */
 @Data
 @JsonTypeInfo(

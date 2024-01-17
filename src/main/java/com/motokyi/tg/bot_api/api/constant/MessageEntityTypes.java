@@ -1,9 +1,6 @@
 package com.motokyi.tg.bot_api.api.constant;
 
 public final class MessageEntityTypes {
-    private MessageEntityTypes() {
-    }
-
     public static final String MENTION = "mention";
     public static final String HASHTAG = "hashtag";
     public static final String CASHTAG = "cashtag";
@@ -21,4 +18,6 @@ public final class MessageEntityTypes {
     public static final String TEXT_LINK = "text_link";
     public static final String TEXT_MENTION = "text_mention";
     public static final String CUSTOM_EMOJI = "custom_emoji";
+    private MessageEntityTypes() {
+    }
 }

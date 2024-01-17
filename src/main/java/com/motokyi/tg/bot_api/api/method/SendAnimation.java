@@ -33,6 +33,7 @@ public class SendAnimation
         super.messageThreadId = messageThreadId;
         return this;
     }
+
     public SendAnimation animation(File animationFile) {
         this.setAnimationFile(animationFile);
         return this;

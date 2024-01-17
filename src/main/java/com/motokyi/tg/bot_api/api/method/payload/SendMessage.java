@@ -12,8 +12,9 @@ import java.util.List;
 
 /**
  * Use this method to send text messages. On success, the sent Message is returned.
- * @see <a href="https://core.telegram.org/bots/api#sendmessage">SendMessage</a>
+ *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#sendmessage">SendMessage</a>
  */
 @Getter
 @Setter
