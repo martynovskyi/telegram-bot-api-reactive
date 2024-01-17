@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.api.type.chat_boost;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.motokyi.tg.bot_api.api.constant.ChatBoostSources;
 import lombok.Data;
 
 /**
@@ -13,8 +16,14 @@ import lombok.Data;
  * @version Bot API 7.0
  */
 @Data
-public class ChatBoostSource {
-    // todo: need to review how to handle inheritance here.
-    //  Probably current implementation does not work properly
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "source")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = ChatBoostSourcePremium.class, name = ChatBoostSources.PREMIUM),
+        @JsonSubTypes.Type(value = ChatBoostSourceGiftCode.class, name = ChatBoostSources.GIFT_CODE),
+        @JsonSubTypes.Type(value = ChatBoostSourceGiveaway.class, name = ChatBoostSources.GIVEAWAY),
+})
+public abstract class ChatBoostSource {
     private String source;
 }

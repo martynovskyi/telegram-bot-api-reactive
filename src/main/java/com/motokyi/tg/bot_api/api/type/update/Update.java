@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.api.type.update;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.UpdateTypes;
 import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostRemoved;
 import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostUpdated;
@@ -28,7 +29,7 @@ import lombok.Data;
 
 @Data
 public class Update {
-    @JsonProperty("update_id")
+    @JsonProperty(ApiProperties.UPDATE_ID)
     private Long updateId;
 
     @JsonProperty(UpdateTypes.MESSAGE)

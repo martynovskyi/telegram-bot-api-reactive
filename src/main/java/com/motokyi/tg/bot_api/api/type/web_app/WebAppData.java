@@ -2,6 +2,7 @@ package com.motokyi.tg.bot_api.api.type.web_app;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
 
 /**
@@ -9,13 +10,13 @@ import lombok.Data;
  * See <a href="WebAppData">https://core.telegram.org/bots/api#webappdata</a>
  * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
  */
 @Data
 public class WebAppData {
 
     private String data;
 
-    @JsonProperty("button_text")
+    @JsonProperty(ApiProperties.BUTTON_TEXT)
     private String buttonText;
 }

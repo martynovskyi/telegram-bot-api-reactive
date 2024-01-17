@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.api.type.web_app;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
 
 /**
@@ -10,17 +11,17 @@ import lombok.Data;
  * See <a href="WriteAccessAllowed">https://core.telegram.org/bots/api#writeaccessallowed</a>
  * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
  */
 @Data
 public class WriteAccessAllowed {
 
-    @JsonProperty("from_request")
+    @JsonProperty(ApiProperties.FROM_REQUEST)
     private Boolean fromRequest;
 
-    @JsonProperty("web_app_name")
+    @JsonProperty(ApiProperties.WEB_APP_NAME)
     private String webAppName;
 
-    @JsonProperty("from_attachment_menu")
+    @JsonProperty(ApiProperties.FROM_ATTACHMENT_MENU)
     private Boolean fromAttachmentMenu;
 }

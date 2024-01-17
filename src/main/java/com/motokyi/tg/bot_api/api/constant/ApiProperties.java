@@ -6,8 +6,10 @@ public final class ApiProperties {
 
     public static final String ACTOR_CHAT = "actor_chat";
     public static final String ADD_DATE = "add_date";
+    public static final String ADDED_TO_ATTACHMENT_MENU = "added_to_attachment_menu";
     public static final String AUTHOR_SIGNATURE = "author_signature";
     public static final String BOOST_ID = "boost_id";
+    public static final String BUTTON_TEXT = "button_text";
     public static final String CAN_BE_EDITED = "can_be_edited";
     public static final String CAN_MANAGE_CHAT = "can_manage_chat";
     public static final String CAN_DELETE_MESSAGES = "can_delete_messages";
@@ -15,8 +17,10 @@ public final class ApiProperties {
     public static final String CAN_MANAGE_TOPICS = "can_manage_topics";
     public static final String CAN_RESTRICT_MEMBERS = "can_restrict_members";
     public static final String CAN_PROMOTE_MEMBERS = "can_promote_members";
+    public static final String CAN_READ_ALL_GROUP_MESSAGES = "can_read_all_group_messages";
     public static final String CAN_CHANGE_INFO = "can_change_info";
     public static final String CAN_INVITE_USERS = "can_invite_users";
+    public static final String CAN_JOIN_GROUPS = "can_join_groups";
     public static final String CAN_POST_MESSAGES = "can_post_messages";
     public static final String CAN_EDIT_MESSAGES = "can_edit_messages";
     public static final String CAN_PIN_MESSAGES = "can_pin_messages";
@@ -45,6 +49,8 @@ public final class ApiProperties {
     public static final String EDIT_DATE = "edit_date";
     public static final String EXPIRATION_DATE = "expiration_date";
     public static final String FORWARD_ORIGIN = "forward_origin";
+    public static final String FROM_REQUEST = "from_request";
+    public static final String FROM_ATTACHMENT_MENU = "from_attachment_menu";
     public static final String FIRST_NAME = "first_name";
     public static final String FILE_ID = "file_id";
     public static final String FILE_UNIQUE_ID = "file_unique_id";
@@ -59,9 +65,11 @@ public final class ApiProperties {
     public static final String ICON_CUSTOM_EMOJI_ID = "icon_custom_emoji_id";
     public static final String ICON_COLOR = "icon_color";
     public static final String IS_ANONYMOUS = "is_anonymous";
+    public static final String IS_BOT = "is_bot";
     public static final String IS_MEMBER = "is_member";
     public static final String IS_MANUAL = "is_manual";
     public static final String IS_UNCLAIMED = "is_unclaimed";
+    public static final String IS_PREMIUM = "is_premium";
     public static final String INVITE_LINK = "invite_link";
     public static final String LANGUAGE_CODE = "language_code";
     public static final String LAST_NAME = "last_name";
@@ -83,11 +91,15 @@ public final class ApiProperties {
     public static final String SENDER_CHAT = "sender_chat";
     public static final String SENDER_USER = "sender_user";
     public static final String SENDER_USER_NAME = "sender_user_name";
+    public static final String SUPPORTS_INLINE_QUERIES = "supports_inline_queries";
     public static final String TOTAL_AMOUNT = "total_amount";
     public static final String TOTAL_COUNT = "total_count";
     public static final String USER_ID = "user_id";
+    public static final String UPDATE_ID = "update_id";
+    public static final String USERNAME = "username";
     public static final String UNTIL_DATE = "until_date";
     public static final String VIDEO_NOTE = "video_note";
     public static final String WEB_APP = "web_app";
     public static final String WEB_APP_DATA = "web_app_data";
+    public static final String WEB_APP_NAME = "web_app_name";
 }

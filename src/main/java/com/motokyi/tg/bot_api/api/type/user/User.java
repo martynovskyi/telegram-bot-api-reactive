@@ -11,14 +11,14 @@ import lombok.Data;
  * See <a href="User">https://core.telegram.org/bots/api#user</a>
  * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
  */
 @Data
 public class User {
 
     private Long id;
 
-    @JsonProperty("is_bot")
+    @JsonProperty(ApiProperties.IS_BOT)
     private Boolean isBot;
 
     @JsonProperty(ApiProperties.FIRST_NAME)
@@ -27,24 +27,24 @@ public class User {
     @JsonProperty(ApiProperties.LAST_NAME)
     private String lastName;
 
-    @JsonProperty("username")
+    @JsonProperty(ApiProperties.USERNAME)
     private String userName;
 
     @JsonProperty(ApiProperties.LANGUAGE_CODE)
     private String languageCode;
 
-    @JsonProperty("is_premium")
+    @JsonProperty(ApiProperties.IS_PREMIUM)
     private Boolean isPremium;
 
-    @JsonProperty("added_to_attachment_menu")
+    @JsonProperty(ApiProperties.ADDED_TO_ATTACHMENT_MENU)
     private Boolean addedToAttachmentMenu;
 
-    @JsonProperty("can_join_groups")
+    @JsonProperty(ApiProperties.CAN_JOIN_GROUPS)
     private Boolean canJoinGroups;
 
-    @JsonProperty("can_read_all_group_messages")
+    @JsonProperty(ApiProperties.CAN_READ_ALL_GROUP_MESSAGES)
     private Boolean canReadAllGroupMessages;
 
-    @JsonProperty("supports_inline_queries")
+    @JsonProperty(ApiProperties.SUPPORTS_INLINE_QUERIES)
     private Boolean supportsInlineQueries;
 }

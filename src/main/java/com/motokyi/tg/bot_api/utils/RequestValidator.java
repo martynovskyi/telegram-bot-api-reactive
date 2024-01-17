@@ -40,7 +40,7 @@ public final class RequestValidator {
 
     public static void setMyDescription(String description, String languageCode) {
         if (StringUtils.isAllBlank(description, languageCode)) {
-            throw new InvalidBotRequestException("Params 'description', 'language_code' are blank values");
+            throw new InvalidBotRequestException("Params 'description' are 'language_code' are blank values");
         }
         if (StringUtils.isNotBlank(description)) {
             stringLength(description, ApiProperties.DESCRIPTION, 0, 512);
@@ -50,7 +50,7 @@ public final class RequestValidator {
 
     public static void setMyShortDescription(String description, String languageCode) {
         if (StringUtils.isAllBlank(description, languageCode)) {
-            throw new InvalidBotRequestException("Params 'short_description', 'language_code' are blank values");
+            throw new InvalidBotRequestException("Params 'short_description' and 'language_code' are blank values");
         }
         if (StringUtils.isNotBlank(description)) {
             stringLength(description, ApiProperties.SHORT_DESCRIPTION, 0, 120);
