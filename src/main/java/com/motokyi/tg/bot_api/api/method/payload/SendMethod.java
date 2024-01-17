@@ -15,15 +15,19 @@ public abstract class SendMethod {
     @JsonProperty(ApiProperties.CHAT_ID)
     protected String chatId;
 
+    @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
+    protected String messageThreadId;
+
     @JsonProperty(ApiProperties.PARSE_MODE)
     protected String parseMode;
-
-    @JsonProperty(ApiProperties.DISABLE_WEB_PAGE_PREVIEW)
-    protected Boolean disableWebPagePreview;
 
     @JsonProperty(ApiProperties.DISABLE_NOTIFICATION)
     protected Boolean disableNotification;
 
+    @JsonProperty(ApiProperties.PROTECT_CONTENT)
+    protected Boolean protectContent;
+
+    // todo: replace this according to v7.0
     @JsonProperty(ApiProperties.REPLY_TO_MESSAGE_ID)
     protected Long replyToMessageId;
 

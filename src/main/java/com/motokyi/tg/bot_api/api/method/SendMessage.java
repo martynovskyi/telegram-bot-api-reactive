@@ -2,11 +2,15 @@ package com.motokyi.tg.bot_api.api.method;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.constant.BotConstants;
+import com.motokyi.tg.bot_api.api.type.LinkPreviewOptions;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
+
+import java.util.List;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendMessage SendMessage} method with the ability
@@ -30,6 +34,11 @@ public class SendMessage
         this.client = apiClient;
     }
 
+    public SendMessage messageThreadId(String messageThreadId) {
+        super.messageThreadId = messageThreadId;
+        return this;
+    }
+
     public SendMessage text(String text) {
         this.setText(text);
         return this;
@@ -40,13 +49,23 @@ public class SendMessage
         return this;
     }
 
-    public SendMessage disableWebPagePreview(Boolean disableWebPagePreview) {
-        super.disableWebPagePreview = disableWebPagePreview;
+    public SendMessage entities(List<MessageEntity> entities) {
+        super.setEntities(entities);
+        return this;
+    }
+
+    public SendMessage linkPreviewOptions(LinkPreviewOptions linkPreviewOptions) {
+        super.setLinkPreviewOptions(linkPreviewOptions);
         return this;
     }
 
     public SendMessage disableNotification(Boolean disableNotification) {
         super.disableNotification = disableNotification;
+        return this;
+    }
+
+    public SendMessage protectContent(Boolean protectContent) {
+        super.protectContent = protectContent;
         return this;
     }
 

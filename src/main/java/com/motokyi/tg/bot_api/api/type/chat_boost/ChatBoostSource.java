@@ -6,13 +6,12 @@ import com.motokyi.tg.bot_api.api.constant.ChatBoostSources;
 import lombok.Data;
 
 /**
- * This object describes the source of a chat boost. It can be one of
- * - ChatBoostSourcePremium
- * - ChatBoostSourceGiftCode
- * - ChatBoostSourceGiveaway
- * See <a href="ChatBoostSource">https://core.telegram.org/bots/api#chatboostsource</a>
- * <p>
- *
+ * This object describes the source of a chat boost.
+ * <ul> It can be one of
+ * <li> ChatBoostSourcePremium
+ * <li> ChatBoostSourceGiftCode
+ * <li> ChatBoostSourceGiveaway
+ * @see <a href="https://core.telegram.org/bots/api#chatboostsource">ChatBoostSource</a>
  * @version Bot API 7.0
  */
 @Data

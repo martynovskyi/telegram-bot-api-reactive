@@ -1,4 +1,4 @@
-package com.motokyi.tg.bot_api.api.type.message.reply;
+package com.motokyi.tg.bot_api.api.type.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
@@ -31,7 +31,8 @@ public class ExternalReplyInfo {
     @JsonProperty(ApiProperties.MESSAGE_ID)
     private Long messageId;
 
-    //todo: private LinkPreviewOptions link_preview_options;
+    @JsonProperty(ApiProperties.LINK_PREVIEW_OPTIONS)
+    private LinkPreviewOptions linkPreviewOptions;
 
     private Animation animation;
 

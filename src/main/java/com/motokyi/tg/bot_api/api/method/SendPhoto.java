@@ -45,11 +45,6 @@ public class SendPhoto
         return this;
     }
 
-    public SendPhoto disableWebPagePreview(Boolean disableWebPagePreview) {
-        super.disableWebPagePreview = disableWebPagePreview;
-        return this;
-    }
-
     public SendPhoto disableNotification(Boolean disableNotification) {
         super.disableNotification = disableNotification;
         return this;

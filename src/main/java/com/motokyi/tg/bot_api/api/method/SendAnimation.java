@@ -29,8 +29,17 @@ public class SendAnimation
         return client.send(this);
     }
 
+    public SendAnimation messageThreadId(String messageThreadId) {
+        super.messageThreadId = messageThreadId;
+        return this;
+    }
     public SendAnimation animation(File animationFile) {
         this.setAnimationFile(animationFile);
+        return this;
+    }
+
+    public SendAnimation protectContent(Boolean protectContent) {
+        super.protectContent = protectContent;
         return this;
     }
 
@@ -71,11 +80,6 @@ public class SendAnimation
 
     public SendAnimation parseMode(String parseMode) {
         super.parseMode = parseMode;
-        return this;
-    }
-
-    public SendAnimation disableWebPagePreview(Boolean disableWebPagePreview) {
-        super.disableWebPagePreview = disableWebPagePreview;
         return this;
     }
 

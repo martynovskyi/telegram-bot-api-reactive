@@ -11,8 +11,6 @@ import com.motokyi.tg.bot_api.api.type.game.Game;
 import com.motokyi.tg.bot_api.api.type.inline.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.media.*;
 import com.motokyi.tg.bot_api.api.type.message.origin.MessageOrigin;
-import com.motokyi.tg.bot_api.api.type.message.reply.ExternalReplyInfo;
-import com.motokyi.tg.bot_api.api.type.message.reply.TextQuote;
 import com.motokyi.tg.bot_api.api.type.passport.PassportData;
 import com.motokyi.tg.bot_api.api.type.payment.Invoice;
 import com.motokyi.tg.bot_api.api.type.payment.SuccessfulPayment;
@@ -32,9 +30,7 @@ import java.util.List;
 
 /**
  * This object represents a message.
- * See <a href="Message">https://core.telegram.org/bots/api#message</a>
- * <p>
- *
+ * @see <a href="Message">https://core.telegram.org/bots/api#message</a>
  * @version Bot API 7.0
  */
 @Data
@@ -91,7 +87,8 @@ public class Message {
 
     private List<MessageEntity> entities;
 
-    //todo: private LinkPreviewOptions link_preview_options;
+    @JsonProperty(ApiProperties.LINK_PREVIEW_OPTIONS)
+    private LinkPreviewOptions linkPreviewOptions;
 
     private Animation animation;
 

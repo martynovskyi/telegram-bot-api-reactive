@@ -44,11 +44,6 @@ public class SendDocument
         return this;
     }
 
-    public SendDocument disableWebPagePreview(Boolean disableWebPagePreview) {
-        super.disableWebPagePreview = disableWebPagePreview;
-        return this;
-    }
-
     public SendDocument disableNotification(Boolean disableNotification) {
         super.disableNotification = disableNotification;
         return this;

@@ -38,10 +38,11 @@ public final class ClientUtils {
         }
 
         MultipartBodyUtils.insertString(ApiProperties.CHAT_ID, send.getChatId(), builder);
+        MultipartBodyUtils.insertString(ApiProperties.MESSAGE_THREAD_ID, send.getMessageThreadId(), builder);
         MultipartBodyUtils.insertString(ApiProperties.PARSE_MODE, send.getParseMode(), builder);
         MultipartBodyUtils.insertObject(ApiProperties.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
         MultipartBodyUtils.insertObject(ApiProperties.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.DISABLE_WEB_PAGE_PREVIEW, send.getDisableWebPagePreview(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.PROTECT_CONTENT, send.getProtectContent(), builder);
         if (nonNull(send.getReplyMarkup())) {
             try {
                 MultipartBodyUtils.insertString(ApiProperties.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
@@ -52,15 +53,14 @@ public final class ClientUtils {
     }
 
     public static void insertMessageParams(SendMessage send, MultipartBodyBuilder builder) {
-
         insertMethodParams(send, builder);
-        MultipartBodyUtils.insertString(SendMessage.TEXT, send.getText(), builder);
+        MultipartBodyUtils.insertString(ApiProperties.TEXT, send.getText(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.LINK_PREVIEW_OPTIONS, send.getLinkPreviewOptions(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.ENTITIES, send.getEntities(), builder);
     }
 
     public static void insertAnimationParams(SendAnimation send, MultipartBodyBuilder builder) {
-
         insertMethodParams(send, builder);
-
         MultipartBodyUtils.insertString(SendAnimation.ANIMATION_ID, send.getAnimationId(), builder);
         MultipartBodyUtils.insertString(SendAnimation.THUMB_ID, send.getThumbId(), builder);
         MultipartBodyUtils.insertObject(SendAnimation.DURATION, send.getDuration(), builder);

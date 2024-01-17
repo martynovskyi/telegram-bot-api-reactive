@@ -1,8 +1,7 @@
-package com.motokyi.tg.bot_api.api.type.message.reply;
+package com.motokyi.tg.bot_api.api.type.message;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
-import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import lombok.Data;
 
 import java.util.List;

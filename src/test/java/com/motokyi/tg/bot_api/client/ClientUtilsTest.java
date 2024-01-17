@@ -5,18 +5,21 @@ import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.SendAnimation;
 import com.motokyi.tg.bot_api.api.method.SendMessage;
 import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
+import com.motokyi.tg.bot_api.api.type.LinkPreviewOptions;
 import com.motokyi.tg.bot_api.api.type.inline.InlineKeyboardMarkup;
+import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.util.MultiValueMap;
 
+import java.util.List;
 import java.util.UUID;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ClientUtilsTest {
@@ -25,27 +28,23 @@ class ClientUtilsTest {
     private static final String BOT_NAME = "test_bot";
     private static final String BOT_TOKEN = UUID.randomUUID().toString();
     private final static String CHAT_ID = "fake-chat-" + UUID.randomUUID();
-    private static SendMessage sendMessage;
-    private static SendAnimation sendAnimation;
 
-    @BeforeAll
-    static void init() {
-        createSendMessage();
-        createSendAnimation();
-    }
-
-    private static void createSendMessage() {
-        sendMessage = new SendMessage(CHAT_ID, null)
+    private static SendMessage buildSendMessage() {
+        return new SendMessage(CHAT_ID, null)
+                .messageThreadId(UUID.randomUUID().toString())
                 .text(UUID.randomUUID().toString())
                 .parseMode(UUID.randomUUID().toString())
-                .replyToMessageId(11011L)
+                .entities(List.of(new MessageEntity()))
+                .linkPreviewOptions(new LinkPreviewOptions())
                 .disableNotification(true)
-                .disableWebPagePreview(true)
+                .protectContent(false)
+                .replyToMessageId(11011L)
                 .replyMarkup(new InlineKeyboardMarkup());
     }
 
-    private static void createSendAnimation() {
-        sendAnimation = new SendAnimation(CHAT_ID, null)
+    private static SendAnimation buildSendAnimation() {
+        return new SendAnimation(CHAT_ID, null)
+                .messageThreadId(UUID.randomUUID().toString())
                 .animation(UUID.randomUUID().toString())
                 .thumbId(UUID.randomUUID().toString())
                 .duration(2018)
@@ -55,30 +54,34 @@ class ClientUtilsTest {
                 .parseMode(UUID.randomUUID().toString())
                 .replyToMessageId(11011L)
                 .disableNotification(true)
-                .disableWebPagePreview(true)
+                .protectContent(false)
                 .replyMarkup(new InlineKeyboardMarkup());
     }
 
-    private void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
+    private static void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
         assertAll("SendMethod",
                 () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
-                () -> assertEquals(method.getReplyToMessageId(),
-                        result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID).getBody()),
-                () -> assertEquals(method.getDisableNotification(),
-                        result.getFirst(ApiProperties.DISABLE_NOTIFICATION).getBody()),
-                () -> assertEquals(method.getDisableWebPagePreview(),
-                        result.getFirst(ApiProperties.DISABLE_WEB_PAGE_PREVIEW).getBody()),
-                () -> assertEquals(method.getParseMode(), result.getFirst(ApiProperties.PARSE_MODE).getBody()),
+                () -> assertThat(method.getMessageThreadId())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(ApiProperties.MESSAGE_THREAD_ID).getBody()),
+                () -> assertThat(method.getReplyToMessageId())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID).getBody()),
+                () -> assertThat(method.getDisableNotification())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(ApiProperties.DISABLE_NOTIFICATION).getBody()),
+                () -> assertThat(method.getParseMode())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(ApiProperties.PARSE_MODE).getBody()),
                 () -> assertNotNull(result.getFirst(ApiProperties.REPLY_MARKUP).getBody())
         );
     }
 
-    private void assertAllEmptyMethod(MultiValueMap<String, HttpEntity<?>> result) {
+    private static void assertAllEmptyMethod(MultiValueMap<String, HttpEntity<?>> result) {
         assertAll("SendMethod empty.",
                 () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
                 () -> assertNull(result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID)),
                 () -> assertNull(result.getFirst(ApiProperties.DISABLE_NOTIFICATION)),
-                () -> assertNull(result.getFirst(ApiProperties.DISABLE_WEB_PAGE_PREVIEW)),
                 () -> assertNull(result.getFirst(ApiProperties.PARSE_MODE)),
                 () -> assertNull(result.getFirst(ApiProperties.REPLY_MARKUP))
         );
@@ -87,6 +90,7 @@ class ClientUtilsTest {
     @Test
     void insertMethodParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        var sendMessage = buildSendMessage();
         ClientUtils.insertMethodParams(sendMessage, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendMessage);
@@ -103,10 +107,20 @@ class ClientUtilsTest {
     @Test
     void insertMessageParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        var sendMessage = buildSendMessage();
         ClientUtils.insertMessageParams(sendMessage, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
+
         assertAllMethod(result, sendMessage);
-        assertEquals(sendMessage.getText(), result.getFirst(SendMessage.TEXT).getBody());
+        assertThat(sendMessage.getText())
+                .isNotNull()
+                .isEqualTo(result.getFirst(ApiProperties.TEXT).getBody());
+        assertThat(sendMessage.getLinkPreviewOptions())
+                .isNotNull()
+                .isEqualTo(result.getFirst(ApiProperties.LINK_PREVIEW_OPTIONS).getBody());
+        assertThat(sendMessage.getEntities())
+                .isNotNull()
+                .isEqualTo(result.getFirst(ApiProperties.ENTITIES).getBody());
     }
 
     @Test
@@ -115,23 +129,35 @@ class ClientUtilsTest {
         ClientUtils.insertMessageParams(new SendMessage(CHAT_ID, null), builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
-        assertNull(result.getFirst(SendMessage.TEXT));
+        assertNull(result.getFirst(ApiProperties.TEXT));
     }
 
     @Test
     void insertAnimationParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
+        var sendAnimation = buildSendAnimation();
         ClientUtils.insertAnimationParams(sendAnimation, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendAnimation);
         assertAll("SendAnimation",
-                () -> assertEquals(sendAnimation.getAnimationId(),
-                        result.getFirst(SendAnimation.ANIMATION_ID).getBody()),
-                () -> assertEquals(sendAnimation.getThumbId(), result.getFirst(SendAnimation.THUMB_ID).getBody()),
-                () -> assertEquals(sendAnimation.getDuration(), result.getFirst(SendAnimation.DURATION).getBody()),
-                () -> assertEquals(sendAnimation.getWidth(), result.getFirst(SendAnimation.WIDTH).getBody()),
-                () -> assertEquals(sendAnimation.getHeight(), result.getFirst(SendAnimation.HEIGHT).getBody()),
-                () -> assertEquals(sendAnimation.getCaption(), result.getFirst(SendAnimation.CAPTION).getBody())
+                () -> assertThat(sendAnimation.getAnimationId())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(SendAnimation.ANIMATION_ID).getBody()),
+                () -> assertThat(sendAnimation.getThumbId())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(SendAnimation.THUMB_ID).getBody()),
+                () -> assertThat(sendAnimation.getDuration())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(SendAnimation.DURATION).getBody()),
+                () -> assertThat(sendAnimation.getWidth())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(SendAnimation.WIDTH).getBody()),
+                () -> assertThat(sendAnimation.getHeight())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(SendAnimation.HEIGHT).getBody()),
+                () -> assertThat(sendAnimation.getCaption())
+                        .isNotNull()
+                        .isEqualTo(result.getFirst(SendAnimation.CAPTION).getBody())
         );
     }
 
