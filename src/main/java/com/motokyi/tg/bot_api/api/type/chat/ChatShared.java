@@ -7,10 +7,9 @@ import lombok.Data;
 /**
  * This object contains information about the chat whose identifier
  * was shared with the bot using a KeyboardButtonRequestChat button.
- * See <a href="ChatShared">https://core.telegram.org/bots/api#chatshared</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatshared">ChatShared</a>
  */
 
 @Data

@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * This object represents a chat photo.
- * See <a href="ChatPhoto">https://core.telegram.org/bots/api#chatphoto</a>
- * * <p>
- * *
- * * @version Bot API 6.9
+ *
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatphoto">ChatPhoto</a>
  */
 @Data
 public class ChatPhoto {

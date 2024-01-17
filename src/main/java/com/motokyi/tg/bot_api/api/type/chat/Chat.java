@@ -3,6 +3,7 @@ package com.motokyi.tg.bot_api.api.type.chat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.reaction.ReactionType;
 import lombok.Data;
 
 import java.util.List;
@@ -10,10 +11,9 @@ import java.util.List;
 
 /**
  * This object represents a chat.
- * See <a href="Chat">https://core.telegram.org/bots/api#chat</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chat">Chat</a>
  */
 @Data
 public class Chat {
@@ -24,7 +24,7 @@ public class Chat {
 
     private String title;
 
-    @JsonProperty("username")
+    @JsonProperty(ApiProperties.USERNAME)
     private String userName;
 
     @JsonProperty(ApiProperties.FIRST_NAME)
@@ -33,13 +33,28 @@ public class Chat {
     @JsonProperty(ApiProperties.LAST_NAME)
     private String lastName;
 
-    @JsonProperty("is_forum")
+    @JsonProperty(ApiProperties.IS_FORUM)
     private Boolean isForum;
 
     private ChatPhoto photo;
 
     @JsonProperty("active_usernames")
     private List<String> activeUsernames;
+
+    @JsonProperty(ApiProperties.AVAILABLE_REACTIONS)
+    private List<ReactionType> availableReactions;
+
+    @JsonProperty(ApiProperties.ACCENT_COLOR_ID)
+    private Long accentColorId;
+
+    @JsonProperty(ApiProperties.BACKGROUND_CUSTOM_EMOJI_ID)
+    private String backgroundCustomEmojiId;
+
+    @JsonProperty(ApiProperties.PROFILE_ACCENT_COLOR_ID)
+    private Long profileAccentColorId;
+
+    @JsonProperty(ApiProperties.PROFILE_BACKGROUND_CUSTOM_EMOJI_ID)
+    private String profileBackgroundCustomEmojiId;
 
     @JsonProperty("emoji_status_custom_emoji_id")
     private String emojiStatusCustomEmojiId;
@@ -85,6 +100,9 @@ public class Chat {
 
     @JsonProperty(ApiProperties.HAS_PROTECTED_CONTENT)
     private Boolean hasProtectedContent;
+
+    @JsonProperty(ApiProperties.HAS_VISIBLE_HISTORY)
+    private Boolean hasVisibleHistory;
 
     @JsonProperty("sticker_set_name")
     private String stickerSetName;

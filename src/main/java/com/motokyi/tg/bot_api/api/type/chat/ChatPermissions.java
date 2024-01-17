@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
- * See <a href="ChatPermissions">https://core.telegram.org/bots/api#chatpermissions</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatpermissions">ChatPermissions</a>
  */
 @Data
 public class ChatPermissions {

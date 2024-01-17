@@ -2,10 +2,13 @@ package com.motokyi.tg.bot_api.api.constant;
 
 public final class ApiProperties {
     public static final String ACTOR_CHAT = "actor_chat";
+    public static final String ACCENT_COLOR_ID = "accent_color_id";
     public static final String ADD_DATE = "add_date";
     public static final String ADDED_TO_ATTACHMENT_MENU = "added_to_attachment_menu";
     public static final String ADDITIONAL_CHAT_COUNT = "additional_chat_count";
     public static final String AUTHOR_SIGNATURE = "author_signature";
+    public static final String AVAILABLE_REACTIONS = "available_reactions";
+    public static final String BACKGROUND_CUSTOM_EMOJI_ID = "background_custom_emoji_id";
     public static final String BOOST_ID = "boost_id";
     public static final String BUTTON_TEXT = "button_text";
     public static final String CAN_BE_EDITED = "can_be_edited";
@@ -66,6 +69,7 @@ public final class ApiProperties {
     public static final String HAS_MEDIA_SPOILER = "has_media_spoiler";
     public static final String HAS_PUBLIC_WINNERS = "has_public_winners";
     public static final String HAS_PROTECTED_CONTENT = "has_protected_content";
+    public static final String HAS_VISIBLE_HISTORY = "has_visible_history";
     public static final String INLINE_MESSAGE_ID = "inline_message_id";
     public static final String INVOICE_PAYLOAD = "invoice_payload";
     public static final String ICON_CUSTOM_EMOJI_ID = "icon_custom_emoji_id";
@@ -73,6 +77,7 @@ public final class ApiProperties {
     public static final String IS_ANONYMOUS = "is_anonymous";
     public static final String IS_AUTOMATIC_FORWARD = "is_automatic_forward";
     public static final String IS_BOT = "is_bot";
+    public static final String IS_FORUM = "is_forum";
     public static final String IS_DISABLED = "is_disabled";
     public static final String IS_MEMBER = "is_member";
     public static final String IS_MANUAL = "is_manual";
@@ -99,6 +104,8 @@ public final class ApiProperties {
     public static final String PHOTO = "photo";
     public static final String PREFER_SMALL_MEDIA = "prefer_small_media";
     public static final String PREFER_LARGE_MEDIA = "prefer_large_media";
+    public static final String PROFILE_ACCENT_COLOR_ID = "profile_accent_color_id";
+    public static final String PROFILE_BACKGROUND_CUSTOM_EMOJI_ID = "profile_background_custom_emoji_id";
     public static final String PINNED_MESSAGE = "pinned_message";
     public static final String PROTECT_CONTENT = "protect_content";
     public static final String PRIZE_DESCRIPTION = "prize_description";

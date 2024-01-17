@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * This object represents a point on the map.
- * See <a href="Location">https://core.telegram.org/bots/api#location</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#location">Location</a>
  */
 @Data
 public class Location {

@@ -7,11 +7,9 @@ import lombok.Data;
 
 /**
  * Represents a join request sent to a chat.
- * <p>
- * See <a href="ChatJoinRequest">https://core.telegram.org/bots/api#chatjoinrequest</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatjoinrequest">ChatJoinRequest</a>
  */
 @Data
 public class ChatJoinRequest {

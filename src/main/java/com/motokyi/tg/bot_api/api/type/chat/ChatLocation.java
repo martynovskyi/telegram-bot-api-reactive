@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * Represents a location to which a chat is connected.
- * See <a href="ChatLocation">https://core.telegram.org/bots/api#chatlocation</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatlocation">ChatLocation</a>
  */
 @Data
 public class ChatLocation {
