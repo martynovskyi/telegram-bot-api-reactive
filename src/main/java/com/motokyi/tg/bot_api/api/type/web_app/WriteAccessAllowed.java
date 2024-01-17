@@ -8,10 +8,9 @@ import lombok.Data;
  * This object represents a service message about a user allowing a bot to write messages after adding it to
  * the attachment menu, launching a Web App from a link, or accepting an explicit request
  * from a Web App sent by the method requestWriteAccess.
- * See <a href="WriteAccessAllowed">https://core.telegram.org/bots/api#writeaccessallowed</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#writeaccessallowed">WriteAccessAllowed</a>
  */
 @Data
 public class WriteAccessAllowed {

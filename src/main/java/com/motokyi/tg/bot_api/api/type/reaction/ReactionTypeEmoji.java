@@ -5,10 +5,9 @@ import lombok.EqualsAndHashCode;
 
 /**
  * The reaction is based on an emoji.
- * See <a href="ReactionTypeEmoji">https://core.telegram.org/bots/api#reactiontypeemoji</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#reactiontypeemoji">ReactionTypeEmoji</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

@@ -7,10 +7,9 @@ import java.util.List;
 
 /**
  * Describes the current status of a webhook.
- * See <a href="WebhookInfo">https://core.telegram.org/bots/api#webhookinfo</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#webhookinfo">WebhookInfo</a>
  */
 @Data
 public class WebhookInfo {
@@ -27,7 +26,7 @@ public class WebhookInfo {
     private String ipAddress;
 
     @JsonProperty("last_error_date")
-    private Integer lastErrorDate;
+    private Long lastErrorDate;
 
     @JsonProperty("last_error_message")
     private String lastErrorMessage;

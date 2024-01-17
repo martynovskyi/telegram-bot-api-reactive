@@ -10,10 +10,9 @@ import java.util.List;
 
 /**
  * This object represents a change of a reaction on a message performed by a user.
- * See <a href="MessageReactionUpdated">https://core.telegram.org/bots/api#messagereactionupdated</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#messagereactionupdated">MessageReactionUpdated</a>
  */
 @Data
 public class MessageReactionUpdated {

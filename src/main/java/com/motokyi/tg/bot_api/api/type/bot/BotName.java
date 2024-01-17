@@ -4,11 +4,9 @@ import lombok.Data;
 
 /**
  * This object represents the bot's name.
- * <p>
- * See <a href="BotName">https://core.telegram.org/bots/api#botname</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#botname">BotName</a>
  */
 @Data
 public class BotName {

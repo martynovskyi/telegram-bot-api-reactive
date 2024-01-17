@@ -21,10 +21,9 @@ import lombok.Data;
 /**
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
- * See <a href="Update">https://core.telegram.org/bots/api#update</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#update">Update</a>
  */
 
 @Data

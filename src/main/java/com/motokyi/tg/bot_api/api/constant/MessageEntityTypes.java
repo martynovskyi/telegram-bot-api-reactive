@@ -13,6 +13,7 @@ public final class MessageEntityTypes {
     public static final String UNDERLINE = "underline";
     public static final String STRIKETHROUGH = "strikethrough";
     public static final String SPOILER = "spoiler";
+    public static final String BLOCKQUOTE = "blockquote";
     public static final String CODE = "code";
     public static final String PRE = "pre";
     public static final String TEXT_LINK = "text_link";

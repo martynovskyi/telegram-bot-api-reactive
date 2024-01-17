@@ -7,16 +7,15 @@ import com.motokyi.tg.bot_api.api.constant.MessageOriginTypes;
 import lombok.Data;
 
 /**
- * This object describes the origin of a message. It can be one of
- * - MessageOriginUser
- * - MessageOriginHiddenUser
- * - MessageOriginChat
- * - MessageOriginChannel
- * <p>
- * See <a href="MessageOrigin">https://core.telegram.org/bots/api#messageorigin</a>
- * <p>
+ * This object describes the origin of a message.
+ * <ul>It can be one of
+ * <li> MessageOriginUser
+ * <li> MessageOriginHiddenUser
+ * <li> MessageOriginChat
+ * <li> MessageOriginChannel
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#messageorigin">MessageOrigin</a>
  */
 @Data
 @JsonTypeInfo(

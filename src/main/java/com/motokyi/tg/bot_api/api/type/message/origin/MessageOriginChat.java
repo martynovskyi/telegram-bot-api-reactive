@@ -8,11 +8,9 @@ import lombok.EqualsAndHashCode;
 
 /**
  * The message was originally sent on behalf of a chat to a group chat.
- * <p>
- * See <a href="MessageOriginChat">https://core.telegram.org/bots/api#messageoriginchat</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#messageoriginchat">MessageOriginChat</a>
  */
 
 @Data

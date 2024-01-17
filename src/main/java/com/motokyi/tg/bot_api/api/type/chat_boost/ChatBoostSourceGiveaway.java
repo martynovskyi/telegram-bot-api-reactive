@@ -9,10 +9,9 @@ import lombok.EqualsAndHashCode;
 /**
  * The boost was obtained by the creation of a Telegram Premium giveaway.
  * This boosts the chat 4 times for the duration of the corresponding Telegram Premium subscription.
- * See <a href="ChatBoostSourceGiveaway">https://core.telegram.org/bots/api#chatboostsourcegiveaway</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatboostsourcegiveaway">ChatBoostSourceGiveaway</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

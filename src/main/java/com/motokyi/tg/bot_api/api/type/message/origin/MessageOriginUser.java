@@ -9,11 +9,9 @@ import lombok.EqualsAndHashCode;
 
 /**
  * The message was originally sent by a known user.
- * <p>
- * See <a href="MessageOriginUser">https://core.telegram.org/bots/api#messageoriginuser</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#messageoriginuser">MessageOriginUser</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

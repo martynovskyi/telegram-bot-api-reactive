@@ -6,10 +6,9 @@ import lombok.EqualsAndHashCode;
 
 /**
  * The boost was obtained by subscribing to Telegram Premium or by gifting a Telegram Premium subscription to another user.
- * See <a href="ChatBoostSourcePremium">https://core.telegram.org/bots/api#chatboostsourcepremium</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatboostsourcepremium">ChatBoostSourcePremium</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

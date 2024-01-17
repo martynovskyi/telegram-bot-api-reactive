@@ -7,11 +7,9 @@ import lombok.Data;
 
 /**
  * This object represents a Telegram user or bot.
- * <p>
- * See <a href="User">https://core.telegram.org/bots/api#user</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#user">User</a>
  */
 @Data
 public class User {

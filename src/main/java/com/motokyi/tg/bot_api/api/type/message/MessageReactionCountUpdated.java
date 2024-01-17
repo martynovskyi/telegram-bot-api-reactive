@@ -10,10 +10,9 @@ import java.util.List;
 
 /**
  * This object represents reaction changes on a message with anonymous reactions.
- * See <a href="MessageReactionCountUpdated">https://core.telegram.org/bots/api#messagereactioncountupdated</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#messagereactioncountupdated">MessageReactionCountUpdated</a>
  */
 @Data
 public class MessageReactionCountUpdated {

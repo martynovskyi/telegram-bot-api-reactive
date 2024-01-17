@@ -4,10 +4,9 @@ import lombok.Data;
 
 /**
  * Describes a Web App.
- * See <a href="WebAppInfo">https://core.telegram.org/bots/api#webappinfo</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#webappinfo">WebAppInfo</a>
  */
 @Data
 public class WebAppInfo {

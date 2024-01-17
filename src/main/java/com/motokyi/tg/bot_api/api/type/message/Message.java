@@ -21,7 +21,7 @@ import com.motokyi.tg.bot_api.api.type.payment.SuccessfulPayment;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
 import com.motokyi.tg.bot_api.api.type.sticker.Sticker;
 import com.motokyi.tg.bot_api.api.type.user.User;
-import com.motokyi.tg.bot_api.api.type.user.UserShared;
+import com.motokyi.tg.bot_api.api.type.user.UsersShared;
 import com.motokyi.tg.bot_api.api.type.video_chat.VideoChatEnded;
 import com.motokyi.tg.bot_api.api.type.video_chat.VideoChatParticipantsInvited;
 import com.motokyi.tg.bot_api.api.type.video_chat.VideoChatScheduled;
@@ -176,8 +176,8 @@ public class Message {
     @JsonProperty("successful_payment")
     private SuccessfulPayment successfulPayment;
 
-    @JsonProperty("user_shared")
-    private UserShared userShared;
+    @JsonProperty("users_shared")
+    private UsersShared usersShared;
 
     @JsonProperty("chat_shared")
     private ChatShared chatShared;

@@ -120,6 +120,7 @@ public final class ApiProperties {
     public static final String TOTAL_AMOUNT = "total_amount";
     public static final String TOTAL_COUNT = "total_count";
     public static final String USER_ID = "user_id";
+    public static final String USER_IDS = "user_ids";
     public static final String UPDATE_ID = "update_id";
     public static final String USERNAME = "username";
     public static final String UNTIL_DATE = "until_date";

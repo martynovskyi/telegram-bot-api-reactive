@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object contains information about a chat boost.
- * See <a href="ChatBoost">https://core.telegram.org/bots/api#chatboost</a>
- * <p>
  *
  * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatboost">ChatBoost</a>
  */
 @Data
 public class ChatBoost {
