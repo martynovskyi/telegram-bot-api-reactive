@@ -51,7 +51,7 @@ public class BotApiClient_SetMyDescriptionTest extends BotClientTest {
     @Test
     void unauthorized() throws InterruptedException {
         unauthorizedTest(() -> botClient.setMyDescription(DESCRIPTION, null),
-                ApiUrls.SET_MY_DESCRIPTION +  "?description=Unit%20Bot%20Test%20Description",
+                ApiUrls.SET_MY_DESCRIPTION + "?description=Unit%20Bot%20Test%20Description",
                 HttpMethod.GET);
     }
 

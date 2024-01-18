@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetUpdatesTest extends BotClientTest {
+public class BotApiClient_GetUpdatesTest extends BotClientWireMockTest {
 
     @Test
     void unauthorized() throws InterruptedException {
@@ -16,5 +16,15 @@ public class BotApiClient_GetUpdatesTest extends BotClientTest {
     @Test
     void unauthorized_withOffset() throws InterruptedException {
         unauthorizedTest(() -> botClient.getUpdates(new GetUpdates()), ApiUrls.GET_UPDATES, HttpMethod.POST);
+    }
+
+    @Test
+    void tooManyRequests() throws InterruptedException {
+        tooManyRequestsTest(botClient::getUpdates, ApiUrls.GET_UPDATES, HttpMethod.GET);
+    }
+
+    @Test
+    void tooManyRequests_withOffset() throws InterruptedException {
+        tooManyRequestsTest(() -> botClient.getUpdates(new GetUpdates()), ApiUrls.GET_UPDATES, HttpMethod.POST);
     }
 }

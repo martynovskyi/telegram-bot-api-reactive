@@ -43,6 +43,10 @@ public class MockServerUtils {
                 .setBody("{ \"ok\": true, \"result\": " + getJsonValue(value) + " }");
     }
 
+    public static String mockJsonValue(Object value) {
+        return "{ \"ok\": true, \"result\": " + getJsonValue(value) + " }";
+    }
+
     public static MockResponse mockUnauthorized() {
         return new MockResponse()
                 .setResponseCode(401)

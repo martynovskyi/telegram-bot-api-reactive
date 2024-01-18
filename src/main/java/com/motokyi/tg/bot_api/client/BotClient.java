@@ -117,7 +117,7 @@ class BotClient implements BotApiClient {
     @Override
     public Mono<Response<Chat>> getChat(@NotNull String chatId) {
         return wc.get()
-                .uri(ApiUrls.GET_CHAT, chatId)
+                .uri(ApiUrls.GET_CHAT, uri -> uri.queryParam(ApiProperties.CHAT_ID, chatId).build())
                 .exchangeToMono(ClientUtils.responseHandler("GetChat",
                         new ParameterizedTypeReference<Response<Chat>>() {
                         }));
@@ -242,7 +242,11 @@ class BotClient implements BotApiClient {
     @Override
     public Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId) {
         return wc.get()
-                .uri(ApiUrls.DELETE_MESSAGE, chatId, messageId)
+                .uri(ApiUrls.DELETE_MESSAGE,
+                        uri -> uri.queryParam(ApiProperties.CHAT_ID, chatId)
+                                .queryParam(ApiProperties.MESSAGE_ID, messageId)
+                                .build()
+                )
                 .exchangeToMono(ClientUtils.responseHandler("DeleteMessage",
                         new ParameterizedTypeReference<Response<Boolean>>() {
                         }));

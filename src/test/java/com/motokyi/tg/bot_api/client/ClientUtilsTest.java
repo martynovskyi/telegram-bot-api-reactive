@@ -88,6 +88,14 @@ class ClientUtilsTest {
         );
     }
 
+    private static BotConfigProperty buildValid() {
+        BotConfigProperty properties = new BotConfigProperty();
+        properties.setName(BOT_NAME);
+        properties.setToken(BOT_TOKEN);
+        properties.setApiHost(API_HOST);
+        return properties;
+    }
+
     @Test
     void insertMethodParams() {
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
@@ -103,34 +111,6 @@ class ClientUtilsTest {
         ClientUtils.insertMethodParams(new SendMessage(CHAT_ID, null), builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
-    }
-
-    @Test
-    void insertMessageParams() {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        var sendMessage = buildSendMessage();
-        ClientUtils.insertMessageParams(sendMessage, builder);
-        MultiValueMap<String, HttpEntity<?>> result = builder.build();
-
-        assertAllMethod(result, sendMessage);
-        assertThat(sendMessage.getText())
-                .isNotNull()
-                .isEqualTo(result.getFirst(ApiProperties.TEXT).getBody());
-        assertThat(sendMessage.getLinkPreviewOptions())
-                .isNotNull()
-                .isEqualTo(result.getFirst(ApiProperties.LINK_PREVIEW_OPTIONS).getBody());
-        assertThat(sendMessage.getEntities())
-                .isNotNull()
-                .isEqualTo(result.getFirst(ApiProperties.ENTITIES).getBody());
-    }
-
-    @Test
-    void insertMessageParams_empty() {
-        MultipartBodyBuilder builder = new MultipartBodyBuilder();
-        ClientUtils.insertMessageParams(new SendMessage(CHAT_ID, null), builder);
-        MultiValueMap<String, HttpEntity<?>> result = builder.build();
-        assertAllEmptyMethod(result);
-        assertNull(result.getFirst(ApiProperties.TEXT));
     }
 
     @Test
@@ -207,13 +187,5 @@ class ClientUtilsTest {
 
         String hostUrl = ClientUtils.createBotUrl(properties);
         assertEquals(API_HOST + ApiUrls.BOT_PREFIX + BOT_TOKEN, hostUrl);
-    }
-
-    private static BotConfigProperty buildValid() {
-        BotConfigProperty properties = new BotConfigProperty();
-        properties.setName(BOT_NAME);
-        properties.setToken(BOT_TOKEN);
-        properties.setApiHost(API_HOST);
-        return properties;
     }
 }

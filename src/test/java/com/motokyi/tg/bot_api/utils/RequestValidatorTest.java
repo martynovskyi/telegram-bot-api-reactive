@@ -24,18 +24,34 @@ class RequestValidatorTest {
         );
     }
 
-    @ParameterizedTest
-    @MethodSource("setMyNameOrDescriptionValidArgs")
-    void setMyName(String name, String languageCode) {
-        assertDoesNotThrow(() -> RequestValidator.setMyName(name, languageCode));
-    }
-
     public static Stream<Arguments> setMyNameInvalidArgs() {
         return Stream.of(Arguments.of("", ""),
                 Arguments.of(null, null),
                 Arguments.of("Name", ""),
                 Arguments.of("n".repeat(64), "")
         );
+    }
+
+    public static Stream<Arguments> setMyDescriptionInvalidArgs() {
+        return Stream.of(Arguments.of("", ""),
+                Arguments.of(null, null),
+                Arguments.of("Description", ""),
+                Arguments.of("d".repeat(512), "")
+        );
+    }
+
+    public static Stream<Arguments> setMyShortDescriptionInvalidArgs() {
+        return Stream.of(Arguments.of("", ""),
+                Arguments.of(null, null),
+                Arguments.of("Description", ""),
+                Arguments.of("d".repeat(120), "")
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("setMyNameOrDescriptionValidArgs")
+    void setMyName(String name, String languageCode) {
+        assertDoesNotThrow(() -> RequestValidator.setMyName(name, languageCode));
     }
 
     @ParameterizedTest
@@ -50,14 +66,6 @@ class RequestValidatorTest {
         assertDoesNotThrow(() -> RequestValidator.setMyDescription(name, languageCode));
     }
 
-    public static Stream<Arguments> setMyDescriptionInvalidArgs() {
-        return Stream.of(Arguments.of("", ""),
-                Arguments.of(null, null),
-                Arguments.of("Description", ""),
-                Arguments.of("d".repeat(512), "")
-        );
-    }
-
     @ParameterizedTest
     @MethodSource("setMyDescriptionInvalidArgs")
     void setMyDescription_invalid(String description, String languageCode) {
@@ -68,14 +76,6 @@ class RequestValidatorTest {
     @MethodSource("setMyNameOrDescriptionValidArgs")
     void setMyShortDescription(String name, String languageCode) {
         assertDoesNotThrow(() -> RequestValidator.setMyShortDescription(name, languageCode));
-    }
-
-    public static Stream<Arguments> setMyShortDescriptionInvalidArgs() {
-        return Stream.of(Arguments.of("", ""),
-                Arguments.of(null, null),
-                Arguments.of("Description", ""),
-                Arguments.of("d".repeat(120), "")
-        );
     }
 
     @ParameterizedTest

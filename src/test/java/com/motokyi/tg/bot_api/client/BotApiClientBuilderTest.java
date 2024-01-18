@@ -14,6 +14,14 @@ class BotApiClientBuilderTest {
     private static final String BOT_NAME = "test_bot";
     private static final String BOT_TOKEN = UUID.randomUUID().toString();
 
+    private static BotConfigProperty buildValid() {
+        BotConfigProperty properties = new BotConfigProperty();
+        properties.setName(BOT_NAME);
+        properties.setToken(BOT_TOKEN);
+        properties.setApiHost(API_HOST);
+        return properties;
+    }
+
     @Test
     void build_withMissingBotProperties() {
         assertThrows(NullPointerException.class, () -> new BotApiClientBuilder().build());
@@ -29,13 +37,5 @@ class BotApiClientBuilderTest {
     void build_withValidBotProperties() {
         BotApiClient apiClient = new BotApiClientBuilder().withBotProperties(buildValid()).build();
         assertNotNull(apiClient);
-    }
-
-    private static BotConfigProperty buildValid() {
-        BotConfigProperty properties = new BotConfigProperty();
-        properties.setName(BOT_NAME);
-        properties.setToken(BOT_TOKEN);
-        properties.setApiHost(API_HOST);
-        return properties;
     }
 }

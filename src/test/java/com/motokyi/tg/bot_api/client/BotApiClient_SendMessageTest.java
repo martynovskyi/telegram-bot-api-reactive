@@ -6,12 +6,16 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_SendMessageTest extends BotClientTest {
+public class BotApiClient_SendMessageTest extends BotClientWireMockTest {
     private static final String CHAT_ID = "test_chat";
 
     @Test
     void unauthorized() throws InterruptedException {
-        SendMessage sendMessage = new SendMessage(CHAT_ID);
-        unauthorizedTest(() -> botClient.send(sendMessage), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
+        unauthorizedTest(() -> botClient.send(new SendMessage(CHAT_ID)), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
+    }
+
+    @Test
+    void tooManyRequests() throws InterruptedException {
+        tooManyRequestsTest(() -> botClient.send(new SendMessage(CHAT_ID)), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
     }
 }

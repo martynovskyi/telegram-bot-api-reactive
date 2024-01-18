@@ -4,18 +4,29 @@ import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.ForwardMessage;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_ForwardMessageTest extends BotClientTest {
+public class BotApiClient_ForwardMessageTest extends BotClientWireMockTest {
     private static final String CHAT_ID = "test_chat";
 
-    @Test
-    void unauthorized() throws InterruptedException {
+    @NotNull
+    private static ForwardMessage buildForwardMessage() {
         Message message = new Message();
         message.setChat(new Chat());
         ForwardMessage forwardMessage = new ForwardMessage(CHAT_ID, message);
-        unauthorizedTest(() -> botClient.forwardMessage(forwardMessage), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
+        return forwardMessage;
+    }
+
+    @Test
+    void unauthorized() throws InterruptedException {
+        unauthorizedTest(() -> botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
+    }
+
+    @Test
+    void tooManyRequests() throws InterruptedException {
+        tooManyRequestsTest(() -> botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
     }
 }

@@ -3,7 +3,11 @@ package com.motokyi.tg.bot_api.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
-import com.motokyi.tg.bot_api.api.method.payload.*;
+import com.motokyi.tg.bot_api.api.method.payload.SendAnimation;
+import com.motokyi.tg.bot_api.api.method.payload.SendDocument;
+import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
+import com.motokyi.tg.bot_api.api.method.payload.SendPhoto;
+import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.exception.RequiredDataMissedException;
@@ -15,6 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.web.reactive.function.BodyInserter;
@@ -50,13 +55,6 @@ public final class ClientUtils {
                 log.error("Converting issue", e);
             }
         }
-    }
-
-    public static void insertMessageParams(SendMessage send, MultipartBodyBuilder builder) {
-        insertMethodParams(send, builder);
-        MultipartBodyUtils.insertString(ApiProperties.TEXT, send.getText(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.LINK_PREVIEW_OPTIONS, send.getLinkPreviewOptions(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.ENTITIES, send.getEntities(), builder);
     }
 
     public static void insertAnimationParams(SendAnimation send, MultipartBodyBuilder builder) {
@@ -142,9 +140,12 @@ public final class ClientUtils {
                     log.warn("Attempt to recover after {}", clientResponse.statusCode());
                     return Mono.empty();
                 }
-                if (429 == clientResponse.statusCode().value()) {
+                if (HttpStatus.TOO_MANY_REQUESTS == clientResponse.statusCode()) {
                     log.warn("Recover after {}", clientResponse.statusCode());
-                    return Mono.error(new TooManyRequestsException());
+                    return clientResponse.
+                            bodyToMono(new ParameterizedTypeReference<Response<Void>>() {
+                            })
+                            .flatMap(r -> Mono.error(new TooManyRequestsException(r)));
                 }
             }
             return clientResponse.bodyToMono(typeRef);
@@ -157,7 +158,7 @@ public final class ClientUtils {
         }
 
         return (StringUtils.isNotBlank(properties.getApiHost()) ? properties.getApiHost() : ApiUrls.API_HOST)
-                + ApiUrls.BOT_PREFIX
-                + properties.getToken();
+               + ApiUrls.BOT_PREFIX
+               + properties.getToken();
     }
 }

@@ -8,7 +8,7 @@ public final class ApiUrls {
     public static final String SET_MY_DESCRIPTION = "/setMyDescription";
     public static final String GET_MY_SHORT_DESCRIPTION = "/getMyShortDescription";
     public static final String SET_MY_SHORT_DESCRIPTION = "/setMyShortDescription";
-    public static final String GET_CHAT = "/getChat?chat_id={chat_id}";
+    public static final String GET_CHAT = "/getChat";
     public static final String GET_UPDATES = "/getUpdates";
     public static final String FORWARD_MESSAGE = "/forwardMessage";
     public static final String SEND_MESSAGE = "/sendMessage";
@@ -23,7 +23,7 @@ public final class ApiUrls {
     public static final String SET_MY_COMMANDS = "/setMyCommands";
     public static final String DELETE_MY_COMMANDS = "/deleteMyCommands";
     public static final String GET_MY_COMMANDS = "/getMyCommands";
-    public static final String DELETE_MESSAGE = "/deleteMessage?chat_id={chat_id}&message_id={message_id}";
+    public static final String DELETE_MESSAGE = "/deleteMessage";
     public static final String API_HOST = "https://api.telegram.org";
     public static final String BOT_PREFIX = "/bot";
     public static final String SET_WEBHOOK = "/setWebhook";

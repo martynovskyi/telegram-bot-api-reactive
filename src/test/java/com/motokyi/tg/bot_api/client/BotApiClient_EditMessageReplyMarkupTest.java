@@ -6,12 +6,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_EditMessageReplyMarkupTest extends BotClientTest {
+public class BotApiClient_EditMessageReplyMarkupTest extends BotClientWireMockTest {
     private static final String CHAT_ID = "test_chat";
 
     @Test
     void unauthorized() throws InterruptedException {
         unauthorizedTest(() -> {
+            EditMessageReplyMarkup replyMarkup = new EditMessageReplyMarkup(CHAT_ID, "msg123");
+            return botClient.editMessageReplyMarkup(replyMarkup);
+        }, ApiUrls.EDIT_MESSAGE_REPLY_MARKUP, HttpMethod.POST);
+    }
+
+    @Test
+    void tooManyRequests() throws InterruptedException {
+        tooManyRequestsTest(() -> {
             EditMessageReplyMarkup replyMarkup = new EditMessageReplyMarkup(CHAT_ID, "msg123");
             return botClient.editMessageReplyMarkup(replyMarkup);
         }, ApiUrls.EDIT_MESSAGE_REPLY_MARKUP, HttpMethod.POST);

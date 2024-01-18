@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * Contains information about why a request was unsuccessful.
- * See <a href="ResponseParameters">https://core.telegram.org/bots/api#responseparameters</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#responseparameters">ResponseParameters</a>
  */
 @Data
 public class ResponseParameters {

@@ -16,6 +16,21 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 @ExtendWith(MockitoExtension.class)
 class TelegramBotTest extends TelegramBotTestSetup {
 
+    @NotNull
+    private static Message buildMessage() {
+        Message message = new Message();
+        message.setMessageId(MESSAGE_ID);
+        message.setChat(buildChat());
+        return message;
+    }
+
+    @NotNull
+    private static Chat buildChat() {
+        Chat chat = new Chat();
+        chat.setId(CHAT_ID);
+        return chat;
+    }
+
     @Test
     void getAllUpdates() {
         bot.getAllUpdates();
@@ -221,20 +236,5 @@ class TelegramBotTest extends TelegramBotTestSetup {
         bot.getWebhookInfo();
         verify(webClient).getWebhookInfo();
         verifyNoMoreInteractions(webClient);
-    }
-
-    @NotNull
-    private static Message buildMessage() {
-        Message message = new Message();
-        message.setMessageId(MESSAGE_ID);
-        message.setChat(buildChat());
-        return message;
-    }
-
-    @NotNull
-    private static Chat buildChat() {
-        Chat chat = new Chat();
-        chat.setId(CHAT_ID);
-        return chat;
     }
 }
