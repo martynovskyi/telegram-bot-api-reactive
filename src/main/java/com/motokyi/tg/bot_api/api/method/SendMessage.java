@@ -7,6 +7,7 @@ import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
+import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
@@ -69,8 +70,8 @@ public class SendMessage
         return this;
     }
 
-    public SendMessage replyToMessageId(Long replyToMessageId) {
-        super.replyToMessageId = replyToMessageId;
+    public SendMessage replyParameters(ReplyParameters replyParameters) {
+        super.replyParameters = replyParameters;
         return this;
     }
 

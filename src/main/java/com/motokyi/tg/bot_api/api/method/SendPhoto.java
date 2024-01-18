@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
@@ -50,8 +51,8 @@ public class SendPhoto
         return this;
     }
 
-    public SendPhoto replyToMessageId(Long replyToMessageId) {
-        super.replyToMessageId = replyToMessageId;
+    public SendPhoto replyParameters(ReplyParameters replyParameters) {
+        super.replyParameters = replyParameters;
         return this;
     }
 

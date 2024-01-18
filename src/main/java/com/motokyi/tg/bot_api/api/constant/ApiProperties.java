@@ -6,11 +6,14 @@ public final class ApiProperties {
     public static final String ADD_DATE = "add_date";
     public static final String ADDED_TO_ATTACHMENT_MENU = "added_to_attachment_menu";
     public static final String ADDITIONAL_CHAT_COUNT = "additional_chat_count";
+    public static final String ALLOW_SENDING_WITHOUT_REPLY = "allow_sending_without_reply";
+    public static final String ANIMATION = "animation";
     public static final String AUTHOR_SIGNATURE = "author_signature";
     public static final String AVAILABLE_REACTIONS = "available_reactions";
     public static final String BACKGROUND_CUSTOM_EMOJI_ID = "background_custom_emoji_id";
     public static final String BOOST_ID = "boost_id";
     public static final String BUTTON_TEXT = "button_text";
+    public static final String CAPTION = "caption";
     public static final String CAN_BE_EDITED = "can_be_edited";
     public static final String CAN_MANAGE_CHAT = "can_manage_chat";
     public static final String CAN_DELETE_MESSAGES = "can_delete_messages";
@@ -47,6 +50,7 @@ public final class ApiProperties {
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String DROP_PENDING_UPDATES_PROP = "drop_pending_updates";
     public static final String DELETE_CHAT_PHOTO = "delete_chat_photo";
+    public static final String DURATION = "duration";
     public static final String EXTERNAL_REPLY = "external_reply";
     public static final String EDIT_DATE = "edit_date";
     public static final String ENTITIES = "entities";
@@ -70,6 +74,7 @@ public final class ApiProperties {
     public static final String HAS_PUBLIC_WINNERS = "has_public_winners";
     public static final String HAS_PROTECTED_CONTENT = "has_protected_content";
     public static final String HAS_VISIBLE_HISTORY = "has_visible_history";
+    public static final String HEIGHT = "height";
     public static final String INLINE_MESSAGE_ID = "inline_message_id";
     public static final String INVOICE_PAYLOAD = "invoice_payload";
     public static final String ICON_CUSTOM_EMOJI_ID = "icon_custom_emoji_id";
@@ -110,8 +115,10 @@ public final class ApiProperties {
     public static final String PROTECT_CONTENT = "protect_content";
     public static final String PRIZE_DESCRIPTION = "prize_description";
     public static final String PREMIUM_SUBSCRIPTION_MONTH_COUNT = "premium_subscription_month_count";
+    public static final String QUOTE_ENTITIES = "quote_entities";
+    public static final String QUOTE_PARSE_MODE = "quote_parse_mode";
+    public static final String QUOTE_POSITION = "quote_position";
     public static final String REPLY_TO_MESSAGE = "reply_to_message";
-    public static final String REPLY_TO_MESSAGE_ID = "reply_to_message_id";
     public static final String REPLY_PARAMETERS = "reply_parameters";
     public static final String REPLY_MARKUP = "reply_markup";
     public static final String REMOVE_DATE = "remove_date";
@@ -126,6 +133,7 @@ public final class ApiProperties {
     public static final String TEXT = "text";
     public static final String TOTAL_AMOUNT = "total_amount";
     public static final String TOTAL_COUNT = "total_count";
+    public static final String THUMBNAIL = "thumbnail";
     public static final String USER_ID = "user_id";
     public static final String USER_IDS = "user_ids";
     public static final String UPDATE_ID = "update_id";
@@ -138,8 +146,10 @@ public final class ApiProperties {
     public static final String WEB_APP = "web_app";
     public static final String WEB_APP_DATA = "web_app_data";
     public static final String WEB_APP_NAME = "web_app_name";
+    public static final String WIDTH = "width";
     public static final String WINNER_COUNT = "winner_count";
     public static final String WINNERS_SELECTION_DATE = "winners_selection_date";
+
     private ApiProperties() {
     }
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
@@ -45,7 +46,7 @@ public class SendAnimation
     }
 
     public SendAnimation animation(String animationId) {
-        this.setAnimationId(animationId);
+        this.setAnimation(animationId);
         return this;
     }
 
@@ -64,13 +65,13 @@ public class SendAnimation
         return this;
     }
 
-    public SendAnimation thumb(File thumb) {
-        this.setThumb(thumb);
+    public SendAnimation thumbnailFile(File thumbnailFile) {
+        this.setThumbnailFile(thumbnailFile);
         return this;
     }
 
-    public SendAnimation thumbId(String thumbId) {
-        this.setThumbId(thumbId);
+    public SendAnimation thumbId(String thumbnail) {
+        this.setThumbnail(thumbnail);
         return this;
     }
 
@@ -89,8 +90,8 @@ public class SendAnimation
         return this;
     }
 
-    public SendAnimation replyToMessageId(Long replyToMessageId) {
-        super.replyToMessageId = replyToMessageId;
+    public SendAnimation replyParameters(ReplyParameters replyParameters) {
+        super.replyParameters = replyParameters;
         return this;
     }
 

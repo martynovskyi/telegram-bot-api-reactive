@@ -12,7 +12,7 @@ public class BotApiClient_SendAnimationTest extends BotClientTest {
     @Test
     void unauthorized() throws InterruptedException {
         SendAnimation sendAnimation = new SendAnimation(CHAT_ID);
-        sendAnimation.setAnimationId("id123");
+        sendAnimation.setAnimation("id123");
         unauthorizedTest(() -> botClient.send(sendAnimation), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
     }
 }

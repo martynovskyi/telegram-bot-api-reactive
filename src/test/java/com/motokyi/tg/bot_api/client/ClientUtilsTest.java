@@ -8,6 +8,7 @@ import com.motokyi.tg.bot_api.api.method.payload.SendMethod;
 import com.motokyi.tg.bot_api.api.type.LinkPreviewOptions;
 import com.motokyi.tg.bot_api.api.type.inline.InlineKeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
+import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
@@ -38,7 +39,7 @@ class ClientUtilsTest {
                 .linkPreviewOptions(new LinkPreviewOptions())
                 .disableNotification(true)
                 .protectContent(false)
-                .replyToMessageId(11011L)
+                .replyParameters(new ReplyParameters())
                 .replyMarkup(new InlineKeyboardMarkup());
     }
 
@@ -52,7 +53,7 @@ class ClientUtilsTest {
                 .height(800)
                 .caption(UUID.randomUUID().toString())
                 .parseMode(UUID.randomUUID().toString())
-                .replyToMessageId(11011L)
+                .replyParameters(new ReplyParameters())
                 .disableNotification(true)
                 .protectContent(false)
                 .replyMarkup(new InlineKeyboardMarkup());
@@ -64,9 +65,9 @@ class ClientUtilsTest {
                 () -> assertThat(method.getMessageThreadId())
                         .isNotNull()
                         .isEqualTo(result.getFirst(ApiProperties.MESSAGE_THREAD_ID).getBody()),
-                () -> assertThat(method.getReplyToMessageId())
+                () -> assertThat(method.getReplyParameters())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID).getBody()),
+                        .isEqualTo(result.getFirst(ApiProperties.REPLY_PARAMETERS).getBody()),
                 () -> assertThat(method.getDisableNotification())
                         .isNotNull()
                         .isEqualTo(result.getFirst(ApiProperties.DISABLE_NOTIFICATION).getBody()),
@@ -80,7 +81,7 @@ class ClientUtilsTest {
     private static void assertAllEmptyMethod(MultiValueMap<String, HttpEntity<?>> result) {
         assertAll("SendMethod empty.",
                 () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
-                () -> assertNull(result.getFirst(ApiProperties.REPLY_TO_MESSAGE_ID)),
+                () -> assertNull(result.getFirst(ApiProperties.REPLY_PARAMETERS)),
                 () -> assertNull(result.getFirst(ApiProperties.DISABLE_NOTIFICATION)),
                 () -> assertNull(result.getFirst(ApiProperties.PARSE_MODE)),
                 () -> assertNull(result.getFirst(ApiProperties.REPLY_MARKUP))
@@ -140,24 +141,24 @@ class ClientUtilsTest {
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendAnimation);
         assertAll("SendAnimation",
-                () -> assertThat(sendAnimation.getAnimationId())
+                () -> assertThat(sendAnimation.getAnimation())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(SendAnimation.ANIMATION_ID).getBody()),
-                () -> assertThat(sendAnimation.getThumbId())
+                        .isEqualTo(result.getFirst(ApiProperties.ANIMATION).getBody()),
+                () -> assertThat(sendAnimation.getThumbnail())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(SendAnimation.THUMB_ID).getBody()),
+                        .isEqualTo(result.getFirst(ApiProperties.THUMBNAIL).getBody()),
                 () -> assertThat(sendAnimation.getDuration())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(SendAnimation.DURATION).getBody()),
+                        .isEqualTo(result.getFirst(ApiProperties.DURATION).getBody()),
                 () -> assertThat(sendAnimation.getWidth())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(SendAnimation.WIDTH).getBody()),
+                        .isEqualTo(result.getFirst(ApiProperties.WIDTH).getBody()),
                 () -> assertThat(sendAnimation.getHeight())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(SendAnimation.HEIGHT).getBody()),
+                        .isEqualTo(result.getFirst(ApiProperties.HEIGHT).getBody()),
                 () -> assertThat(sendAnimation.getCaption())
                         .isNotNull()
-                        .isEqualTo(result.getFirst(SendAnimation.CAPTION).getBody())
+                        .isEqualTo(result.getFirst(ApiProperties.CAPTION).getBody())
         );
     }
 
@@ -168,12 +169,12 @@ class ClientUtilsTest {
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
         assertAll("SendAnimation empty",
-                () -> assertNull(result.getFirst(SendAnimation.ANIMATION_ID)),
-                () -> assertNull(result.getFirst(SendAnimation.THUMB_ID)),
-                () -> assertNull(result.getFirst(SendAnimation.DURATION)),
-                () -> assertNull(result.getFirst(SendAnimation.WIDTH)),
-                () -> assertNull(result.getFirst(SendAnimation.HEIGHT)),
-                () -> assertNull(result.getFirst(SendAnimation.CAPTION))
+                () -> assertNull(result.getFirst(ApiProperties.ANIMATION)),
+                () -> assertNull(result.getFirst(ApiProperties.THUMBNAIL)),
+                () -> assertNull(result.getFirst(ApiProperties.DURATION)),
+                () -> assertNull(result.getFirst(ApiProperties.WIDTH)),
+                () -> assertNull(result.getFirst(ApiProperties.HEIGHT)),
+                () -> assertNull(result.getFirst(ApiProperties.CAPTION))
         );
     }
 

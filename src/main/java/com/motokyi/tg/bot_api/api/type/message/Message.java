@@ -19,6 +19,7 @@ import com.motokyi.tg.bot_api.api.type.passport.PassportData;
 import com.motokyi.tg.bot_api.api.type.payment.Invoice;
 import com.motokyi.tg.bot_api.api.type.payment.SuccessfulPayment;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
+import com.motokyi.tg.bot_api.api.type.reply.TextQuote;
 import com.motokyi.tg.bot_api.api.type.sticker.Sticker;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import com.motokyi.tg.bot_api.api.type.user.UsersShared;

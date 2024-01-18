@@ -40,9 +40,9 @@ public final class ClientUtils {
         MultipartBodyUtils.insertString(ApiProperties.CHAT_ID, send.getChatId(), builder);
         MultipartBodyUtils.insertString(ApiProperties.MESSAGE_THREAD_ID, send.getMessageThreadId(), builder);
         MultipartBodyUtils.insertString(ApiProperties.PARSE_MODE, send.getParseMode(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.REPLY_TO_MESSAGE_ID, send.getReplyToMessageId(), builder);
         MultipartBodyUtils.insertObject(ApiProperties.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
         MultipartBodyUtils.insertObject(ApiProperties.PROTECT_CONTENT, send.getProtectContent(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.REPLY_PARAMETERS, send.getReplyParameters(), builder);
         if (nonNull(send.getReplyMarkup())) {
             try {
                 MultipartBodyUtils.insertString(ApiProperties.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
@@ -61,12 +61,12 @@ public final class ClientUtils {
 
     public static void insertAnimationParams(SendAnimation send, MultipartBodyBuilder builder) {
         insertMethodParams(send, builder);
-        MultipartBodyUtils.insertString(SendAnimation.ANIMATION_ID, send.getAnimationId(), builder);
-        MultipartBodyUtils.insertString(SendAnimation.THUMB_ID, send.getThumbId(), builder);
-        MultipartBodyUtils.insertObject(SendAnimation.DURATION, send.getDuration(), builder);
-        MultipartBodyUtils.insertObject(SendAnimation.WIDTH, send.getWidth(), builder);
-        MultipartBodyUtils.insertObject(SendAnimation.HEIGHT, send.getHeight(), builder);
-        MultipartBodyUtils.insertObject(SendAnimation.CAPTION, send.getCaption(), builder);
+        MultipartBodyUtils.insertString(ApiProperties.ANIMATION, send.getAnimation(), builder);
+        MultipartBodyUtils.insertString(ApiProperties.THUMBNAIL, send.getThumbnail(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.DURATION, send.getDuration(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.WIDTH, send.getWidth(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.HEIGHT, send.getHeight(), builder);
+        MultipartBodyUtils.insertObject(ApiProperties.CAPTION, send.getCaption(), builder);
     }
 
     public static ExchangeFilterFunction logRequest(Logger logger) {
@@ -118,12 +118,12 @@ public final class ClientUtils {
     }
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendAnimation animation) {
-        if (StringUtils.isNotBlank(animation.getAnimationId())) {
+        if (StringUtils.isNotBlank(animation.getAnimation())) {
             return BodyInserters.fromValue(animation);
         }
         MultipartBodyBuilder builder = new MultipartBodyBuilder();
         insertAnimationParams(animation, builder);
-        builder.part(SendAnimation.ANIMATION_ID, new FileSystemResource(animation.getAnimationFile()));
+        builder.part(ApiProperties.ANIMATION, new FileSystemResource(animation.getAnimationFile()));
         return BodyInserters.fromMultipartData(builder.build());
     }
 
