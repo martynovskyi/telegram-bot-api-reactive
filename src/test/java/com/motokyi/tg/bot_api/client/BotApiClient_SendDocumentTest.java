@@ -18,12 +18,12 @@ public class BotApiClient_SendDocumentTest extends BotClientWireMockTest {
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.send(buildSendDocument()), ApiUrls.SEND_DOCUMENT, HttpMethod.POST);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> botClient.send(buildSendDocument()), ApiUrls.SEND_DOCUMENT, HttpMethod.POST);
     }
 }

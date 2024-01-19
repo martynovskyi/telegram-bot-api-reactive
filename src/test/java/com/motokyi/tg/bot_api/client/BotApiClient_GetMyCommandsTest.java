@@ -8,12 +8,12 @@ import org.springframework.http.HttpMethod;
 @SuppressWarnings("ClassNamingConvention")
 public class BotApiClient_GetMyCommandsTest extends BotClientWireMockTest {
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.send(new GetMyCommands()), ApiUrls.GET_MY_COMMANDS, HttpMethod.POST);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> botClient.send(new GetMyCommands()), ApiUrls.GET_MY_COMMANDS, HttpMethod.POST);
     }
 }

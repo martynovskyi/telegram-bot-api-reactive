@@ -18,12 +18,12 @@ public class BotApiClient_SendPhotoTest extends BotClientWireMockTest {
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.send(buildSendPhoto()), ApiUrls.SEND_PHOTO, HttpMethod.POST);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> botClient.send(buildSendPhoto()), ApiUrls.SEND_PHOTO, HttpMethod.POST);
     }
 }

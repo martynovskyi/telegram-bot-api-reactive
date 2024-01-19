@@ -9,22 +9,22 @@ import org.springframework.http.HttpMethod;
 public class BotApiClient_GetUpdatesTest extends BotClientWireMockTest {
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(botClient::getUpdates, ApiUrls.GET_UPDATES, HttpMethod.GET);
     }
 
     @Test
-    void unauthorized_withOffset() throws InterruptedException {
+    void unauthorized_withOffset() {
         unauthorizedTest(() -> botClient.getUpdates(new GetUpdates()), ApiUrls.GET_UPDATES, HttpMethod.POST);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(botClient::getUpdates, ApiUrls.GET_UPDATES, HttpMethod.GET);
     }
 
     @Test
-    void tooManyRequests_withOffset() throws InterruptedException {
+    void tooManyRequests_withOffset() {
         tooManyRequestsTest(() -> botClient.getUpdates(new GetUpdates()), ApiUrls.GET_UPDATES, HttpMethod.POST);
     }
 }

@@ -21,12 +21,12 @@ public class BotApiClient_ForwardMessageTest extends BotClientWireMockTest {
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
     }
 }

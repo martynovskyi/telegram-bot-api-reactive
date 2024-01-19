@@ -1,71 +1,79 @@
 package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.MockServerUtils;
+import com.motokyi.tg.bot_api.PropertyValues;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
-import com.motokyi.tg.bot_api.api.type.Response;
-import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
-import okhttp3.mockwebserver.MockResponse;
-import okhttp3.mockwebserver.RecordedRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.HttpMethod;
 
-import java.util.Map;
-
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetMyDescriptionTest extends BotClientTest {
+public class BotApiClient_GetMyDescriptionTest extends BotClientWireMockTest {
 
-    private static final String BOT_DESCRIPTION = "Bot Description";
-    private static final MockResponse SUCCESS_RESPONSE = MockServerUtils.mock200(
-            Map.of("description", BOT_DESCRIPTION));
+    private static final String LANGUAGE_CODE_VALUE = "uk";
 
     @ParameterizedTest
     @NullSource
     @ValueSource(strings = {"", " ", "\n", "\t"})
-    void successful(String languageCode) throws InterruptedException {
-        mockServer.enqueue(SUCCESS_RESPONSE);
+    void successful(String languageCode) {
+        stubFor(get(urlEqualTo(ApiUrls.GET_MY_DESCRIPTION))
+                .willReturn(MockServerUtils.fromJsonFile("body/bot-description.json")));
 
-        Response<BotDescription> userResponse = botClient.getMyDescription(languageCode).block();
-        RecordedRequest request = mockServer.takeRequest();
+        var response = botClient.getMyDescription(languageCode).block();
+
         assertAll(
-                () -> assertTrue(userResponse.isOk()),
-                () -> assertNotNull(userResponse.getResult()),
-                () -> assertEquals(BOT_DESCRIPTION, userResponse.getResult().getDescription()),
-                () -> assertEquals("GET", request.getMethod()),
-                () -> assertEquals(ApiUrls.GET_MY_DESCRIPTION, request.getPath())
+                () -> assertTrue(response.isOk()),
+                () -> assertNotNull(response.getResult()),
+                () -> assertEquals(PropertyValues.BOT_DESCRIPTION, response.getResult().getDescription())
         );
     }
 
     @Test
-    void successful_withLanguageCode() throws InterruptedException {
-        mockServer.enqueue(SUCCESS_RESPONSE);
+    void successful_withLanguageCode() {
+        stubFor(get(urlPathEqualTo(ApiUrls.GET_MY_DESCRIPTION))
+                .withQueryParam(ApiProperties.LANGUAGE_CODE, equalTo(LANGUAGE_CODE_VALUE))
+                .willReturn(MockServerUtils.fromJsonFile("body/bot-description.json")));
 
-        Response<BotDescription> userResponse = botClient.getMyDescription("uk").block();
-        RecordedRequest request = mockServer.takeRequest();
+        var response = botClient.getMyDescription(LANGUAGE_CODE_VALUE).block();
+
         assertAll(
-                () -> assertTrue(userResponse.isOk()),
-                () -> assertNotNull(userResponse.getResult()),
-                () -> assertEquals(BOT_DESCRIPTION, userResponse.getResult().getDescription()),
-                () -> assertEquals("GET", request.getMethod()),
-                () -> assertEquals(ApiUrls.GET_MY_DESCRIPTION + "?language_code=uk", request.getPath())
+                () -> assertTrue(response.isOk()),
+                () -> assertNotNull(response.getResult()),
+                () -> assertEquals(PropertyValues.BOT_DESCRIPTION, response.getResult().getDescription())
         );
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.getMyDescription(null),
                 ApiUrls.GET_MY_DESCRIPTION,
                 HttpMethod.GET);
     }
 
     @Test
-    void unauthorized_withLanguageCode() throws InterruptedException {
-        unauthorizedTest(() -> botClient.getMyDescription("uk"),
-                ApiUrls.GET_MY_DESCRIPTION + "?language_code=uk",
+    void unauthorized_withLanguageCode() {
+        unauthorizedTest(() -> botClient.getMyDescription(LANGUAGE_CODE_VALUE),
+                ApiUrls.GET_MY_DESCRIPTION,
+                HttpMethod.GET);
+    }
+
+    @Test
+    void tooManyRequests() {
+        tooManyRequestsTest(() -> botClient.getMyDescription(null),
+                ApiUrls.GET_MY_DESCRIPTION,
+                HttpMethod.GET);
+    }
+
+    @Test
+    void tooManyRequests_withLanguageCode() {
+        unauthorizedTest(() -> botClient.getMyDescription(LANGUAGE_CODE_VALUE),
+                ApiUrls.GET_MY_DESCRIPTION,
                 HttpMethod.GET);
     }
 }

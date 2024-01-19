@@ -10,7 +10,7 @@ public class BotApiClient_EditMessageReplyMarkupTest extends BotClientWireMockTe
     private static final String CHAT_ID = "test_chat";
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> {
             EditMessageReplyMarkup replyMarkup = new EditMessageReplyMarkup(CHAT_ID, "msg123");
             return botClient.editMessageReplyMarkup(replyMarkup);
@@ -18,7 +18,7 @@ public class BotApiClient_EditMessageReplyMarkupTest extends BotClientWireMockTe
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> {
             EditMessageReplyMarkup replyMarkup = new EditMessageReplyMarkup(CHAT_ID, "msg123");
             return botClient.editMessageReplyMarkup(replyMarkup);

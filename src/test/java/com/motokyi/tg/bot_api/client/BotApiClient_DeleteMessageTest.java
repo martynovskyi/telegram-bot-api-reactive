@@ -15,11 +15,11 @@ public class BotApiClient_DeleteMessageTest extends BotClientWireMockTest {
     private static final Long MESSAGE_ID = 123L;
 
     @Test
-    void successful() throws InterruptedException {
+    void successful() {
         stubFor(get(urlPathEqualTo(ApiUrls.DELETE_MESSAGE))
                 .withQueryParam(ApiProperties.CHAT_ID, equalTo(CHAT_ID.toString()))
                 .withQueryParam(ApiProperties.MESSAGE_ID, equalTo(MESSAGE_ID.toString()))
-                .willReturn(okJson(MockServerUtils.mockJsonValue(Boolean.TRUE))));
+                .willReturn(MockServerUtils.jsonWithResultTrue()));
 
         var response = botClient.deleteMessage(CHAT_ID, MESSAGE_ID).block();
 
@@ -31,12 +31,12 @@ public class BotApiClient_DeleteMessageTest extends BotClientWireMockTest {
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.deleteMessage(CHAT_ID, MESSAGE_ID), ApiUrls.DELETE_MESSAGE, HttpMethod.GET);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> botClient.deleteMessage(CHAT_ID, MESSAGE_ID), ApiUrls.DELETE_MESSAGE, HttpMethod.GET);
     }
 }

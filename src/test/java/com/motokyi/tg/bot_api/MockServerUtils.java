@@ -1,10 +1,12 @@
 package com.motokyi.tg.bot_api;
 
+import com.github.tomakehurst.wiremock.client.ResponseDefinitionBuilder;
 import okhttp3.mockwebserver.MockResponse;
 import org.springframework.http.MediaType;
 
 import java.util.Map;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static org.springframework.http.HttpHeaders.CONTENT_TYPE;
 
 public class MockServerUtils {
@@ -43,8 +45,18 @@ public class MockServerUtils {
                 .setBody("{ \"ok\": true, \"result\": " + getJsonValue(value) + " }");
     }
 
-    public static String mockJsonValue(Object value) {
-        return "{ \"ok\": true, \"result\": " + getJsonValue(value) + " }";
+    public static ResponseDefinitionBuilder jsonWithResultTrue() {
+        return fromJsonFile("body/true-result.json");
+    }
+
+    public static ResponseDefinitionBuilder fromJsonFile(String fileName) {
+        return aResponse()
+                .withHeader(CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .withBodyFile(fileName);
+    }
+
+    public static String jsonPath(String... values) {
+        return "$." + String.join(".", values);
     }
 
     public static MockResponse mockUnauthorized() {

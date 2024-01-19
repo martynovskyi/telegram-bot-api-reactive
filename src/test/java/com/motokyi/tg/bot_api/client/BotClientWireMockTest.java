@@ -24,7 +24,7 @@ public class BotClientWireMockTest {
         botClient = new BotClient(WebClient.create(wireMockRuntime.getHttpBaseUrl()));
     }
 
-    <T> void unauthorizedTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) throws InterruptedException {
+    <T> void unauthorizedTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) {
         stubFor(request(expectedMethod.name(), urlPathEqualTo(expectedPath))
                 .willReturn(jsonResponse("""
                             {
@@ -43,7 +43,7 @@ public class BotClientWireMockTest {
                 () -> assertEquals("Unauthorized", userResponse.getDescription()));
     }
 
-    <T> void tooManyRequestsTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) throws InterruptedException {
+    <T> void tooManyRequestsTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) {
         stubFor(request(expectedMethod.name(), urlPathEqualTo(expectedPath))
                 .willReturn(jsonResponse("""
                             {

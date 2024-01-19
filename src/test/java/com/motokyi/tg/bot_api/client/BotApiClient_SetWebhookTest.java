@@ -16,11 +16,6 @@ public class BotApiClient_SetWebhookTest extends BotClientTest {
     private static final String URL = "https://test.me";
 
     @Test
-    public void unauthorized() throws InterruptedException {
-        unauthorizedTest(() -> botClient.send(new SetWebhook(URL)), ApiUrls.SET_WEBHOOK, HttpMethod.POST);
-    }
-
-    @Test
     public void successful() throws InterruptedException {
         mockServer.enqueue(MockServerUtils.mockValue(Boolean.TRUE));
 
@@ -39,4 +34,10 @@ public class BotApiClient_SetWebhookTest extends BotClientTest {
                         .containsEntry("url", URL)
         );
     }
+
+    @Test
+    public void unauthorized() throws InterruptedException {
+        unauthorizedTest(() -> botClient.send(new SetWebhook(URL)), ApiUrls.SET_WEBHOOK, HttpMethod.POST);
+    }
+
 }

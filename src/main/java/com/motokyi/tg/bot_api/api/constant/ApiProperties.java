@@ -126,11 +126,13 @@ public final class ApiProperties {
     public static final String SHIPPING_ADDRESS = "shipping_address";
     public static final String SHORT_DESCRIPTION = "short_description";
     public static final String SHOW_ABOVE_TEXT = "show_above_text";
+    public static final String SCOPE = "scope";
     public static final String SENDER_CHAT = "sender_chat";
     public static final String SENDER_USER = "sender_user";
     public static final String SENDER_USER_NAME = "sender_user_name";
     public static final String SUPPORTS_INLINE_QUERIES = "supports_inline_queries";
     public static final String TEXT = "text";
+    public static final String TYPE = "type";
     public static final String TOTAL_AMOUNT = "total_amount";
     public static final String TOTAL_COUNT = "total_count";
     public static final String THUMBNAIL = "thumbnail";

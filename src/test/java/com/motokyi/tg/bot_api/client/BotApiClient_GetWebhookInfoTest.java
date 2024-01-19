@@ -7,12 +7,12 @@ import org.springframework.http.HttpMethod;
 @SuppressWarnings("ClassNamingConvention")
 public class BotApiClient_GetWebhookInfoTest extends BotClientWireMockTest {
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(botClient::getWebhookInfo, ApiUrls.GET_WEBHOOK_INFO, HttpMethod.GET);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(botClient::getWebhookInfo, ApiUrls.GET_WEBHOOK_INFO, HttpMethod.GET);
     }
 }

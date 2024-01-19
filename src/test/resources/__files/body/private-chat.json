@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "result": {
+    "id": 77888,
+    "type": "private",
+    "title": null,
+    "photo": null,
+    "bio": null,
+    "description": null,
+    "permissions": null,
+    "location": null,
+    "username": "private_user",
+    "first_name": "Test",
+    "last_name": "User",
+    "is_forum": null,
+    "active_usernames": [
+      "private_user",
+      "test_user"
+    ],
+    "emoji_status_custom_emoji_id": "5352900500729634175",
+    "emoji_status_expiration_date": null,
+    "has_private_forwards": null,
+    "has_restricted_voice_and_video_messages": null,
+    "join_to_send_messages": null,
+    "join_by_request": null,
+    "invite_link": null,
+    "pinned_message": null,
+    "slow_mode_delay": null,
+    "message_auto_delete_time": null,
+    "has_aggressive_anti_spam_enabled": null,
+    "has_hidden_members": null,
+    "has_protected_content": null,
+    "sticker_set_name": null,
+    "can_set_sticker_set": null,
+    "linked_chat_id": null
+  },
+  "description": null,
+  "error_code": null
+}

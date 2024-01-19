@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "result": {
+    "id": 77888,
+    "is_bot": true,
+    "first_name": "Test",
+    "last_name": "Bot",
+    "username": "unit_test_bot",
+    "language_code": null,
+    "is_premium": null,
+    "added_to_attachment_menu": null,
+    "can_join_groups": true,
+    "can_read_all_group_messages": true,
+    "supports_inline_queries": true
+  },
+  "description": null,
+  "error_code": null
+}

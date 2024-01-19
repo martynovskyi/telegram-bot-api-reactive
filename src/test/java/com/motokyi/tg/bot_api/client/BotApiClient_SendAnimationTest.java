@@ -18,12 +18,12 @@ public class BotApiClient_SendAnimationTest extends BotClientWireMockTest {
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
     }
 
     @Test
-    void tooManyRequests() throws InterruptedException {
+    void tooManyRequests() {
         tooManyRequestsTest(() -> botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
     }
 }
