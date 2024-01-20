@@ -25,6 +25,11 @@ public class SetMessageReaction
         this.client = client;
     }
 
+    public SetMessageReaction(BotApiClient client, Long chatId, Long messageId) {
+        super(String.valueOf(chatId), messageId);
+        this.client = client;
+    }
+
     @Override
     public Mono<Response<Boolean>> send() {
         return client.send(this);

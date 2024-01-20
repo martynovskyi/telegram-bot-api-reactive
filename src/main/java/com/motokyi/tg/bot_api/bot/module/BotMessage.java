@@ -31,5 +31,9 @@ public interface BotMessage {
 
     SetMessageReaction setMessageReaction(@NotNull String chatId, @NotNull Long messageId);
 
+    SetMessageReaction setMessageReaction(@NotNull Long chatId, @NotNull Long messageId);
+
+    SetMessageReaction setMessageReaction(@NotNull Chat chat, @NotNull Message message);
+
     Mono<Response<Boolean>> dropMessageReaction(@NotNull String chatId, @NotNull Long messageId);
 }
