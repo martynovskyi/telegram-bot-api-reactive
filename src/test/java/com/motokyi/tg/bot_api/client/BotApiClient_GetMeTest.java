@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
 import com.motokyi.tg.bot_api.PropertyValues;
+import com.motokyi.tg.bot_api.WMUtils;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.user.User;
@@ -12,11 +12,11 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetMeTest extends BotClientWireMockTest {
+public class BotApiClient_GetMeTest extends BotClientTest {
     @Test
     void successful() {
         stubFor(get(urlEqualTo(ApiUrls.GET_ME))
-                .willReturn(MockServerUtils.fromJsonFile("body/test-bot-user.json")));
+                .willReturn(WMUtils.fromJsonFile("body/test-bot-user.json")));
 
         Response<User> response = botClient.getMe().block();
         assertAll(
@@ -32,7 +32,6 @@ public class BotApiClient_GetMeTest extends BotClientWireMockTest {
                 () -> assertTrue(response.getResult().getSupportsInlineQueries())
         );
     }
-
 
     @Test
     void unauthorized() {

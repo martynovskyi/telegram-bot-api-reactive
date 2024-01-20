@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
 import com.motokyi.tg.bot_api.PropertyValues;
+import com.motokyi.tg.bot_api.WMUtils;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import org.junit.jupiter.api.Test;
@@ -14,7 +14,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetMyShortDescriptionTest extends BotClientWireMockTest {
+public class BotApiClient_GetMyShortDescriptionTest extends BotClientTest {
 
     private static final String LANGUAGE_CODE_VALUE = "uk";
 
@@ -23,7 +23,7 @@ public class BotApiClient_GetMyShortDescriptionTest extends BotClientWireMockTes
     @ValueSource(strings = {"", " ", "\n", "\t"})
     void successful(String languageCode) {
         stubFor(get(urlEqualTo(ApiUrls.GET_MY_SHORT_DESCRIPTION))
-                .willReturn(MockServerUtils.fromJsonFile("body/bot-short-description.json")));
+                .willReturn(WMUtils.fromJsonFile("body/bot-short-description.json")));
 
         var response = botClient.getMyShortDescription(languageCode).block();
         assertAll(
@@ -37,7 +37,7 @@ public class BotApiClient_GetMyShortDescriptionTest extends BotClientWireMockTes
     void successful_withLanguageCode() {
         stubFor(get(urlPathEqualTo(ApiUrls.GET_MY_SHORT_DESCRIPTION))
                 .withQueryParam(ApiProperties.LANGUAGE_CODE, equalTo(LANGUAGE_CODE_VALUE))
-                .willReturn(MockServerUtils.fromJsonFile("body/bot-short-description.json")));
+                .willReturn(WMUtils.fromJsonFile("body/bot-short-description.json")));
 
         var response = botClient.getMyShortDescription(LANGUAGE_CODE_VALUE).block();
         assertAll(
@@ -50,20 +50,6 @@ public class BotApiClient_GetMyShortDescriptionTest extends BotClientWireMockTes
     @Test
     void unauthorized() {
         unauthorizedTest(() -> botClient.getMyShortDescription(null),
-                ApiUrls.GET_MY_SHORT_DESCRIPTION,
-                HttpMethod.GET);
-    }
-
-    @Test
-    void unauthorized_withLanguageCode() {
-        unauthorizedTest(() -> botClient.getMyShortDescription(LANGUAGE_CODE_VALUE),
-                ApiUrls.GET_MY_SHORT_DESCRIPTION,
-                HttpMethod.GET);
-    }
-
-    @Test
-    void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.getMyShortDescription(null),
                 ApiUrls.GET_MY_SHORT_DESCRIPTION,
                 HttpMethod.GET);
     }

@@ -19,6 +19,7 @@ import com.motokyi.tg.bot_api.utils.UriUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
@@ -43,7 +44,7 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<BotName>> getMyName(String languageCode) {
+    public Mono<Response<BotName>> getMyName(@Nullable String languageCode) {
         return wc.get()
                 .uri(UriUtils.uriWithLanguageCode(ApiUrls.GET_MY_NAME, languageCode))
                 .exchangeToMono(ClientUtils.responseHandler("GetMyName",
@@ -52,7 +53,7 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<Boolean>> setMyName(String name, String languageCode) {
+    public Mono<Response<Boolean>> setMyName(@Nullable String name, @Nullable String languageCode) {
         RequestValidator.setMyName(name, languageCode);
         return wc.get()
                 .uri(uri -> {
@@ -67,7 +68,7 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<BotDescription>> getMyDescription(String languageCode) {
+    public Mono<Response<BotDescription>> getMyDescription(@Nullable String languageCode) {
         return wc.get()
                 .uri(UriUtils.uriWithLanguageCode(ApiUrls.GET_MY_DESCRIPTION, languageCode))
                 .exchangeToMono(ClientUtils.responseHandler("GetMyDescription",
@@ -76,11 +77,10 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<Boolean>> setMyDescription(String description, String languageCode) {
+    public Mono<Response<Boolean>> setMyDescription(@Nullable String description, @Nullable String languageCode) {
         RequestValidator.setMyDescription(description, languageCode);
         return wc.get()
-                .uri(uri -> {
-                    uri.path(ApiUrls.SET_MY_DESCRIPTION);
+                .uri(ApiUrls.SET_MY_DESCRIPTION, uri -> {
                     UriUtils.nonBlankParam(uri, ApiProperties.DESCRIPTION, description);
                     UriUtils.nonBlankParam(uri, ApiProperties.LANGUAGE_CODE, languageCode);
                     return uri.build();
@@ -91,7 +91,7 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<BotShortDescription>> getMyShortDescription(String languageCode) {
+    public Mono<Response<BotShortDescription>> getMyShortDescription(@Nullable String languageCode) {
         return wc.get()
                 .uri(UriUtils.uriWithLanguageCode(ApiUrls.GET_MY_SHORT_DESCRIPTION, languageCode))
                 .exchangeToMono(ClientUtils.responseHandler("GetMyShortDescription",
@@ -100,7 +100,7 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<Boolean>> setMyShortDescription(String shortDescription, String languageCode) {
+    public Mono<Response<Boolean>> setMyShortDescription(@Nullable String shortDescription, @Nullable String languageCode) {
         RequestValidator.setMyShortDescription(shortDescription, languageCode);
         return wc.get()
                 .uri(uri -> {

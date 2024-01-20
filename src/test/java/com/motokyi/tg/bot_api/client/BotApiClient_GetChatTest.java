@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
 import com.motokyi.tg.bot_api.PropertyValues;
+import com.motokyi.tg.bot_api.WMUtils;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import org.junit.jupiter.api.Test;
@@ -12,14 +12,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetChatTest extends BotClientWireMockTest {
+public class BotApiClient_GetChatTest extends BotClientTest {
     private static final String CHAT_ID = "test_chat";
 
     @Test
     void successful_private() {
         stubFor(get(urlPathEqualTo(ApiUrls.GET_CHAT))
                 .withQueryParam(ApiProperties.CHAT_ID, equalTo(CHAT_ID))
-                .willReturn(MockServerUtils.fromJsonFile("body/private-chat.json")));
+                .willReturn(WMUtils.fromJsonFile("body/private-chat.json")));
 
         var response = botClient.getChat(CHAT_ID).block();
         assertAll(

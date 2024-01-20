@@ -6,6 +6,7 @@ public final class ApiProperties {
     public static final String ADD_DATE = "add_date";
     public static final String ADDED_TO_ATTACHMENT_MENU = "added_to_attachment_menu";
     public static final String ADDITIONAL_CHAT_COUNT = "additional_chat_count";
+    public static final String ALLOWED_UPDATES = "allowed_updates";
     public static final String ALLOW_SENDING_WITHOUT_REPLY = "allow_sending_without_reply";
     public static final String ANIMATION = "animation";
     public static final String AUTHOR_SIGNATURE = "author_signature";
@@ -48,7 +49,7 @@ public final class ApiProperties {
     public static final String CUSTOM_TITLE = "custom_title";
     public static final String DESCRIPTION = "description";
     public static final String DISABLE_NOTIFICATION = "disable_notification";
-    public static final String DROP_PENDING_UPDATES_PROP = "drop_pending_updates";
+    public static final String DROP_PENDING_UPDATES = "drop_pending_updates";
     public static final String DELETE_CHAT_PHOTO = "delete_chat_photo";
     public static final String DURATION = "duration";
     public static final String EXTERNAL_REPLY = "external_reply";
@@ -89,11 +90,13 @@ public final class ApiProperties {
     public static final String IS_UNCLAIMED = "is_unclaimed";
     public static final String IS_PREMIUM = "is_premium";
     public static final String IS_TOPIC_MESSAGE = "is_topic_message";
+    public static final String IP_ADDRESS = "ip_address";
     public static final String INVITE_LINK = "invite_link";
     public static final String LANGUAGE_CODE = "language_code";
     public static final String LAST_NAME = "last_name";
     public static final String LINK_PREVIEW_OPTIONS = "link_preview_options";
     public static final String LEFT_CHAT_MEMBER = "left_chat_member";
+    public static final String MAX_CONNECTIONS = "max_connections";
     public static final String MIME_TYPE = "mime_type";
     public static final String MEDIA_GROUP_ID = "media_group_id";
     public static final String MESSAGE_ID = "message_id";
@@ -127,6 +130,7 @@ public final class ApiProperties {
     public static final String SHORT_DESCRIPTION = "short_description";
     public static final String SHOW_ABOVE_TEXT = "show_above_text";
     public static final String SCOPE = "scope";
+    public static final String SECRET_TOKEN = "secret_token";
     public static final String SENDER_CHAT = "sender_chat";
     public static final String SENDER_USER = "sender_user";
     public static final String SENDER_USER_NAME = "sender_user_name";
@@ -142,6 +146,7 @@ public final class ApiProperties {
     public static final String USERNAME = "username";
     public static final String UNTIL_DATE = "until_date";
     public static final String UNCLAIMED_PRIZE_COUNT = "unclaimed_prize_count";
+    public static final String URL = "url";
     public static final String VIA_BOT = "via_bot";
     public static final String VIDEO_NOTE = "video_note";
     public static final String WAS_REFUNDED = "was_refunded";

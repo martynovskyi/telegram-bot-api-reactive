@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
 import com.motokyi.tg.bot_api.PropertyValues;
+import com.motokyi.tg.bot_api.WMUtils;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.type.Response;
@@ -16,7 +16,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetMyNameTest extends BotClientWireMockTest {
+public class BotApiClient_GetMyNameTest extends BotClientTest {
     private static final String LANGUAGE_CODE_VALUE = "uk";
 
     @ParameterizedTest
@@ -24,7 +24,7 @@ public class BotApiClient_GetMyNameTest extends BotClientWireMockTest {
     @ValueSource(strings = {"", " ", "\n", "\t"})
     void successful(String languageCode) {
         stubFor(get(urlEqualTo(ApiUrls.GET_MY_NAME))
-                .willReturn(MockServerUtils.fromJsonFile("body/bot-name.json")));
+                .willReturn(WMUtils.fromJsonFile("body/bot-name.json")));
 
         var response = botClient.getMyName(languageCode).block();
         assertAll(
@@ -38,7 +38,7 @@ public class BotApiClient_GetMyNameTest extends BotClientWireMockTest {
     void successful_withLanguageCode() {
         stubFor(get(urlPathEqualTo(ApiUrls.GET_MY_NAME))
                 .withQueryParam(ApiProperties.LANGUAGE_CODE, equalTo(LANGUAGE_CODE_VALUE))
-                .willReturn(MockServerUtils.fromJsonFile("body/bot-name.json")));
+                .willReturn(WMUtils.fromJsonFile("body/bot-name.json")));
 
         Response<BotName> userResponse = botClient.getMyName(LANGUAGE_CODE_VALUE).block();
         assertAll(
@@ -51,18 +51,6 @@ public class BotApiClient_GetMyNameTest extends BotClientWireMockTest {
     @Test
     void unauthorized() {
         unauthorizedTest(() -> botClient.getMyName(null), ApiUrls.GET_MY_NAME, HttpMethod.GET);
-    }
-
-    @Test
-    void unauthorized_withLanguageCode() {
-        unauthorizedTest(() -> botClient.getMyName(LANGUAGE_CODE_VALUE),
-                ApiUrls.GET_MY_NAME,
-                HttpMethod.GET);
-    }
-
-    @Test
-    void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.getMyName(null), ApiUrls.GET_MY_NAME, HttpMethod.GET);
     }
 
     @Test

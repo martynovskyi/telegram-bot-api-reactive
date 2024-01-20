@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_EditMessageReplyMarkupTest extends BotClientWireMockTest {
+public class BotApiClient_EditMessageReplyMarkupTest extends BotClientTest {
     private static final String CHAT_ID = "test_chat";
 
     @Test

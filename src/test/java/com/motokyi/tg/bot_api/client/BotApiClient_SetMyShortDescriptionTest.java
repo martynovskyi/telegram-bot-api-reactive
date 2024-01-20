@@ -1,64 +1,68 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
+import com.motokyi.tg.bot_api.WMUtils;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
-import com.motokyi.tg.bot_api.api.type.Response;
-import okhttp3.mockwebserver.RecordedRequest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.http.HttpMethod;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
 public class BotApiClient_SetMyShortDescriptionTest extends BotClientTest {
 
     private static final String DESCRIPTION = "Bot Description";
+    private static final String LANGUAGE_CODE = "uk";
 
     @Test
-    void successful() throws InterruptedException {
-        mockServer.enqueue(MockServerUtils.mockValue(Boolean.TRUE));
+    void successful() {
+        stubFor(get(urlPathEqualTo(ApiUrls.SET_MY_SHORT_DESCRIPTION))
+                .withQueryParam(ApiProperties.SHORT_DESCRIPTION, equalTo(DESCRIPTION))
+                .withQueryParam(ApiProperties.LANGUAGE_CODE, absent())
+                .willReturn(WMUtils.jsonWithResultTrue()));
 
-        Response<Boolean> userResponse = botClient.setMyShortDescription(DESCRIPTION, null).block();
-        RecordedRequest request = mockServer.takeRequest();
+        var response = botClient.setMyShortDescription(DESCRIPTION, null).block();
+
         assertAll(
-                () -> assertTrue(userResponse.isOk()),
-                () -> assertTrue(userResponse.getResult()),
-                () -> assertEquals("GET", request.getMethod()),
-                () -> assertEquals(ApiUrls.SET_MY_SHORT_DESCRIPTION + "?short_description=Bot%20Description", request.getPath())
+                () -> assertTrue(response.isOk()),
+                () -> assertNotNull(response.getResult()),
+                () -> assertTrue(response.getResult())
         );
     }
 
     @ParameterizedTest
     @NullSource
     @ValueSource(strings = {""})
-    void successful_withLanguageCode(String description) throws InterruptedException {
-        mockServer.enqueue(MockServerUtils.mockValue(Boolean.TRUE));
+    void successful_resetWithLanguageCode(String description) {
+        stubFor(get(urlPathEqualTo(ApiUrls.SET_MY_SHORT_DESCRIPTION))
+                .withQueryParam(ApiProperties.SHORT_DESCRIPTION, absent())
+                .withQueryParam(ApiProperties.LANGUAGE_CODE, equalTo(LANGUAGE_CODE))
+                .willReturn(WMUtils.jsonWithResultTrue()));
 
-        Response<Boolean> userResponse = botClient.setMyShortDescription(description, "uk").block();
-        RecordedRequest request = mockServer.takeRequest();
+        var response = botClient.setMyShortDescription(description, LANGUAGE_CODE).block();
+
         assertAll(
-                () -> assertTrue(userResponse.isOk()),
-                () -> assertNotNull(userResponse.getResult()),
-                () -> assertTrue(userResponse.getResult()),
-                () -> assertEquals("GET", request.getMethod()),
-                () -> assertEquals(ApiUrls.SET_MY_SHORT_DESCRIPTION + "?language_code=uk", request.getPath())
+                () -> assertTrue(response.isOk()),
+                () -> assertNotNull(response.getResult()),
+                () -> assertTrue(response.getResult())
         );
     }
 
     @Test
-    void unauthorized() throws InterruptedException {
+    void unauthorized() {
         unauthorizedTest(() -> botClient.setMyShortDescription(DESCRIPTION, null),
-                ApiUrls.SET_MY_SHORT_DESCRIPTION + "?short_description=Bot%20Description",
+                ApiUrls.SET_MY_SHORT_DESCRIPTION,
                 HttpMethod.GET);
     }
 
     @Test
-    void unauthorized_withLanguageCode() throws InterruptedException {
-        unauthorizedTest(() -> botClient.setMyShortDescription(DESCRIPTION, "uk"),
-                ApiUrls.SET_MY_SHORT_DESCRIPTION + "?short_description=Bot%20Description&language_code=uk",
+    void tooManyRequests() {
+        tooManyRequestsTest(() -> botClient.setMyShortDescription(DESCRIPTION, LANGUAGE_CODE),
+                ApiUrls.SET_MY_SHORT_DESCRIPTION,
                 HttpMethod.GET);
     }
 }

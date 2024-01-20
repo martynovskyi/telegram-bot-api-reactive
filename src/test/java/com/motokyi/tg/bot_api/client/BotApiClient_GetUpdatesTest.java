@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_GetUpdatesTest extends BotClientWireMockTest {
+public class BotApiClient_GetUpdatesTest extends BotClientTest {
 
     @Test
     void unauthorized() {

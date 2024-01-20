@@ -1,72 +1,69 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
+import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.motokyi.tg.bot_api.api.type.Response;
-import okhttp3.mockwebserver.MockWebServer;
-import okhttp3.mockwebserver.RecordedRequest;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-import java.io.IOException;
 import java.util.function.Supplier;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@WireMockTest
 public class BotClientTest {
-
-    static MockWebServer mockServer;
-
     BotClient botClient;
 
-    @BeforeAll
-    public static void setUp() throws IOException {
-        mockServer = new MockWebServer();
-        mockServer.start();
-    }
-
-    @AfterAll
-    public static void tearDown() throws IOException {
-        mockServer.shutdown();
-    }
-
     @BeforeEach
-    public void initialize() {
-        String baseUrl = String.format("http://%s:%s",
-                mockServer.getHostName(),
-                mockServer.getPort());
-        botClient = new BotClient(WebClient.create(baseUrl));
+    public void initialize(WireMockRuntimeInfo wireMockRuntime) {
+        botClient = new BotClient(WebClient.create(wireMockRuntime.getHttpBaseUrl()));
     }
 
-    <T> RecordedRequest unauthorizedTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) throws InterruptedException {
-        mockServer.enqueue(MockServerUtils.mockUnauthorized());
+    <T> void unauthorizedTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) {
+        stubFor(request(expectedMethod.name(), urlPathEqualTo(expectedPath))
+                .willReturn(jsonResponse("""
+                            {
+                                "ok": false,
+                                "error_code": 401,
+                                "description": "Unauthorized"
+                            }
+                        """, HttpStatus.UNAUTHORIZED.value())));
+
 
         var userResponse = request.get().block();
-        RecordedRequest serverRequest = mockServer.takeRequest();
         assertAll(
                 () -> assertFalse(userResponse.isOk()),
                 () -> assertNull(userResponse.getResult()),
-                () -> assertEquals(401, userResponse.getErrorCode()),
-                () -> assertEquals("Unauthorized", userResponse.getDescription()),
-                () -> assertEquals(expectedMethod.name(), serverRequest.getMethod()),
-                () -> assertEquals(expectedPath, serverRequest.getPath())
-        );
-        return serverRequest;
+                () -> assertEquals(HttpStatus.UNAUTHORIZED.value(), userResponse.getErrorCode()),
+                () -> assertEquals("Unauthorized", userResponse.getDescription()));
     }
 
-    // TODO: 10/3/2023  create test for 429
-    // check response example
-    /*
-{
-  "ok": false,
-  "error_code": 429,
-  "description": "Too Many Requests: retry after 85489",
-  "parameters": {
-    "retry_after": 85489
-  }
-}
-     */
+    <T> void tooManyRequestsTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) {
+        stubFor(request(expectedMethod.name(), urlPathEqualTo(expectedPath))
+                .willReturn(jsonResponse("""
+                            {
+                              "ok": false,
+                              "error_code": 429,
+                              "description": "Too Many Requests: retry after 85489",
+                              "parameters": {
+                                "retry_after": 85489
+                              }
+                            }
+                        """, HttpStatus.TOO_MANY_REQUESTS.value())));
+
+        var error = assertThrows(TooManyRequestsException.class, () -> request.get().block());
+        Response<Void> response = error.getErrorResponse();
+        assertAll(
+                () -> assertFalse(response.isOk()),
+                () -> assertNull(response.getResult()),
+                () -> assertEquals(HttpStatus.TOO_MANY_REQUESTS.value(), response.getErrorCode()),
+                () -> assertTrue(response.getDescription().startsWith("Too Many Requests:")),
+                () -> assertNotNull(response.getParameters()),
+                () -> assertEquals(85489, response.getParameters().getRetryAfter()));
+    }
 }

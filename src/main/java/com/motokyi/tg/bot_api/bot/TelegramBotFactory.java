@@ -40,8 +40,8 @@ public class TelegramBotFactory implements BotFactory {
 
     private static boolean isNotEmpty(TelegramBotProperties properties) {
         return nonNull(properties)
-                && nonNull(properties.getBots())
-                && !properties.getBots().isEmpty();
+               && nonNull(properties.getBots())
+               && !properties.getBots().isEmpty();
     }
 
     @Override

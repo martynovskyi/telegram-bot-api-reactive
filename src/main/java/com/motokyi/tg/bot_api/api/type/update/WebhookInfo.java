@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.api.type.update;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class WebhookInfo {
     @JsonProperty("pending_update_count")
     private Integer pendingUpdateCount;
 
-    @JsonProperty("ip_address")
+    @JsonProperty(ApiProperties.IP_ADDRESS)
     private String ipAddress;
 
     @JsonProperty("last_error_date")
@@ -34,9 +35,9 @@ public class WebhookInfo {
     @JsonProperty("last_synchronization_error_date")
     private Integer lastSynchronizationErrorDate;
 
-    @JsonProperty("max_connections")
+    @JsonProperty(ApiProperties.MAX_CONNECTIONS)
     private Integer maxConnections;
 
-    @JsonProperty("allowed_updates")
+    @JsonProperty(ApiProperties.ALLOWED_UPDATES)
     private List<String> allowedUpdates;
 }

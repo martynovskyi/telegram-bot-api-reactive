@@ -1,6 +1,6 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.MockServerUtils;
+import com.motokyi.tg.bot_api.WMUtils;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.payload.DeleteWebhook;
@@ -12,14 +12,14 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ClassNamingConvention")
-public class BotApiClient_DeleteWebhookTest extends BotClientWireMockTest {
+public class BotApiClient_DeleteWebhookTest extends BotClientTest {
     @Test
     void successful() {
         stubFor(post(urlPathEqualTo(ApiUrls.DELETE_WEBHOOK))
                 .withRequestBody(matchingJsonPath(
-                        MockServerUtils.jsonPath(ApiProperties.DROP_PENDING_UPDATES_PROP),
+                        WMUtils.jsonPath(ApiProperties.DROP_PENDING_UPDATES),
                         equalTo("true")))
-                .willReturn(MockServerUtils.jsonWithResultTrue()));
+                .willReturn(WMUtils.jsonWithResultTrue()));
 
         DeleteWebhook deleteWebhook = new DeleteWebhook();
         deleteWebhook.setDropPendingUpdates(Boolean.TRUE);
