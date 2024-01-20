@@ -83,6 +83,7 @@ public final class ApiProperties {
     public static final String IS_ANONYMOUS = "is_anonymous";
     public static final String IS_AUTOMATIC_FORWARD = "is_automatic_forward";
     public static final String IS_BOT = "is_bot";
+    public static final String IS_BIG = "is_big";
     public static final String IS_FORUM = "is_forum";
     public static final String IS_DISABLED = "is_disabled";
     public static final String IS_MEMBER = "is_member";
@@ -121,6 +122,7 @@ public final class ApiProperties {
     public static final String QUOTE_ENTITIES = "quote_entities";
     public static final String QUOTE_PARSE_MODE = "quote_parse_mode";
     public static final String QUOTE_POSITION = "quote_position";
+    public static final String REACTION = "reaction";
     public static final String REPLY_TO_MESSAGE = "reply_to_message";
     public static final String REPLY_PARAMETERS = "reply_parameters";
     public static final String REPLY_MARKUP = "reply_markup";

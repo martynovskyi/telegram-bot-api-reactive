@@ -137,6 +137,16 @@ public class TelegramBot implements Bot {
     }
 
     @Override
+    public SetMessageReaction setMessageReaction(@NotNull String chatId, @NotNull Long messageId) {
+        return new SetMessageReaction(client, chatId, messageId);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> dropMessageReaction(@NotNull String chatId, @NotNull Long messageId) {
+        return new SetMessageReaction(client, chatId, messageId).send();
+    }
+
+    @Override
     public SendDocument sendDocument(@NotNull Long chatId) {
         return new SendDocument(String.valueOf(chatId), client);
     }

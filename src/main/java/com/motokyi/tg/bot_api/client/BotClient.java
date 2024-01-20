@@ -253,6 +253,16 @@ class BotClient implements BotApiClient {
     }
 
     @Override
+    public Mono<Response<Boolean>> send(@NotNull SetMessageReaction setMessageReaction) {
+        return wc.post()
+                .uri(ApiUrls.SET_MESSAGE_REACTION)
+                .bodyValue(setMessageReaction)
+                .exchangeToMono(ClientUtils.responseHandler(setMessageReaction.getClass(),
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
+    }
+
+    @Override
     public Mono<Response<Boolean>> send(@NotNull SetWebhook setWebhook) {
         return wc.post()
                 .uri(ApiUrls.SET_WEBHOOK)

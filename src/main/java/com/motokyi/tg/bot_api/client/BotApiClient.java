@@ -55,9 +55,14 @@ public interface BotApiClient {
 
     Mono<Response<Message>> forwardMessage(@NotNull ForwardMessage forwardMessage);
 
+    Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
+
     Mono<Response<Message>> editMessageReplyMarkup(@NotNull EditMessageReplyMarkup editMessageReplyMarkup);
 
-    Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
+    /**
+     * @see <a href="https://core.telegram.org/bots/api#setmessagereaction">setMessageReaction</a>
+     **/
+    Mono<Response<Boolean>> send(@NotNull SetMessageReaction setMessageReaction);
 
     Mono<Response<Boolean>> send(@NotNull SetWebhook setWebhook);
 

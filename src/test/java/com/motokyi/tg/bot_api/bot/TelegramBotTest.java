@@ -216,6 +216,31 @@ class TelegramBotTest extends TelegramBotTestSetup {
     }
 
     @Test
+    void setMessageReaction() {
+        var setMessageReaction = bot.setMessageReaction(CHAT_TAG, MESSAGE_ID);
+        assertAll(
+                () -> assertNotNull(setMessageReaction),
+                () -> assertEquals(CHAT_TAG, setMessageReaction.getChatId()),
+                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId())
+        );
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void dropMessageReaction() {
+        bot.dropMessageReaction(CHAT_TAG, MESSAGE_ID);
+        var captor = ArgumentCaptor.forClass(SetMessageReaction.class);
+        verify(webClient).send(captor.capture());
+        SetMessageReaction setMessageReaction = captor.getValue();
+        assertAll(
+                () -> assertNotNull(setMessageReaction),
+                () -> assertEquals(CHAT_TAG, setMessageReaction.getChatId()),
+                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId())
+        );
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
     void setWebhook() {
         String url = "https://example.com";
         SetWebhook setWebhook = bot.setWebhook(url);

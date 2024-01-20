@@ -2,6 +2,7 @@ package com.motokyi.tg.bot_api.bot.module;
 
 import com.motokyi.tg.bot_api.api.method.ForwardMessage;
 import com.motokyi.tg.bot_api.api.method.SendMessage;
+import com.motokyi.tg.bot_api.api.method.SetMessageReaction;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.message.Message;
@@ -27,4 +28,8 @@ public interface BotMessage {
     ForwardMessage forwardMessage(@NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId);
 
     Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
+
+    SetMessageReaction setMessageReaction(@NotNull String chatId, @NotNull Long messageId);
+
+    Mono<Response<Boolean>> dropMessageReaction(@NotNull String chatId, @NotNull Long messageId);
 }

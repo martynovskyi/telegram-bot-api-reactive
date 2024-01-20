@@ -26,6 +26,7 @@ public final class ApiUrls {
     public static final String DELETE_MESSAGE = "/deleteMessage";
     public static final String API_HOST = "https://api.telegram.org";
     public static final String BOT_PREFIX = "/bot";
+    public static final String SET_MESSAGE_REACTION = "/setMessageReaction";
     public static final String SET_WEBHOOK = "/setWebhook";
     public static final String DELETE_WEBHOOK = "/deleteWebhook";
     public static final String GET_WEBHOOK_INFO = "/getWebhookInfo";
