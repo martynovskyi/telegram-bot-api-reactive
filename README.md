@@ -24,6 +24,7 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - sendAnimation
 - sendPhoto
 - forwardMessage
+- [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
 - editMessageReplyMarkup
 - deleteMessage
 - Webhook
