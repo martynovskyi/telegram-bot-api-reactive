@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * This object represents a shipping address.
- * See <a href="ShippingAddress">https://core.telegram.org/bots/api#shippingaddress</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#shippingaddress">ShippingAddress</a>
  */
 @Data
 public class ShippingAddress {

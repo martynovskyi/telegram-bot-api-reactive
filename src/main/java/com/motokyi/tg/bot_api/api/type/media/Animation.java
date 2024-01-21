@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents an animation file (GIF or H.264/MPEG-4 AVC video without sound)
- * See <a href="Animation">https://core.telegram.org/bots/api#animation</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#animation">Animation</a>
  */
 @Data
 public class Animation {

@@ -10,10 +10,9 @@ import java.util.List;
 
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
- * See <a href="Game">https://core.telegram.org/bots/api#game</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#game">Game</a>
  */
 @Data
 public class Game {
@@ -22,7 +21,6 @@ public class Game {
 
     private String description;
 
-    @JsonProperty("photo")
     private List<PhotoSize> photo;
 
     private String text;

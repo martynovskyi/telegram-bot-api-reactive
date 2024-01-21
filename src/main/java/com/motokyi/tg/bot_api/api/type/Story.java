@@ -5,10 +5,9 @@ import lombok.Data;
 /**
  * This object represents a message about a forwarded story in the chat.
  * Currently holds no information.
- * See <a href="Story">https://core.telegram.org/bots/api#story</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#story">Story</a>
  */
 @Data
 public class Story {

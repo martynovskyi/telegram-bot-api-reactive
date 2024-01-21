@@ -7,10 +7,9 @@ import lombok.Data;
 /**
  * This object defines the criteria used to request a suitable user.
  * The identifier of the selected user will be shared with the bot when the corresponding button is pressed.
- * See <a href="KeyboardButtonRequestUser">https://core.telegram.org/bots/api#keyboardbuttonrequestuser</a>
- * <p>
  *
  * @version Bot API 6.9
+ * @see <a href="https://core.telegram.org/bots/api#keyboardbuttonrequestusers">KeyboardButtonRequestUsers</a>
  */
 @Data
 public class KeyboardButtonRequestUser {

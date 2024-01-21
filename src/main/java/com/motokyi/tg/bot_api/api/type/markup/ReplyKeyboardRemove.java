@@ -10,10 +10,9 @@ import lombok.EqualsAndHashCode;
  * the default letter-keyboard. By default, custom keyboards are displayed until a new keyboard is sent by a bot.
  * An exception is made for one-time keyboards that are hidden immediately after the user presses
  * a button (see ReplyKeyboardMarkup).
- * See <a href="ReplyKeyboardRemove">https://core.telegram.org/bots/api#replykeyboardremove</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#replykeyboardremove">ReplyKeyboardRemove</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

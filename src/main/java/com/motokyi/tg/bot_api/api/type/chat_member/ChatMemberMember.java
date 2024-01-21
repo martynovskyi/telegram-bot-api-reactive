@@ -5,15 +5,14 @@ import lombok.Data;
 
 /**
  * Represents a chat member that has no additional privileges or restrictions.
- * See <a href="ChatMemberMember">https://core.telegram.org/bots/api#chatmembermember</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatmembermember">ChatMemberMember</a>
  */
 @Data
 public class ChatMemberMember {
 
-    private User user;
-
     private String status;
+
+    private User user;
 }

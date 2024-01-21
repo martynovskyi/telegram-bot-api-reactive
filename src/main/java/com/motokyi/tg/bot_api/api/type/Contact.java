@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents a phone contact.
- * See <a href="Contact">https://core.telegram.org/bots/api#contact</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#contact">Contact</a>
  */
 @Data
 public class Contact {

@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * This object represents a venue.
- * See <a href="Venue">https://core.telegram.org/bots/api#venue</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#venue">Venue</a>
  */
 @Data
 public class Venue {

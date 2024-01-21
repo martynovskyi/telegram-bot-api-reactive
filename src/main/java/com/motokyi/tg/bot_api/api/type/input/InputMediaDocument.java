@@ -9,10 +9,9 @@ import java.util.List;
 
 /**
  * Represents a general file to be sent.
- * See <a href="InputMediaDocument">https://core.telegram.org/bots/api#inputmediadocument</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inputmediadocument">InputMediaDocument</a>
  */
 @Data
 public class InputMediaDocument {

@@ -9,7 +9,9 @@ import lombok.Setter;
 
 /**
  * Use this method to forward messages of any kind. On success, the sent Message is returned.
- * See <a href="ForwardMessage">https://core.telegram.org/bots/api#forwardmessage</a>
+ *
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#forwardmessage">forwardMessage</a>
  **/
 @Getter
 @Setter
@@ -25,8 +27,14 @@ public class ForwardMessage {
     @JsonProperty(ApiProperties.DISABLE_NOTIFICATION)
     protected Boolean disableNotification;
 
+    @JsonProperty(ApiProperties.PROTECT_CONTENT)
+    protected Boolean protectContent;
+
     @JsonProperty(ApiProperties.MESSAGE_ID)
     protected Long messageId;
+
+    @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
+    private Long messageThreadId;
 
     public ForwardMessage(String chatId, Message message) {
         this.chatId = chatId;

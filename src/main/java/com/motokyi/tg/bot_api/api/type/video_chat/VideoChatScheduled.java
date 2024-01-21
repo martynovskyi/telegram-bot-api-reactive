@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents a service message about a video chat scheduled in the chat.
- * See <a href="VideoChatScheduled">https://core.telegram.org/bots/api#videochatscheduled</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#videochatscheduled">VideoChatScheduled</a>
  */
 @Data
 public class VideoChatScheduled {

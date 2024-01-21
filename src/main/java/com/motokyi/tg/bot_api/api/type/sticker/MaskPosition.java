@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * This object describes the position on faces where a mask should be placed by default.
- * See <a href="MaskPosition">https://core.telegram.org/bots/api#maskposition</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#maskposition">MaskPosition</a>
  */
 @Data
 public class MaskPosition {

@@ -6,10 +6,9 @@ import lombok.Data;
 /**
  * This object represents an inline button that switches the current user to inline mode in a chosen chat,
  * with an optional default inline query.
- * See <a href="SwitchInlineQueryChosenChat">https://core.telegram.org/bots/api#switchinlinequerychosenchat</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#switchinlinequerychosenchat">SwitchInlineQueryChosenChat</a>
  */
 @Data
 public class SwitchInlineQueryChosenChat {

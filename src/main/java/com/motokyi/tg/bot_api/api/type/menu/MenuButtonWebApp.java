@@ -7,11 +7,9 @@ import lombok.Data;
 
 /**
  * Represents a menu button, which launches a Web App.
- * <p>
- * See <a href="MenuButtonWebApp">https://core.telegram.org/bots/api#menubuttonwebapp</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#menubuttonwebapp">MenuButtonWebApp</a>
  */
 @Data
 public class MenuButtonWebApp {

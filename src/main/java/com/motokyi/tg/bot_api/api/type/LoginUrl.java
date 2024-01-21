@@ -8,10 +8,9 @@ import lombok.Data;
  * Serves as a great replacement for the Telegram Login Widget when the user is coming from Telegram.
  * All the user needs to do is tap/click a button and confirm that they want to log in.
  * Telegram apps support these buttons as of version 5.7.
- * <a href="LoginUrl">https://core.telegram.org/bots/api#loginurl</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#loginurl">LoginUrl</a>
  */
 
 @Data

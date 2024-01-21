@@ -8,11 +8,9 @@ import lombok.Setter;
 
 /**
  * Represents the scope of bot commands, covering a specific chat.
- * <p>
- * See <a href="BotCommandScopeChat">https://core.telegram.org/bots/api#botcommandscopechat</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#botcommandscopechat">BotCommandScopeChat</a>
  */
 @Getter
 @Setter

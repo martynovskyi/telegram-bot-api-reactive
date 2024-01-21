@@ -9,8 +9,11 @@ import lombok.Setter;
 import java.io.File;
 
 /**
- * Use this method to send general files. On success, the sent Message is returned. Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
- * See <a href="SendDocument">https://core.telegram.org/bots/api#senddocument</a>
+ * Use this method to send general files. On success, the sent Message is returned.
+ * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ *
+ * @version Bot API 6.9
+ * @see <a href="https://core.telegram.org/bots/api#senddocument">sendDocument</a>
  **/
 @Getter
 @Setter
@@ -20,6 +23,8 @@ public class SendDocument extends SendMethod {
 
     @JsonIgnore
     private File documentFile;
+
+    //todo 7.0 incompatible
 
     @JsonProperty(DOCUMENT_ID)
     private String documentId;

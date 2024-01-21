@@ -9,10 +9,9 @@ import java.util.List;
 
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
- * See <a href="InputMediaAnimation">https://core.telegram.org/bots/api#inputmediaanimation</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inputmediaanimation">InputMediaAnimation</a>
  */
 @Data
 public class InputMediaAnimation {

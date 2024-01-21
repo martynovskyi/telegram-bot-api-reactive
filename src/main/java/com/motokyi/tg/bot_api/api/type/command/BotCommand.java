@@ -6,15 +6,16 @@ import lombok.NoArgsConstructor;
 
 /**
  * This object represents a bot command.
- * See <a href="BotCommand">https://core.telegram.org/bots/api#botcommand</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#botcommand">BotCommand</a>
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class BotCommand {
+
     private String command;
+
     private String description;
 }

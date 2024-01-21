@@ -7,10 +7,9 @@ import lombok.Data;
 
 /**
  * Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
- * See <a href="ChatMemberBanned">https://core.telegram.org/bots/api#chatmemberbanned</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatmemberbanned">ChatMemberBanned</a>
  */
 @Data
 public class ChatMemberBanned {

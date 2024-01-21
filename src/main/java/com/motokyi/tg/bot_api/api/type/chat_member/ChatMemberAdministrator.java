@@ -7,16 +7,15 @@ import lombok.Data;
 
 /**
  * Represents a chat member that has some additional privileges.
- * See <a href="ChatMemberAdministrator">https://core.telegram.org/bots/api#chatmemberadministrator</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatmemberadministrator">ChatMemberAdministrator</a>
  */
 @Data
 public class ChatMemberAdministrator {
-    private User user;
-
     private String status;
+
+    private User user;
 
     @JsonProperty(ApiProperties.CAN_BE_EDITED)
     private Boolean canBeEdited;

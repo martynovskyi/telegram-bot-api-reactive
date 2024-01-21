@@ -14,11 +14,10 @@ import static com.motokyi.tg.bot_api.api.constant.ApiProperties.LANGUAGE_CODE;
 
 /**
  * Use this method to change the list of the bot's commands.
- * See https://core.telegram.org/bots#commands for more details about bot commands. Returns True on success.
- * See <a href="SetMyCommands">https://core.telegram.org/bots/api#setmycommands</a>
- * <p>
+ * See <a href="https://core.telegram.org/bots#commands">here</a> for more details about bot commands. Returns True on success.
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#setmycommands">setMyCommands</a>
  */
 
 @Getter

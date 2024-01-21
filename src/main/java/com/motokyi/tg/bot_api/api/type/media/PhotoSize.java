@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents one size of a photo or a file / sticker thumbnail.
- * See <a href="PhotoSize">https://core.telegram.org/bots/api#photosize</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#photosize">PhotoSize</a>
  */
 @Data
 public class PhotoSize {

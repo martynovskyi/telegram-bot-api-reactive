@@ -4,11 +4,11 @@ import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
 
 /**
- * This object represents the content of a service message, sent whenever a user in the chat triggers a proximity alert set by another user.
- * See <a href="ProximityAlertTriggered">https://core.telegram.org/bots/api#proximityalerttriggered</a>
- * <p>
+ * This object represents the content of a service message, sent whenever a user in the chat triggers a proximity
+ * alert set by another user.
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#proximityalerttriggered">ProximityAlertTriggered</a>
  */
 @Data
 public class ProximityAlertTriggered {

@@ -9,10 +9,9 @@ import java.util.List;
 
 /**
  * Represents an audio file to be treated as music to be sent.
- * See <a href="InputMediaAudio">https://core.telegram.org/bots/api#inputmediaaudio</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inputmediaaudio">InputMediaAudio</a>
  */
 @Data
 public class InputMediaAudio {
@@ -30,7 +29,6 @@ public class InputMediaAudio {
 
     @JsonProperty(ApiProperties.CAPTION_ENTITIES)
     private List<MessageEntity> captionEntities;
-
 
     private Integer duration;
 

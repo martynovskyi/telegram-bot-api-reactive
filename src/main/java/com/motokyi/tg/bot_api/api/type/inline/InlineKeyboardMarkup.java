@@ -10,10 +10,9 @@ import java.util.List;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
- * See <a href="InlineKeyboardMarkup">https://core.telegram.org/bots/api#inlinekeyboardmarkup</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

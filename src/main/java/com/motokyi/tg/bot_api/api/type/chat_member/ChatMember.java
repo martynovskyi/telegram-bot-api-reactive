@@ -7,13 +7,22 @@ import lombok.Data;
 
 /**
  * This object contains information about one member of a chat.
- * See <a href="ChatMember">https://core.telegram.org/bots/api#chatmember</a>
- * <p>
+ * <ul>Currently, the following 6 types of chat members are supported:
+ * <li> ChatMemberOwner
+ * <li> ChatMemberAdministrator
+ * <li> ChatMemberMember
+ * <li> ChatMemberRestricted
+ * <li> ChatMemberLeft
+ * <li> ChatMemberBanned
+ * </ul>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatmember">ChatMember</a>
  */
 @Data
 public class ChatMember {
+
+    // todo: need to split this class according to documentation
     private User user;
 
     private String status;

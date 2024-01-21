@@ -4,10 +4,9 @@ import lombok.Data;
 
 /**
  * This object represents an animated emoji that displays a random value.
- * See <a href="SwitchInlineQueryChosenChat">https://core.telegram.org/bots/api#dice</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#dice">Dice</a>
  */
 @Data
 public class Dice {

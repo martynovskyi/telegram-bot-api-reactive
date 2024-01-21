@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents information about an order.
- * See <a href="OrderInfo">https://core.telegram.org/bots/api#orderinfo</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#orderinfo">OrderInfo</a>
  */
 @Data
 public class OrderInfo {

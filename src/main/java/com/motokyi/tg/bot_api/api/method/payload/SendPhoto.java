@@ -10,7 +10,9 @@ import java.io.File;
 
 /**
  * Use this method to send photos. On success, the sent Message is returned.
- * See <a href="SendPhoto">https://core.telegram.org/bots/api#audio</a>
+ *
+ * @version Bot API 6.9
+ * @see <a href="https://core.telegram.org/bots/api#sendphoto">sendPhoto</a>
  */
 
 @Getter

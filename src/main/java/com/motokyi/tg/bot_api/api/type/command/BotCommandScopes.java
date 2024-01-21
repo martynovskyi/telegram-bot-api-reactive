@@ -2,19 +2,18 @@ package com.motokyi.tg.bot_api.api.type.command;
 
 /**
  * This object represents the scope to which bot commands are applied.
- * Currently, the following 7 scopes are supported:
- * BotCommandScopeDefault
- * BotCommandScopeAllPrivateChats
- * BotCommandScopeAllGroupChats
- * BotCommandScopeAllChatAdministrators
- * BotCommandScopeChat
- * BotCommandScopeChatAdministrators
- * BotCommandScopeChatMember
- * <p>
- * See <a href="BotCommandScope">https://core.telegram.org/bots/api#botcommandscope</a>
- * <p>
+ * <ul>Currently, the following 7 scopes are supported:
+ * <li>BotCommandScopeDefault
+ * <li>BotCommandScopeAllPrivateChats
+ * <li>BotCommandScopeAllGroupChats
+ * <li>BotCommandScopeAllChatAdministrators
+ * <li>BotCommandScopeChat
+ * <li>BotCommandScopeChatAdministrators
+ * <li>BotCommandScopeChatMember
+ * </ul>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#botcommandscope">BotCommandScope</a>
  */
 public class BotCommandScopes {
     public static final BotCommandScope DEFAULT = new BotCommandScope("default");

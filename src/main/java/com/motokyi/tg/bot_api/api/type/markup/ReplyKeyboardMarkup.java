@@ -10,11 +10,10 @@ import java.util.List;
 
 /**
  * This object represents a custom keyboard with reply options
- * (see <a href="Introduction to bots">https://core.telegram.org/bots#keyboards</a> for details and examples).
- * See <a href="ReplyKeyboardMarkup">https://core.telegram.org/bots/api#replykeyboardmarkup</a>
- * <p>
+ * (see <a href="https://core.telegram.org/bots#keyboards">Introduction to bots</a> for details and examples).
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -5,10 +5,9 @@ import lombok.Data;
 /**
  * This object represents a service message about a video chat started in the chat.
  * Currently holds no information.
- * See <a href="VideoChatStarted">https://core.telegram.org/bots/api#videochatstarted</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#videochatstarted">VideoChatStarted</a>
  */
 @Data
 public class VideoChatStarted {

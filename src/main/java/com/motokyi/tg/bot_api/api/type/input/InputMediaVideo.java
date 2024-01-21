@@ -9,11 +9,9 @@ import java.util.List;
 
 /**
  * Represents a video to be sent.
- * <p>
- * See <a href="InputMediaVideo">https://core.telegram.org/bots/api#inputmediavideo</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inputmediavideo">InputMediaVideo</a>
  */
 @Data
 public class InputMediaVideo {

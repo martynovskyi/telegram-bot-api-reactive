@@ -11,10 +11,9 @@ import static com.motokyi.tg.bot_api.api.constant.ApiProperties.LANGUAGE_CODE;
 /**
  * Use this method to get the current list of the bot's commands for the given scope and user language.
  * Returns Array of BotCommand on success. If commands aren't set, an empty list is returned.
- * See <a href="GetMyCommands">https://core.telegram.org/bots/api#getmycommands</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#getmycommands">getMyCommands</a>
  */
 
 @Getter

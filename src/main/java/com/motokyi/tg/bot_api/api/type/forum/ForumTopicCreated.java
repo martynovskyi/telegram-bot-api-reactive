@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents a service message about a new forum topic created in the chat.
- * See <a href="ForumTopicCreated">https://core.telegram.org/bots/api#forumtopiccreated</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#forumtopiccreated">ForumTopicCreated</a>
  */
 @Data
 public class ForumTopicCreated {

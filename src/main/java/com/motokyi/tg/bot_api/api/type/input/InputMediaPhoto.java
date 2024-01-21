@@ -9,11 +9,9 @@ import java.util.List;
 
 /**
  * Represents a photo to be sent.
- * <p>
- * See <a href="InputMediaPhoto">https://core.telegram.org/bots/api#inputmediaphoto</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inputmediaphoto">InputMediaPhoto</a>
  */
 @Data
 public class InputMediaPhoto {

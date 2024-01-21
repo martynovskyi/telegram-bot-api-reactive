@@ -10,7 +10,9 @@ import lombok.Setter;
 /**
  * Use this method to edit only the reply markup of messages.
  * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
- * See <a href="EditMessageReplyMarkup">https://core.telegram.org/bots/api#editmessagereplymarkup</a>
+ *
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#editmessagereplymarkup">editMessageReplyMarkup</a>
  **/
 @Getter
 @Setter

@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object represents a video file.
- * See <a href="Video">https://core.telegram.org/bots/api#video</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#video">Video</a>
  */
 @Data
 public class Video {

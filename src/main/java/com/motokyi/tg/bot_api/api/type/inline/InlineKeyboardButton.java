@@ -10,10 +10,9 @@ import lombok.Data;
 
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
- * See <a href="InlineKeyboardButton">https://core.telegram.org/bots/api#inlinekeyboardbutton</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inlinekeyboardbutton">InlineKeyboardButton</a>
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)

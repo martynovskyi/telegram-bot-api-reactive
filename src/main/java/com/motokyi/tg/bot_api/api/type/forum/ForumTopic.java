@@ -6,16 +6,14 @@ import lombok.Data;
 
 /**
  * This object represents a forum topic.
- * <p>
- * See <a href="ForumTopic">https://core.telegram.org/bots/api#forumtopic</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#forumtopic">ForumTopic</a>
  */
 @Data
 public class ForumTopic {
 
-    @JsonProperty("message_thread_id")
+    @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
     private Long messageThreadId;
 
     private String name;

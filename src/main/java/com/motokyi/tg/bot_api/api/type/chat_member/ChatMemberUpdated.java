@@ -9,10 +9,9 @@ import lombok.Data;
 
 /**
  * This object represents changes in the status of a chat member.
- * See <a href="ChatMemberUpdated">https://core.telegram.org/bots/api#chatmemberupdated</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#chatmemberupdated">ChatMemberUpdated</a>
  */
 @Data
 public class ChatMemberUpdated {

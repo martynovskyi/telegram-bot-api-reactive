@@ -5,10 +5,9 @@ import lombok.Data;
 
 /**
  * This object contains information about one answer option in a poll.
- * See <a href="PollOption">https://core.telegram.org/bots/api#polloption</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#polloption">PollOption</a>
  */
 @Data
 public class PollOption {

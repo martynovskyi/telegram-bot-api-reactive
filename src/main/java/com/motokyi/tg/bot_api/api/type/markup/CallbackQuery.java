@@ -14,14 +14,13 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
  * originated the query was attached to a message sent by the bot, the field message will be present. If the button was
  * attached to a message sent via the bot (in inline mode), the field inline_message_id will be present. Exactly one of
  * the fields data or game_short_name will be present.
- * See <a href="CallbackQuery">https://core.telegram.org/bots/api#callbackquery</a>
  * <p>
  * NOTE: After the user presses a callback button, Telegram clients will display a progress bar until you call
  * answerCallbackQuery. It is, therefore, necessary to react by calling answerCallbackQuery even if no notification to
  * the user is needed (e.g., without specifying any of the optional parameters).
- * <p>
  *
  * @version Bot API 6.9
+ * @see <a href="https://core.telegram.org/bots/api#callbackquery">CallbackQuery</a>
  */
 @Data
 @JsonInclude(NON_NULL)
@@ -31,6 +30,7 @@ public class CallbackQuery {
 
     private User from;
 
+    //todo: MaybeInaccessibleMessage
     private Message message;
 
     @JsonProperty(ApiProperties.INLINE_MESSAGE_ID)

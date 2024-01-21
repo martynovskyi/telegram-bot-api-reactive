@@ -11,10 +11,9 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 /**
  * This object represents an incoming inline query. When the user sends an empty query,
  * your bot could return some default or trending results.
- * See <a href="InlineQuery">https://core.telegram.org/bots/api#inlinequery</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#inlinequery">InlineQuery</a>
  */
 @Data
 @JsonInclude(NON_NULL)

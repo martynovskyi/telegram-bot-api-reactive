@@ -9,10 +9,9 @@ import java.util.List;
 
 /**
  * This object represents an answer of a user in a non-anonymous poll.
- * See <a href="PollAnswer">https://core.telegram.org/bots/api#pollanswer</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#pollanswer">PollAnswer</a>
  */
 @Data
 public class PollAnswer {

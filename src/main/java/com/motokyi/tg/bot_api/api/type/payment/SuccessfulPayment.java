@@ -6,10 +6,9 @@ import lombok.Data;
 
 /**
  * This object contains basic information about a successful payment.
- * See <a href="SuccessfulPayment">https://core.telegram.org/bots/api#successfulpayment</a>
- * <p>
  *
- * @version Bot API 6.9
+ * @version Bot API 7.0
+ * @see <a href="https://core.telegram.org/bots/api#successfulpayment">SuccessfulPayment</a>
  */
 @Data
 public class SuccessfulPayment {
