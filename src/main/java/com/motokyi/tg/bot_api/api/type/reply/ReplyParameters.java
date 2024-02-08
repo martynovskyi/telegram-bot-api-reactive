@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @see <a href="https://core.telegram.org/bots/api#replyparameters">ReplyParameters</a>
  */
 @Data
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReplyParameters {
 
@@ -37,4 +39,8 @@ public class ReplyParameters {
 
     @JsonProperty(ApiProperties.QUOTE_POSITION)
     private Integer quote_position;
+
+    public ReplyParameters(Long messageId) {
+        this.messageId = messageId;
+    }
 }
