@@ -1,5 +1,6 @@
 package com.motokyi.tg.bot_api.api.type.reply;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
@@ -14,6 +15,7 @@ import java.util.List;
  * @see <a href="https://core.telegram.org/bots/api#replyparameters">ReplyParameters</a>
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReplyParameters {
 
     @JsonProperty(ApiProperties.MESSAGE_ID)

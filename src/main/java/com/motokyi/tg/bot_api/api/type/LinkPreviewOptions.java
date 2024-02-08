@@ -1,5 +1,6 @@
 package com.motokyi.tg.bot_api.api.type;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
@@ -11,6 +12,7 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#linkpreviewoptions">LinkPreviewOptions<a/>
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LinkPreviewOptions {
 
     @JsonProperty(ApiProperties.IS_DISABLED)
