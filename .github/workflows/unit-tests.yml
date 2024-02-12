@@ -2,8 +2,8 @@ name: Unit Tests
 
 on:
   push:
-  tags-ignore:
-    - '**'
+    tags-ignore:
+      - '**'
 
 jobs:
   build:
