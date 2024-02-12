@@ -20,6 +20,7 @@ public final class ApiUrls {
     public static final String SEND_VOICE = "/sendVoice";
     public static final String SEND_VIDEO_NOTE = "/sendVideoNote";
     public static final String EDIT_MESSAGE_REPLY_MARKUP = "/editMessageReplyMarkup";
+    public static final String ANSWER_CALLBACK_QUERY = "/answerCallbackQuery";
     public static final String SET_MY_COMMANDS = "/setMyCommands";
     public static final String DELETE_MY_COMMANDS = "/deleteMyCommands";
     public static final String GET_MY_COMMANDS = "/getMyCommands";

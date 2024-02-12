@@ -7,7 +7,6 @@ import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
 
-import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 
 /**
  * This object represents an incoming callback query from a callback button in an inline keyboard. If the button that
@@ -23,7 +22,7 @@ import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
  * @see <a href="https://core.telegram.org/bots/api#callbackquery">CallbackQuery</a>
  */
 @Data
-@JsonInclude(NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CallbackQuery {
 
     private String id;

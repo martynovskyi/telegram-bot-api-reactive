@@ -240,6 +240,16 @@ class BotClient implements BotApiClient {
     }
 
     @Override
+    public Mono<Response<Boolean>> send(@NotNull AnswerCallbackQuery answerCallbackQuery) {
+        return wc.post()
+                .uri(ApiUrls.ANSWER_CALLBACK_QUERY)
+                .bodyValue(answerCallbackQuery)
+                .exchangeToMono(ClientUtils.responseHandler(answerCallbackQuery.getClass(),
+                        new ParameterizedTypeReference<Response<Boolean>>() {
+                        }));
+    }
+
+    @Override
     public Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId) {
         return wc.get()
                 .uri(ApiUrls.DELETE_MESSAGE,

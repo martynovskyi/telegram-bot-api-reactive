@@ -8,6 +8,7 @@ import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
+import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
@@ -199,6 +200,16 @@ public class TelegramBot implements Bot {
     @Override
     public EditMessageReplyMarkup editMessageReplyMarkup(@NotNull Long chatId, @NotNull Long messageId) {
         return new EditMessageReplyMarkup(String.valueOf(chatId), String.valueOf(messageId), client);
+    }
+
+    @Override
+    public AnswerCallbackQuery answerCallbackQuery(@NotNull String callbackQueryId) {
+        return new AnswerCallbackQuery(callbackQueryId, client);
+    }
+
+    @Override
+    public AnswerCallbackQuery answerCallbackQuery(CallbackQuery callbackQuery) {
+        return new AnswerCallbackQuery(callbackQuery.getId(), client);
     }
 
     @Override

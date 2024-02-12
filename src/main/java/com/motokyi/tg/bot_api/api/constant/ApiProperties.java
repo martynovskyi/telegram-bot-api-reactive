@@ -43,10 +43,12 @@ public final class ApiProperties {
     public static final String CAN_SEND_OTHER_MESSAGES = "can_send_other_messages";
     public static final String CAN_ADD_WEB_PAGE_PREVIEWS = "can_add_web_page_previews";
     public static final String CAPTION_ENTITIES = "caption_entities";
+    public static final String CALLBACK_QUERY_ID = "callback_query_id";
     public static final String CHAT_ID = "chat_id";
     public static final String COUNTRY_CODES = "country_codes";
     public static final String CUSTOM_EMOJI_ID = "custom_emoji_id";
     public static final String CUSTOM_TITLE = "custom_title";
+    public static final String CACHE_TIME = "cache_time";
     public static final String DESCRIPTION = "description";
     public static final String DISABLE_NOTIFICATION = "disable_notification";
     public static final String DROP_PENDING_UPDATES = "drop_pending_updates";
@@ -131,6 +133,7 @@ public final class ApiProperties {
     public static final String SHIPPING_ADDRESS = "shipping_address";
     public static final String SHORT_DESCRIPTION = "short_description";
     public static final String SHOW_ABOVE_TEXT = "show_above_text";
+    public static final String SHOW_ALERT = "show_alert";
     public static final String SCOPE = "scope";
     public static final String SECRET_TOKEN = "secret_token";
     public static final String SENDER_CHAT = "sender_chat";

@@ -134,14 +134,18 @@ public final class ClientUtils {
                                                                         final ParameterizedTypeReference<T> typeRef) {
         return clientResponse -> {
             if (clientResponse.statusCode().isError()) {
+                // Todo: create config option to transform to all error responses to Mono.error /
+                // e.g. error-transformation-mode: ERROR | BODY
+
                 log.warn("Method {} got error {}", method, clientResponse.statusCode());
 
                 if (clientResponse.statusCode().is5xxServerError()) {
                     log.warn("Attempt to recover after {}", clientResponse.statusCode());
                     return Mono.empty();
                 }
-                if (HttpStatus.TOO_MANY_REQUESTS == clientResponse.statusCode()) {
-                    log.warn("Recover after {}", clientResponse.statusCode());
+
+                if (clientResponse.statusCode().isSameCodeAs(HttpStatus.TOO_MANY_REQUESTS)) {
+                    log.warn("Transform response to error after {}", clientResponse.statusCode());
                     return clientResponse.
                             bodyToMono(new ParameterizedTypeReference<Response<Void>>() {
                             })

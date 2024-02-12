@@ -60,6 +60,11 @@ public interface BotApiClient {
     Mono<Response<Message>> editMessageReplyMarkup(@NotNull EditMessageReplyMarkup editMessageReplyMarkup);
 
     /**
+     * @see <a href="https://core.telegram.org/bots/api#answercallbackquery">answerCallbackQuery</a>
+     **/
+    Mono<Response<Boolean>> send(@NotNull AnswerCallbackQuery answerCallbackQuery);
+
+    /**
      * @see <a href="https://core.telegram.org/bots/api#setmessagereaction">setMessageReaction</a>
      **/
     Mono<Response<Boolean>> send(@NotNull SetMessageReaction setMessageReaction);

@@ -2,6 +2,7 @@ package com.motokyi.tg.bot_api.bot;
 
 import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,8 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class TelegramBotTest extends TelegramBotTestSetup {
+
+    public static final String CALLBACK_QUERY_ID = "callbackQueryId";
 
     @NotNull
     private static Message buildMessage() {
@@ -194,6 +197,25 @@ class TelegramBotTest extends TelegramBotTestSetup {
                 () -> assertEquals(CHAT_ID, forwardMessage.getFromChatId()),
                 () -> assertEquals(MESSAGE_ID, forwardMessage.getMessageId())
         );
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void answerCallbackQuery() {
+        AnswerCallbackQuery answerCallbackQuery = bot.answerCallbackQuery(CALLBACK_QUERY_ID);
+        assertNotNull(answerCallbackQuery);
+        assertEquals(CALLBACK_QUERY_ID, answerCallbackQuery.getCallbackQueryId());
+        verifyNoMoreInteractions(webClient);
+    }
+
+
+    @Test
+    void editMessageReplyMarkup_callbackQuery() {
+        CallbackQuery callbackQuery = new CallbackQuery();
+        callbackQuery.setId(CALLBACK_QUERY_ID);
+        AnswerCallbackQuery answerCallbackQuery = bot.answerCallbackQuery(callbackQuery);
+        assertNotNull(answerCallbackQuery);
+        assertEquals(CALLBACK_QUERY_ID, answerCallbackQuery.getCallbackQueryId());
         verifyNoMoreInteractions(webClient);
     }
 

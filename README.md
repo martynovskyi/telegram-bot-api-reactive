@@ -26,6 +26,7 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - forwardMessage
 - [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
 - editMessageReplyMarkup
+- [answerCallbackQuery](https://core.telegram.org/bots/api#answercallbackquery)
 - deleteMessage
 - Webhook
     - [setWebhook](https://core.telegram.org/bots/api#setwebhook)
