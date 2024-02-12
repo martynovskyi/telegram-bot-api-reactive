@@ -1,5 +1,9 @@
-Telegram Bot API based on Spring reactor
-Java 21
+[![Unit Tests](https://github.com/martynovskyi/telegram-bot-api-reactive/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/martynovskyi/telegram-bot-api-reactive/actions/workflows/unit-tests.yml)
+
+Telegram Bot API based on Spring Reactor
+- Java 21
+- WebClient
+- Mono and Flux
 
 Currently, code/package structure is not finalized. Pretty raw implementations
 
