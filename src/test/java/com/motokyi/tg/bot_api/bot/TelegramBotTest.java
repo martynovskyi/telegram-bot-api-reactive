@@ -218,7 +218,28 @@ class TelegramBotTest extends TelegramBotTestSetup {
         assertEquals(CALLBACK_QUERY_ID, answerCallbackQuery.getCallbackQueryId());
         verifyNoMoreInteractions(webClient);
     }
+    @Test
+    void editMessageText() {
+        EditMessageText editMessageText = bot.editMessageText(CHAT_ID, MESSAGE_ID);
+        assertAll(
+                () -> assertNotNull(editMessageText),
+                () -> assertEquals(String.valueOf(CHAT_ID), editMessageText.getChatId()),
+                () -> assertEquals(String.valueOf(MESSAGE_ID), editMessageText.getMessageId())
+        );
+        verifyNoMoreInteractions(webClient);
+    }
 
+    @Test
+    void editMessageText_message() {
+        Message message = buildMessage();
+        EditMessageText editMessageText = bot.editMessageText(message);
+        assertAll(
+                () -> assertNotNull(editMessageText),
+                () -> assertEquals(String.valueOf(message.getChat().getId()), editMessageText.getChatId()),
+                () -> assertEquals(String.valueOf(message.getMessageId()), editMessageText.getMessageId())
+        );
+        verifyNoMoreInteractions(webClient);
+    }
     @Test
     void editMessageReplyMarkup() {
         EditMessageReplyMarkup editMessageReplyMarkup = bot.editMessageReplyMarkup(CHAT_ID, MESSAGE_ID);
@@ -226,6 +247,18 @@ class TelegramBotTest extends TelegramBotTestSetup {
                 () -> assertNotNull(editMessageReplyMarkup),
                 () -> assertEquals(String.valueOf(CHAT_ID), editMessageReplyMarkup.getChatId()),
                 () -> assertEquals(String.valueOf(MESSAGE_ID), editMessageReplyMarkup.getMessageId())
+        );
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void editMessageReplyMarkup_message() {
+        Message message = buildMessage();
+        EditMessageReplyMarkup editMessageReplyMarkup = bot.editMessageReplyMarkup(message);
+        assertAll(
+                () -> assertNotNull(editMessageReplyMarkup),
+                () -> assertEquals(String.valueOf(message.getChat().getId()), editMessageReplyMarkup.getChatId()),
+                () -> assertEquals(String.valueOf(message.getMessageId()), editMessageReplyMarkup.getMessageId())
         );
         verifyNoMoreInteractions(webClient);
     }

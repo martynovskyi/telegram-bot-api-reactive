@@ -230,11 +230,21 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<Message>> editMessageReplyMarkup(@NotNull EditMessageReplyMarkup editMessageReplyMarkup) {
+    public Mono<Response<Message>> send(@NotNull EditMessageReplyMarkup editMessageReplyMarkup) {
         return wc.post()
                 .uri(ApiUrls.EDIT_MESSAGE_REPLY_MARKUP)
                 .bodyValue(editMessageReplyMarkup)
                 .exchangeToMono(ClientUtils.responseHandler(editMessageReplyMarkup.getClass(),
+                        new ParameterizedTypeReference<Response<Message>>() {
+                        }));
+    }
+
+    @Override
+    public Mono<Response<Message>> send(@NotNull EditMessageText editMessageText) {
+        return wc.post()
+                .uri(ApiUrls.EDIT_MESSAGE_TEXT)
+                .bodyValue(editMessageText)
+                .exchangeToMono(ClientUtils.responseHandler(editMessageText.getClass(),
                         new ParameterizedTypeReference<Response<Message>>() {
                         }));
     }

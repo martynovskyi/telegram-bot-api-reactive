@@ -25,7 +25,7 @@ public class EditMessageReplyMarkup
 
     @Override
     public Mono<Response<Message>> send() {
-        return client.editMessageReplyMarkup(this);
+        return client.send(this);
     }
 
     public EditMessageReplyMarkup replyMarkup(KeyboardMarkup replyMarkup) {

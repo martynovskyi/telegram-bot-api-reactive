@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Convenient facade for all Bot API
  */
-public interface Bot extends BotMessage, BotCommands, BotInfo, BotWebhook, BotMedia {
+public interface Bot extends BotMessage, BotUpdateMessages, BotCommands, BotInfo, BotWebhook, BotMedia {
     Mono<Response<List<Update>>> getAllUpdates();
 
     GetUpdates getUpdates();

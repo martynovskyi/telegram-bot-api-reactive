@@ -198,9 +198,25 @@ public class TelegramBot implements Bot {
     }
 
     @Override
+    public EditMessageText editMessageText(@NotNull Long chatId, @NotNull Long messageId) {
+        return new EditMessageText(String.valueOf(chatId), String.valueOf(messageId), client);
+    }
+
+    @Override
+    public EditMessageText editMessageText(@NotNull Message message) {
+        return new EditMessageText(String.valueOf(message.getChat().getId()), String.valueOf(message.getMessageId()), client);
+    }
+
+    @Override
     public EditMessageReplyMarkup editMessageReplyMarkup(@NotNull Long chatId, @NotNull Long messageId) {
         return new EditMessageReplyMarkup(String.valueOf(chatId), String.valueOf(messageId), client);
     }
+
+    @Override
+    public EditMessageReplyMarkup editMessageReplyMarkup(@NotNull Message message) {
+        return new EditMessageReplyMarkup(String.valueOf(message.getChat().getId()), String.valueOf(message.getMessageId()), client);
+    }
+
 
     @Override
     public AnswerCallbackQuery answerCallbackQuery(@NotNull String callbackQueryId) {

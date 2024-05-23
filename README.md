@@ -21,7 +21,13 @@ Currently, code/package structure is not finalized. Pretty raw implementations
     - [setMyDescription](https://core.telegram.org/bots/api#setmydescription)
     - [getMyShortDescription](https://core.telegram.org/bots/api#getmyshortdescription)
     - [setMyShortDescription](https://core.telegram.org/bots/api#setmyshortdescription)
+- Webhook
+    - [setWebhook](https://core.telegram.org/bots/api#setwebhook)
+    - [getWebhookInfo](https://core.telegram.org/bots/api#getwebhookinfo)
+    - [deleteWebhook](https://core.telegram.org/bots/api#deletewebhook)
 - [getUpdates](https://core.telegram.org/bots/api#getupdates)
+- Updating messages
+    - [editMessageReplyMarkup](https://core.telegram.org/bots/api#editmessagereplymarkup)
 - [getChat](https://core.telegram.org/bots/api#getchat)
 - sendMessage
 - sendDocument
@@ -29,13 +35,9 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - sendPhoto
 - forwardMessage
 - [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
-- editMessageReplyMarkup
 - [answerCallbackQuery](https://core.telegram.org/bots/api#answercallbackquery)
 - deleteMessage
-- Webhook
-    - [setWebhook](https://core.telegram.org/bots/api#setwebhook)
-    - [getWebhookInfo](https://core.telegram.org/bots/api#getwebhookinfo)
-    - [deleteWebhook](https://core.telegram.org/bots/api#deletewebhook)
+
 
 ### Configuration
 

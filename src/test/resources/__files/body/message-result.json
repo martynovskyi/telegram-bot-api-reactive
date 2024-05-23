@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "result":  {
+    "from" : {
+      "id" : 1234567,
+      "is_bot" : false,
+      "first_name" : "test",
+      "last_name" : "user",
+      "username" : "test_username",
+      "language_code" : "en"
+    },
+    "date" : 1716453016,
+    "chat" : {
+      "id" : 1234567,
+      "type" : "private",
+      "username" : "test_username",
+      "first_name" : "test",
+      "last_name" : "user"
+    },
+    "text" : "test text",
+    "entities" : [],
+    "message_id" : 5000
+  },
+  "description": null,
+  "error_code": null
+}

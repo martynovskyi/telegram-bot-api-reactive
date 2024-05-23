@@ -57,7 +57,8 @@ public interface BotApiClient {
 
     Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
 
-    Mono<Response<Message>> editMessageReplyMarkup(@NotNull EditMessageReplyMarkup editMessageReplyMarkup);
+    Mono<Response<Message>> send(@NotNull EditMessageReplyMarkup editMessageReplyMarkup);
+    Mono<Response<Message>> send(@NotNull EditMessageText editMessageText);
 
     /**
      * @see <a href="https://core.telegram.org/bots/api#answercallbackquery">answerCallbackQuery</a>

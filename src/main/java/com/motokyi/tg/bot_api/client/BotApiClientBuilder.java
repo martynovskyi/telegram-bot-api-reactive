@@ -35,10 +35,7 @@ public class BotApiClientBuilder {
             builder = WebClient.builder();
         }
         builder.baseUrl(ClientUtils.createBotUrl(botProperties))
-                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE)
-                .filter(ClientUtils.logRequest(log))
-                .filter(ClientUtils.logResponse(log));
-
+                .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
         return new BotClient(builder.build());
     }
 }
