@@ -1,13 +1,17 @@
 package com.motokyi.tg.bot_api.bot;
 
+import com.motokyi.tg.bot_api.TestObjects;
 import com.motokyi.tg.bot_api.api.method.DeleteMyCommands;
 import com.motokyi.tg.bot_api.api.method.GetMyCommands;
 import com.motokyi.tg.bot_api.api.method.SetMyCommands;
+import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScopes;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -121,7 +125,11 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
     @Test
     void deleteMyCommands_WithScope() {
         ArgumentCaptor<DeleteMyCommands> deleteCaptor = ArgumentCaptor.forClass(DeleteMyCommands.class);
-        bot.deleteMyCommands(BotCommandScopes.DEFAULT);
+        Response<Boolean> response = TestObjects.successTrue();
+        when(webClient.send(any(DeleteMyCommands.class))).thenReturn(Mono.just(response));
+
+        StepVerifier.create(bot.deleteMyCommands(BotCommandScopes.DEFAULT))
+                .expectNext(response);
 
         verify(webClient).send(deleteCaptor.capture());
         DeleteMyCommands deleteMyCommands = deleteCaptor.getValue();
@@ -135,7 +143,11 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
     @Test
     void deleteMyCommands_WithScopeAndLanguage() {
         ArgumentCaptor<DeleteMyCommands> deleteCaptor = ArgumentCaptor.forClass(DeleteMyCommands.class);
-        bot.deleteMyCommands(BotCommandScopes.DEFAULT, LANGUAGE_CODE);
+        Response<Boolean> response = TestObjects.successTrue();
+        when(webClient.send(any(DeleteMyCommands.class))).thenReturn(Mono.just(response));
+
+        StepVerifier.create(bot.deleteMyCommands(BotCommandScopes.DEFAULT, LANGUAGE_CODE))
+                .expectNext(response);
 
         verify(webClient).send(deleteCaptor.capture());
         DeleteMyCommands deleteMyCommands = deleteCaptor.getValue();

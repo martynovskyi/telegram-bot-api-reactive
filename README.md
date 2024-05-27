@@ -27,7 +27,9 @@ Currently, code/package structure is not finalized. Pretty raw implementations
     - [deleteWebhook](https://core.telegram.org/bots/api#deletewebhook)
 - [getUpdates](https://core.telegram.org/bots/api#getupdates)
 - Updating messages
+    - [editMessageText](https://core.telegram.org/bots/api#editmessagetext)
     - [editMessageReplyMarkup](https://core.telegram.org/bots/api#editmessagereplymarkup)
+    - [deleteMessage](https://core.telegram.org/bots/api#deletemessage)
 - [getChat](https://core.telegram.org/bots/api#getchat)
 - sendMessage
 - sendDocument
@@ -36,7 +38,6 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - forwardMessage
 - [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
 - [answerCallbackQuery](https://core.telegram.org/bots/api#answercallbackquery)
-- deleteMessage
 
 
 ### Configuration
