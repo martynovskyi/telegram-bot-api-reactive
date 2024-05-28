@@ -5,7 +5,7 @@ import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
 import com.motokyi.tg.bot_api.api.type.bot.BotName;
 import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
-import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.update.Update;
@@ -37,7 +37,7 @@ public interface BotApiClient {
 
     Mono<Response<List<Update>>> getUpdates(@NotNull GetUpdates getUpdates);
 
-    Mono<Response<Chat>> getChat(@NotNull String chatTag);
+    Mono<Response<ChatFullInfo>> getChat(@NotNull String chatTag);
 
     Mono<Response<Message>> send(@NotNull SendMessage message);
 
@@ -58,6 +58,7 @@ public interface BotApiClient {
     Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
 
     Mono<Response<Message>> send(@NotNull EditMessageReplyMarkup editMessageReplyMarkup);
+
     Mono<Response<Message>> send(@NotNull EditMessageText editMessageText);
 
     /**

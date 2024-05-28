@@ -7,7 +7,7 @@ import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
 import com.motokyi.tg.bot_api.api.type.bot.BotName;
 import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
-import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.update.Update;
@@ -115,11 +115,11 @@ class BotClient implements BotApiClient {
     }
 
     @Override
-    public Mono<Response<Chat>> getChat(@NotNull String chatId) {
+    public Mono<Response<ChatFullInfo>> getChat(@NotNull String chatId) {
         return wc.get()
                 .uri(ApiUrls.GET_CHAT, uri -> uri.queryParam(ApiProperties.CHAT_ID, chatId).build())
                 .exchangeToMono(ClientUtils.responseHandler("GetChat",
-                        new ParameterizedTypeReference<Response<Chat>>() {
+                        new ParameterizedTypeReference<Response<ChatFullInfo>>() {
                         }));
     }
 

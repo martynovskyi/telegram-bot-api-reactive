@@ -6,6 +6,7 @@ import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
 import com.motokyi.tg.bot_api.api.type.bot.BotName;
 import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
@@ -102,12 +103,12 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<Chat>> getChat(@NotNull Long chatId) {
+    public Mono<Response<ChatFullInfo>> getChat(@NotNull Long chatId) {
         return client.getChat(String.valueOf(chatId));
     }
 
     @Override
-    public Mono<Response<Chat>> getChat(@NotNull String chatTag) {
+    public Mono<Response<ChatFullInfo>> getChat(@NotNull String chatTag) {
         return client.getChat(chatTag);
     }
 

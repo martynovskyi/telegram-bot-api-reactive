@@ -161,6 +161,17 @@ public final class ApiProperties {
     public static final String WIDTH = "width";
     public static final String WINNER_COUNT = "winner_count";
     public static final String WINNERS_SELECTION_DATE = "winners_selection_date";
+    public static final String MAX_REACTION_COUNT = "max_reaction_count";
+    public static final String BUSINESS_INTRO = "business_intro";
+    public static final String BUSINESS_LOCATION = "business_location";
+    public static final String BUSINESS_OPENING_HOURS = "business_opening_hours";
+    public static final String PERSONAL_CHAT = "personal_chat";
+    public static final String UNRESTRICT_BOOST_COUNT = "unrestrict_boost_count";
+    public static final String CUSTOM_EMOJI_STICKER_SET_NAME = "custom_emoji_sticker_set_name";
+    public static final String TIME_ZONE_NAME = "time_zone_name";
+    public static final String OPENING_HOURS = "opening_hours";
+    public static final String OPENING_MINUTE = "opening_minute";
+    public static final String CLOSING_MINUTE = "closing_minute";
 
     private ApiProperties() {
     }
