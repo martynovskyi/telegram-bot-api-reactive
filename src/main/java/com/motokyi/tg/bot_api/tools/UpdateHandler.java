@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.tools;
 
+import com.motokyi.tg.bot_api.api.type.business.BusinessConnection;
+import com.motokyi.tg.bot_api.api.type.business.BusinessMessagesDeleted;
+import com.motokyi.tg.bot_api.api.type.chat.ChatJoinRequest;
 import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostRemoved;
 import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostUpdated;
 import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
@@ -30,6 +33,10 @@ public class UpdateHandler {
     private final Consumer<Message> editedMessageConsumer;
     private final Consumer<Message> channelPostConsumer;
     private final Consumer<Message> editedChannelPostConsumer;
+    private final Consumer<BusinessConnection> businessConnectionConsumer;
+    private final Consumer<Message> businessMessageConsumer;
+    private final Consumer<Message> editedBusinessMessageConsumer;
+    private final Consumer<BusinessMessagesDeleted> deletedBusinessMessagesConsumer;
     private final Consumer<MessageReactionUpdated> messageReactionConsumer;
     private final Consumer<MessageReactionCountUpdated> messageReactionCountUpdatedConsumer;
     private final Consumer<InlineQuery> inlineQueryConsumer;
@@ -41,6 +48,7 @@ public class UpdateHandler {
     private final Consumer<PollAnswer> pollAnswerConsumer;
     private final Consumer<ChatMemberUpdated> myChatMemberConsumer;
     private final Consumer<ChatMemberUpdated> chatMemberConsumer;
+    private final Consumer<ChatJoinRequest> chatJoinRequestConsumer;
     private final Consumer<ChatBoostUpdated> chatBoostUpdatedConsumer;
     private final Consumer<ChatBoostRemoved> chatBoostRemovedConsumer;
 
@@ -50,6 +58,10 @@ public class UpdateHandler {
             ofNullable(update.getEditedMessage()).ifPresent(handleSafe(this.editedMessageConsumer));
             ofNullable(update.getChannelPost()).ifPresent(handleSafe(this.channelPostConsumer));
             ofNullable(update.getEditedMessage()).ifPresent(handleSafe(this.editedChannelPostConsumer));
+            ofNullable(update.getBusinessConnection()).ifPresent(handleSafe(this.businessConnectionConsumer));
+            ofNullable(update.getBusinessMessage()).ifPresent(handleSafe(this.businessMessageConsumer));
+            ofNullable(update.getEditedBusinessMessage()).ifPresent(handleSafe(this.editedBusinessMessageConsumer));
+            ofNullable(update.getDeletedBusinessMessages()).ifPresent(handleSafe(this.deletedBusinessMessagesConsumer));
             ofNullable(update.getMessageReaction()).ifPresent(handleSafe(this.messageReactionConsumer));
             ofNullable(update.getMessageReactionCountUpdated())
                     .ifPresent(handleSafe(this.messageReactionCountUpdatedConsumer));
@@ -62,7 +74,8 @@ public class UpdateHandler {
             ofNullable(update.getPollAnswer()).ifPresent(handleSafe(this.pollAnswerConsumer));
             ofNullable(update.getMyChatMember()).ifPresent(handleSafe(this.myChatMemberConsumer));
             ofNullable(update.getChatMember()).ifPresent(handleSafe(this.chatMemberConsumer));
-            ofNullable(update.getChatBoostUpdated()).ifPresent(handleSafe(this.chatBoostUpdatedConsumer));
+            ofNullable(update.getChatJoinRequest()).ifPresent(handleSafe(this.chatJoinRequestConsumer));
+            ofNullable(update.getChatBoost()).ifPresent(handleSafe(this.chatBoostUpdatedConsumer));
             ofNullable(update.getChatBoostRemoved()).ifPresent(handleSafe(this.chatBoostRemovedConsumer));
         }
     }

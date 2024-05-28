@@ -2,13 +2,16 @@ package com.motokyi.tg.bot_api.api.type.chat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
+import com.motokyi.tg.bot_api.api.type.media.PhotoSize;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * This object contains information about the chat whose identifier
  * was shared with the bot using a KeyboardButtonRequestChat button.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chatshared">ChatShared</a>
  */
 
@@ -20,4 +23,10 @@ public class ChatShared {
 
     @JsonProperty(ApiProperties.CHAT_ID)
     private Long chatId;
+
+    private String title;
+
+    private String username;
+
+    private List<PhotoSize> photo;
 }

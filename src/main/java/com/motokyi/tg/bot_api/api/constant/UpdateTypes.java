@@ -19,6 +19,10 @@ public final class UpdateTypes {
     public static final String POLL_ANSWER = "poll_answer";
     public static final String REMOVED_CHAT_BOOST = "removed_chat_boost";
     public static final String SHIPPING_QUERY = "shipping_query";
+    public static final String BUSINESS_CONNECTION = "business_connection";
+    public static final String BUSINESS_MESSAGE = "business_message";
+    public static final String EDITED_BUSINESS_MESSAGE = "edited_business_message";
+    public static final String DELETED_BUSINESS_MESSAGES = "deleted_business_messages";
 
     private UpdateTypes() {
     }

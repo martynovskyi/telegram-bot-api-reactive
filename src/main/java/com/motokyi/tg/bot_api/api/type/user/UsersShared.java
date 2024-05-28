@@ -20,6 +20,5 @@ public class UsersShared {
     @JsonProperty(ApiProperties.REQUEST_ID)
     private Long requestId;
 
-    @JsonProperty(ApiProperties.USER_IDS)
-    private List<Long> userIds;
+    private List<SharedUser> users;
 }

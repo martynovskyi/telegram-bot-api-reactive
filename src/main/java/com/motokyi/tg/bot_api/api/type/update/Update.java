@@ -3,6 +3,9 @@ package com.motokyi.tg.bot_api.api.type.update;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.UpdateTypes;
+import com.motokyi.tg.bot_api.api.type.business.BusinessConnection;
+import com.motokyi.tg.bot_api.api.type.business.BusinessMessagesDeleted;
+import com.motokyi.tg.bot_api.api.type.chat.ChatJoinRequest;
 import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostRemoved;
 import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostUpdated;
 import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
@@ -22,7 +25,7 @@ import lombok.Data;
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#update">Update</a>
  */
 
@@ -42,6 +45,18 @@ public class Update {
 
     @JsonProperty(UpdateTypes.EDITED_CHANNEL_POST)
     private Message editedChannelPost;
+
+    @JsonProperty(UpdateTypes.BUSINESS_CONNECTION)
+    private BusinessConnection businessConnection;
+
+    @JsonProperty(UpdateTypes.BUSINESS_MESSAGE)
+    private Message businessMessage;
+
+    @JsonProperty(UpdateTypes.EDITED_BUSINESS_MESSAGE)
+    private Message editedBusinessMessage;
+
+    @JsonProperty(UpdateTypes.DELETED_BUSINESS_MESSAGES)
+    private BusinessMessagesDeleted deletedBusinessMessages;
 
     @JsonProperty(UpdateTypes.MESSAGE_REACTION)
     private MessageReactionUpdated messageReaction;
@@ -76,8 +91,11 @@ public class Update {
     @JsonProperty(UpdateTypes.CHAT_MEMBER)
     private ChatMemberUpdated chatMember;
 
+    @JsonProperty(UpdateTypes.CHAT_JOIN_REQUEST)
+    private ChatJoinRequest chatJoinRequest;
+
     @JsonProperty(UpdateTypes.CHAT_BOOST)
-    private ChatBoostUpdated chatBoostUpdated;
+    private ChatBoostUpdated chatBoost;
 
     @JsonProperty(UpdateTypes.REMOVED_CHAT_BOOST)
     private ChatBoostRemoved chatBoostRemoved;

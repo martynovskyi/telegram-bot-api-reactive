@@ -1,5 +1,9 @@
 package com.motokyi.tg.bot_api.api.constant;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ApiProperties {
     public static final String ACTOR_CHAT = "actor_chat";
     public static final String ACCENT_COLOR_ID = "accent_color_id";
@@ -192,7 +196,9 @@ public final class ApiProperties {
     public static final String TOP_COLOR = "top_color";
     public static final String BOTTOM_COLOR = "bottom_color";
     public static final String ROTATION_ANGLE = "rotation_angle";
-
-    private ApiProperties() {
-    }
+    public static final String CAN_CONNECT_TO_BUSINESS = "can_connect_to_business";
+    public static final String USER_CHAT_ID = "user_chat_id";
+    public static final String CAN_REPLY = "can_reply";
+    public static final String IS_ENABLED = "is_enabled";
+    public static final String MESSAGE_IDS = "message_ids";
 }
