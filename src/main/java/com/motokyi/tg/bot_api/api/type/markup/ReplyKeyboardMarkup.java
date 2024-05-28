@@ -12,7 +12,7 @@ import java.util.List;
  * This object represents a custom keyboard with reply options
  * (see <a href="https://core.telegram.org/bots#keyboards">Introduction to bots</a> for details and examples).
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>
  */
 @Data

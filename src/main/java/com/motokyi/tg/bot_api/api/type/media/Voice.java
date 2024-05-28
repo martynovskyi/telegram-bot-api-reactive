@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents a voice note.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#voice">Voice</a>
  */
 @Data

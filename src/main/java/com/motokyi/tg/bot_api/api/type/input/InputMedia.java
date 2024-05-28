@@ -13,7 +13,7 @@ import lombok.Data;
  * <li> InputMediaVideo
  * </ul>
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inputmedia">InputMedia</a>
  */
 @Data

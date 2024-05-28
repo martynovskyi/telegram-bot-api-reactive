@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Use this method to receive incoming updates using long polling. An Array of Update objects is returned.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#getupdates">GetUpdates</a>
  */
 

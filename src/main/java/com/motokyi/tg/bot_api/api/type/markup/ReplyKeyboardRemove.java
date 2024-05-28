@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
  * An exception is made for one-time keyboards that are hidden immediately after the user presses
  * a button (see ReplyKeyboardMarkup).
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#replykeyboardremove">ReplyKeyboardRemove</a>
  */
 @Data

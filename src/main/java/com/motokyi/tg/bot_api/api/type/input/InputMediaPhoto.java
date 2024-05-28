@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represents a photo to be sent.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inputmediaphoto">InputMediaPhoto</a>
  */
 @Data
@@ -27,6 +27,9 @@ public class InputMediaPhoto {
 
     @JsonProperty(ApiProperties.CAPTION_ENTITIES)
     private List<MessageEntity> captionEntities;
+
+    @JsonProperty(ApiProperties.SHOW_CAPTION_ABOVE_MEDIA)
+    private String showCaptionAboveMedia;
 
     @JsonProperty(ApiProperties.HAS_SPOILER)
     private Boolean hasSpoiler;

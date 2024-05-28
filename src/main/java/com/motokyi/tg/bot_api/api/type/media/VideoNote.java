@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents a video message (available in Telegram apps as of v.4.0).
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#videonote">VideoNote</a>
  */
 @Data

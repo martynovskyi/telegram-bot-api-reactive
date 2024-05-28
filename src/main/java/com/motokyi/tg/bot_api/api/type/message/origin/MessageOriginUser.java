@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The message was originally sent by a known user.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#messageoriginuser">MessageOriginUser</a>
  */
 @Data

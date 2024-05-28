@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents a general file (as opposed to photos, voice messages and audio files).
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#document">Document</a>
  */
 @Data

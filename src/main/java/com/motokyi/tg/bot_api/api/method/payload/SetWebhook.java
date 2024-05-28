@@ -22,7 +22,7 @@ import java.util.List;
  * parameter secret_token. If specified, the request will contain a header
  * “X-Telegram-Bot-Api-Secret-Token” with the secret token as content.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#setwebhook">setWebhook</a>
  */
 @Getter

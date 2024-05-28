@@ -11,7 +11,7 @@ import lombok.Data;
  * a new one can be requested by calling getFile.
  * Maximum file size to download is 20 MB
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#file">File</a>
  */
 @Data

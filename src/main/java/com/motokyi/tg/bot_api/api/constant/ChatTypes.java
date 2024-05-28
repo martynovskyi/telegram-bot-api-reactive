@@ -1,7 +1,7 @@
 package com.motokyi.tg.bot_api.api.constant;
 
 /**
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chat">Chat.type</a>
  */
 public final class ChatTypes {

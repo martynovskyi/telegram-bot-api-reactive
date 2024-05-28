@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This object represents a message about the completion of a giveaway with public winners.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#giveawaywinners">GiveawayWinners</a>
  */
 

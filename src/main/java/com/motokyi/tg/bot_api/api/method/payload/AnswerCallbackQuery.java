@@ -15,7 +15,7 @@ import lombok.Setter;
  * you must first create a game for your bot via @BotFather and accept the terms.
  * Otherwise, you may use links like t.me/your_bot?start=XXXX that open your bot with a parameter.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#answercallbackquery">answerCallbackQuery</a>
  */
 @Getter

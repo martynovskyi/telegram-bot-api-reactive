@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * This object contains information about an incoming shipping query.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#shippingquery">ShippingQuery</a>
  */
 @Data

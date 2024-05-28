@@ -9,7 +9,7 @@ import lombok.Data;
  * This object defines the criteria used to request a suitable chat.
  * The identifier of the selected chat will be shared with the bot when the corresponding button is pressed.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#keyboardbuttonrequestchat">KeyboardButtonRequestChat</a>
  */
 @Data
@@ -38,4 +38,13 @@ public class KeyboardButtonRequestChat {
 
     @JsonProperty("bot_is_member")
     private Boolean botIsMember;
+
+    @JsonProperty("request_title")
+    private Boolean requestTitle;
+
+    @JsonProperty("request_username")
+    private Boolean requestUsername;
+
+    @JsonProperty("request_photo")
+    private Boolean requestPhoto;
 }

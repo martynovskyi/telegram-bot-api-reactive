@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inputmediaanimation">InputMediaAnimation</a>
  */
 @Data
@@ -29,6 +29,9 @@ public class InputMediaAnimation {
 
     @JsonProperty(ApiProperties.CAPTION_ENTITIES)
     private List<MessageEntity> captionEntities;
+
+    @JsonProperty("show_caption_above_media")
+    private Boolean showCaptionAboveMedia;
 
     private Integer width;
 

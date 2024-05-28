@@ -7,7 +7,7 @@ import lombok.Data;
  * This object represents the content of a service message, sent whenever a user in the chat triggers a proximity
  * alert set by another user.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#proximityalerttriggered">ProximityAlertTriggered</a>
  */
 @Data

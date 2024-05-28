@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The message was originally sent by an unknown user.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#messageoriginhiddenuser">MessageOriginHiddenUser</a>
  */
 

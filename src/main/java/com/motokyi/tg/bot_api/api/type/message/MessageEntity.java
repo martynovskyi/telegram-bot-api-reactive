@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#messageentity">MessageEntity</a>
  */
 @Data

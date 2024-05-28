@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Represents the rights of an administrator in a chat.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chatadministratorrights">ChatAdministratorRights</a>
  */
 @Data
@@ -37,15 +37,6 @@ public class ChatAdministratorRights {
     @JsonProperty(ApiProperties.CAN_INVITE_USERS)
     private Boolean canInviteUsers;
 
-    @JsonProperty(ApiProperties.CAN_POST_MESSAGES)
-    private Boolean canPostMessages;
-
-    @JsonProperty(ApiProperties.CAN_EDIT_MESSAGES)
-    private Boolean canEditMessages;
-
-    @JsonProperty(ApiProperties.CAN_PIN_MESSAGES)
-    private Boolean canPinMessages;
-
     @JsonProperty(ApiProperties.CAN_POST_STORIES)
     private Boolean canPostStories;
 
@@ -54,6 +45,15 @@ public class ChatAdministratorRights {
 
     @JsonProperty(ApiProperties.CAN_DELETE_STORIES)
     private Boolean canDeleteStories;
+
+    @JsonProperty(ApiProperties.CAN_POST_MESSAGES)
+    private Boolean canPostMessages;
+
+    @JsonProperty(ApiProperties.CAN_EDIT_MESSAGES)
+    private Boolean canEditMessages;
+
+    @JsonProperty(ApiProperties.CAN_PIN_MESSAGES)
+    private Boolean canPinMessages;
 
     @JsonProperty(ApiProperties.CAN_MANAGE_TOPICS)
     private Boolean canManageTopics;

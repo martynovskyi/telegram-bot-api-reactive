@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Represents a chat member that has no additional privileges or restrictions.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chatmembermember">ChatMemberMember</a>
  */
 @Data

@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Represents a reaction added to a message along with the number of times it was added.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#reactioncount">ReactionCount</a>
  */
 @Data

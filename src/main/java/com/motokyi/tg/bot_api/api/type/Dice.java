@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * This object represents an animated emoji that displays a random value.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#dice">Dice</a>
  */
 @Data

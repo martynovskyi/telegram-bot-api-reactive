@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inlinekeyboardmarkup">InlineKeyboardMarkup</a>
  */
 @Data

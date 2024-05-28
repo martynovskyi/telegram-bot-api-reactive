@@ -12,7 +12,7 @@ import static com.motokyi.tg.bot_api.api.constant.ApiProperties.LANGUAGE_CODE;
  * Use this method to delete the list of the bot's commands for the given scope and user language.
  * After deletion, higher level commands will be shown to affected users. Returns True on success.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#deletemycommands">DeleteMyCommands</a>
  */
 

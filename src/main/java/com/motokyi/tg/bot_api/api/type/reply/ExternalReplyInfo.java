@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#externalreplyinfo">ExternalReplyInfo</a>
  */
 @Data

@@ -11,7 +11,7 @@ import java.util.List;
  * This object contains information about the users whose identifiers were
  * shared with the bot using a KeyboardButtonRequestUsers button.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#usersshared">UsersShared</a>
  */
 @Data

@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents information about an order.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#orderinfo">OrderInfo</a>
  */
 @Data

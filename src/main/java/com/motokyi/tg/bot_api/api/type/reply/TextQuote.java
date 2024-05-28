@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This object contains information about the quoted part of a message that is replied to by the given message.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#textquote">TextQuote</a>
  */
 @Data

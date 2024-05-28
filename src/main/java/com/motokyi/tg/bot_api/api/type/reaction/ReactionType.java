@@ -11,7 +11,7 @@ import lombok.Data;
  * <li> ReactionTypeEmoji
  * <li> ReactionTypeCustomEmoji
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#reactiontype">ReactionType</a>
  */
 @Data

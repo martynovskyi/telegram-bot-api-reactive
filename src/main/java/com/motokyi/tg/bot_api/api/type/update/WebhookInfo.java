@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Describes the current status of a webhook.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#webhookinfo">WebhookInfo</a>
  */
 @Data

@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * This object represents a boost removed from a chat.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chatboostremoved">ChatBoostRemoved</a>
  */
 @Data
@@ -17,10 +17,10 @@ public class ChatBoostRemoved {
     private Chat chat;
 
     @JsonProperty(ApiProperties.BOOST_ID)
-    private Long boostId;
+    private String boostId;
 
     @JsonProperty(ApiProperties.REMOVE_DATE)
-    private Integer removeDate;
+    private Long removeDate;
 
     private ChatBoostSource source;
 }

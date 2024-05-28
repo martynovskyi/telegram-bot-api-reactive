@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#game">Game</a>
  */
 @Data

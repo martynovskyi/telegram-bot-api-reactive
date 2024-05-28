@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * This object represents a service message about new members invited to a video chat.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#videochatparticipantsinvited">VideoChatParticipantsInvited</a>
  */
 @Data

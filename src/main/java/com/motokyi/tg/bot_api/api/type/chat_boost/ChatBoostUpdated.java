@@ -7,7 +7,7 @@ import lombok.Data;
  * This object represents a boost added to a chat or changed.
  * <p>
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chatboostupdated">ChatBoostUpdated</a>
  */
 @Data

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This object contains information about a poll.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#poll">Poll</a>
  */
 @Data
@@ -18,6 +18,9 @@ public class Poll {
     private String id;
 
     private String question;
+
+    @JsonProperty(ApiProperties.QUESTION_ENTITIES)
+    private List<MessageEntity> questionEntities;
 
     private List<PollOption> options;
 

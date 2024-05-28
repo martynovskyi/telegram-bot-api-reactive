@@ -201,4 +201,7 @@ public final class ApiProperties {
     public static final String CAN_REPLY = "can_reply";
     public static final String IS_ENABLED = "is_enabled";
     public static final String MESSAGE_IDS = "message_ids";
+    public static final String TEXT_ENTITIES = "text_entities";
+    public static final String QUESTION_ENTITIES = "question_entities";
+    public static final String SHOW_CAPTION_ABOVE_MEDIA = "show_caption_above_media";
 }

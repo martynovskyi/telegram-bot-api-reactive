@@ -6,7 +6,7 @@ import lombok.Data;
  * This object represents type of a poll, which is allowed to be created
  * and sent when the corresponding button is pressed.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#keyboardbuttonpolltype">KeyboardButtonPollType</a>
  */
 @Data

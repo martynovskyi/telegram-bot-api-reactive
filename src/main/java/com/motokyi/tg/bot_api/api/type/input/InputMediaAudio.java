@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represents an audio file to be treated as music to be sent.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inputmediaaudio">InputMediaAudio</a>
  */
 @Data

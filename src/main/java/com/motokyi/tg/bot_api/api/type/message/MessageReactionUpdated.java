@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.reaction.ReactionType;
+import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * This object represents a change of a reaction on a message performed by a user.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#messagereactionupdated">MessageReactionUpdated</a>
  */
 @Data
@@ -20,6 +21,9 @@ public class MessageReactionUpdated {
 
     @JsonProperty(ApiProperties.MESSAGE_ID)
     private Long messageId;
+
+    private User user;
+
     @JsonProperty(ApiProperties.ACTOR_CHAT)
     private Chat actorChat;
 

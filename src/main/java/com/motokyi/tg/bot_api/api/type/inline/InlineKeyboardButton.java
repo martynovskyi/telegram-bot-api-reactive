@@ -11,7 +11,7 @@ import lombok.Data;
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inlinekeyboardbutton">InlineKeyboardButton</a>
  */
 @Data

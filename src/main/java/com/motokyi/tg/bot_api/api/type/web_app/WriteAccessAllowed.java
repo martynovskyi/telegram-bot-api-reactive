@@ -9,7 +9,7 @@ import lombok.Data;
  * the attachment menu, launching a Web App from a link, or accepting an explicit request
  * from a Web App sent by the method requestWriteAccess.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#writeaccessallowed">WriteAccessAllowed</a>
  */
 @Data

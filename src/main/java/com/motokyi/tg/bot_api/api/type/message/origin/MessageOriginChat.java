@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The message was originally sent on behalf of a chat to a group chat.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#messageoriginchat">MessageOriginChat</a>
  */
 
