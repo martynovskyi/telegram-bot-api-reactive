@@ -176,6 +176,22 @@ public final class ApiProperties {
     public static final String OLD_CHAT_MEMBER = "old_chat_member";
     public static final String NEW_CHAT_MEMBER = "new_chat_member";
     public static final String VIA_CHAT_FOLDER_INVITE_LINK = "via_chat_folder_invite_link";
+    public static final String SENDER_BOOST_COUNT = "sender_boost_count";
+    public static final String SENDER_BUSINESS_BOT = "sender_business_bot";
+    public static final String BUSINESS_CONNECTION_ID = "business_connection_id";
+    public static final String REPLY_TO_STORY = "reply_to_story";
+    public static final String IS_FROM_OFFLINE = "is_from_offline";
+    public static final String BOOST_ADDED = "boost_added";
+    public static final String CHAT_BACKGROUND_SET = "chat_background_set";
+    public static final String BOOST_COUNT = "boost_count";
+    public static final String THEME_NAME = "theme_name";
+    public static final String IS_INVERTED = "is_inverted";
+    public static final String IS_MOVING = "is_moving";
+    public static final String DARK_THEME_DIMMING = "dark_theme_dimming";
+    public static final String IS_BLURRED = "is_blurred";
+    public static final String TOP_COLOR = "top_color";
+    public static final String BOTTOM_COLOR = "bottom_color";
+    public static final String ROTATION_ANGLE = "rotation_angle";
 
     private ApiProperties() {
     }

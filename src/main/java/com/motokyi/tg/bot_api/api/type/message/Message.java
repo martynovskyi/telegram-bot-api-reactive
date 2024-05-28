@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.*;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
+import com.motokyi.tg.bot_api.api.type.chat.ChatBackground;
 import com.motokyi.tg.bot_api.api.type.chat.ChatShared;
 import com.motokyi.tg.bot_api.api.type.chat.ProximityAlertTriggered;
+import com.motokyi.tg.bot_api.api.type.chat_boost.ChatBoostAdded;
 import com.motokyi.tg.bot_api.api.type.forum.*;
 import com.motokyi.tg.bot_api.api.type.game.Game;
 import com.motokyi.tg.bot_api.api.type.giveaway.Giveaway;
@@ -36,7 +38,7 @@ import java.util.List;
 /**
  * This object represents a message.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#message">Message</a>
  */
 @Data
@@ -53,7 +55,16 @@ public class Message {
     @JsonProperty(ApiProperties.SENDER_CHAT)
     private Chat senderChat;
 
+    @JsonProperty(ApiProperties.SENDER_BOOST_COUNT)
+    private Integer senderBoostCount;
+
+    @JsonProperty(ApiProperties.SENDER_BUSINESS_BOT)
+    private User senderBusinessBot;
+
     private Long date;
+
+    @JsonProperty(ApiProperties.BUSINESS_CONNECTION_ID)
+    private String businessConnectionId;
 
     private Chat chat;
 
@@ -74,6 +85,9 @@ public class Message {
 
     private TextQuote quote;
 
+    @JsonProperty(ApiProperties.REPLY_TO_STORY)
+    private Story reply_to_story;
+
     @JsonProperty(ApiProperties.VIA_BOT)
     private User viaBot;
 
@@ -81,7 +95,10 @@ public class Message {
     private Long editDate;
 
     @JsonProperty(ApiProperties.HAS_PROTECTED_CONTENT)
-    private Message hasProtectedContent;
+    private Boolean hasProtectedContent;
+
+    @JsonProperty(ApiProperties.IS_FROM_OFFLINE)
+    private Boolean isFromOffline;
 
     @JsonProperty(ApiProperties.MEDIA_GROUP_ID)
     private String mediaGroupId;
@@ -194,6 +211,12 @@ public class Message {
 
     @JsonProperty("proximity_alert_triggered")
     private ProximityAlertTriggered proximityAlertTriggered;
+
+    @JsonProperty(ApiProperties.BOOST_ADDED)
+    private ChatBoostAdded boostAdded;
+
+    @JsonProperty(ApiProperties.CHAT_BACKGROUND_SET)
+    private ChatBackground chatBackgroundSet;
 
     @JsonProperty("forum_topic_created")
     private ForumTopicCreated forumTopicCreated;
