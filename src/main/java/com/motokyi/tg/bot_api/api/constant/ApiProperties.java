@@ -172,6 +172,10 @@ public final class ApiProperties {
     public static final String OPENING_HOURS = "opening_hours";
     public static final String OPENING_MINUTE = "opening_minute";
     public static final String CLOSING_MINUTE = "closing_minute";
+    public static final String VIA_JOIN_REQUEST = "via_join_request";
+    public static final String OLD_CHAT_MEMBER = "old_chat_member";
+    public static final String NEW_CHAT_MEMBER = "new_chat_member";
+    public static final String VIA_CHAT_FOLDER_INVITE_LINK = "via_chat_folder_invite_link";
 
     private ApiProperties() {
     }

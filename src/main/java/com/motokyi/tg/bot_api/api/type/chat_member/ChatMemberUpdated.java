@@ -10,7 +10,7 @@ import lombok.Data;
 /**
  * This object represents changes in the status of a chat member.
  *
- * @version Bot API 7.0
+ * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#chatmemberupdated">ChatMemberUpdated</a>
  */
 @Data
@@ -21,15 +21,18 @@ public class ChatMemberUpdated {
 
     private Long date;
 
-    @JsonProperty("old_chat_member")
+    @JsonProperty(ApiProperties.OLD_CHAT_MEMBER)
     private ChatMember oldChatMember;
 
-    @JsonProperty("new_chat_member")
+    @JsonProperty(ApiProperties.NEW_CHAT_MEMBER)
     private ChatMember newChatMember;
 
     @JsonProperty(ApiProperties.INVITE_LINK)
     private ChatInviteLink inviteLink;
 
-    @JsonProperty("via_chat_folder_invite_link")
+    @JsonProperty(ApiProperties.VIA_JOIN_REQUEST)
+    private Boolean viaJoinRequest;
+
+    @JsonProperty(ApiProperties.VIA_CHAT_FOLDER_INVITE_LINK)
     private Boolean viaChatFolderInviteLink;
 }
