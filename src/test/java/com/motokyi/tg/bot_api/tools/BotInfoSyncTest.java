@@ -20,10 +20,8 @@ class BotInfoSyncTest {
     @Mock
     BotApiClient client;
 
-
     @InjectMocks
     BotInfoSync botInfoSync;
-
 
     @Test
     void sync_nothing() {

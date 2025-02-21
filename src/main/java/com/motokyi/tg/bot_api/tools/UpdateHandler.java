@@ -9,6 +9,7 @@ import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
 import com.motokyi.tg.bot_api.api.type.inline.ChosenInlineResult;
 import com.motokyi.tg.bot_api.api.type.inline.InlineQuery;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
+import com.motokyi.tg.bot_api.api.type.media.PaidMediaPurchased;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageReactionCountUpdated;
 import com.motokyi.tg.bot_api.api.type.message.MessageReactionUpdated;
@@ -44,6 +45,7 @@ public class UpdateHandler {
     private final Consumer<CallbackQuery> callbackQueryConsumer;
     private final Consumer<ShippingQuery> shippingQueryConsumer;
     private final Consumer<PreCheckoutQuery> preCheckoutQueryConsumer;
+    private final Consumer<PaidMediaPurchased> purchasedPaidMediaConsumer;
     private final Consumer<Poll> pollConsumer;
     private final Consumer<PollAnswer> pollAnswerConsumer;
     private final Consumer<ChatMemberUpdated> myChatMemberConsumer;
@@ -63,20 +65,21 @@ public class UpdateHandler {
             ofNullable(update.getEditedBusinessMessage()).ifPresent(handleSafe(this.editedBusinessMessageConsumer));
             ofNullable(update.getDeletedBusinessMessages()).ifPresent(handleSafe(this.deletedBusinessMessagesConsumer));
             ofNullable(update.getMessageReaction()).ifPresent(handleSafe(this.messageReactionConsumer));
-            ofNullable(update.getMessageReactionCountUpdated())
+            ofNullable(update.getMessageReactionCount())
                     .ifPresent(handleSafe(this.messageReactionCountUpdatedConsumer));
             ofNullable(update.getInlineQuery()).ifPresent(handleSafe(this.inlineQueryConsumer));
             ofNullable(update.getChosenInlineResult()).ifPresent(handleSafe(this.chosenInlineResultConsumer));
             ofNullable(update.getCallbackQuery()).ifPresent(handleSafe(this.callbackQueryConsumer));
             ofNullable(update.getShippingQuery()).ifPresent(handleSafe(this.shippingQueryConsumer));
             ofNullable(update.getPreCheckoutQuery()).ifPresent(handleSafe(this.preCheckoutQueryConsumer));
+            ofNullable(update.getPurchasedPaidMedia()).ifPresent(handleSafe(this.purchasedPaidMediaConsumer));
             ofNullable(update.getPoll()).ifPresent(handleSafe(this.pollConsumer));
             ofNullable(update.getPollAnswer()).ifPresent(handleSafe(this.pollAnswerConsumer));
             ofNullable(update.getMyChatMember()).ifPresent(handleSafe(this.myChatMemberConsumer));
             ofNullable(update.getChatMember()).ifPresent(handleSafe(this.chatMemberConsumer));
             ofNullable(update.getChatJoinRequest()).ifPresent(handleSafe(this.chatJoinRequestConsumer));
             ofNullable(update.getChatBoost()).ifPresent(handleSafe(this.chatBoostUpdatedConsumer));
-            ofNullable(update.getChatBoostRemoved()).ifPresent(handleSafe(this.chatBoostRemovedConsumer));
+            ofNullable(update.getRemovedChatBoost()).ifPresent(handleSafe(this.chatBoostRemovedConsumer));
         }
     }
 
