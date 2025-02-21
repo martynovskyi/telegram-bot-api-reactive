@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * Represents a join request sent to a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatjoinrequest">ChatJoinRequest</a>
  */
 @Data

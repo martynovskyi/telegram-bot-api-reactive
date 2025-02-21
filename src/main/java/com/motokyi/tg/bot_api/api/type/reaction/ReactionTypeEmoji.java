@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The reaction is based on an emoji.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#reactiontypeemoji">ReactionTypeEmoji</a>
  */
 @Data
@@ -14,4 +14,5 @@ import lombok.EqualsAndHashCode;
 public class ReactionTypeEmoji extends ReactionType {
 
     private String emoji;
+
 }

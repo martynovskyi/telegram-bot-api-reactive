@@ -5,7 +5,7 @@ import lombok.Data;
 /**
  * A placeholder, currently holds no information. Use BotFather to set up your game.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#callbackgame">CallbackGame</a>
  */
 @Data

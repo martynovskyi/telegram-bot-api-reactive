@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This object represents reaction changes on a message with anonymous reactions.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#messagereactioncountupdated">MessageReactionCountUpdated</a>
  */
 @Data
@@ -25,4 +25,5 @@ public class MessageReactionCountUpdated {
     private Integer date;
 
     private List<ReactionCount> reactions;
+
 }

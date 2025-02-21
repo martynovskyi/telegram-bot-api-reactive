@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This object represents a message about a scheduled giveaway.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#giveaway">Giveaway</a>
  */
 
@@ -36,6 +36,9 @@ public class Giveaway {
 
     @JsonProperty(ApiProperties.COUNTRY_CODES)
     private List<String> countryCodes;
+
+    @JsonProperty(ApiProperties.PRIZE_STAR_COUNT)
+    private Integer prizeStarCount;
 
     @JsonProperty(ApiProperties.PREMIUM_SUBSCRIPTION_MONTH_COUNT)
     private Integer premiumSubscriptionMonthCount;

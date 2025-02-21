@@ -16,7 +16,7 @@ import lombok.Data;
  * If a menu button other than MenuButtonDefault is set for a private chat, then it is applied in the chat.
  * Otherwise the default menu button is applied. By default, the menu button opens the list of bot commands.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#menubutton">MenuButton</a>
  */
 @Data

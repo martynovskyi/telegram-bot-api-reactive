@@ -12,7 +12,7 @@ package com.motokyi.tg.bot_api.api.type.command;
  * <li>BotCommandScopeChatMember
  * </ul>
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#botcommandscope">BotCommandScope</a>
  */
 public class BotCommandScopes {

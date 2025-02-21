@@ -39,6 +39,9 @@ public class InlineKeyboardButton {
     @JsonProperty("switch_inline_query_chosen_chat")
     private SwitchInlineQueryChosenChat switchInlineQueryChosenChat;
 
+    @JsonProperty("copy_text")
+    private CopyTextButton copyText;
+
     @JsonProperty("callback_game")
     private CallbackGame callbackGame;
 

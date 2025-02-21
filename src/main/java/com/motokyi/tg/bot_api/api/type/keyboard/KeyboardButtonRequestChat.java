@@ -9,7 +9,7 @@ import lombok.Data;
  * This object defines the criteria used to request a suitable chat.
  * The identifier of the selected chat will be shared with the bot when the corresponding button is pressed.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#keyboardbuttonrequestchat">KeyboardButtonRequestChat</a>
  */
 @Data

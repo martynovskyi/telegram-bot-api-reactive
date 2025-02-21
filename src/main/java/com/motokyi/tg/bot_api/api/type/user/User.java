@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * This object represents a Telegram user or bot.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#user">User</a>
  */
 @Data
@@ -48,4 +48,8 @@ public class User {
 
     @JsonProperty(ApiProperties.CAN_CONNECT_TO_BUSINESS)
     private Boolean canConnectToBusiness;
+
+    @JsonProperty("has_main_web_app")
+    private Boolean hasMainWebApp;
+
 }

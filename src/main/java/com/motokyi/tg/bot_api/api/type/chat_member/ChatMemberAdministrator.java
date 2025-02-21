@@ -4,16 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Represents a chat member that has some additional privileges.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatmemberadministrator">ChatMemberAdministrator</a>
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ChatMemberAdministrator {
-    private String status;
+public class ChatMemberAdministrator extends ChatMember {
 
     private User user;
 
@@ -44,11 +45,11 @@ public class ChatMemberAdministrator {
     @JsonProperty(ApiProperties.CAN_INVITE_USERS)
     private Boolean canInviteUsers;
 
-    @JsonProperty(ApiProperties.CAN_EDIT_STORIES)
-    private Boolean canEditStories;
-
     @JsonProperty(ApiProperties.CAN_POST_STORIES)
     private Boolean canPostStories;
+
+    @JsonProperty(ApiProperties.CAN_EDIT_STORIES)
+    private Boolean canEditStories;
 
     @JsonProperty(ApiProperties.CAN_DELETE_STORIES)
     private Boolean canDeleteStories;

@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Describes actions that a non-administrator user is allowed to take in a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatpermissions">ChatPermissions</a>
  */
 @Data

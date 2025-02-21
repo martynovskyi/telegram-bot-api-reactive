@@ -5,10 +5,10 @@ import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
 
 /**
- * This object defines the criteria used to request a suitable user.
- * The identifier of the selected user will be shared with the bot when the corresponding button is pressed.
+ * This object defines the criteria used to request suitable users.
+ * Information about the selected users will be shared with the bot when the corresponding button is pressed.
  *
- * @version Bot API 6.9
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#keyboardbuttonrequestusers">KeyboardButtonRequestUsers</a>
  */
 @Data
@@ -22,4 +22,16 @@ public class KeyboardButtonRequestUser {
 
     @JsonProperty("user_is_premium")
     private Boolean userIsPremium;
+
+    @JsonProperty("max_quantity")
+    private Integer maxQuantity;
+
+    @JsonProperty("request_name")
+    private Boolean requestName;
+
+    @JsonProperty("request_username")
+    private Boolean requestUsername;
+
+    @JsonProperty("request_photo")
+    private Boolean requestPhoto;
 }

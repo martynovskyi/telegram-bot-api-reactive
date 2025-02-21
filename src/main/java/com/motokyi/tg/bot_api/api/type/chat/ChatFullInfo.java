@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * This object contains full information about a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatfullinfo">ChatFullInfo</a>
  */
 @Data
@@ -106,6 +106,12 @@ public class ChatFullInfo {
     private Message pinnedMessage;
 
     private ChatPermissions permissions;
+
+    @JsonProperty("can_send_gift")
+    private Boolean canSendGift;
+
+    @JsonProperty("can_send_paid_media")
+    private Boolean canSendPaidMedia;
 
     @JsonProperty("slow_mode_delay")
     private Integer slowModeDelay;

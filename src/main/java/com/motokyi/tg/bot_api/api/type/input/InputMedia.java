@@ -13,11 +13,13 @@ import lombok.Data;
  * <li> InputMediaVideo
  * </ul>
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#inputmedia">InputMedia</a>
  */
 @Data
 public abstract class InputMedia {
     private String type;
+
+    // todo: probably need to setup hierarchy, not used yet
 
 }

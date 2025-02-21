@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents a service message about an edited forum topic.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#forumtopicedited">ForumTopicEdited</a>
  */
 @Data

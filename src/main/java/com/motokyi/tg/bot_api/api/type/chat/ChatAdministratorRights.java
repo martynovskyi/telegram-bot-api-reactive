@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * Represents the rights of an administrator in a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatadministratorrights">ChatAdministratorRights</a>
  */
 @Data

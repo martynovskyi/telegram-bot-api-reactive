@@ -11,7 +11,7 @@ import java.util.List;
  * This object contains information about
  * a user that was shared with the bot using a KeyboardButtonRequestUsers button.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#shareduser">SharedUser</a>
  */
 @Data
@@ -28,4 +28,5 @@ public class SharedUser {
     private String username;
 
     private List<PhotoSize> photo;
+
 }

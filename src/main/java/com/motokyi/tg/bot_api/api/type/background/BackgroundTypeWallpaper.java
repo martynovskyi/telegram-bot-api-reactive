@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The background is a wallpaper in the JPEG format.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#backgroundtypewallpaper">BackgroundTypeWallpaper</a>
  */
 

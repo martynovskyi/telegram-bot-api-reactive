@@ -7,10 +7,11 @@ import com.motokyi.tg.bot_api.api.type.web_app.WebAppInfo;
 import lombok.Data;
 
 /**
- * This object represents one button of the reply keyboard. For simple text buttons String can be used instead
- * of this object to specify text of the button. Optional fields are mutually exclusive.
+ * This object represents one button of the reply keyboard. At most one of the optional fields must be used
+ * to specify type of the button.
+ * For simple text buttons, String can be used instead of this object to specify the button text.
  *
- * @version Bot API 6.9
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#keyboardbutton">KeyboardButton</a>
  */
 @Data
@@ -19,9 +20,8 @@ public class KeyboardButton {
 
     private String text;
 
-    //todo: fix type
-    @JsonProperty("request_user")
-    private KeyboardButtonRequestUser requestUser;
+    @JsonProperty("request_users")
+    private KeyboardButtonRequestUser requestUsers;
 
     @JsonProperty("request_chat")
     private KeyboardButtonRequestChat requestChat;

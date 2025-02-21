@@ -115,6 +115,7 @@ public final class ApiProperties {
     public static final String NEW_CHAT_PHOTO = "new_chat_photo";
     public static final String OLD_REACTION = "old_reaction";
     public static final String ONLY_NEW_MEMBERS = "only_new_members";
+    public static final String PAID_MEDIA = "paid_media";
     public static final String PARSE_MODE = "parse_mode";
     public static final String PHOTO = "photo";
     public static final String PREFER_SMALL_MEDIA = "prefer_small_media";
@@ -124,6 +125,7 @@ public final class ApiProperties {
     public static final String PINNED_MESSAGE = "pinned_message";
     public static final String PROTECT_CONTENT = "protect_content";
     public static final String PRIZE_DESCRIPTION = "prize_description";
+    public static final String PRIZE_STAR_COUNT = "prize_star_count";
     public static final String PREMIUM_SUBSCRIPTION_MONTH_COUNT = "premium_subscription_month_count";
     public static final String QUOTE_ENTITIES = "quote_entities";
     public static final String QUOTE_PARSE_MODE = "quote_parse_mode";
@@ -182,6 +184,8 @@ public final class ApiProperties {
     public static final String VIA_CHAT_FOLDER_INVITE_LINK = "via_chat_folder_invite_link";
     public static final String SENDER_BOOST_COUNT = "sender_boost_count";
     public static final String SENDER_BUSINESS_BOT = "sender_business_bot";
+    public static final String STAR_COUNT = "star_count";
+    public static final String START_TIMESTAMP = "start_timestamp";
     public static final String BUSINESS_CONNECTION_ID = "business_connection_id";
     public static final String REPLY_TO_STORY = "reply_to_story";
     public static final String IS_FROM_OFFLINE = "is_from_offline";

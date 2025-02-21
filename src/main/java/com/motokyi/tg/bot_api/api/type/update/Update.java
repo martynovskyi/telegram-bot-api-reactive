@@ -12,6 +12,7 @@ import com.motokyi.tg.bot_api.api.type.chat_member.ChatMemberUpdated;
 import com.motokyi.tg.bot_api.api.type.inline.ChosenInlineResult;
 import com.motokyi.tg.bot_api.api.type.inline.InlineQuery;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
+import com.motokyi.tg.bot_api.api.type.media.PaidMediaPurchased;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageReactionCountUpdated;
 import com.motokyi.tg.bot_api.api.type.message.MessageReactionUpdated;
@@ -25,7 +26,7 @@ import lombok.Data;
  * This object represents an incoming update.
  * At most one of the optional parameters can be present in any given update.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#update">Update</a>
  */
 
@@ -62,7 +63,7 @@ public class Update {
     private MessageReactionUpdated messageReaction;
 
     @JsonProperty(UpdateTypes.MESSAGE_REACTION_COUNT)
-    private MessageReactionCountUpdated messageReactionCountUpdated;
+    private MessageReactionCountUpdated messageReactionCount;
 
     @JsonProperty(UpdateTypes.INLINE_QUERY)
     private InlineQuery inlineQuery;
@@ -78,6 +79,9 @@ public class Update {
 
     @JsonProperty(UpdateTypes.PRE_CHECKOUT_QUERY)
     private PreCheckoutQuery preCheckoutQuery;
+
+    @JsonProperty("purchased_paid_media")
+    private PaidMediaPurchased purchasedPaidMedia;
 
     @JsonProperty(UpdateTypes.POLL)
     private Poll poll;
@@ -98,6 +102,6 @@ public class Update {
     private ChatBoostUpdated chatBoost;
 
     @JsonProperty(UpdateTypes.REMOVED_CHAT_BOOST)
-    private ChatBoostRemoved chatBoostRemoved;
+    private ChatBoostRemoved removedChatBoost;
 
 }

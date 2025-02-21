@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * This object represents a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chat">Chat</a>
  */
 @Data

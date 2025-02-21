@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This object represents an answer of a user in a non-anonymous poll.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#pollanswer">PollAnswer</a>
  */
 @Data
@@ -26,4 +26,5 @@ public class PollAnswer {
 
     @JsonProperty("option_ids")
     private List<Integer> optionIds;
+
 }

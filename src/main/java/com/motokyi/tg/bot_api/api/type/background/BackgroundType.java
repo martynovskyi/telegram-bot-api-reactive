@@ -15,7 +15,7 @@ import lombok.Data;
  * <li> BackgroundTypePattern
  * <li> BackgroundTypeChatTheme
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#backgroundtype">BackgroundType</a>
  */
 @Data

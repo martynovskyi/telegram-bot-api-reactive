@@ -4,17 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
- * Represents a chat member that has no additional privileges or restrictions.
+ * Represents a chat member that is under certain restrictions in the chat. Supergroups only.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatmemberrestricted">ChatMemberRestricted</a>
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class ChatMemberRestricted {
-
-    private String status;
+public class ChatMemberRestricted extends ChatMember {
 
     private User user;
 

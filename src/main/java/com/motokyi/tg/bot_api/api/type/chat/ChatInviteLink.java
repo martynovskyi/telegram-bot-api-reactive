@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * Represents an invite link for a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatinvitelink">ChatInviteLink</a>
  */
 @Data
@@ -37,4 +37,10 @@ public class ChatInviteLink {
 
     @JsonProperty("pending_join_request_count")
     private Integer pendingJoinRequestCount;
+
+    @JsonProperty("subscription_period")
+    private Integer subscriptionPeriod;
+
+    @JsonProperty("subscription_price")
+    private Integer subscriptionPrice;
 }

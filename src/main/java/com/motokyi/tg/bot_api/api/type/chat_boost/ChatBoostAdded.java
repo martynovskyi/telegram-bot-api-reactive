@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents a service message about a user boosting a chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatboostadded">ChatBoostAdded</a>
  */
 

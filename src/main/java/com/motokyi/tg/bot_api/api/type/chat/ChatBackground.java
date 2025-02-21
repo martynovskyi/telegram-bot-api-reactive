@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * This object represents a chat background.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatbackground">ChatBackground</a>
  */
 

@@ -18,7 +18,7 @@ import lombok.Data;
  * answerCallbackQuery. It is, therefore, necessary to react by calling answerCallbackQuery even if no notification to
  * the user is needed (e.g., without specifying any of the optional parameters).
  *
- * @version Bot API 6.9
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#callbackquery">CallbackQuery</a>
  */
 @Data
@@ -29,7 +29,6 @@ public class CallbackQuery {
 
     private User from;
 
-    //todo: MaybeInaccessibleMessage
     private Message message;
 
     @JsonProperty(ApiProperties.INLINE_MESSAGE_ID)

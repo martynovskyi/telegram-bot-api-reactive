@@ -10,8 +10,9 @@ import lombok.Data;
  * <ul> Currently, it can be one of
  * <li> ReactionTypeEmoji
  * <li> ReactionTypeCustomEmoji
+ * <li> ReactionTypePaid
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#reactiontype">ReactionType</a>
  */
 @Data
@@ -20,8 +21,11 @@ import lombok.Data;
         property = "type")
 @JsonSubTypes({
         @JsonSubTypes.Type(value = ReactionTypeEmoji.class, name = ReactionTypes.EMOJI),
-        @JsonSubTypes.Type(value = ReactionTypeCustomEmoji.class, name = ReactionTypes.CUSTOM_EMOJI)
+        @JsonSubTypes.Type(value = ReactionTypeCustomEmoji.class, name = ReactionTypes.CUSTOM_EMOJI),
+        @JsonSubTypes.Type(value = ReactionTypePaid.class, name = ReactionTypes.PAID),
 })
 public abstract class ReactionType {
+
     private String type;
+
 }

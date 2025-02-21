@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
  * Some errors may also have an optional field 'parameters' of the type ResponseParameters,
  * which can help to automatically handle the error.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#making-requests">Response</a>
  */
 

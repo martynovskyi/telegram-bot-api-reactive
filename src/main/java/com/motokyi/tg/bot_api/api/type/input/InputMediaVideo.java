@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represents a video to be sent.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#inputmediavideo">InputMediaVideo</a>
  */
 @Data
@@ -22,6 +22,11 @@ public class InputMediaVideo {
 
     private String thumbnail;
 
+    private String cover;
+
+    @JsonProperty(ApiProperties.START_TIMESTAMP)
+    private Integer startTimestamp;
+
     private String caption;
 
     @JsonProperty(ApiProperties.PARSE_MODE)
@@ -29,6 +34,9 @@ public class InputMediaVideo {
 
     @JsonProperty(ApiProperties.CAPTION_ENTITIES)
     private List<MessageEntity> captionEntities;
+
+    @JsonProperty(ApiProperties.SHOW_CAPTION_ABOVE_MEDIA)
+    private String showCaptionAboveMedia;
 
     private Integer width;
 

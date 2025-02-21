@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Describes reply parameters for the message that is being sent.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#replyparameters">ReplyParameters</a>
  */
 @Data
@@ -39,4 +39,5 @@ public class ReplyParameters {
 
     @JsonProperty(ApiProperties.QUOTE_POSITION)
     private Integer quote_position;
+
 }

@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The reaction is based on a custom emoji.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#reactiontypecustomemoji">ReactionTypeCustomEmoji</a>
  */
 @Data
@@ -17,4 +17,5 @@ public class ReactionTypeCustomEmoji extends ReactionType {
 
     @JsonProperty(ApiProperties.CUSTOM_EMOJI_ID)
     private String customEmojiId;
+
 }

@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The background is filled using the selected color.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#backgroundfillsolid">BackgroundFillSolid</a>
  */
 @Data

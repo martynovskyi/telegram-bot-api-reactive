@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * This object represents a service message about the completion of a giveaway without public winners.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#giveawaycompleted">GiveawayCompleted</a>
  */
 @Data
@@ -23,4 +23,7 @@ public class GiveawayCompleted {
 
     @JsonProperty(ApiProperties.GIVEAWAY_MESSAGE)
     private Message giveawayMessage;
+
+    @JsonProperty("is_star_giveaway")
+    private Boolean isStarGiveaway;
 }

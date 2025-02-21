@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Describes the opening hours of a business.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#businessopeninghours">BusinessOpeningHours</a>
  */
 

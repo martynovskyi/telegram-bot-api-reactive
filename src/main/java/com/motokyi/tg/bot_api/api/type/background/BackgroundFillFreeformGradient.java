@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * The background is a freeform gradient that rotates after every message in the chat.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#backgroundfillfreeformgradient">BackgroundFillFreeformGradient</a>
  */
 @Data

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This object is received when messages are deleted from a connected business account.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#businessmessagesdeleted">BusinessMessagesDeleted</a>
  */
 

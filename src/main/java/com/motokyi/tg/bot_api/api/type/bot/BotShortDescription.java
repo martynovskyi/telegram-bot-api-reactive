@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * This object represents the bot's short description.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#botshortdescription">BotShortDescription</a>
  */
 @Data

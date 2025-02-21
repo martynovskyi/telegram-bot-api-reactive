@@ -11,7 +11,7 @@ import java.util.List;
  * This object contains information about the chat whose identifier
  * was shared with the bot using a KeyboardButtonRequestChat button.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatshared">ChatShared</a>
  */
 

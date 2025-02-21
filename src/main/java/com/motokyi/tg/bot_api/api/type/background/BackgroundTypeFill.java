@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 /**
  * The background is automatically filled based on the selected colors.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#backgroundtypefill">BackgroundTypeFill</a>
  */
 @Data

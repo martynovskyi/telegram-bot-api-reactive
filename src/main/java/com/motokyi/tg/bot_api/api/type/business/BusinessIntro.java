@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * Contains information about the start page settings of a Telegram Business account.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#businessintro">BusinessIntro</a>
  */
 @Data

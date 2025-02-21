@@ -21,6 +21,7 @@ import com.motokyi.tg.bot_api.api.type.passport.PassportData;
 import com.motokyi.tg.bot_api.api.type.payment.Invoice;
 import com.motokyi.tg.bot_api.api.type.payment.SuccessfulPayment;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
+import com.motokyi.tg.bot_api.api.type.reply.ExternalReplyInfo;
 import com.motokyi.tg.bot_api.api.type.reply.TextQuote;
 import com.motokyi.tg.bot_api.api.type.sticker.Sticker;
 import com.motokyi.tg.bot_api.api.type.user.User;
@@ -38,7 +39,7 @@ import java.util.List;
 /**
  * This object represents a message.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#message">Message</a>
  */
 @Data
@@ -86,7 +87,7 @@ public class Message {
     private TextQuote quote;
 
     @JsonProperty(ApiProperties.REPLY_TO_STORY)
-    private Story reply_to_story;
+    private Story replyToStory;
 
     @JsonProperty(ApiProperties.VIA_BOT)
     private User viaBot;
@@ -113,11 +114,17 @@ public class Message {
     @JsonProperty(ApiProperties.LINK_PREVIEW_OPTIONS)
     private LinkPreviewOptions linkPreviewOptions;
 
+    @JsonProperty("effect_id")
+    private String effectId;
+
     private Animation animation;
 
     private Audio audio;
 
     private Document document;
+
+    @JsonProperty(ApiProperties.PAID_MEDIA)
+    private PaidMediaInfo paidMedia;
 
     @JsonProperty(ApiProperties.PHOTO)
     private List<PhotoSize> photo;
@@ -137,6 +144,9 @@ public class Message {
 
     @JsonProperty(ApiProperties.CAPTION_ENTITIES)
     private List<MessageEntity> captionEntities;
+
+    @JsonProperty(ApiProperties.SHOW_CAPTION_ABOVE_MEDIA)
+    private Boolean showCaptionAboveMedia;
 
     @JsonProperty(ApiProperties.HAS_MEDIA_SPOILER)
     private Boolean hasMediaSpoiler;

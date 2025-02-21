@@ -7,10 +7,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * The background is a PNG or TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”)
+ * The background is a .PNG or .TGV (gzipped subset of SVG with MIME type “application/x-tgwallpattern”)
  * pattern to be combined with the background fill chosen by the user.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#backgroundtypepattern">BackgroundTypePattern</a>
  */
 @Data

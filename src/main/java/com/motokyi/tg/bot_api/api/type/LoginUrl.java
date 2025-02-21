@@ -9,7 +9,7 @@ import lombok.Data;
  * All the user needs to do is tap/click a button and confirm that they want to log in.
  * Telegram apps support these buttons as of version 5.7.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#loginurl">LoginUrl</a>
  */
 
@@ -26,4 +26,5 @@ public class LoginUrl {
 
     @JsonProperty("request_write_access")
     private Boolean requestWriteAccess;
+
 }

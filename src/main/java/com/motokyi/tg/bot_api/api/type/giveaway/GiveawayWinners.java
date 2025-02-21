@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * This object represents a message about the completion of a giveaway with public winners.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#giveawaywinners">GiveawayWinners</a>
  */
 
@@ -33,6 +33,9 @@ public class GiveawayWinners {
 
     @JsonProperty(ApiProperties.ADDITIONAL_CHAT_COUNT)
     private Integer additionalChatCount;
+
+    @JsonProperty(ApiProperties.PRIZE_STAR_COUNT)
+    private Integer prizeStarCount;
 
     @JsonProperty(ApiProperties.PREMIUM_SUBSCRIPTION_MONTH_COUNT)
     private Integer premiumSubscriptionMonthCount;

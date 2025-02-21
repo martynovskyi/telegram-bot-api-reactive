@@ -8,7 +8,7 @@ import lombok.Data;
 /**
  * Describes data sent from a Web App to the bot.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#webappdata">WebAppData</a>
  */
 @Data

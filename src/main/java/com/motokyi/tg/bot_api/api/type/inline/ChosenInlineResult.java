@@ -9,7 +9,7 @@ import lombok.Data;
 /**
  * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#choseninlineresult">ChosenInlineResult</a>
  */
 @Data

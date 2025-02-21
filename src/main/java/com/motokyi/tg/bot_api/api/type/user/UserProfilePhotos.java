@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * This object represent a user's profile pictures.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#userprofilephotos">UserProfilePhotos</a>
  */
 @Data
@@ -20,4 +20,5 @@ public class UserProfilePhotos {
     private Integer totalCount;
 
     private List<List<PhotoSize>> photos;
+
 }

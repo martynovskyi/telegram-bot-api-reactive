@@ -4,10 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * This object represents a video file.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#video">Video</a>
  */
 @Data
@@ -26,6 +28,11 @@ public class Video {
     private Integer duration;
 
     private PhotoSize thumbnail;
+
+    private List<PhotoSize> cover;
+
+    @JsonProperty(ApiProperties.START_TIMESTAMP)
+    private Integer startTimestamp;
 
     @JsonProperty(ApiProperties.FILE_NAME)
     private String fileName;

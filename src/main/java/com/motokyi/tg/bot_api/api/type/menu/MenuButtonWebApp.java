@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 /**
  * Represents a menu button, which launches a Web App.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#menubuttonwebapp">MenuButtonWebApp</a>
  */
 @Data

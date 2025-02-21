@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * This object represents a change of a reaction on a message performed by a user.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#messagereactionupdated">MessageReactionUpdated</a>
  */
 @Data

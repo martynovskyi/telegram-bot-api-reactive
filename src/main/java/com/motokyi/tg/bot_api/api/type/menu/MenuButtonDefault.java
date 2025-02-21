@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 /**
  * Describes that no specific value for the menu button was set.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#menubuttondefault">MenuButtonDefault</a>
  */
 @Data

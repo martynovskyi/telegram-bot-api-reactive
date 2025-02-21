@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represents a general file to be sent.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#inputmediadocument">InputMediaDocument</a>
  */
 @Data

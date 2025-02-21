@@ -7,7 +7,7 @@ import lombok.Data;
 /**
  * This object represents an audio file to be treated as music by the Telegram clients.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#audio">Audio</a>
  */
 @Data

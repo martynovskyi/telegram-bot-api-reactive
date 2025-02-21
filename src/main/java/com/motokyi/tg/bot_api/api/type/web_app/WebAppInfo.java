@@ -5,11 +5,12 @@ import lombok.Data;
 /**
  * Describes a Web App.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#webappinfo">WebAppInfo</a>
  */
 @Data
 public class WebAppInfo {
 
     private String url;
+
 }
