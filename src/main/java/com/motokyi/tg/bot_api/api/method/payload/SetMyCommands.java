@@ -16,7 +16,7 @@ import static com.motokyi.tg.bot_api.api.constant.ApiProperties.LANGUAGE_CODE;
  * Use this method to change the list of the bot's commands.
  * See <a href="https://core.telegram.org/bots#commands">here</a> for more details about bot commands. Returns True on success.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#setmycommands">setMyCommands</a>
  */
 

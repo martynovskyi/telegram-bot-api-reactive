@@ -16,6 +16,7 @@ import java.util.List;
 
 @Data
 public class BusinessMessagesDeleted {
+
     @JsonProperty(ApiProperties.BUSINESS_CONNECTION_ID)
     private String businessConnectionId;
 
@@ -23,4 +24,5 @@ public class BusinessMessagesDeleted {
 
     @JsonProperty(ApiProperties.MESSAGE_IDS)
     private List<Long> messageIds;
+
 }

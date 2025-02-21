@@ -11,13 +11,17 @@ import lombok.Setter;
  * Use this method to edit only the reply markup of messages.
  * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#editmessagereplymarkup">editMessageReplyMarkup</a>
  **/
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class EditMessageReplyMarkup {
+
+    @JsonProperty(ApiProperties.BUSINESS_CONNECTION_ID)
+    private String businessConnectionId;
+
     @JsonProperty(ApiProperties.CHAT_ID)
     private String chatId;
 

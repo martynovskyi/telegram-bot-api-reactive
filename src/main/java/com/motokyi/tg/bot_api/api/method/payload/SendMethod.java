@@ -12,6 +12,10 @@ import lombok.Setter;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public abstract class SendMethod {
+    // todo remove inheritance
+
+    @JsonProperty(ApiProperties.BUSINESS_CONNECTION_ID)
+    private String businessConnectionId;
 
     @JsonProperty(ApiProperties.CHAT_ID)
     protected String chatId;
