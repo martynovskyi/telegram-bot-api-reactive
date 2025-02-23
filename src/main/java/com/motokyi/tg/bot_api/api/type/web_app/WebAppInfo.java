@@ -12,5 +12,4 @@ import lombok.Data;
 public class WebAppInfo {
 
     private String url;
-
 }

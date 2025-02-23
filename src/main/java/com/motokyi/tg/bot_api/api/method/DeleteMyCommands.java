@@ -12,12 +12,10 @@ import reactor.core.publisher.Mono;
  * the ability to self-execution and chain setter
  */
 @RequiredArgsConstructor
-public class DeleteMyCommands
-        extends com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands
+public class DeleteMyCommands extends com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands
         implements BotMethod<Response<Boolean>> {
 
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     @Override
     public Mono<Response<Boolean>> send() {

@@ -15,8 +15,7 @@ public class EditMessageReplyMarkup
         extends com.motokyi.tg.bot_api.api.method.payload.EditMessageReplyMarkup
         implements BotMethod<Response<Message>> {
 
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public EditMessageReplyMarkup(String chatId, String messageId, BotApiClient client) {
         super(chatId, messageId);

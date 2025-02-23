@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.tools;
 
+import static java.util.Objects.nonNull;
+import static java.util.Optional.ofNullable;
+
 import com.motokyi.tg.bot_api.api.type.business.BusinessConnection;
 import com.motokyi.tg.bot_api.api.type.business.BusinessMessagesDeleted;
 import com.motokyi.tg.bot_api.api.type.chat.ChatJoinRequest;
@@ -18,14 +21,10 @@ import com.motokyi.tg.bot_api.api.type.payment.ShippingQuery;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
 import com.motokyi.tg.bot_api.api.type.poll.PollAnswer;
 import com.motokyi.tg.bot_api.api.type.update.Update;
-import lombok.Builder;
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.Objects;
 import java.util.function.Consumer;
-
-import static java.util.Objects.nonNull;
-import static java.util.Optional.ofNullable;
+import lombok.Builder;
+import lombok.extern.slf4j.Slf4j;
 
 @Builder
 @Slf4j
@@ -60,19 +59,24 @@ public class UpdateHandler {
             ofNullable(update.getEditedMessage()).ifPresent(handleSafe(this.editedMessageConsumer));
             ofNullable(update.getChannelPost()).ifPresent(handleSafe(this.channelPostConsumer));
             ofNullable(update.getEditedMessage()).ifPresent(handleSafe(this.editedChannelPostConsumer));
-            ofNullable(update.getBusinessConnection()).ifPresent(handleSafe(this.businessConnectionConsumer));
+            ofNullable(update.getBusinessConnection())
+                    .ifPresent(handleSafe(this.businessConnectionConsumer));
             ofNullable(update.getBusinessMessage()).ifPresent(handleSafe(this.businessMessageConsumer));
-            ofNullable(update.getEditedBusinessMessage()).ifPresent(handleSafe(this.editedBusinessMessageConsumer));
-            ofNullable(update.getDeletedBusinessMessages()).ifPresent(handleSafe(this.deletedBusinessMessagesConsumer));
+            ofNullable(update.getEditedBusinessMessage())
+                    .ifPresent(handleSafe(this.editedBusinessMessageConsumer));
+            ofNullable(update.getDeletedBusinessMessages())
+                    .ifPresent(handleSafe(this.deletedBusinessMessagesConsumer));
             ofNullable(update.getMessageReaction()).ifPresent(handleSafe(this.messageReactionConsumer));
             ofNullable(update.getMessageReactionCount())
                     .ifPresent(handleSafe(this.messageReactionCountUpdatedConsumer));
             ofNullable(update.getInlineQuery()).ifPresent(handleSafe(this.inlineQueryConsumer));
-            ofNullable(update.getChosenInlineResult()).ifPresent(handleSafe(this.chosenInlineResultConsumer));
+            ofNullable(update.getChosenInlineResult())
+                    .ifPresent(handleSafe(this.chosenInlineResultConsumer));
             ofNullable(update.getCallbackQuery()).ifPresent(handleSafe(this.callbackQueryConsumer));
             ofNullable(update.getShippingQuery()).ifPresent(handleSafe(this.shippingQueryConsumer));
             ofNullable(update.getPreCheckoutQuery()).ifPresent(handleSafe(this.preCheckoutQueryConsumer));
-            ofNullable(update.getPurchasedPaidMedia()).ifPresent(handleSafe(this.purchasedPaidMediaConsumer));
+            ofNullable(update.getPurchasedPaidMedia())
+                    .ifPresent(handleSafe(this.purchasedPaidMediaConsumer));
             ofNullable(update.getPoll()).ifPresent(handleSafe(this.pollConsumer));
             ofNullable(update.getPollAnswer()).ifPresent(handleSafe(this.pollAnswerConsumer));
             ofNullable(update.getMyChatMember()).ifPresent(handleSafe(this.myChatMemberConsumer));

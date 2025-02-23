@@ -1,8 +1,7 @@
 package com.motokyi.tg.bot_api.api.type.chat_boost;
 
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * This object represents a list of boosts added to a chat by a user.

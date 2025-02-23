@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 /**
- * This object represents an inline button that switches the current user to inline mode in a chosen chat,
- * with an optional default inline query.
+ * This object represents an inline button that switches the current user to inline mode in a chosen
+ * chat, with an optional default inline query.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#switchinlinequerychosenchat">SwitchInlineQueryChosenChat</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#switchinlinequerychosenchat">SwitchInlineQueryChosenChat</a>
  */
 @Data
 public class SwitchInlineQueryChosenChat {

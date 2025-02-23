@@ -12,12 +12,12 @@ import com.motokyi.tg.bot_api.api.type.message.origin.MessageOrigin;
 import com.motokyi.tg.bot_api.api.type.payment.Invoice;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
 import com.motokyi.tg.bot_api.api.type.sticker.Sticker;
+import java.util.List;
 import lombok.Data;
 
-import java.util.List;
-
 /**
- * This object contains information about a message that is being replied to, which may come from another chat or forum topic.
+ * This object contains information about a message that is being replied to, which may come from
+ * another chat or forum topic.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#externalreplyinfo">ExternalReplyInfo</a>
@@ -79,5 +79,4 @@ public class ExternalReplyInfo {
     private Poll poll;
 
     private Venue venue;
-
 }

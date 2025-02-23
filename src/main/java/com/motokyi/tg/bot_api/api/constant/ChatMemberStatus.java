@@ -8,6 +8,5 @@ public final class ChatMemberStatus {
     public static final String RESTRICTED = "restricted";
     public static final String LEFT = "left";
 
-    private ChatMemberStatus() {
-    }
+    private ChatMemberStatus() {}
 }

@@ -11,11 +11,10 @@ import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import com.motokyi.tg.bot_api.api.type.user.User;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 public interface BotApiClient {
 
@@ -27,7 +26,8 @@ public interface BotApiClient {
 
     Mono<Response<BotDescription>> getMyDescription(@Nullable String languageCode);
 
-    Mono<Response<Boolean>> setMyDescription(@Nullable String description, @Nullable String languageCode);
+    Mono<Response<Boolean>> setMyDescription(
+            @Nullable String description, @Nullable String languageCode);
 
     Mono<Response<BotShortDescription>> getMyShortDescription(@Nullable String languageCode);
 
@@ -63,12 +63,12 @@ public interface BotApiClient {
 
     /**
      * @see <a href="https://core.telegram.org/bots/api#answercallbackquery">answerCallbackQuery</a>
-     **/
+     */
     Mono<Response<Boolean>> send(@NotNull AnswerCallbackQuery answerCallbackQuery);
 
     /**
      * @see <a href="https://core.telegram.org/bots/api#setmessagereaction">setMessageReaction</a>
-     **/
+     */
     Mono<Response<Boolean>> send(@NotNull SetMessageReaction setMessageReaction);
 
     Mono<Response<Boolean>> send(@NotNull SetWebhook setWebhook);
@@ -76,5 +76,4 @@ public interface BotApiClient {
     Mono<Response<Boolean>> send(@NotNull DeleteWebhook deleteWebhook);
 
     Mono<Response<WebhookInfo>> getWebhookInfo();
-
 }

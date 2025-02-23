@@ -65,5 +65,4 @@ public class ChatMemberRestricted extends ChatMember {
 
     @JsonProperty(ApiProperties.UNTIL_DATE)
     private Long untilDate;
-
 }

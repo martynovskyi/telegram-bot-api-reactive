@@ -1,5 +1,9 @@
 package com.motokyi.tg.bot_api.bot;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
 import com.motokyi.tg.bot_api.api.method.SetMessageReaction;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.message.Message;
@@ -7,10 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @SuppressWarnings("ClassNamingConvention")
 @ExtendWith(MockitoExtension.class)
@@ -22,8 +22,7 @@ public class TelegramBot_SetMessageReactionTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(setMessageReaction),
                 () -> assertEquals(CHAT_TAG, setMessageReaction.getChatId()),
-                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId())
-        );
+                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -33,8 +32,7 @@ public class TelegramBot_SetMessageReactionTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(setMessageReaction),
                 () -> assertEquals(CHAT_ID.toString(), setMessageReaction.getChatId()),
-                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId())
-        );
+                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -48,8 +46,7 @@ public class TelegramBot_SetMessageReactionTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(setMessageReaction),
                 () -> assertEquals(CHAT_ID.toString(), setMessageReaction.getChatId()),
-                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId())
-        );
+                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -62,8 +59,7 @@ public class TelegramBot_SetMessageReactionTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(setMessageReaction),
                 () -> assertEquals(CHAT_TAG, setMessageReaction.getChatId()),
-                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId())
-        );
+                () -> assertEquals(MESSAGE_ID, setMessageReaction.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 }

@@ -1,6 +1,5 @@
 package com.motokyi.tg.bot_api.api.type.video_chat;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -15,5 +14,4 @@ public class VideoChatScheduled {
 
     @JsonProperty("start_date")
     private Long startDate;
-
 }

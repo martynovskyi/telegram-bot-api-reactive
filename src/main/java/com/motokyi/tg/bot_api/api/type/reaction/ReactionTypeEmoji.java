@@ -14,5 +14,4 @@ import lombok.EqualsAndHashCode;
 public class ReactionTypeEmoji extends ReactionType {
 
     private String emoji;
-
 }

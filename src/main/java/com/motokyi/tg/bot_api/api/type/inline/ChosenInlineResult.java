@@ -7,7 +7,8 @@ import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
 
 /**
- * Represents a result of an inline query that was chosen by the user and sent to their chat partner.
+ * Represents a result of an inline query that was chosen by the user and sent to their chat
+ * partner.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#choseninlineresult">ChosenInlineResult</a>
@@ -26,6 +27,4 @@ public class ChosenInlineResult {
     private String inlineMessageId;
 
     private String query;
-
-
 }

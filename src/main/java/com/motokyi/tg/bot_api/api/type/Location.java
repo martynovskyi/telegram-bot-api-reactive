@@ -26,5 +26,4 @@ public class Location {
 
     @JsonProperty("proximity_alert_radius")
     private Integer proximityAlertRadius;
-
 }

@@ -7,7 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns True on success.
+ * Use this method to remove webhook integration if you decide to switch back to getUpdates. Returns
+ * True on success.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#deletewebhook">deleteWebhook</a>

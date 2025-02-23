@@ -2,21 +2,18 @@ package com.motokyi.tg.bot_api.client;
 
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
+import java.util.Objects;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Objects;
-
-
 @Slf4j
 @NoArgsConstructor
 public class BotApiClientBuilder {
     private BotConfigProperty botProperties;
     private WebClient.Builder builder;
-
 
     public BotApiClientBuilder withBotProperties(BotConfigProperty botProperties) {
         this.botProperties = botProperties;
@@ -34,7 +31,8 @@ public class BotApiClientBuilder {
         if (Objects.isNull(builder)) {
             builder = WebClient.builder();
         }
-        builder.baseUrl(ClientUtils.createBotUrl(botProperties))
+        builder
+                .baseUrl(ClientUtils.createBotUrl(botProperties))
                 .defaultHeader(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE);
         return new BotClient(builder.build());
     }

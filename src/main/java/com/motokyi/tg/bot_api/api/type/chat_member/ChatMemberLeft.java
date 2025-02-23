@@ -10,7 +10,6 @@ import lombok.EqualsAndHashCode;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatmemberleft">ChatMemberLeft</a>
  */
-
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class ChatMemberLeft extends ChatMember {

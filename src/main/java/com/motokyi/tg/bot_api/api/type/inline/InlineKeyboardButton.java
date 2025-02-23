@@ -9,7 +9,8 @@ import com.motokyi.tg.bot_api.api.type.web_app.WebAppInfo;
 import lombok.Data;
 
 /**
- * This object represents one button of an inline keyboard. You must use exactly one of the optional fields.
+ * This object represents one button of an inline keyboard. You must use exactly one of the optional
+ * fields.
  *
  * @version Bot API 7.3
  * @see <a href="https://core.telegram.org/bots/api#inlinekeyboardbutton">InlineKeyboardButton</a>

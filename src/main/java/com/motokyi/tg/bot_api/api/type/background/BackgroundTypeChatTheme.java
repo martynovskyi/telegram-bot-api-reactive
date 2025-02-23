@@ -9,7 +9,8 @@ import lombok.EqualsAndHashCode;
  * The background is taken directly from a built-in chat theme.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#backgroundtypechattheme">BackgroundTypeChatTheme</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#backgroundtypechattheme">BackgroundTypeChatTheme</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

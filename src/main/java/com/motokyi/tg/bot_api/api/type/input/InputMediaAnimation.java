@@ -3,9 +3,8 @@ package com.motokyi.tg.bot_api.api.type.input;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * Represents an animation file (GIF or H.264/MPEG-4 AVC video without sound) to be sent.

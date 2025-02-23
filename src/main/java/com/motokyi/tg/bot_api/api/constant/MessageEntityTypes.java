@@ -20,6 +20,5 @@ public final class MessageEntityTypes {
     public static final String TEXT_MENTION = "text_mention";
     public static final String CUSTOM_EMOJI = "custom_emoji";
 
-    private MessageEntityTypes() {
-    }
+    private MessageEntityTypes() {}
 }

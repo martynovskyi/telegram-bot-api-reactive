@@ -6,6 +6,5 @@ public class PaidMediaTypes {
     public static final String PHOTO = "photo";
     public static final String VIDEO = "video";
 
-    private PaidMediaTypes() {
-    }
+    private PaidMediaTypes() {}
 }

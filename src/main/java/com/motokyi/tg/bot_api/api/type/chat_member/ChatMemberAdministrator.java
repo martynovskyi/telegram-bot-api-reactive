@@ -10,7 +10,8 @@ import lombok.EqualsAndHashCode;
  * Represents a chat member that has some additional privileges.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#chatmemberadministrator">ChatMemberAdministrator</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#chatmemberadministrator">ChatMemberAdministrator</a>
  */
 @EqualsAndHashCode(callSuper = true)
 @Data

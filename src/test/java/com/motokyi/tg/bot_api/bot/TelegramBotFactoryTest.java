@@ -1,15 +1,14 @@
 package com.motokyi.tg.bot_api.bot;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.config.properties.TelegramBotProperties;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class TelegramBotFactoryTest {
     private static final String TEST_BOT = "test_bot";

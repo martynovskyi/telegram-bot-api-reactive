@@ -23,5 +23,4 @@ public class ShippingQuery {
 
     @JsonProperty(ApiProperties.SHIPPING_ADDRESS)
     private ShippingAddress shippingAddress;
-
 }

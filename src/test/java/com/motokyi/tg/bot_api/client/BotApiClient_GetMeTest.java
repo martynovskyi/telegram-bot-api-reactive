@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.client;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.motokyi.tg.bot_api.PropertyValues;
 import com.motokyi.tg.bot_api.WMUtils;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
@@ -8,15 +11,13 @@ import com.motokyi.tg.bot_api.api.type.user.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.junit.jupiter.api.Assertions.*;
-
 @SuppressWarnings("ClassNamingConvention")
 public class BotApiClient_GetMeTest extends BotClientTest {
     @Test
     void successful() {
-        stubFor(get(urlEqualTo(ApiUrls.GET_ME))
-                .willReturn(WMUtils.fromJsonFile("body/test-bot-user.json")));
+        stubFor(
+                get(urlEqualTo(ApiUrls.GET_ME))
+                        .willReturn(WMUtils.fromJsonFile("body/test-bot-user.json")));
 
         Response<User> response = botClient.getMe().block();
         assertAll(
@@ -29,8 +30,7 @@ public class BotApiClient_GetMeTest extends BotClientTest {
                 () -> assertEquals(PropertyValues.LAST_NAME_BOT, response.getResult().getLastName()),
                 () -> assertTrue(response.getResult().getCanJoinGroups()),
                 () -> assertTrue(response.getResult().getCanReadAllGroupMessages()),
-                () -> assertTrue(response.getResult().getSupportsInlineQueries())
-        );
+                () -> assertTrue(response.getResult().getSupportsInlineQueries()));
     }
 
     @Test

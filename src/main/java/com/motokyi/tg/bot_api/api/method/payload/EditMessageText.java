@@ -6,18 +6,17 @@ import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.LinkPreviewOptions;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
- * Use this method to edit text and game messages.
- * On success, if the edited message is not an inline message, the edited Message is returned, otherwise True is returned.
+ * Use this method to edit text and game messages. On success, if the edited message is not an
+ * inline message, the edited Message is returned, otherwise True is returned.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#editmessagetext">editMessageText</a>
- **/
+ */
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)

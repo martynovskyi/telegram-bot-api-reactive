@@ -2,9 +2,8 @@ package com.motokyi.tg.bot_api.api.type.media;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * Describes the paid media added to a message.
@@ -20,5 +19,4 @@ public class PaidMediaInfo {
 
     @JsonProperty(ApiProperties.PAID_MEDIA)
     private List<PaidMedia> paidMedia;
-
 }

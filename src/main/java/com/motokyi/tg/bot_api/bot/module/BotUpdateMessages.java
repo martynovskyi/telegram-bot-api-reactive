@@ -5,9 +5,7 @@ import com.motokyi.tg.bot_api.api.method.EditMessageText;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Interface defines bot operations related to update Messages
- */
+/** Interface defines bot operations related to update Messages */
 public interface BotUpdateMessages {
     EditMessageText editMessageText(@NotNull Message message);
 

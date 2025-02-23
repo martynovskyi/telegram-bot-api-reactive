@@ -1,16 +1,14 @@
 package com.motokyi.tg.bot_api.utils;
 
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
+import java.net.URI;
+import java.util.function.Function;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.web.util.UriBuilder;
 
-import java.net.URI;
-import java.util.function.Function;
-
 public final class UriUtils {
-    private UriUtils() {
-    }
+    private UriUtils() {}
 
     @NotNull
     public static Function<UriBuilder, URI> uriWithLanguageCode(String path, String languageCode) {

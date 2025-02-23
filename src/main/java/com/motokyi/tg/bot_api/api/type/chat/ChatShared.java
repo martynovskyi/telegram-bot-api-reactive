@@ -3,18 +3,16 @@ package com.motokyi.tg.bot_api.api.type.chat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.media.PhotoSize;
+import java.util.List;
 import lombok.Data;
 
-import java.util.List;
-
 /**
- * This object contains information about the chat whose identifier
- * was shared with the bot using a KeyboardButtonRequestChat button.
+ * This object contains information about the chat whose identifier was shared with the bot using a
+ * KeyboardButtonRequestChat button.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatshared">ChatShared</a>
  */
-
 @Data
 public class ChatShared {
 

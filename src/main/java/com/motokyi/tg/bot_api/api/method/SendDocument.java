@@ -7,20 +7,17 @@ import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
-import reactor.core.publisher.Mono;
-
 import java.io.File;
 import java.util.List;
+import reactor.core.publisher.Mono;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendDocument SendDocument} method with the ability
  * to self-execution and chain setter
  */
-public class SendDocument
-        extends com.motokyi.tg.bot_api.api.method.payload.SendDocument
+public class SendDocument extends com.motokyi.tg.bot_api.api.method.payload.SendDocument
         implements BotMethod<Response<Message>> {
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public SendDocument(String chatId, BotApiClient client) {
         super(chatId);
@@ -51,6 +48,7 @@ public class SendDocument
         this.setDocumentId(documentId);
         return this;
     }
+
     public SendDocument thumbnail(File thumbnail) {
         super.setThumbnailFile(thumbnail);
         return this;
@@ -60,7 +58,6 @@ public class SendDocument
         super.setThumbnail(thumbnail);
         return this;
     }
-
 
     public SendDocument caption(String caption) {
         super.setCaption(caption);

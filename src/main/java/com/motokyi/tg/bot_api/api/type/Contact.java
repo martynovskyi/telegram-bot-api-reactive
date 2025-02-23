@@ -26,5 +26,4 @@ public class Contact {
     private Long userId;
 
     private String vcard;
-
 }

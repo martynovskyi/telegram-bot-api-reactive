@@ -11,6 +11,4 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ReactionTypePaid extends ReactionType {
-
-}
+public class ReactionTypePaid extends ReactionType {}

@@ -32,9 +32,8 @@ import com.motokyi.tg.bot_api.api.type.video_chat.VideoChatScheduled;
 import com.motokyi.tg.bot_api.api.type.video_chat.VideoChatStarted;
 import com.motokyi.tg.bot_api.api.type.web_app.WebAppData;
 import com.motokyi.tg.bot_api.api.type.web_app.WriteAccessAllowed;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * This object represents a message.

@@ -24,6 +24,5 @@ public final class UpdateTypes {
     public static final String EDITED_BUSINESS_MESSAGE = "edited_business_message";
     public static final String DELETED_BUSINESS_MESSAGES = "deleted_business_messages";
 
-    private UpdateTypes() {
-    }
+    private UpdateTypes() {}
 }

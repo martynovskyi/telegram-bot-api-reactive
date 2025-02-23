@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * This object represents a boost added to a chat or changed.
+ *
  * <p>
  *
  * @version Bot API 8.3

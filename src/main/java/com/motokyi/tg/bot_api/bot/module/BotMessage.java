@@ -9,9 +9,7 @@ import com.motokyi.tg.bot_api.api.type.message.Message;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
-/**
- * Interface defines bot operations related to Message
- */
+/** Interface defines bot operations related to Message */
 public interface BotMessage {
     SendMessage sendMessage(@NotNull Long chatId);
 
@@ -25,7 +23,8 @@ public interface BotMessage {
 
     ForwardMessage forwardMessage(@NotNull String chatId, @NotNull Message message);
 
-    ForwardMessage forwardMessage(@NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId);
+    ForwardMessage forwardMessage(
+            @NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId);
 
     Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
 

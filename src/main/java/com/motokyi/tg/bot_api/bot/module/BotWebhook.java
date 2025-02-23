@@ -7,9 +7,7 @@ import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
-/**
- * Interface defines bot operations related to Webhooks
- */
+/** Interface defines bot operations related to Webhooks */
 public interface BotWebhook {
     SetWebhook setWebhook(@NotNull String url);
 

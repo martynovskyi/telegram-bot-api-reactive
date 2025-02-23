@@ -3,9 +3,8 @@ package com.motokyi.tg.bot_api.api.type.giveaway;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * This object represents a message about a scheduled giveaway.
@@ -13,7 +12,6 @@ import java.util.List;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#giveaway">Giveaway</a>
  */
-
 @Data
 public class Giveaway {
 

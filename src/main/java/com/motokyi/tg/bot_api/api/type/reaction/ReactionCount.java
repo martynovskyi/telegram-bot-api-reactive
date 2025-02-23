@@ -17,5 +17,4 @@ public class ReactionCount {
 
     @JsonProperty(ApiProperties.TOTAL_COUNT)
     private Integer totalCount;
-
 }

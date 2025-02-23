@@ -1,22 +1,21 @@
 package com.motokyi.tg.bot_api.api.method;
 
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
+import java.time.Duration;
+import java.util.List;
+import java.util.function.Consumer;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.retry.Retry;
-
-import java.time.Duration;
-import java.util.List;
-import java.util.function.Consumer;
-
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.GetUpdates GetUpdates} method with the ability to
@@ -24,11 +23,9 @@ import static java.util.Objects.nonNull;
  */
 @Slf4j
 @RequiredArgsConstructor
-public class GetUpdates
-        extends com.motokyi.tg.bot_api.api.method.payload.GetUpdates
+public class GetUpdates extends com.motokyi.tg.bot_api.api.method.payload.GetUpdates
         implements BotMethod<Response<List<Update>>> {
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public Mono<Response<List<Update>>> send() {
         return client.getUpdates(this);
@@ -42,10 +39,12 @@ public class GetUpdates
         return send()
                 .doOnNext(calculateOffset())
                 .repeat()
-                .retryWhen(Retry.backoff(5, Duration.ofSeconds(super.getTimeout()))
-                        .filter(throwable -> throwable instanceof TooManyRequestsException))
-                .retryWhen(Retry.backoff(100, Duration.ofSeconds(5))
-                        .filter(throwable -> !(throwable instanceof TooManyRequestsException)))
+                .retryWhen(
+                        Retry.backoff(5, Duration.ofSeconds(super.getTimeout()))
+                                .filter(throwable -> throwable instanceof TooManyRequestsException))
+                .retryWhen(
+                        Retry.backoff(100, Duration.ofSeconds(5))
+                                .filter(throwable -> !(throwable instanceof TooManyRequestsException)))
                 .map(Response::getResult)
                 .flatMap(Flux::fromIterable);
     }

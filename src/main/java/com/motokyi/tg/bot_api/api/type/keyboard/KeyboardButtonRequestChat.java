@@ -6,11 +6,12 @@ import com.motokyi.tg.bot_api.api.type.chat.ChatAdministratorRights;
 import lombok.Data;
 
 /**
- * This object defines the criteria used to request a suitable chat.
- * The identifier of the selected chat will be shared with the bot when the corresponding button is pressed.
+ * This object defines the criteria used to request a suitable chat. The identifier of the selected
+ * chat will be shared with the bot when the corresponding button is pressed.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#keyboardbuttonrequestchat">KeyboardButtonRequestChat</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#keyboardbuttonrequestchat">KeyboardButtonRequestChat</a>
  */
 @Data
 public class KeyboardButtonRequestChat {

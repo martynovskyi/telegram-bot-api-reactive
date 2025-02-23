@@ -15,12 +15,11 @@ import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import com.motokyi.tg.bot_api.client.BotApiClient;
+import java.util.List;
+import java.util.Objects;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
-import java.util.Objects;
 
 @RequiredArgsConstructor
 public class TelegramBot implements Bot {
@@ -88,7 +87,8 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<Boolean>> setMyShortDescription(String shortDescription, String languageCode) {
+    public Mono<Response<Boolean>> setMyShortDescription(
+            String shortDescription, String languageCode) {
         return client.setMyShortDescription(shortDescription, languageCode);
     }
 
@@ -154,7 +154,8 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<Boolean>> dropMessageReaction(@NotNull String chatId, @NotNull Long messageId) {
+    public Mono<Response<Boolean>> dropMessageReaction(
+            @NotNull String chatId, @NotNull Long messageId) {
         return new SetMessageReaction(client, chatId, messageId).send();
     }
 
@@ -194,7 +195,8 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public ForwardMessage forwardMessage(@NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId) {
+    public ForwardMessage forwardMessage(
+            @NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId) {
         return new ForwardMessage(chatId, fromChatId, messageId, client);
     }
 
@@ -205,19 +207,21 @@ public class TelegramBot implements Bot {
 
     @Override
     public EditMessageText editMessageText(@NotNull Message message) {
-        return new EditMessageText(String.valueOf(message.getChat().getId()), String.valueOf(message.getMessageId()), client);
+        return new EditMessageText(
+                String.valueOf(message.getChat().getId()), String.valueOf(message.getMessageId()), client);
     }
 
     @Override
-    public EditMessageReplyMarkup editMessageReplyMarkup(@NotNull Long chatId, @NotNull Long messageId) {
+    public EditMessageReplyMarkup editMessageReplyMarkup(
+            @NotNull Long chatId, @NotNull Long messageId) {
         return new EditMessageReplyMarkup(String.valueOf(chatId), String.valueOf(messageId), client);
     }
 
     @Override
     public EditMessageReplyMarkup editMessageReplyMarkup(@NotNull Message message) {
-        return new EditMessageReplyMarkup(String.valueOf(message.getChat().getId()), String.valueOf(message.getMessageId()), client);
+        return new EditMessageReplyMarkup(
+                String.valueOf(message.getChat().getId()), String.valueOf(message.getMessageId()), client);
     }
-
 
     @Override
     public AnswerCallbackQuery answerCallbackQuery(@NotNull String callbackQueryId) {
@@ -235,7 +239,8 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<List<BotCommand>>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.GetMyCommands getCommandsPayload) {
+    public Mono<Response<List<BotCommand>>> send(
+            @NotNull com.motokyi.tg.bot_api.api.method.payload.GetMyCommands getCommandsPayload) {
         Objects.requireNonNull(getCommandsPayload, "GetMyCommands" + VALUE_MUST_BE_NOT_NULL);
         return client.send(getCommandsPayload);
     }
@@ -251,12 +256,14 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope, String languageCode) {
+    public Mono<Response<List<BotCommand>>> getMyCommands(
+            BotCommandScope scope, String languageCode) {
         return new GetMyCommands(client).scope(scope).languageCode(languageCode).send();
     }
 
     @Override
-    public Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.SetMyCommands commandsPayload) {
+    public Mono<Response<Boolean>> send(
+            @NotNull com.motokyi.tg.bot_api.api.method.payload.SetMyCommands commandsPayload) {
         Objects.requireNonNull(commandsPayload, "SetMyCommands" + VALUE_MUST_BE_NOT_NULL);
         return client.send(commandsPayload);
     }
@@ -267,7 +274,8 @@ public class TelegramBot implements Bot {
     }
 
     @Override
-    public Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands deleteCommandsPayload) {
+    public Mono<Response<Boolean>> send(
+            @NotNull com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands deleteCommandsPayload) {
         Objects.requireNonNull(deleteCommandsPayload, "DeleteMyCommands" + VALUE_MUST_BE_NOT_NULL);
         return client.send(deleteCommandsPayload);
     }
@@ -302,5 +310,4 @@ public class TelegramBot implements Bot {
     public Mono<Response<WebhookInfo>> getWebhookInfo() {
         return client.getWebhookInfo();
     }
-
 }

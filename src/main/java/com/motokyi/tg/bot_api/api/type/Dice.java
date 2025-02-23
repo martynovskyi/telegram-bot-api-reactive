@@ -14,5 +14,4 @@ public class Dice {
     private String emoji;
 
     private Integer value;
-
 }

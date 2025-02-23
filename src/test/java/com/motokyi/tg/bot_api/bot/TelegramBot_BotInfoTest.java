@@ -1,11 +1,11 @@
 package com.motokyi.tg.bot_api.bot;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @SuppressWarnings("ClassNamingConvention")
 @ExtendWith(MockitoExtension.class)
@@ -47,7 +47,6 @@ class TelegramBot_BotInfoTest extends TelegramBotTestSetup {
         verify(webClient).setMyName(TEXT, LANGUAGE_CODE);
         verifyNoMoreInteractions(webClient);
     }
-
 
     @Test
     void getMyDescription() {

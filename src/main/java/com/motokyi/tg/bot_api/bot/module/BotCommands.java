@@ -6,20 +6,19 @@ import com.motokyi.tg.bot_api.api.method.SetMyCommands;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
-/**
- * Interface defines bot operations related to Bot Commands
- */
+/** Interface defines bot operations related to Bot Commands */
 public interface BotCommands {
-    Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.SetMyCommands commandsPayload);
+    Mono<Response<Boolean>> send(
+            @NotNull com.motokyi.tg.bot_api.api.method.payload.SetMyCommands commandsPayload);
 
     SetMyCommands setMyCommands();
 
-    Mono<Response<List<BotCommand>>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.GetMyCommands getCommandsPayload);
+    Mono<Response<List<BotCommand>>> send(
+            @NotNull com.motokyi.tg.bot_api.api.method.payload.GetMyCommands getCommandsPayload);
 
     GetMyCommands getMyCommands();
 
@@ -27,7 +26,8 @@ public interface BotCommands {
 
     Mono<Response<List<BotCommand>>> getMyCommands(BotCommandScope scope, String languageCode);
 
-    Mono<Response<Boolean>> send(@NotNull com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands deleteCommandsPayload);
+    Mono<Response<Boolean>> send(
+            @NotNull com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands deleteCommandsPayload);
 
     DeleteMyCommands deleteMyCommands();
 

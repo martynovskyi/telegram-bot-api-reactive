@@ -8,7 +8,6 @@ import lombok.Data;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#copytextbutton">CopyTextButton</a>
  */
-
 @Data
 public class CopyTextButton {
     private String text;

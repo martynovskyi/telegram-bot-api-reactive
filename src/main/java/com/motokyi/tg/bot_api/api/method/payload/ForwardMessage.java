@@ -12,7 +12,7 @@ import lombok.Setter;
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#forwardmessage">forwardMessage</a>
- **/
+ */
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -38,7 +38,6 @@ public class ForwardMessage {
 
     @JsonProperty(ApiProperties.MESSAGE_ID)
     protected Long messageId;
-
 
     public ForwardMessage(String chatId, Message message) {
         this.chatId = chatId;

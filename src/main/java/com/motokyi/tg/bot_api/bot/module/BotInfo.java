@@ -7,9 +7,7 @@ import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.user.User;
 import reactor.core.publisher.Mono;
 
-/**
- * Interface defines bot operations related to bot information
- */
+/** Interface defines bot operations related to bot information */
 public interface BotInfo {
     Mono<Response<User>> getMe();
 
@@ -36,5 +34,4 @@ public interface BotInfo {
     Mono<Response<BotShortDescription>> getMyShortDescription(String languageCode);
 
     Mono<Response<Boolean>> setMyShortDescription(String shortDescription, String languageCode);
-
 }

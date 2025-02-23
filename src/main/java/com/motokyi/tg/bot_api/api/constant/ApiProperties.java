@@ -122,7 +122,8 @@ public final class ApiProperties {
     public static final String PREFER_SMALL_MEDIA = "prefer_small_media";
     public static final String PREFER_LARGE_MEDIA = "prefer_large_media";
     public static final String PROFILE_ACCENT_COLOR_ID = "profile_accent_color_id";
-    public static final String PROFILE_BACKGROUND_CUSTOM_EMOJI_ID = "profile_background_custom_emoji_id";
+    public static final String PROFILE_BACKGROUND_CUSTOM_EMOJI_ID =
+            "profile_background_custom_emoji_id";
     public static final String PINNED_MESSAGE = "pinned_message";
     public static final String PROTECT_CONTENT = "protect_content";
     public static final String PRIZE_DESCRIPTION = "prize_description";

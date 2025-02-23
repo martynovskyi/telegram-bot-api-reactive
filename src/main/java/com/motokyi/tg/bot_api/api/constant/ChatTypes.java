@@ -10,6 +10,5 @@ public final class ChatTypes {
     public static final String SUPERGROUP = "supergroup";
     public static final String CHANNEL = "channel";
 
-    private ChatTypes() {
-    }
+    private ChatTypes() {}
 }

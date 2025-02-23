@@ -7,20 +7,17 @@ import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
-import reactor.core.publisher.Mono;
-
 import java.io.File;
 import java.util.List;
+import reactor.core.publisher.Mono;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendAnimation SendAnimation} method with the ability
  * to self-execution and chain setter
  */
-public class SendAnimation
-        extends com.motokyi.tg.bot_api.api.method.payload.SendAnimation
+public class SendAnimation extends com.motokyi.tg.bot_api.api.method.payload.SendAnimation
         implements BotMethod<Response<Message>> {
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public SendAnimation(String chatId, BotApiClient client) {
         super(chatId);

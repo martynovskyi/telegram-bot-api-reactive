@@ -1,13 +1,12 @@
 package com.motokyi.tg.bot_api.client;
 
-import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
-import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
-import org.junit.jupiter.api.Test;
-
-import java.util.UUID;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
+import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
+import java.util.UUID;
+import org.junit.jupiter.api.Test;
 
 class BotApiClientBuilderTest {
     private static final String API_HOST = "protocol://hostname.io";
@@ -29,8 +28,9 @@ class BotApiClientBuilderTest {
 
     @Test
     void build_withEmptyBotProperties() {
-        assertThrows(MissedBotConfigException.class, () -> new BotApiClientBuilder()
-                .withBotProperties(new BotConfigProperty()).build());
+        assertThrows(
+                MissedBotConfigException.class,
+                () -> new BotApiClientBuilder().withBotProperties(new BotConfigProperty()).build());
     }
 
     @Test

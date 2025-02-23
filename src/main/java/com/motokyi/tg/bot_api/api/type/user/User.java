@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Data;
 
-
 /**
  * This object represents a Telegram user or bot.
  *
@@ -51,5 +50,4 @@ public class User {
 
     @JsonProperty("has_main_web_app")
     private Boolean hasMainWebApp;
-
 }

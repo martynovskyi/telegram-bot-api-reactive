@@ -1,6 +1,5 @@
 package com.motokyi.tg.bot_api.api.constant;
 
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

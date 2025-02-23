@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
+import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 /**
  * Describes reply parameters for the message that is being sent.
@@ -39,5 +38,4 @@ public class ReplyParameters {
 
     @JsonProperty(ApiProperties.QUOTE_POSITION)
     private Integer quote_position;
-
 }

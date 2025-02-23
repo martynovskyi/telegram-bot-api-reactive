@@ -10,11 +10,9 @@ import reactor.core.publisher.Mono;
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.ForwardMessage ForwardMessage} method with the ability
  * to self-execution and chain setter
  */
-public class ForwardMessage
-        extends com.motokyi.tg.bot_api.api.method.payload.ForwardMessage
+public class ForwardMessage extends com.motokyi.tg.bot_api.api.method.payload.ForwardMessage
         implements BotMethod<Response<Message>> {
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public ForwardMessage(String chatId, Message message, BotApiClient client) {
         super(chatId, message);
@@ -40,7 +38,6 @@ public class ForwardMessage
         super.setFromChatId(fromChatId);
         return this;
     }
-
 
     public ForwardMessage disableNotification(Boolean disableNotification) {
         super.setDisableNotification(disableNotification);

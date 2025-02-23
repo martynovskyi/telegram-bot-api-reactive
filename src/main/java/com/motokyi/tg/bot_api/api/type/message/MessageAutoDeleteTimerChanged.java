@@ -7,7 +7,8 @@ import lombok.Data;
  * This object represents a service message about a change in auto-delete timer settings.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#messageautodeletetimerchanged">MessageAutoDeleteTimerChanged</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#messageautodeletetimerchanged">MessageAutoDeleteTimerChanged</a>
  */
 @Data
 public class MessageAutoDeleteTimerChanged {

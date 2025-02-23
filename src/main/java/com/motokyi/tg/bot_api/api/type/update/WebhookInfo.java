@@ -2,9 +2,8 @@ package com.motokyi.tg.bot_api.api.type.update;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * Describes the current status of a webhook.

@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.utils;
 
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
@@ -12,6 +15,7 @@ import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.exception.RequiredDataMissedException;
 import com.motokyi.tg.bot_api.exception.TooManyRequestsException;
+import java.util.function.Function;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +24,6 @@ import org.slf4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.web.reactive.function.BodyInserter;
@@ -28,11 +31,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.ExchangeFilterFunction;
 import reactor.core.publisher.Mono;
-
-import java.util.function.Function;
-
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -44,14 +42,19 @@ public final class ClientUtils {
         }
 
         MultipartBodyUtils.insertString(ApiProperties.CHAT_ID, send.getChatId(), builder);
-        MultipartBodyUtils.insertString(ApiProperties.MESSAGE_THREAD_ID, send.getMessageThreadId(), builder);
+        MultipartBodyUtils.insertString(
+                ApiProperties.MESSAGE_THREAD_ID, send.getMessageThreadId(), builder);
         MultipartBodyUtils.insertString(ApiProperties.PARSE_MODE, send.getParseMode(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.PROTECT_CONTENT, send.getProtectContent(), builder);
-        MultipartBodyUtils.insertObject(ApiProperties.REPLY_PARAMETERS, send.getReplyParameters(), builder);
+        MultipartBodyUtils.insertObject(
+                ApiProperties.DISABLE_NOTIFICATION, send.getDisableNotification(), builder);
+        MultipartBodyUtils.insertObject(
+                ApiProperties.PROTECT_CONTENT, send.getProtectContent(), builder);
+        MultipartBodyUtils.insertObject(
+                ApiProperties.REPLY_PARAMETERS, send.getReplyParameters(), builder);
         if (nonNull(send.getReplyMarkup())) {
             try {
-                MultipartBodyUtils.insertString(ApiProperties.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
+                MultipartBodyUtils.insertString(
+                        ApiProperties.REPLY_MARKUP, send.getReplyMarkup().value(), builder);
             } catch (JsonProcessingException e) {
                 log.error("Converting issue", e);
             }
@@ -69,31 +72,41 @@ public final class ClientUtils {
     }
 
     public static ExchangeFilterFunction logRequest(Logger logger) {
-        return ExchangeFilterFunction.ofRequestProcessor(request -> {
-            final String[] urlFragments = request.url().getPath().split("/");
-            logger.debug("HTTP: {} {}", request.method(), urlFragments[urlFragments.length - 1]);
-            if (logger.isTraceEnabled()) {
-                request.headers()
-                        .forEach((name, values) ->
-                                values.forEach(value -> logger.trace("Request Header: {}={}", name, value)));
-                request.attributes()
-                        .forEach((key, value) -> logger.trace("Attr: {} {}", key, value));
-            }
-            return Mono.just(request);
-        });
+        return ExchangeFilterFunction.ofRequestProcessor(
+                request -> {
+                    final String[] urlFragments = request.url().getPath().split("/");
+                    logger.debug("HTTP: {} {}", request.method(), urlFragments[urlFragments.length - 1]);
+                    if (logger.isTraceEnabled()) {
+                        request
+                                .headers()
+                                .forEach(
+                                        (name, values) ->
+                                                values.forEach(
+                                                        value -> logger.trace("Request Header: {}={}", name, value)));
+                        request.attributes().forEach((key, value) -> logger.trace("Attr: {} {}", key, value));
+                    }
+                    return Mono.just(request);
+                });
     }
 
     public static ExchangeFilterFunction logResponse(Logger logger) {
-        return ExchangeFilterFunction.ofResponseProcessor(response -> {
-            logger.debug("HTTP: {} | Content Length {}", response.statusCode(), response.headers().contentLength());
-            if (logger.isTraceEnabled()) {
-                response.headers()
-                        .asHttpHeaders()
-                        .forEach((header, values) ->
-                                values.forEach(value -> logger.trace("Response Header: {}={}", header, value)));
-            }
-            return Mono.just(response);
-        });
+        return ExchangeFilterFunction.ofResponseProcessor(
+                response -> {
+                    logger.debug(
+                            "HTTP: {} | Content Length {}",
+                            response.statusCode(),
+                            response.headers().contentLength());
+                    if (logger.isTraceEnabled()) {
+                        response
+                                .headers()
+                                .asHttpHeaders()
+                                .forEach(
+                                        (header, values) ->
+                                                values.forEach(
+                                                        value -> logger.trace("Response Header: {}={}", header, value)));
+                    }
+                    return Mono.just(response);
+                });
     }
 
     public static BodyInserter<?, ? super ClientHttpRequest> createBody(SendPhoto photo) {
@@ -126,13 +139,13 @@ public final class ClientUtils {
         return BodyInserters.fromMultipartData(builder.build());
     }
 
-    public static <T, C> Function<ClientResponse, Mono<T>> responseHandler(final Class<C> cls,
-                                                                           ParameterizedTypeReference<T> typeRef) {
+    public static <T, C> Function<ClientResponse, Mono<T>> responseHandler(
+            final Class<C> cls, ParameterizedTypeReference<T> typeRef) {
         return responseHandler(cls.getSimpleName(), typeRef);
     }
 
-    public static <T> Function<ClientResponse, Mono<T>> responseHandler(final String method,
-                                                                        final ParameterizedTypeReference<T> typeRef) {
+    public static <T> Function<ClientResponse, Mono<T>> responseHandler(
+            final String method, final ParameterizedTypeReference<T> typeRef) {
         return clientResponse -> {
             if (clientResponse.statusCode().isError()) {
                 // Todo: create config option to transform to all error responses to Mono.error /
@@ -147,9 +160,8 @@ public final class ClientUtils {
 
                 if (clientResponse.statusCode().isSameCodeAs(HttpStatus.TOO_MANY_REQUESTS)) {
                     log.warn("Transform response to error after {}", clientResponse.statusCode());
-                    return clientResponse.
-                            bodyToMono(new ParameterizedTypeReference<Response<Void>>() {
-                            })
+                    return clientResponse
+                            .bodyToMono(new ParameterizedTypeReference<Response<Void>>() {})
                             .flatMap(r -> Mono.error(new TooManyRequestsException(r)));
                 }
             }
@@ -159,11 +171,14 @@ public final class ClientUtils {
 
     public static String createBotUrl(BotConfigProperty properties) {
         if (isNull(properties) || !properties.isValid()) {
-            throw new MissedBotConfigException("Properties not correct. Token is empty or props is null.");
+            throw new MissedBotConfigException(
+                    "Properties not correct. Token is empty or props is null.");
         }
 
-        return (StringUtils.isNotBlank(properties.getApiHost()) ? properties.getApiHost() : ApiUrls.API_HOST)
-               + ApiUrls.BOT_PREFIX
-               + properties.getToken();
+        return (StringUtils.isNotBlank(properties.getApiHost())
+                        ? properties.getApiHost()
+                        : ApiUrls.API_HOST)
+                + ApiUrls.BOT_PREFIX
+                + properties.getToken();
     }
 }

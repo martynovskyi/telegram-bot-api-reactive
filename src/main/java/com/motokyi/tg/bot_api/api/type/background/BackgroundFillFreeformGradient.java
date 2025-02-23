@@ -1,15 +1,15 @@
 package com.motokyi.tg.bot_api.api.type.background;
 
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 /**
  * The background is a freeform gradient that rotates after every message in the chat.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#backgroundfillfreeformgradient">BackgroundFillFreeformGradient</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#backgroundfillfreeformgradient">BackgroundFillFreeformGradient</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

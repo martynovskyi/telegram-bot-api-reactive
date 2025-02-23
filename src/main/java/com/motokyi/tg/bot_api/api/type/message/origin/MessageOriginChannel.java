@@ -12,7 +12,6 @@ import lombok.EqualsAndHashCode;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#messageoriginchannel">MessageOriginChannel</a>
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class MessageOriginChannel extends MessageOrigin {
@@ -24,5 +23,4 @@ public class MessageOriginChannel extends MessageOrigin {
 
     @JsonProperty(ApiProperties.AUTHOR_SIGNATURE)
     private String authorSignature;
-
 }

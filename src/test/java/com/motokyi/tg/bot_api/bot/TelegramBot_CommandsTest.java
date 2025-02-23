@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.bot;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 import com.motokyi.tg.bot_api.TestObjects;
 import com.motokyi.tg.bot_api.api.method.DeleteMyCommands;
 import com.motokyi.tg.bot_api.api.method.GetMyCommands;
@@ -12,9 +15,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
 
 @SuppressWarnings("ClassNamingConvention")
 @ExtendWith(MockitoExtension.class)
@@ -30,7 +30,8 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
 
     @Test
     void getMyCommands_sendPayload() {
-        var getCaptor = ArgumentCaptor.forClass(com.motokyi.tg.bot_api.api.method.payload.GetMyCommands.class);
+        var getCaptor =
+                ArgumentCaptor.forClass(com.motokyi.tg.bot_api.api.method.payload.GetMyCommands.class);
         var expectedPayload = new com.motokyi.tg.bot_api.api.method.payload.GetMyCommands();
         bot.send(expectedPayload);
 
@@ -41,7 +42,9 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
 
     @Test
     void getMyCommands_sendNullPayload() {
-        assertThrows(NullPointerException.class, () -> bot.send((com.motokyi.tg.bot_api.api.method.payload.GetMyCommands) null));
+        assertThrows(
+                NullPointerException.class,
+                () -> bot.send((com.motokyi.tg.bot_api.api.method.payload.GetMyCommands) null));
         verifyNoInteractions(webClient);
     }
 
@@ -54,8 +57,7 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
         GetMyCommands getMyCommands = getCaptor.getValue();
         assertAll(
                 () -> assertNotNull(getMyCommands),
-                () -> assertEquals(BotCommandScopes.DEFAULT, getMyCommands.getScope())
-        );
+                () -> assertEquals(BotCommandScopes.DEFAULT, getMyCommands.getScope()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -69,8 +71,7 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(getMyCommands),
                 () -> assertEquals(BotCommandScopes.DEFAULT, getMyCommands.getScope()),
-                () -> assertEquals(LANGUAGE_CODE, getMyCommands.getLanguageCode())
-        );
+                () -> assertEquals(LANGUAGE_CODE, getMyCommands.getLanguageCode()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -83,7 +84,8 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
 
     @Test
     void setMyCommands_sendPayload() {
-        var getCaptor = ArgumentCaptor.forClass(com.motokyi.tg.bot_api.api.method.payload.SetMyCommands.class);
+        var getCaptor =
+                ArgumentCaptor.forClass(com.motokyi.tg.bot_api.api.method.payload.SetMyCommands.class);
         var expectedPayload = new com.motokyi.tg.bot_api.api.method.payload.SetMyCommands();
         bot.send(expectedPayload);
 
@@ -94,7 +96,9 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
 
     @Test
     void setMyCommands_sendNullPayload() {
-        assertThrows(NullPointerException.class, () -> bot.send((com.motokyi.tg.bot_api.api.method.payload.SetMyCommands) null));
+        assertThrows(
+                NullPointerException.class,
+                () -> bot.send((com.motokyi.tg.bot_api.api.method.payload.SetMyCommands) null));
         verifyNoInteractions(webClient);
     }
 
@@ -107,7 +111,8 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
 
     @Test
     void deleteMyCommands_sendPayload() {
-        var getCaptor = ArgumentCaptor.forClass(com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands.class);
+        var getCaptor =
+                ArgumentCaptor.forClass(com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands.class);
         var expectedPayload = new com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands();
         bot.send(expectedPayload);
 
@@ -118,7 +123,9 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
 
     @Test
     void deleteMyCommands_sendNullPayload() {
-        assertThrows(NullPointerException.class, () -> bot.send((com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands) null));
+        assertThrows(
+                NullPointerException.class,
+                () -> bot.send((com.motokyi.tg.bot_api.api.method.payload.DeleteMyCommands) null));
         verifyNoInteractions(webClient);
     }
 
@@ -128,15 +135,13 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
         Response<Boolean> response = TestObjects.successTrue();
         when(webClient.send(any(DeleteMyCommands.class))).thenReturn(Mono.just(response));
 
-        StepVerifier.create(bot.deleteMyCommands(BotCommandScopes.DEFAULT))
-                .expectNext(response);
+        StepVerifier.create(bot.deleteMyCommands(BotCommandScopes.DEFAULT)).expectNext(response);
 
         verify(webClient).send(deleteCaptor.capture());
         DeleteMyCommands deleteMyCommands = deleteCaptor.getValue();
         assertAll(
                 () -> assertNotNull(deleteMyCommands),
-                () -> assertEquals(BotCommandScopes.DEFAULT, deleteMyCommands.getScope())
-        );
+                () -> assertEquals(BotCommandScopes.DEFAULT, deleteMyCommands.getScope()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -154,10 +159,7 @@ class TelegramBot_CommandsTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(deleteMyCommands),
                 () -> assertEquals(BotCommandScopes.DEFAULT, deleteMyCommands.getScope()),
-                () -> assertEquals(LANGUAGE_CODE, deleteMyCommands.getLanguageCode())
-        );
+                () -> assertEquals(LANGUAGE_CODE, deleteMyCommands.getLanguageCode()));
         verifyNoMoreInteractions(webClient);
     }
-
-
 }

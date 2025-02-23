@@ -7,23 +7,18 @@ import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
-import lombok.Builder;
-import reactor.core.publisher.Mono;
-
 import java.io.File;
 import java.util.List;
-
+import reactor.core.publisher.Mono;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendPhoto SendPhoto} method with the ability to
  * self-execution and chain setter
  */
-public class SendPhoto
-        extends com.motokyi.tg.bot_api.api.method.payload.SendPhoto
+public class SendPhoto extends com.motokyi.tg.bot_api.api.method.payload.SendPhoto
         implements BotMethod<Response<Message>> {
 
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public SendPhoto(String chatId, BotApiClient client) {
         super(chatId);

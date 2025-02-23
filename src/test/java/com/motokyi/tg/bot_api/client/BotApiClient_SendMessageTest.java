@@ -11,11 +11,13 @@ public class BotApiClient_SendMessageTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(botClient.send(new SendMessage(CHAT_ID)), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
+        unauthorizedTest(
+                botClient.send(new SendMessage(CHAT_ID)), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest( botClient.send(new SendMessage(CHAT_ID)), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
+        tooManyRequestsTest(
+                botClient.send(new SendMessage(CHAT_ID)), ApiUrls.SEND_MESSAGE, HttpMethod.POST);
     }
 }

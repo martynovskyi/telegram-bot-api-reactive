@@ -1,9 +1,8 @@
 package com.motokyi.tg.bot_api.config.properties;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 @Setter
 @Getter

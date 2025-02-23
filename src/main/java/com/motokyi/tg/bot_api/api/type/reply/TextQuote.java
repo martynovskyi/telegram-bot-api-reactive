@@ -3,12 +3,12 @@ package com.motokyi.tg.bot_api.api.type.reply;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
+import java.util.List;
 import lombok.Data;
 
-import java.util.List;
-
 /**
- * This object contains information about the quoted part of a message that is replied to by the given message.
+ * This object contains information about the quoted part of a message that is replied to by the
+ * given message.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#textquote">TextQuote</a>
@@ -24,5 +24,4 @@ public class TextQuote {
 
     @JsonProperty(ApiProperties.IS_MANUAL)
     private Boolean isManual;
-
 }

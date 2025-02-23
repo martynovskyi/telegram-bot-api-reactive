@@ -7,7 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * Represents a chat member that was banned in the chat and can't return to the chat or view chat messages.
+ * Represents a chat member that was banned in the chat and can't return to the chat or view chat
+ * messages.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatmemberbanned">ChatMemberBanned</a>
@@ -19,5 +20,4 @@ public class ChatMemberBanned extends ChatMember {
 
     @JsonProperty(ApiProperties.UNTIL_DATE)
     private Long untilDate;
-
 }

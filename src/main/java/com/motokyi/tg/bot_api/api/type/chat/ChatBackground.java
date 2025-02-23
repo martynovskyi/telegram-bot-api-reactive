@@ -9,7 +9,6 @@ import lombok.Data;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatbackground">ChatBackground</a>
  */
-
 @Data
 public class ChatBackground {
     private BackgroundType type;

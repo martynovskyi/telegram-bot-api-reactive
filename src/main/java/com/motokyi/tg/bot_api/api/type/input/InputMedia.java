@@ -5,12 +5,13 @@ import lombok.Data;
 /**
  * This object represents the content of a media message to be sent.
  *
- * <ul>It should be one of
- * <li> InputMediaAnimation
- * <li> InputMediaDocument
- * <li> InputMediaAudio
- * <li> InputMediaPhoto
- * <li> InputMediaVideo
+ * <ul>
+ *   It should be one of
+ *   <li>InputMediaAnimation
+ *   <li>InputMediaDocument
+ *   <li>InputMediaAudio
+ *   <li>InputMediaPhoto
+ *   <li>InputMediaVideo
  * </ul>
  *
  * @version Bot API 8.3

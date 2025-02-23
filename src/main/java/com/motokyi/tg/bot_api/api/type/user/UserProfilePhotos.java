@@ -3,9 +3,8 @@ package com.motokyi.tg.bot_api.api.type.user;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.media.PhotoSize;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * This object represent a user's profile pictures.
@@ -20,5 +19,4 @@ public class UserProfilePhotos {
     private Integer totalCount;
 
     private List<List<PhotoSize>> photos;
-
 }

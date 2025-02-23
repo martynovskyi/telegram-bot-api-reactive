@@ -19,11 +19,12 @@ public class BotApiClient_SendDocumentTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest( botClient.send(buildSendDocument()), ApiUrls.SEND_DOCUMENT, HttpMethod.POST);
+        unauthorizedTest(botClient.send(buildSendDocument()), ApiUrls.SEND_DOCUMENT, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(botClient.send(buildSendDocument()), ApiUrls.SEND_DOCUMENT, HttpMethod.POST);
+        tooManyRequestsTest(
+                botClient.send(buildSendDocument()), ApiUrls.SEND_DOCUMENT, HttpMethod.POST);
     }
 }

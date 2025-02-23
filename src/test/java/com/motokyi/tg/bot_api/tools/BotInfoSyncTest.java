@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.tools;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
+
 import com.motokyi.tg.bot_api.TestObjects;
 import com.motokyi.tg.bot_api.api.method.payload.SetMyCommands;
 import com.motokyi.tg.bot_api.client.BotApiClient;
@@ -11,17 +14,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-
 @ExtendWith(MockitoExtension.class)
 class BotInfoSyncTest {
 
-    @Mock
-    BotApiClient client;
+    @Mock BotApiClient client;
 
-    @InjectMocks
-    BotInfoSync botInfoSync;
+    @InjectMocks BotInfoSync botInfoSync;
 
     @Test
     void sync_nothing() {
@@ -48,7 +46,8 @@ class BotInfoSyncTest {
 
     @Test
     void sync_shortDescription() {
-        when(client.setMyShortDescription(any(), any())).thenReturn(Mono.just(TestObjects.successTrue()));
+        when(client.setMyShortDescription(any(), any()))
+                .thenReturn(Mono.just(TestObjects.successTrue()));
         botInfoSync.shortDescription("text 1", "it");
         botInfoSync.shortDescription("text 2", null);
         StepVerifier.create(botInfoSync.sync()).verifyComplete();

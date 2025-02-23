@@ -5,15 +5,15 @@ import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.reaction.ReactionType;
 import com.motokyi.tg.bot_api.api.type.user.User;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * This object represents a change of a reaction on a message performed by a user.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#messagereactionupdated">MessageReactionUpdated</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#messagereactionupdated">MessageReactionUpdated</a>
  */
 @Data
 public class MessageReactionUpdated {

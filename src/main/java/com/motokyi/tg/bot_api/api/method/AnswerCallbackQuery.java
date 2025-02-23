@@ -5,7 +5,6 @@ import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
-
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.AnswerCallbackQuery answerCallbackQuery} method with the
  * ability to self-execution and chain setter
@@ -14,8 +13,7 @@ public class AnswerCallbackQuery
         extends com.motokyi.tg.bot_api.api.method.payload.AnswerCallbackQuery
         implements BotMethod<Response<Boolean>> {
 
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public AnswerCallbackQuery(String callbackQueryId, BotApiClient client) {
         super(callbackQueryId);

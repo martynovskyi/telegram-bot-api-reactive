@@ -7,11 +7,10 @@ import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.io.File;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Use this method to send photos. On success, the sent Message is returned.
@@ -19,7 +18,6 @@ import java.util.List;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#sendphoto">sendPhoto</a>
  */
-
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -35,8 +33,7 @@ public class SendPhoto implements SendMethod {
     @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
     private String messageThreadId;
 
-    @JsonIgnore
-    private File photoFile;
+    @JsonIgnore private File photoFile;
 
     @JsonProperty(PHOTO_ID)
     private String photoId;
@@ -76,5 +73,4 @@ public class SendPhoto implements SendMethod {
     public SendPhoto(String chatId) {
         this.chatId = chatId;
     }
-
 }

@@ -8,15 +8,13 @@ import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
 import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.bot.module.*;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
-/**
- * Convenient facade for all Bot API
- */
-public interface Bot extends BotMessage, BotUpdateMessages, BotCommands, BotInfo, BotWebhook, BotMedia {
+/** Convenient facade for all Bot API */
+public interface Bot
+        extends BotMessage, BotUpdateMessages, BotCommands, BotInfo, BotWebhook, BotMedia {
     Mono<Response<List<Update>>> getAllUpdates();
 
     GetUpdates getUpdates();
@@ -30,5 +28,4 @@ public interface Bot extends BotMessage, BotUpdateMessages, BotCommands, BotInfo
     AnswerCallbackQuery answerCallbackQuery(@NotNull String callbackQueryId);
 
     AnswerCallbackQuery answerCallbackQuery(CallbackQuery callbackQuery);
-
 }

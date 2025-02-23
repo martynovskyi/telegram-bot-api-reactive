@@ -5,12 +5,12 @@ import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.media.Animation;
 import com.motokyi.tg.bot_api.api.type.media.PhotoSize;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
+import java.util.List;
 import lombok.Data;
 
-import java.util.List;
-
 /**
- * This object represents a game. Use BotFather to create and edit games, their short names will act as unique identifiers.
+ * This object represents a game. Use BotFather to create and edit games, their short names will act
+ * as unique identifiers.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#game">Game</a>

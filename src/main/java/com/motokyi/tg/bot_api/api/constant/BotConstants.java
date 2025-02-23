@@ -9,6 +9,5 @@ public final class BotConstants {
 
     public static final String TELEGRAM_BOT_API_SECRET_TOKEN = "X-Telegram-Bot-Api-Secret-Token";
 
-    private BotConstants() {
-    }
+    private BotConstants() {}
 }

@@ -9,5 +9,4 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#callbackgame">CallbackGame</a>
  */
 @Data
-public class CallbackGame {
-}
+public class CallbackGame {}

@@ -8,10 +8,8 @@ import com.motokyi.tg.bot_api.api.type.business.BusinessOpeningHours;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.reaction.ReactionType;
 import com.motokyi.tg.bot_api.api.type.user.Birthdate;
-import lombok.Data;
-
 import java.util.List;
-
+import lombok.Data;
 
 /**
  * This object contains full information about a chat.

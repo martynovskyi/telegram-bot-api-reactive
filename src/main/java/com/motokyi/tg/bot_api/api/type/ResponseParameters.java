@@ -17,5 +17,4 @@ public class ResponseParameters {
 
     @JsonProperty("retry_after")
     private Integer retryAfter;
-
 }

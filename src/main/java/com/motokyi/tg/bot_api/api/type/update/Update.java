@@ -23,13 +23,12 @@ import com.motokyi.tg.bot_api.api.type.poll.PollAnswer;
 import lombok.Data;
 
 /**
- * This object represents an incoming update.
- * At most one of the optional parameters can be present in any given update.
+ * This object represents an incoming update. At most one of the optional parameters can be present
+ * in any given update.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#update">Update</a>
  */
-
 @Data
 public class Update {
     @JsonProperty(ApiProperties.UPDATE_ID)
@@ -103,5 +102,4 @@ public class Update {
 
     @JsonProperty(UpdateTypes.REMOVED_CHAT_BOOST)
     private ChatBoostRemoved removedChatBoost;
-
 }

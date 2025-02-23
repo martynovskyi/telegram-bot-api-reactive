@@ -8,7 +8,6 @@ import lombok.Data;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#birthdate">Birthdate</a>
  */
-
 @Data
 public class Birthdate {
     private Integer day;

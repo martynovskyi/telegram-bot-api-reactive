@@ -4,20 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.input.InputFile;
 import com.motokyi.tg.bot_api.client.BotApiClient;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import reactor.core.publisher.Mono;
-
-import java.util.List;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SetWebhook SetWebhook} method with the ability to
  * self-execution and chain setter
  */
-public class SetWebhook
-        extends com.motokyi.tg.bot_api.api.method.payload.SetWebhook
+public class SetWebhook extends com.motokyi.tg.bot_api.api.method.payload.SetWebhook
         implements BotMethod<Response<Boolean>> {
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public SetWebhook(@NotNull BotApiClient client, @NotNull String url) {
         super(url);

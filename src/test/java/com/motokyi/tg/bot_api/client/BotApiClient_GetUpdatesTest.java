@@ -25,6 +25,7 @@ public class BotApiClient_GetUpdatesTest extends BotClientTest {
 
     @Test
     void tooManyRequests_withOffset() {
-        tooManyRequestsTest(botClient.getUpdates(new GetUpdates()), ApiUrls.GET_UPDATES, HttpMethod.POST);
+        tooManyRequestsTest(
+                botClient.getUpdates(new GetUpdates()), ApiUrls.GET_UPDATES, HttpMethod.POST);
     }
 }

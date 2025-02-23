@@ -17,5 +17,4 @@ public class PaidMediaPurchased {
 
     @JsonProperty("paid_media_payload")
     private String paidMediaPayload;
-
 }

@@ -24,6 +24,7 @@ public class BotApiClient_SendAnimationTest extends BotClientTest {
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
+        tooManyRequestsTest(
+                botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
     }
 }

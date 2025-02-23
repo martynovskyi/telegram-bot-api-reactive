@@ -3,14 +3,14 @@ package com.motokyi.tg.bot_api.api.type.markup;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.type.keyboard.KeyboardButton;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 /**
- * This object represents a custom keyboard with reply options
- * (see <a href="https://core.telegram.org/bots#keyboards">Introduction to bots</a> for details and examples).
+ * This object represents a custom keyboard with reply options (see <a
+ * href="https://core.telegram.org/bots#keyboards">Introduction to bots</a> for details and
+ * examples).
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#replykeyboardmarkup">ReplyKeyboardMarkup</a>

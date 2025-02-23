@@ -1,5 +1,9 @@
 package com.motokyi.tg.bot_api.bot;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
 import com.motokyi.tg.bot_api.api.method.*;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
@@ -9,10 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 class TelegramBotTest extends TelegramBotTestSetup {
@@ -102,8 +102,7 @@ class TelegramBotTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(message),
                 () -> assertEquals(String.valueOf(CHAT_ID), message.getChatId()),
-                () -> assertEquals(TEST_TEXT, message.getText())
-        );
+                () -> assertEquals(TEST_TEXT, message.getText()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -116,8 +115,7 @@ class TelegramBotTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(message),
                 () -> assertEquals(String.valueOf(CHAT_ID), message.getChatId()),
-                () -> assertEquals(TEST_TEXT, message.getText())
-        );
+                () -> assertEquals(TEST_TEXT, message.getText()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -183,8 +181,7 @@ class TelegramBotTest extends TelegramBotTestSetup {
                 () -> assertNotNull(forwardMessage),
                 () -> assertEquals(CHAT_TAG, forwardMessage.getChatId()),
                 () -> assertEquals(message.getChat().getId(), forwardMessage.getFromChatId()),
-                () -> assertEquals(message.getMessageId(), forwardMessage.getMessageId())
-        );
+                () -> assertEquals(message.getMessageId(), forwardMessage.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -195,8 +192,7 @@ class TelegramBotTest extends TelegramBotTestSetup {
                 () -> assertNotNull(forwardMessage),
                 () -> assertEquals(CHAT_TAG, forwardMessage.getChatId()),
                 () -> assertEquals(CHAT_ID, forwardMessage.getFromChatId()),
-                () -> assertEquals(MESSAGE_ID, forwardMessage.getMessageId())
-        );
+                () -> assertEquals(MESSAGE_ID, forwardMessage.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -208,7 +204,6 @@ class TelegramBotTest extends TelegramBotTestSetup {
         verifyNoMoreInteractions(webClient);
     }
 
-
     @Test
     void editMessageReplyMarkup_callbackQuery() {
         CallbackQuery callbackQuery = new CallbackQuery();
@@ -218,14 +213,14 @@ class TelegramBotTest extends TelegramBotTestSetup {
         assertEquals(CALLBACK_QUERY_ID, answerCallbackQuery.getCallbackQueryId());
         verifyNoMoreInteractions(webClient);
     }
+
     @Test
     void editMessageText() {
         EditMessageText editMessageText = bot.editMessageText(CHAT_ID, MESSAGE_ID);
         assertAll(
                 () -> assertNotNull(editMessageText),
                 () -> assertEquals(String.valueOf(CHAT_ID), editMessageText.getChatId()),
-                () -> assertEquals(String.valueOf(MESSAGE_ID), editMessageText.getMessageId())
-        );
+                () -> assertEquals(String.valueOf(MESSAGE_ID), editMessageText.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -236,18 +231,17 @@ class TelegramBotTest extends TelegramBotTestSetup {
         assertAll(
                 () -> assertNotNull(editMessageText),
                 () -> assertEquals(String.valueOf(message.getChat().getId()), editMessageText.getChatId()),
-                () -> assertEquals(String.valueOf(message.getMessageId()), editMessageText.getMessageId())
-        );
+                () -> assertEquals(String.valueOf(message.getMessageId()), editMessageText.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
+
     @Test
     void editMessageReplyMarkup() {
         EditMessageReplyMarkup editMessageReplyMarkup = bot.editMessageReplyMarkup(CHAT_ID, MESSAGE_ID);
         assertAll(
                 () -> assertNotNull(editMessageReplyMarkup),
                 () -> assertEquals(String.valueOf(CHAT_ID), editMessageReplyMarkup.getChatId()),
-                () -> assertEquals(String.valueOf(MESSAGE_ID), editMessageReplyMarkup.getMessageId())
-        );
+                () -> assertEquals(String.valueOf(MESSAGE_ID), editMessageReplyMarkup.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 
@@ -257,9 +251,12 @@ class TelegramBotTest extends TelegramBotTestSetup {
         EditMessageReplyMarkup editMessageReplyMarkup = bot.editMessageReplyMarkup(message);
         assertAll(
                 () -> assertNotNull(editMessageReplyMarkup),
-                () -> assertEquals(String.valueOf(message.getChat().getId()), editMessageReplyMarkup.getChatId()),
-                () -> assertEquals(String.valueOf(message.getMessageId()), editMessageReplyMarkup.getMessageId())
-        );
+                () ->
+                        assertEquals(
+                                String.valueOf(message.getChat().getId()), editMessageReplyMarkup.getChatId()),
+                () ->
+                        assertEquals(
+                                String.valueOf(message.getMessageId()), editMessageReplyMarkup.getMessageId()));
         verifyNoMoreInteractions(webClient);
     }
 

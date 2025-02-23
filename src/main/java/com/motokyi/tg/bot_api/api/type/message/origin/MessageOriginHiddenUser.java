@@ -9,9 +9,9 @@ import lombok.EqualsAndHashCode;
  * The message was originally sent by an unknown user.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#messageoriginhiddenuser">MessageOriginHiddenUser</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#messageoriginhiddenuser">MessageOriginHiddenUser</a>
  */
-
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class MessageOriginHiddenUser extends MessageOrigin {

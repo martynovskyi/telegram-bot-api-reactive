@@ -10,7 +10,6 @@ import lombok.Data;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#chatboostadded">ChatBoostAdded</a>
  */
-
 @Data
 public class ChatBoostAdded {
     @JsonProperty(ApiProperties.BOOST_COUNT)

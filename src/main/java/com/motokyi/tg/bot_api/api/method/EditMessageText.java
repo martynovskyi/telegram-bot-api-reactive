@@ -7,20 +7,17 @@ import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.client.BotApiClient;
-import reactor.core.publisher.Mono;
-
 import java.util.List;
+import reactor.core.publisher.Mono;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.EditMessageText EditMessageText}
  * method with the ability to self-execution and chain setter
  */
-public class EditMessageText
-        extends com.motokyi.tg.bot_api.api.method.payload.EditMessageText
+public class EditMessageText extends com.motokyi.tg.bot_api.api.method.payload.EditMessageText
         implements BotMethod<Response<Message>> {
 
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public EditMessageText(String chatId, String messageId, BotApiClient client) {
         super(chatId, messageId);

@@ -7,19 +7,18 @@ import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
+import java.io.File;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.File;
-import java.util.List;
-
 /**
- * Use this method to send general files. On success, the sent Message is returned.
- * Bots can currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
+ * Use this method to send general files. On success, the sent Message is returned. Bots can
+ * currently send files of any type of up to 50 MB in size, this limit may be changed in the future.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#senddocument">sendDocument</a>
- **/
+ */
 @Getter
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -35,14 +34,12 @@ public class SendDocument implements SendMethod {
     @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
     private String messageThreadId;
 
-    @JsonIgnore
-    private File documentFile;
+    @JsonIgnore private File documentFile;
 
     @JsonProperty(DOCUMENT_ID)
     private String documentId;
 
-    @JsonIgnore
-    private File thumbnailFile;
+    @JsonIgnore private File thumbnailFile;
 
     private String thumbnail;
 

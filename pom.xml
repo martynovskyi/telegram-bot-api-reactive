@@ -134,6 +134,37 @@
     </dependencyManagement>
 
     <build>
+        <plugins>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <configuration>
+                    <java>
+                        <googleJavaFormat>
+                            <version>1.21.0</version>
+                        </googleJavaFormat>
+                        <importOrder/>
+                        <removeUnusedImports />
+                        <indent>
+                            <tabs>true</tabs>
+                            <spacesPerTab>2</spacesPerTab>
+                        </indent>
+                        <indent>
+                            <spaces>true</spaces>
+                            <spacesPerTab>4</spacesPerTab>
+                        </indent>
+                    </java>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -141,7 +172,13 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.2.2</version>
                 </plugin>
+                <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>2.44.3</version>
+                </plugin>
             </plugins>
+
         </pluginManagement>
     </build>
 </project>

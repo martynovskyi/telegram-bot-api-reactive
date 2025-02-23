@@ -3,10 +3,9 @@ package com.motokyi.tg.bot_api.api.type.inline;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 /**
  * This object represents an inline keyboard that appears right next to the message it belongs to.

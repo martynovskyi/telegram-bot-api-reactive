@@ -1,9 +1,8 @@
 package com.motokyi.tg.bot_api.api.type.media;
 
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import java.util.List;
 
 /**
  * The paid media is a photo.

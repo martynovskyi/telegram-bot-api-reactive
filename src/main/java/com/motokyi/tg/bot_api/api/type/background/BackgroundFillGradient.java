@@ -9,7 +9,8 @@ import lombok.EqualsAndHashCode;
  * The background is a gradient fill.
  *
  * @version Bot API 8.3
- * @see <a href="http://core.telegram.org/bots/api#backgroundfillgradient">BackgroundFillGradient</a>
+ * @see <a
+ *     href="http://core.telegram.org/bots/api#backgroundfillgradient">BackgroundFillGradient</a>
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

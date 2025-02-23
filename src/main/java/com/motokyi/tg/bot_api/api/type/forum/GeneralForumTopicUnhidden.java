@@ -7,9 +7,8 @@ import lombok.Data;
  * Currently holds no information.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#generalforumtopicunhidden">GeneralForumTopicUnhidden</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#generalforumtopicunhidden">GeneralForumTopicUnhidden</a>
  */
-
 @Data
-public class GeneralForumTopicUnhidden {
-}
+public class GeneralForumTopicUnhidden {}

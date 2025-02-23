@@ -1,6 +1,5 @@
 package com.motokyi.tg.bot_api.api.type.message.origin;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.type.user.User;
@@ -19,5 +18,4 @@ public class MessageOriginUser extends MessageOrigin {
 
     @JsonProperty(ApiProperties.SENDER_USER)
     private User senderUser;
-
 }

@@ -6,7 +6,8 @@ import com.motokyi.tg.bot_api.api.type.user.User;
 import lombok.Data;
 
 /**
- * This object represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
+ * This object represents one special entity in a text message. For example, hashtags, usernames,
+ * URLs, etc.
  *
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#messageentity">MessageEntity</a>
@@ -28,5 +29,4 @@ public class MessageEntity {
 
     @JsonProperty(ApiProperties.CUSTOM_EMOJI_ID)
     private String customEmojiId;
-
 }

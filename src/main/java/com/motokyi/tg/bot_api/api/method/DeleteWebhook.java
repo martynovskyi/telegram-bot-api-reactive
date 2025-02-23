@@ -9,11 +9,9 @@ import reactor.core.publisher.Mono;
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.DeleteWebhook DeleteWebhook} method with the ability
  * to self-execution and chain setter
  */
-public class DeleteWebhook
-        extends com.motokyi.tg.bot_api.api.method.payload.DeleteWebhook
+public class DeleteWebhook extends com.motokyi.tg.bot_api.api.method.payload.DeleteWebhook
         implements BotMethod<Response<Boolean>> {
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public DeleteWebhook(BotApiClient client) {
         this.client = client;

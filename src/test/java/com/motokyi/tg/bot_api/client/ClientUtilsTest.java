@@ -1,5 +1,8 @@
 package com.motokyi.tg.bot_api.client;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
+
 import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import com.motokyi.tg.bot_api.api.constant.ApiUrls;
 import com.motokyi.tg.bot_api.api.method.SendAnimation;
@@ -12,23 +15,19 @@ import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.config.properties.BotConfigProperty;
 import com.motokyi.tg.bot_api.exception.MissedBotConfigException;
 import com.motokyi.tg.bot_api.utils.ClientUtils;
+import java.util.List;
+import java.util.UUID;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.util.MultiValueMap;
-
-import java.util.List;
-import java.util.UUID;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ClientUtilsTest {
 
     private static final String API_HOST = "protocol://hostname.io";
     private static final String BOT_NAME = "test_bot";
     private static final String BOT_TOKEN = UUID.randomUUID().toString();
-    private final static String CHAT_ID = "fake-chat-" + UUID.randomUUID();
+    private static final String CHAT_ID = "fake-chat-" + UUID.randomUUID();
 
     private static SendMessage buildSendMessage() {
         return new SendMessage(CHAT_ID, null)
@@ -59,33 +58,38 @@ class ClientUtilsTest {
                 .replyMarkup(new InlineKeyboardMarkup());
     }
 
-    private static void assertAllMethod(MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
-        assertAll("SendMethod",
+    private static void assertAllMethod(
+            MultiValueMap<String, HttpEntity<?>> result, SendMethod method) {
+        assertAll(
+                "SendMethod",
                 () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
-                () -> assertThat(method.getMessageThreadId())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.MESSAGE_THREAD_ID).getBody()),
-                () -> assertThat(method.getReplyParameters())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.REPLY_PARAMETERS).getBody()),
-                () -> assertThat(method.getDisableNotification())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.DISABLE_NOTIFICATION).getBody()),
-                () -> assertThat(method.getParseMode())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.PARSE_MODE).getBody()),
-                () -> assertNotNull(result.getFirst(ApiProperties.REPLY_MARKUP).getBody())
-        );
+                () ->
+                        assertThat(method.getMessageThreadId())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.MESSAGE_THREAD_ID).getBody()),
+                () ->
+                        assertThat(method.getReplyParameters())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.REPLY_PARAMETERS).getBody()),
+                () ->
+                        assertThat(method.getDisableNotification())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.DISABLE_NOTIFICATION).getBody()),
+                () ->
+                        assertThat(method.getParseMode())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.PARSE_MODE).getBody()),
+                () -> assertNotNull(result.getFirst(ApiProperties.REPLY_MARKUP).getBody()));
     }
 
     private static void assertAllEmptyMethod(MultiValueMap<String, HttpEntity<?>> result) {
-        assertAll("SendMethod empty.",
+        assertAll(
+                "SendMethod empty.",
                 () -> assertEquals(CHAT_ID, result.getFirst(ApiProperties.CHAT_ID).getBody()),
                 () -> assertNull(result.getFirst(ApiProperties.REPLY_PARAMETERS)),
                 () -> assertNull(result.getFirst(ApiProperties.DISABLE_NOTIFICATION)),
                 () -> assertNull(result.getFirst(ApiProperties.PARSE_MODE)),
-                () -> assertNull(result.getFirst(ApiProperties.REPLY_MARKUP))
-        );
+                () -> assertNull(result.getFirst(ApiProperties.REPLY_MARKUP)));
     }
 
     private static BotConfigProperty buildValid() {
@@ -120,26 +124,32 @@ class ClientUtilsTest {
         ClientUtils.insertAnimationParams(sendAnimation, builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllMethod(result, sendAnimation);
-        assertAll("SendAnimation",
-                () -> assertThat(sendAnimation.getAnimation())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.ANIMATION).getBody()),
-                () -> assertThat(sendAnimation.getThumbnail())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.THUMBNAIL).getBody()),
-                () -> assertThat(sendAnimation.getDuration())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.DURATION).getBody()),
-                () -> assertThat(sendAnimation.getWidth())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.WIDTH).getBody()),
-                () -> assertThat(sendAnimation.getHeight())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.HEIGHT).getBody()),
-                () -> assertThat(sendAnimation.getCaption())
-                        .isNotNull()
-                        .isEqualTo(result.getFirst(ApiProperties.CAPTION).getBody())
-        );
+        assertAll(
+                "SendAnimation",
+                () ->
+                        assertThat(sendAnimation.getAnimation())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.ANIMATION).getBody()),
+                () ->
+                        assertThat(sendAnimation.getThumbnail())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.THUMBNAIL).getBody()),
+                () ->
+                        assertThat(sendAnimation.getDuration())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.DURATION).getBody()),
+                () ->
+                        assertThat(sendAnimation.getWidth())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.WIDTH).getBody()),
+                () ->
+                        assertThat(sendAnimation.getHeight())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.HEIGHT).getBody()),
+                () ->
+                        assertThat(sendAnimation.getCaption())
+                                .isNotNull()
+                                .isEqualTo(result.getFirst(ApiProperties.CAPTION).getBody()));
     }
 
     @Test
@@ -148,26 +158,25 @@ class ClientUtilsTest {
         ClientUtils.insertAnimationParams(new SendAnimation(CHAT_ID, null), builder);
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertAllEmptyMethod(result);
-        assertAll("SendAnimation empty",
+        assertAll(
+                "SendAnimation empty",
                 () -> assertNull(result.getFirst(ApiProperties.ANIMATION)),
                 () -> assertNull(result.getFirst(ApiProperties.THUMBNAIL)),
                 () -> assertNull(result.getFirst(ApiProperties.DURATION)),
                 () -> assertNull(result.getFirst(ApiProperties.WIDTH)),
                 () -> assertNull(result.getFirst(ApiProperties.HEIGHT)),
-                () -> assertNull(result.getFirst(ApiProperties.CAPTION))
-        );
+                () -> assertNull(result.getFirst(ApiProperties.CAPTION)));
     }
 
     @Test
     void createHostUrl_nullProperties() {
-        assertThrows(MissedBotConfigException.class, () ->
-                ClientUtils.createBotUrl(null));
+        assertThrows(MissedBotConfigException.class, () -> ClientUtils.createBotUrl(null));
     }
 
     @Test
     void createHostUrl_emptyProperties() {
-        assertThrows(MissedBotConfigException.class, () ->
-                ClientUtils.createBotUrl(new BotConfigProperty()));
+        assertThrows(
+                MissedBotConfigException.class, () -> ClientUtils.createBotUrl(new BotConfigProperty()));
     }
 
     @Test

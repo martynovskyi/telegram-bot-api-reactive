@@ -14,6 +14,7 @@ public class BotApiClient_GetMyCommandsTest extends BotClientTest {
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(botClient.send(new GetMyCommands()), ApiUrls.GET_MY_COMMANDS, HttpMethod.POST);
+        tooManyRequestsTest(
+                botClient.send(new GetMyCommands()), ApiUrls.GET_MY_COMMANDS, HttpMethod.POST);
     }
 }

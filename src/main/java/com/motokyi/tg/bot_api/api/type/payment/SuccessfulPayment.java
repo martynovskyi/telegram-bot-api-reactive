@@ -41,5 +41,4 @@ public class SuccessfulPayment {
 
     @JsonProperty("provider_payment_charge_id")
     private String providerPaymentChargeId;
-
 }

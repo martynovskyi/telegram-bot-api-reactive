@@ -11,7 +11,6 @@ import lombok.Data;
  * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#businessconnection">BusinessConnection</a>
  */
-
 @Data
 public class BusinessConnection {
     private String id;

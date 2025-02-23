@@ -1,12 +1,12 @@
 package com.motokyi.tg.bot_api.utils;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.util.MultiValueMap;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class MultipartBodyUtilsTest {
     public static final String KEY = "key";
@@ -46,5 +46,4 @@ class MultipartBodyUtilsTest {
         MultiValueMap<String, HttpEntity<?>> result = builder.build();
         assertTrue(result.isEmpty());
     }
-
 }

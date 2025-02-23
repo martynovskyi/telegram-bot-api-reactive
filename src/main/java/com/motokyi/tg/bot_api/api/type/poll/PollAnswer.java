@@ -3,9 +3,8 @@ package com.motokyi.tg.bot_api.api.type.poll;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.user.User;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * This object represents an answer of a user in a non-anonymous poll.
@@ -26,5 +25,4 @@ public class PollAnswer {
 
     @JsonProperty("option_ids")
     private List<Integer> optionIds;
-
 }

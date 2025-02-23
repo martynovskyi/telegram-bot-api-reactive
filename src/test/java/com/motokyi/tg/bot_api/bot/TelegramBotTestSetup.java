@@ -10,9 +10,7 @@ public abstract class TelegramBotTestSetup {
     static final String CHAT_TAG = "test_chat";
     static final long MESSAGE_ID = 5445L;
 
-    @Mock
-    BotApiClient webClient;
+    @Mock BotApiClient webClient;
 
-    @InjectMocks
-    TelegramBot bot;
+    @InjectMocks TelegramBot bot;
 }

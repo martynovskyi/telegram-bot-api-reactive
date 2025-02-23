@@ -11,5 +11,4 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class MenuButtonDefault extends MenuButton {
-}
+public class MenuButtonDefault extends MenuButton {}

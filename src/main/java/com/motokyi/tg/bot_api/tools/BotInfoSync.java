@@ -1,19 +1,18 @@
 package com.motokyi.tg.bot_api.tools;
 
+import static java.util.Objects.isNull;
+
 import com.motokyi.tg.bot_api.api.method.payload.SetMyCommands;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.client.BotApiClient;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Objects.isNull;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -55,54 +54,74 @@ public class BotInfoSync {
     public Mono<Void> sync(Duration delay) {
         return Flux.fromStream(botCommands.stream())
                 .delayElements(delay)
-                .flatMap(sbc -> {
-                    var commands = sbc.getCommands().stream().map(BotCommand::getCommand).toList();
-                    log.debug("Prepare to sync commands {}, scope {}, lang {}",
-                            commands,
-                            sbc.getScope(),
-                            sbc.getLanguageCode());
-                    return client.send(sbc)
-                            .doOnSuccess(rs ->
-                                    log.info("Sync commands {} result ok={} result={} description:{}",
-                                            commands, rs.isOk(), rs.getResult(), rs.getDescription())
-                            );
-                })
+                .flatMap(
+                        sbc -> {
+                            var commands = sbc.getCommands().stream().map(BotCommand::getCommand).toList();
+                            log.debug(
+                                    "Prepare to sync commands {}, scope {}, lang {}",
+                                    commands,
+                                    sbc.getScope(),
+                                    sbc.getLanguageCode());
+                            return client
+                                    .send(sbc)
+                                    .doOnSuccess(
+                                            rs ->
+                                                    log.info(
+                                                            "Sync commands {} result ok={} result={} description:{}",
+                                                            commands,
+                                                            rs.isOk(),
+                                                            rs.getResult(),
+                                                            rs.getDescription()));
+                        })
                 .thenMany(Flux.fromStream(descriptions.stream()))
                 .delayElements(delay)
-                .flatMap(sd -> {
-                    log.debug("Prepare to sync bot description {}, lang {}",
-                            sd.getKey(),
-                            sd.getValue());
-                    return client.setMyDescription(sd.getKey(), sd.getValue())
-                            .doOnSuccess(rs ->
-                                    log.info("Sync description for lang={} result ok={} result={} description:{}",
-                                            sd.getValue(), rs.isOk(), rs.getResult(), rs.getDescription())
-                            );
-                })
+                .flatMap(
+                        sd -> {
+                            log.debug("Prepare to sync bot description {}, lang {}", sd.getKey(), sd.getValue());
+                            return client
+                                    .setMyDescription(sd.getKey(), sd.getValue())
+                                    .doOnSuccess(
+                                            rs ->
+                                                    log.info(
+                                                            "Sync description for lang={} result ok={} result={} description:{}",
+                                                            sd.getValue(),
+                                                            rs.isOk(),
+                                                            rs.getResult(),
+                                                            rs.getDescription()));
+                        })
                 .thenMany(Flux.fromStream(shortDescriptions.stream()))
                 .delayElements(delay)
-                .flatMap(sd -> {
-                    log.debug("Prepare to sync bot short description {}, lang {}",
-                            sd.getKey(),
-                            sd.getValue());
-                    return client.setMyShortDescription(sd.getKey(), sd.getValue())
-                            .doOnSuccess(rs ->
-                                    log.info("Sync short description for lang={} result ok={} result={} description:{}",
-                                            sd.getValue(), rs.isOk(), rs.getResult(), rs.getDescription())
-                            );
-                })
+                .flatMap(
+                        sd -> {
+                            log.debug(
+                                    "Prepare to sync bot short description {}, lang {}", sd.getKey(), sd.getValue());
+                            return client
+                                    .setMyShortDescription(sd.getKey(), sd.getValue())
+                                    .doOnSuccess(
+                                            rs ->
+                                                    log.info(
+                                                            "Sync short description for lang={} result ok={} result={} description:{}",
+                                                            sd.getValue(),
+                                                            rs.isOk(),
+                                                            rs.getResult(),
+                                                            rs.getDescription()));
+                        })
                 .thenMany(Flux.fromStream(names.stream()))
                 .delayElements(delay)
-                .flatMap(sd -> {
-                    log.debug("Prepare to sync bot name {}, lang {}",
-                            sd.getKey(),
-                            sd.getValue());
-                    return client.setMyName(sd.getKey(), sd.getValue())
-                            .doOnSuccess(rs ->
-                                    log.info("Sync name for lang={} result ok={} result={} description:{}",
-                                            sd.getValue(), rs.isOk(), rs.getResult(), rs.getDescription())
-                            );
-                })
+                .flatMap(
+                        sd -> {
+                            log.debug("Prepare to sync bot name {}, lang {}", sd.getKey(), sd.getValue());
+                            return client
+                                    .setMyName(sd.getKey(), sd.getValue())
+                                    .doOnSuccess(
+                                            rs ->
+                                                    log.info(
+                                                            "Sync name for lang={} result ok={} result={} description:{}",
+                                                            sd.getValue(),
+                                                            rs.isOk(),
+                                                            rs.getResult(),
+                                                            rs.getDescription()));
+                        })
                 .then();
     }
 }

@@ -7,10 +7,9 @@ import com.motokyi.tg.bot_api.api.type.LinkPreviewOptions;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 /**
  * Use this method to send text messages. On success, the sent Message is returned.

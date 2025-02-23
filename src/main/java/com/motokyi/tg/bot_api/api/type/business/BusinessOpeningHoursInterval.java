@@ -8,9 +8,9 @@ import lombok.Data;
  * Describes an interval of time during which a business is open.
  *
  * @version Bot API 8.3
- * @see <a href="https://core.telegram.org/bots/api#businessopeninghoursinterval">BusinessOpeningHoursInterval</a>
+ * @see <a
+ *     href="https://core.telegram.org/bots/api#businessopeninghoursinterval">BusinessOpeningHoursInterval</a>
  */
-
 @Data
 public class BusinessOpeningHoursInterval {
     @JsonProperty(ApiProperties.OPENING_MINUTE)

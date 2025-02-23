@@ -1,24 +1,20 @@
 package com.motokyi.tg.bot_api.api.method;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.reaction.ReactionType;
 import com.motokyi.tg.bot_api.client.BotApiClient;
-import reactor.core.publisher.Mono;
-
 import java.util.List;
+import reactor.core.publisher.Mono;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SetMessageReaction SetMessageReaction} method with the ability
  * to self-execution and chain setter
  */
-public class SetMessageReaction
-        extends com.motokyi.tg.bot_api.api.method.payload.SetMessageReaction
+public class SetMessageReaction extends com.motokyi.tg.bot_api.api.method.payload.SetMessageReaction
         implements BotMethod<Response<Boolean>> {
 
-    @JsonIgnore
-    private final BotApiClient client;
+    @JsonIgnore private final BotApiClient client;
 
     public SetMessageReaction(BotApiClient client, String chatId, Long messageId) {
         super(chatId, messageId);
@@ -44,5 +40,4 @@ public class SetMessageReaction
         super.setIsBig(isBig);
         return this;
     }
-
 }

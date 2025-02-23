@@ -7,14 +7,15 @@ import lombok.NoArgsConstructor;
 /**
  * This object represents the scope to which bot commands are applied.
  *
- * <ul> Currently, the following 7 scopes are supported:
- * <li> BotCommandScopeDefault
- * <li> BotCommandScopeAllPrivateChats
- * <li> BotCommandScopeAllGroupChats
- * <li> BotCommandScopeAllChatAdministrators
- * <li> BotCommandScopeChat
- * <li> BotCommandScopeChatAdministrators
- * <li> BotCommandScopeChatMember
+ * <ul>
+ *   Currently, the following 7 scopes are supported:
+ *   <li>BotCommandScopeDefault
+ *   <li>BotCommandScopeAllPrivateChats
+ *   <li>BotCommandScopeAllGroupChats
+ *   <li>BotCommandScopeAllChatAdministrators
+ *   <li>BotCommandScopeChat
+ *   <li>BotCommandScopeChatAdministrators
+ *   <li>BotCommandScopeChatMember
  * </ul>
  *
  * @version Bot API 8.3
