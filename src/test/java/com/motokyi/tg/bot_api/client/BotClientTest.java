@@ -24,7 +24,7 @@ public class BotClientTest {
         botClient = new BotClient(WebClient.create(wireMockRuntime.getHttpBaseUrl()));
     }
 
-    <T> void unauthorizedTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) {
+    <T> void unauthorizedTest(Mono<Response<T>> request, String expectedPath, HttpMethod expectedMethod) {
         stubFor(request(expectedMethod.name(), urlPathEqualTo(expectedPath))
                 .willReturn(jsonResponse("""
                             {
@@ -35,7 +35,7 @@ public class BotClientTest {
                         """, HttpStatus.UNAUTHORIZED.value())));
 
 
-        var userResponse = request.get().block();
+        var userResponse = request.block();
         assertAll(
                 () -> assertFalse(userResponse.isOk()),
                 () -> assertNull(userResponse.getResult()),
@@ -43,7 +43,7 @@ public class BotClientTest {
                 () -> assertEquals("Unauthorized", userResponse.getDescription()));
     }
 
-    <T> void tooManyRequestsTest(Supplier<Mono<Response<T>>> request, String expectedPath, HttpMethod expectedMethod) {
+    <T> void tooManyRequestsTest(Mono<Response<T>> request, String expectedPath, HttpMethod expectedMethod) {
         stubFor(request(expectedMethod.name(), urlPathEqualTo(expectedPath))
                 .willReturn(jsonResponse("""
                             {
@@ -56,7 +56,7 @@ public class BotClientTest {
                             }
                         """, HttpStatus.TOO_MANY_REQUESTS.value())));
 
-        var error = assertThrows(TooManyRequestsException.class, () -> request.get().block());
+        var error = assertThrows(TooManyRequestsException.class, () -> request.block());
         Response<Void> response = error.getErrorResponse();
         assertAll(
                 () -> assertFalse(response.isOk()),

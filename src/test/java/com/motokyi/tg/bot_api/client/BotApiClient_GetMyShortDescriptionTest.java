@@ -49,14 +49,16 @@ public class BotApiClient_GetMyShortDescriptionTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.getMyShortDescription(null),
+        unauthorizedTest(
+                botClient.getMyShortDescription(null),
                 ApiUrls.GET_MY_SHORT_DESCRIPTION,
                 HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests_withLanguageCode() {
-        tooManyRequestsTest(() -> botClient.getMyShortDescription(LANGUAGE_CODE_VALUE),
+        tooManyRequestsTest(
+                botClient.getMyShortDescription(LANGUAGE_CODE_VALUE),
                 ApiUrls.GET_MY_SHORT_DESCRIPTION,
                 HttpMethod.GET);
     }

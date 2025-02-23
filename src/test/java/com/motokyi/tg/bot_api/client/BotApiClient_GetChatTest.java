@@ -45,11 +45,11 @@ public class BotApiClient_GetChatTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.getChat(CHAT_ID), ApiUrls.GET_CHAT, HttpMethod.GET);
+        unauthorizedTest(botClient.getChat(CHAT_ID), ApiUrls.GET_CHAT, HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.getChat(CHAT_ID), ApiUrls.GET_CHAT, HttpMethod.GET);
+        tooManyRequestsTest(botClient.getChat(CHAT_ID), ApiUrls.GET_CHAT, HttpMethod.GET);
     }
 }

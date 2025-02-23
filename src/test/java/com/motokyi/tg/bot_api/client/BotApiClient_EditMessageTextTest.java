@@ -47,7 +47,7 @@ public class BotApiClient_EditMessageTextTest extends BotClientTest {
     @Test
     void unauthorized() {
         unauthorizedTest(
-                () -> botClient.send(buildEditMessageText()),
+                botClient.send(buildEditMessageText()),
                 ApiUrls.EDIT_MESSAGE_TEXT,
                 HttpMethod.POST);
     }
@@ -55,7 +55,7 @@ public class BotApiClient_EditMessageTextTest extends BotClientTest {
     @Test
     void tooManyRequests() {
         tooManyRequestsTest(
-                () -> botClient.send(buildEditMessageText()),
+                botClient.send(buildEditMessageText()),
                 ApiUrls.EDIT_MESSAGE_TEXT,
                 HttpMethod.POST);
     }

@@ -22,11 +22,11 @@ public class BotApiClient_ForwardMessageTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
+        unauthorizedTest(botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
+        tooManyRequestsTest(botClient.forwardMessage(buildForwardMessage()), ApiUrls.FORWARD_MESSAGE, HttpMethod.POST);
     }
 }

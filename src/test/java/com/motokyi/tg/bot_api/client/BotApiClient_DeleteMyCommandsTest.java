@@ -41,11 +41,11 @@ public class BotApiClient_DeleteMyCommandsTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(new DeleteMyCommands()), ApiUrls.DELETE_MY_COMMANDS, HttpMethod.POST);
+        unauthorizedTest(botClient.send(new DeleteMyCommands()), ApiUrls.DELETE_MY_COMMANDS, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(new DeleteMyCommands()), ApiUrls.DELETE_MY_COMMANDS, HttpMethod.POST);
+        tooManyRequestsTest(botClient.send(new DeleteMyCommands()), ApiUrls.DELETE_MY_COMMANDS, HttpMethod.POST);
     }
 }

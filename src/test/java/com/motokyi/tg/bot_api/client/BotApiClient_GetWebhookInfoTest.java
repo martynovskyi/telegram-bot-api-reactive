@@ -8,11 +8,11 @@ import org.springframework.http.HttpMethod;
 public class BotApiClient_GetWebhookInfoTest extends BotClientTest {
     @Test
     void unauthorized() {
-        unauthorizedTest(botClient::getWebhookInfo, ApiUrls.GET_WEBHOOK_INFO, HttpMethod.GET);
+        unauthorizedTest(botClient.getWebhookInfo(), ApiUrls.GET_WEBHOOK_INFO, HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(botClient::getWebhookInfo, ApiUrls.GET_WEBHOOK_INFO, HttpMethod.GET);
+        tooManyRequestsTest(botClient.getWebhookInfo(), ApiUrls.GET_WEBHOOK_INFO, HttpMethod.GET);
     }
 }

@@ -43,13 +43,17 @@ public class BotApiClient_answerCallbackQuery extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(new AnswerCallbackQuery(CALLBACK_ID)),
-                ApiUrls.ANSWER_CALLBACK_QUERY, HttpMethod.POST);
+        unauthorizedTest(
+                botClient.send(new AnswerCallbackQuery(CALLBACK_ID)),
+                ApiUrls.ANSWER_CALLBACK_QUERY,
+                HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(new AnswerCallbackQuery(CALLBACK_ID)),
-                ApiUrls.ANSWER_CALLBACK_QUERY, HttpMethod.POST);
+        tooManyRequestsTest(
+                botClient.send(new AnswerCallbackQuery(CALLBACK_ID)),
+                ApiUrls.ANSWER_CALLBACK_QUERY,
+                HttpMethod.POST);
     }
 }

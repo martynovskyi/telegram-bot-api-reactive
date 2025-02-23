@@ -9,11 +9,11 @@ import org.springframework.http.HttpMethod;
 public class BotApiClient_SetMyCommandsTest extends BotClientTest {
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(new SetMyCommands()), ApiUrls.SET_MY_COMMANDS, HttpMethod.POST);
+        unauthorizedTest(botClient.send(new SetMyCommands()), ApiUrls.SET_MY_COMMANDS, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(new SetMyCommands()), ApiUrls.SET_MY_COMMANDS, HttpMethod.POST);
+        tooManyRequestsTest(botClient.send(new SetMyCommands()), ApiUrls.SET_MY_COMMANDS, HttpMethod.POST);
     }
 }

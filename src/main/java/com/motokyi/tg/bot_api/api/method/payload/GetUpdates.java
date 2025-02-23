@@ -3,6 +3,7 @@ package com.motokyi.tg.bot_api.api.method.payload;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.motokyi.tg.bot_api.api.constant.ApiProperties;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +26,6 @@ public class GetUpdates {
 
     private Integer timeout;
 
-    @JsonProperty("allowed_updates")
+    @JsonProperty(ApiProperties.ALLOWED_UPDATES)
     private List<String> allowedUpdates;
 }

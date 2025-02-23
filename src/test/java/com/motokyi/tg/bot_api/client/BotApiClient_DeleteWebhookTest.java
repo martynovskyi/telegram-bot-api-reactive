@@ -34,12 +34,12 @@ public class BotApiClient_DeleteWebhookTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(new DeleteWebhook()), ApiUrls.DELETE_WEBHOOK, HttpMethod.POST);
+        unauthorizedTest(botClient.send(new DeleteWebhook()), ApiUrls.DELETE_WEBHOOK, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(new DeleteWebhook()), ApiUrls.DELETE_WEBHOOK, HttpMethod.POST);
+        tooManyRequestsTest(botClient.send(new DeleteWebhook()), ApiUrls.DELETE_WEBHOOK, HttpMethod.POST);
     }
 
 }

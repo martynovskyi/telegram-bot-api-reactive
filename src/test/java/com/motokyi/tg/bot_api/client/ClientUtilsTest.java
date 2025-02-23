@@ -47,7 +47,7 @@ class ClientUtilsTest {
         return new SendAnimation(CHAT_ID, null)
                 .messageThreadId(UUID.randomUUID().toString())
                 .animation(UUID.randomUUID().toString())
-                .thumbId(UUID.randomUUID().toString())
+                .thumbnail(UUID.randomUUID().toString())
                 .duration(2018)
                 .width(800)
                 .height(800)

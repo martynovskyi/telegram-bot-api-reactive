@@ -48,7 +48,7 @@ public class BotApiClient_EditMessageReplyMarkupTest extends BotClientTest {
     @Test
     void unauthorized() {
         unauthorizedTest(
-                () -> botClient.send(buildEditMessageReplyMarkup()),
+                botClient.send(buildEditMessageReplyMarkup()),
                 ApiUrls.EDIT_MESSAGE_REPLY_MARKUP,
                 HttpMethod.POST);
     }
@@ -56,7 +56,7 @@ public class BotApiClient_EditMessageReplyMarkupTest extends BotClientTest {
     @Test
     void tooManyRequests() {
         tooManyRequestsTest(
-                () -> botClient.send(buildEditMessageReplyMarkup()),
+                botClient.send(buildEditMessageReplyMarkup()),
                 ApiUrls.EDIT_MESSAGE_REPLY_MARKUP,
                 HttpMethod.POST);
     }

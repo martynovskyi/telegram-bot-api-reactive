@@ -49,14 +49,14 @@ public class BotApiClient_SetMessageReactionTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(new SetMessageReaction(CHAT_ID, MESSAGE_ID)),
+        unauthorizedTest(botClient.send(new SetMessageReaction(CHAT_ID, MESSAGE_ID)),
                 ApiUrls.SET_MESSAGE_REACTION,
                 HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(new SetMessageReaction(CHAT_ID, MESSAGE_ID)),
+        tooManyRequestsTest(botClient.send(new SetMessageReaction(CHAT_ID, MESSAGE_ID)),
                 ApiUrls.SET_MESSAGE_REACTION,
                 HttpMethod.POST);
     }

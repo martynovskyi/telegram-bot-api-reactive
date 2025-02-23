@@ -12,6 +12,7 @@ public final class ApiProperties {
     public static final String ADDITIONAL_CHAT_COUNT = "additional_chat_count";
     public static final String ALLOWED_UPDATES = "allowed_updates";
     public static final String ALLOW_SENDING_WITHOUT_REPLY = "allow_sending_without_reply";
+    public static final String ALLOW_PAID_BROADCAST = "allow_paid_broadcast";
     public static final String ANIMATION = "animation";
     public static final String AUTHOR_SIGNATURE = "author_signature";
     public static final String AVAILABLE_REACTIONS = "available_reactions";
@@ -168,6 +169,7 @@ public final class ApiProperties {
     public static final String WINNER_COUNT = "winner_count";
     public static final String WINNERS_SELECTION_DATE = "winners_selection_date";
     public static final String MAX_REACTION_COUNT = "max_reaction_count";
+    public static final String MESSAGE_EFFECT_ID = "message_effect_id";
     public static final String BUSINESS_INTRO = "business_intro";
     public static final String BUSINESS_LOCATION = "business_location";
     public static final String BUSINESS_OPENING_HOURS = "business_opening_hours";

@@ -32,11 +32,11 @@ public class BotApiClient_DeleteMessageTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.deleteMessage(CHAT_ID, MESSAGE_ID), ApiUrls.DELETE_MESSAGE, HttpMethod.GET);
+        unauthorizedTest(botClient.deleteMessage(CHAT_ID, MESSAGE_ID), ApiUrls.DELETE_MESSAGE, HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.deleteMessage(CHAT_ID, MESSAGE_ID), ApiUrls.DELETE_MESSAGE, HttpMethod.GET);
+        tooManyRequestsTest(botClient.deleteMessage(CHAT_ID, MESSAGE_ID), ApiUrls.DELETE_MESSAGE, HttpMethod.GET);
     }
 }

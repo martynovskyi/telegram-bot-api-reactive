@@ -52,14 +52,16 @@ public class BotApiClient_SetMyNameTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.setMyName(BOT_NAME, null),
+        unauthorizedTest(
+                botClient.setMyName(BOT_NAME, null),
                 ApiUrls.SET_MY_NAME,
                 HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.setMyName(BOT_NAME, LANGUAGE_CODE),
+        tooManyRequestsTest(
+                botClient.setMyName(BOT_NAME, LANGUAGE_CODE),
                 ApiUrls.SET_MY_NAME,
                 HttpMethod.GET);
     }

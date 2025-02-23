@@ -19,11 +19,11 @@ public class BotApiClient_SendAnimationTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
+        unauthorizedTest(botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
+        tooManyRequestsTest(botClient.send(buildSendAnimation()), ApiUrls.SEND_ANIMATION, HttpMethod.POST);
     }
 }

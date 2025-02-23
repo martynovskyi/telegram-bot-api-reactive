@@ -19,11 +19,11 @@ public class BotApiClient_SendPhotoTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.send(buildSendPhoto()), ApiUrls.SEND_PHOTO, HttpMethod.POST);
+        unauthorizedTest(botClient.send(buildSendPhoto()), ApiUrls.SEND_PHOTO, HttpMethod.POST);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(buildSendPhoto()), ApiUrls.SEND_PHOTO, HttpMethod.POST);
+        tooManyRequestsTest(botClient.send(buildSendPhoto()), ApiUrls.SEND_PHOTO, HttpMethod.POST);
     }
 }

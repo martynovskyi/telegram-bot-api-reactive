@@ -20,6 +20,7 @@ import org.slf4j.Logger;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ReactiveHttpOutputMessage;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.web.reactive.function.BodyInserter;
@@ -127,7 +128,7 @@ public final class ClientUtils {
 
     public static <T, C> Function<ClientResponse, Mono<T>> responseHandler(final Class<C> cls,
                                                                            ParameterizedTypeReference<T> typeRef) {
-        return responseHandler(cls.getName(), typeRef);
+        return responseHandler(cls.getSimpleName(), typeRef);
     }
 
     public static <T> Function<ClientResponse, Mono<T>> responseHandler(final String method,

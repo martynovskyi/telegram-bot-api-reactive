@@ -54,11 +54,11 @@ public class BotApiClient_SetWebhookTest extends BotClientTest {
 
     @Test
     public void unauthorized() {
-        unauthorizedTest(() -> botClient.send(new SetWebhook(URL)), ApiUrls.SET_WEBHOOK, HttpMethod.POST);
+        unauthorizedTest(botClient.send(new SetWebhook(URL)), ApiUrls.SET_WEBHOOK, HttpMethod.POST);
     }
 
     @Test
     public void tooManyRequests() {
-        tooManyRequestsTest(() -> botClient.send(new SetWebhook(URL)), ApiUrls.SET_WEBHOOK, HttpMethod.POST);
+        tooManyRequestsTest(botClient.send(new SetWebhook(URL)), ApiUrls.SET_WEBHOOK, HttpMethod.POST);
     }
 }

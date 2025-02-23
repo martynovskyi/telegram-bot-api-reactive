@@ -50,12 +50,16 @@ public class BotApiClient_GetMyNameTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(() -> botClient.getMyName(null), ApiUrls.GET_MY_NAME, HttpMethod.GET);
+        unauthorizedTest(
+                botClient.getMyName(null),
+                ApiUrls.GET_MY_NAME,
+                HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests_withLanguageCode() {
-        tooManyRequestsTest(() -> botClient.getMyName(LANGUAGE_CODE_VALUE),
+        tooManyRequestsTest(
+                botClient.getMyName(LANGUAGE_CODE_VALUE),
                 ApiUrls.GET_MY_NAME,
                 HttpMethod.GET);
     }

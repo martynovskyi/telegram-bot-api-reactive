@@ -41,7 +41,7 @@ public interface BotApiClient {
 
     Mono<Response<Message>> send(@NotNull SendMessage message);
 
-    Mono<Response<Message>> send(@NotNull SendPhoto document);
+    Mono<Response<Message>> send(@NotNull SendPhoto photo);
 
     Mono<Response<Message>> send(@NotNull SendDocument document);
 

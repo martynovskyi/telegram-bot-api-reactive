@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.motokyi.tg.bot_api.api.type.Response;
 import com.motokyi.tg.bot_api.api.type.markup.KeyboardMarkup;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
 import java.io.File;
+import java.util.List;
 
 /***
  * Enhanced {@link com.motokyi.tg.bot_api.api.method.payload.SendAnimation SendAnimation} method with the ability
@@ -30,23 +32,23 @@ public class SendAnimation
         return client.send(this);
     }
 
+    public SendAnimation businessConnectionId(String businessConnectionId) {
+        super.setBusinessConnectionId(businessConnectionId);
+        return this;
+    }
+
     public SendAnimation messageThreadId(String messageThreadId) {
-        super.messageThreadId = messageThreadId;
+        super.setMessageThreadId(messageThreadId);
         return this;
     }
 
     public SendAnimation animation(File animationFile) {
-        this.setAnimationFile(animationFile);
-        return this;
-    }
-
-    public SendAnimation protectContent(Boolean protectContent) {
-        super.protectContent = protectContent;
+        super.setAnimationFile(animationFile);
         return this;
     }
 
     public SendAnimation animation(String animationId) {
-        this.setAnimation(animationId);
+        super.setAnimation(animationId);
         return this;
     }
 
@@ -65,38 +67,68 @@ public class SendAnimation
         return this;
     }
 
-    public SendAnimation thumbnailFile(File thumbnailFile) {
+    public SendAnimation thumbnail(File thumbnailFile) {
         this.setThumbnailFile(thumbnailFile);
         return this;
     }
 
-    public SendAnimation thumbId(String thumbnail) {
+    public SendAnimation thumbnail(String thumbnail) {
         this.setThumbnail(thumbnail);
         return this;
     }
 
     public SendAnimation caption(String caption) {
-        this.setCaption(caption);
+        super.setCaption(caption);
         return this;
     }
 
     public SendAnimation parseMode(String parseMode) {
-        super.parseMode = parseMode;
+        super.setParseMode(parseMode);
+        return this;
+    }
+
+    public SendAnimation captionEntities(List<MessageEntity> captionEntities) {
+        super.setCaptionEntities(captionEntities);
+        return this;
+    }
+
+    public SendAnimation showCaptionAboveMedia(Boolean showCaptionAboveMedia) {
+        super.setShowCaptionAboveMedia(showCaptionAboveMedia);
+        return this;
+    }
+
+    public SendAnimation hasSpoiler(Boolean hasSpoiler) {
+        super.setHasSpoiler(hasSpoiler);
         return this;
     }
 
     public SendAnimation disableNotification(Boolean disableNotification) {
-        super.disableNotification = disableNotification;
+        super.setDisableNotification(disableNotification);
+        return this;
+    }
+
+    public SendAnimation protectContent(Boolean protectContent) {
+        super.setProtectContent(protectContent);
+        return this;
+    }
+
+    public SendAnimation allowPaidBroadcast(Boolean allowPaidBroadcast) {
+        super.setAllowPaidBroadcast(allowPaidBroadcast);
+        return this;
+    }
+
+    public SendAnimation messageEffectId(String messageEffectId) {
+        super.setMessageEffectId(messageEffectId);
         return this;
     }
 
     public SendAnimation replyParameters(ReplyParameters replyParameters) {
-        super.replyParameters = replyParameters;
+        super.setReplyParameters(replyParameters);
         return this;
     }
 
     public SendAnimation replyMarkup(KeyboardMarkup replyMarkup) {
-        super.replyMarkup = replyMarkup;
+        super.setReplyMarkup(replyMarkup);
         return this;
     }
 }

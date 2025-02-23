@@ -21,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 import reactor.netty.http.client.HttpClientRequest;
@@ -306,7 +307,7 @@ class BotClient implements BotApiClient {
     public Mono<Response<WebhookInfo>> getWebhookInfo() {
         return wc.get()
                 .uri(ApiUrls.GET_WEBHOOK_INFO)
-                .exchangeToMono(ClientUtils.responseHandler("WebhookInfo",
+                .exchangeToMono(ClientUtils.responseHandler(WebhookInfo.class,
                         new ParameterizedTypeReference<Response<WebhookInfo>>() {
                         }));
     }

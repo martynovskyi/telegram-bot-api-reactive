@@ -35,11 +35,11 @@ public class BotApiClient_GetMeTest extends BotClientTest {
 
     @Test
     void unauthorized() {
-        unauthorizedTest(botClient::getMe, ApiUrls.GET_ME, HttpMethod.GET);
+        unauthorizedTest(botClient.getMe(), ApiUrls.GET_ME, HttpMethod.GET);
     }
 
     @Test
     void tooManyRequests() {
-        tooManyRequestsTest(botClient::getMe, ApiUrls.GET_ME, HttpMethod.GET);
+        tooManyRequestsTest(botClient.getMe(), ApiUrls.GET_ME, HttpMethod.GET);
     }
 }

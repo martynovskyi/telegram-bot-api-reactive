@@ -11,6 +11,7 @@ import com.motokyi.tg.bot_api.api.type.reply.ReplyParameters;
 import com.motokyi.tg.bot_api.client.BotApiClient;
 import reactor.core.publisher.Mono;
 
+import java.io.File;
 import java.util.List;
 
 /***
@@ -35,8 +36,13 @@ public class SendMessage
         return client.send(this);
     }
 
+    public SendMessage businessConnectionId(String businessConnectionId) {
+        super.setBusinessConnectionId(businessConnectionId);
+        return this;
+    }
+
     public SendMessage messageThreadId(String messageThreadId) {
-        super.messageThreadId = messageThreadId;
+        super.setMessageThreadId(messageThreadId);
         return this;
     }
 
@@ -46,7 +52,7 @@ public class SendMessage
     }
 
     public SendMessage parseMode(String parseMode) {
-        super.parseMode = parseMode;
+        super.setParseMode(parseMode);
         return this;
     }
 
@@ -61,22 +67,32 @@ public class SendMessage
     }
 
     public SendMessage disableNotification(Boolean disableNotification) {
-        super.disableNotification = disableNotification;
+        super.setDisableNotification(disableNotification);
         return this;
     }
 
     public SendMessage protectContent(Boolean protectContent) {
-        super.protectContent = protectContent;
+        super.setProtectContent(protectContent);
+        return this;
+    }
+
+    public SendMessage allowPaidBroadcast(Boolean allowPaidBroadcast) {
+        super.setAllowPaidBroadcast(allowPaidBroadcast);
+        return this;
+    }
+
+    public SendMessage messageEffectId(String messageEffectId) {
+        super.setMessageEffectId(messageEffectId);
         return this;
     }
 
     public SendMessage replyParameters(ReplyParameters replyParameters) {
-        super.replyParameters = replyParameters;
+        super.setReplyParameters(replyParameters);
         return this;
     }
 
     public SendMessage replyMarkup(KeyboardMarkup replyMarkup) {
-        super.replyMarkup = replyMarkup;
+        super.setReplyMarkup(replyMarkup);
         return this;
     }
 }
