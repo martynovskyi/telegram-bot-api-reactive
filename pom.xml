@@ -144,7 +144,7 @@
                             <version>1.21.0</version>
                         </googleJavaFormat>
                         <importOrder/>
-                        <removeUnusedImports />
+                        <removeUnusedImports/>
                         <indent>
                             <tabs>true</tabs>
                             <spacesPerTab>2</spacesPerTab>
