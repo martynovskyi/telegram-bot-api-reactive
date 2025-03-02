@@ -22,7 +22,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#chatmember">ChatMember</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "status")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "status",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = ChatMemberOwner.class, name = ChatMemberStatus.CREATOR),
     @JsonSubTypes.Type(value = ChatMemberAdministrator.class, name = ChatMemberStatus.ADMINISTRATOR),

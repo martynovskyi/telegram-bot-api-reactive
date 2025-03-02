@@ -18,7 +18,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#chatboostsource">ChatBoostSource</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "source")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "source",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = ChatBoostSourcePremium.class, name = ChatBoostSources.PREMIUM),
     @JsonSubTypes.Type(value = ChatBoostSourceGiftCode.class, name = ChatBoostSources.GIFT_CODE),

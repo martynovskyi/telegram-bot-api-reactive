@@ -19,7 +19,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#messageorigin">MessageOrigin</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = MessageOriginUser.class, name = MessageOriginTypes.USER),
     @JsonSubTypes.Type(value = MessageOriginHiddenUser.class, name = MessageOriginTypes.HIDDEN_USER),

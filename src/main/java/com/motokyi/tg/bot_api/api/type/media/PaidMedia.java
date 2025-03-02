@@ -18,7 +18,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#paidmedia">PaidMedia</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = PaidMediaPreview.class, name = PaidMediaTypes.PREVIEW),
     @JsonSubTypes.Type(value = PaidMediaPhoto.class, name = PaidMediaTypes.PHOTO),

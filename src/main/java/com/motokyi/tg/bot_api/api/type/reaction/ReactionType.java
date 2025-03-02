@@ -18,7 +18,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#reactiontype">ReactionType</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = ReactionTypeEmoji.class, name = ReactionTypes.EMOJI),
     @JsonSubTypes.Type(value = ReactionTypeCustomEmoji.class, name = ReactionTypes.CUSTOM_EMOJI),

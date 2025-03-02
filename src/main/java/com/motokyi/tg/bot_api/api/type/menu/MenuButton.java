@@ -23,7 +23,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#menubutton">MenuButton</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = MenuButtonCommands.class, name = MenuButtonTypes.COMMANDS),
     @JsonSubTypes.Type(value = MenuButtonWebApp.class, name = MenuButtonTypes.WEB_APP),

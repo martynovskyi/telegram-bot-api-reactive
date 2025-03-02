@@ -19,7 +19,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#backgroundtype">BackgroundType</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = BackgroundTypeFill.class, name = BackgroundTypes.FILL),
     @JsonSubTypes.Type(value = BackgroundTypeWallpaper.class, name = BackgroundTypes.WALLPAPER),

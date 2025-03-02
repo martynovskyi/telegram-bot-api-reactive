@@ -18,7 +18,11 @@ import lombok.Data;
  * @see <a href="https://core.telegram.org/bots/api#backgroundfill">BackgroundFill</a>
  */
 @Data
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        property = "type",
+        include = JsonTypeInfo.As.EXISTING_PROPERTY,
+        visible = true)
 @JsonSubTypes({
     @JsonSubTypes.Type(value = BackgroundFillSolid.class, name = BackgroundFillTypes.SOLID),
     @JsonSubTypes.Type(value = BackgroundFillGradient.class, name = BackgroundFillTypes.GRADIENT),
