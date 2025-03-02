@@ -7,12 +7,13 @@ import com.motokyi.tg.bot_api.api.type.LoginUrl;
 import com.motokyi.tg.bot_api.api.type.game.CallbackGame;
 import com.motokyi.tg.bot_api.api.type.web_app.WebAppInfo;
 import lombok.Data;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * This object represents one button of an inline keyboard. You must use exactly one of the optional
  * fields.
  *
- * @version Bot API 7.3
+ * @version Bot API 8.3
  * @see <a href="https://core.telegram.org/bots/api#inlinekeyboardbutton">InlineKeyboardButton</a>
  */
 @Data
@@ -47,4 +48,19 @@ public class InlineKeyboardButton {
     private CallbackGame callbackGame;
 
     private Boolean pay;
+
+    public static InlineKeyboardButton ofCallback(
+            @NotNull String text, @NotNull String callbackData) {
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText(text);
+        button.setCallbackData(callbackData);
+        return button;
+    }
+
+    public static InlineKeyboardButton ofUrl(@NotNull String text, @NotNull String url) {
+        InlineKeyboardButton button = new InlineKeyboardButton();
+        button.setText(text);
+        button.setUrl(url);
+        return button;
+    }
 }

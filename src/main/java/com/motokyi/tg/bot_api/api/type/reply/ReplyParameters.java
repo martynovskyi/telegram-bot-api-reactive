@@ -7,6 +7,7 @@ import com.motokyi.tg.bot_api.api.type.message.MessageEntity;
 import java.util.List;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Describes reply parameters for the message that is being sent.
@@ -38,4 +39,10 @@ public class ReplyParameters {
 
     @JsonProperty(ApiProperties.QUOTE_POSITION)
     private Integer quote_position;
+
+    public static ReplyParameters ofMessageId(@NotNull Long messageId) {
+        ReplyParameters replyParameters = new ReplyParameters();
+        replyParameters.setMessageId(messageId);
+        return replyParameters;
+    }
 }
