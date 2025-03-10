@@ -79,7 +79,7 @@ public class Update {
     @JsonProperty(UpdateTypes.PRE_CHECKOUT_QUERY)
     private PreCheckoutQuery preCheckoutQuery;
 
-    @JsonProperty("purchased_paid_media")
+    @JsonProperty(UpdateTypes.PURCHASED_PAID_MEDIA)
     private PaidMediaPurchased purchasedPaidMedia;
 
     @JsonProperty(UpdateTypes.POLL)

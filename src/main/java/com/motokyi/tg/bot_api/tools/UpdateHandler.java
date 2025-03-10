@@ -1,7 +1,8 @@
 package com.motokyi.tg.bot_api.tools;
 
+import static com.motokyi.tg.bot_api.api.constant.UpdateTypes.*;
+import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
-import static java.util.Optional.ofNullable;
 
 import com.motokyi.tg.bot_api.api.type.business.BusinessConnection;
 import com.motokyi.tg.bot_api.api.type.business.BusinessMessagesDeleted;
@@ -21,7 +22,6 @@ import com.motokyi.tg.bot_api.api.type.payment.ShippingQuery;
 import com.motokyi.tg.bot_api.api.type.poll.Poll;
 import com.motokyi.tg.bot_api.api.type.poll.PollAnswer;
 import com.motokyi.tg.bot_api.api.type.update.Update;
-import java.util.Objects;
 import java.util.function.Consumer;
 import lombok.Builder;
 import lombok.extern.slf4j.Slf4j;
@@ -54,43 +54,49 @@ public class UpdateHandler {
     private final Consumer<ChatBoostRemoved> chatBoostRemovedConsumer;
 
     public void apply(Update update) {
-        if (nonNull(update)) {
-            ofNullable(update.getMessage()).ifPresent(handleSafe(this.messageConsumer));
-            ofNullable(update.getEditedMessage()).ifPresent(handleSafe(this.editedMessageConsumer));
-            ofNullable(update.getChannelPost()).ifPresent(handleSafe(this.channelPostConsumer));
-            ofNullable(update.getEditedMessage()).ifPresent(handleSafe(this.editedChannelPostConsumer));
-            ofNullable(update.getBusinessConnection())
-                    .ifPresent(handleSafe(this.businessConnectionConsumer));
-            ofNullable(update.getBusinessMessage()).ifPresent(handleSafe(this.businessMessageConsumer));
-            ofNullable(update.getEditedBusinessMessage())
-                    .ifPresent(handleSafe(this.editedBusinessMessageConsumer));
-            ofNullable(update.getDeletedBusinessMessages())
-                    .ifPresent(handleSafe(this.deletedBusinessMessagesConsumer));
-            ofNullable(update.getMessageReaction()).ifPresent(handleSafe(this.messageReactionConsumer));
-            ofNullable(update.getMessageReactionCount())
-                    .ifPresent(handleSafe(this.messageReactionCountUpdatedConsumer));
-            ofNullable(update.getInlineQuery()).ifPresent(handleSafe(this.inlineQueryConsumer));
-            ofNullable(update.getChosenInlineResult())
-                    .ifPresent(handleSafe(this.chosenInlineResultConsumer));
-            ofNullable(update.getCallbackQuery()).ifPresent(handleSafe(this.callbackQueryConsumer));
-            ofNullable(update.getShippingQuery()).ifPresent(handleSafe(this.shippingQueryConsumer));
-            ofNullable(update.getPreCheckoutQuery()).ifPresent(handleSafe(this.preCheckoutQueryConsumer));
-            ofNullable(update.getPurchasedPaidMedia())
-                    .ifPresent(handleSafe(this.purchasedPaidMediaConsumer));
-            ofNullable(update.getPoll()).ifPresent(handleSafe(this.pollConsumer));
-            ofNullable(update.getPollAnswer()).ifPresent(handleSafe(this.pollAnswerConsumer));
-            ofNullable(update.getMyChatMember()).ifPresent(handleSafe(this.myChatMemberConsumer));
-            ofNullable(update.getChatMember()).ifPresent(handleSafe(this.chatMemberConsumer));
-            ofNullable(update.getChatJoinRequest()).ifPresent(handleSafe(this.chatJoinRequestConsumer));
-            ofNullable(update.getChatBoost()).ifPresent(handleSafe(this.chatBoostUpdatedConsumer));
-            ofNullable(update.getRemovedChatBoost()).ifPresent(handleSafe(this.chatBoostRemovedConsumer));
+        if (isNull(update)) {
+            log.warn("Empty update received");
+            return;
         }
+        apply(MESSAGE, update.getMessage(), messageConsumer);
+        apply(EDITED_MESSAGE, update.getEditedMessage(), editedMessageConsumer);
+        apply(CHANNEL_POST, update.getChannelPost(), channelPostConsumer);
+        apply(EDITED_CHANNEL_POST, update.getEditedChannelPost(), editedChannelPostConsumer);
+        apply(BUSINESS_CONNECTION, update.getBusinessConnection(), businessConnectionConsumer);
+        apply(BUSINESS_MESSAGE, update.getBusinessMessage(), businessMessageConsumer);
+        apply(
+                EDITED_BUSINESS_MESSAGE, update.getEditedBusinessMessage(), editedBusinessMessageConsumer);
+        apply(
+                DELETED_BUSINESS_MESSAGES,
+                update.getDeletedBusinessMessages(),
+                deletedBusinessMessagesConsumer);
+        apply(MESSAGE_REACTION, update.getMessageReaction(), messageReactionConsumer);
+        apply(
+                MESSAGE_REACTION_COUNT,
+                update.getMessageReactionCount(),
+                messageReactionCountUpdatedConsumer);
+        apply(INLINE_QUERY, update.getInlineQuery(), inlineQueryConsumer);
+        apply(CHOSEN_INLINE_RESULT, update.getChosenInlineResult(), chosenInlineResultConsumer);
+        apply(CALLBACK_QUERY, update.getCallbackQuery(), callbackQueryConsumer);
+        apply(SHIPPING_QUERY, update.getShippingQuery(), shippingQueryConsumer);
+        apply(PRE_CHECKOUT_QUERY, update.getPreCheckoutQuery(), preCheckoutQueryConsumer);
+        apply(PURCHASED_PAID_MEDIA, update.getPurchasedPaidMedia(), purchasedPaidMediaConsumer);
+        apply(POLL, update.getPoll(), pollConsumer);
+        apply(POLL_ANSWER, update.getPollAnswer(), pollAnswerConsumer);
+        apply(MY_CHAT_MEMBER, update.getMyChatMember(), myChatMemberConsumer);
+        apply(CHAT_MEMBER, update.getChatMember(), chatMemberConsumer);
+        apply(CHAT_JOIN_REQUEST, update.getChatJoinRequest(), chatJoinRequestConsumer);
+        apply(CHAT_BOOST, update.getChatBoost(), chatBoostUpdatedConsumer);
+        apply(REMOVED_CHAT_BOOST, update.getRemovedChatBoost(), chatBoostRemovedConsumer);
     }
 
-    private <T> Consumer<T> handleSafe(Consumer<T> consumer) {
-        if (Objects.nonNull(consumer)) {
-            return consumer;
+    private <T> void apply(String eventType, T eventData, Consumer<T> consumer) {
+        if (nonNull(eventData)) {
+            if (nonNull(consumer)) {
+                consumer.accept(eventData);
+            } else {
+                log.warn("Consumer for {} not defined", eventType);
+            }
         }
-        return t -> log.warn("Consumer for {} not defined", t.getClass().getSimpleName());
     }
 }

@@ -15,6 +15,7 @@ public final class UpdateTypes {
     public static final String MESSAGE_REACTION_COUNT = "message_reaction_count";
     public static final String MY_CHAT_MEMBER = "my_chat_member";
     public static final String PRE_CHECKOUT_QUERY = "pre_checkout_query";
+    public static final String PURCHASED_PAID_MEDIA = "purchased_paid_media";
     public static final String POLL = "poll";
     public static final String POLL_ANSWER = "poll_answer";
     public static final String REMOVED_CHAT_BOOST = "removed_chat_boost";
