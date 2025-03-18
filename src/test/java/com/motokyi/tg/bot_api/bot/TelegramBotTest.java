@@ -205,12 +205,42 @@ class TelegramBotTest extends TelegramBotTestSetup {
     }
 
     @Test
+    void answerCallbackQuery_withText() {
+        bot.answerCallbackQuery(CALLBACK_QUERY_ID, TEST_TEXT);
+        ArgumentCaptor<AnswerCallbackQuery> messageCaptor =
+                ArgumentCaptor.forClass(AnswerCallbackQuery.class);
+        verify(webClient).send(messageCaptor.capture());
+        AnswerCallbackQuery answer = messageCaptor.getValue();
+        assertAll(
+                () -> assertNotNull(answer),
+                () -> assertEquals(CALLBACK_QUERY_ID, answer.getCallbackQueryId()),
+                () -> assertEquals(TEST_TEXT, answer.getText()));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
     void editMessageReplyMarkup_callbackQuery() {
         CallbackQuery callbackQuery = new CallbackQuery();
         callbackQuery.setId(CALLBACK_QUERY_ID);
         AnswerCallbackQuery answerCallbackQuery = bot.answerCallbackQuery(callbackQuery);
         assertNotNull(answerCallbackQuery);
         assertEquals(CALLBACK_QUERY_ID, answerCallbackQuery.getCallbackQueryId());
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void editMessageReplyMarkup_callbackQueryWithText() {
+        CallbackQuery callbackQuery = new CallbackQuery();
+        callbackQuery.setId(CALLBACK_QUERY_ID);
+        bot.answerCallbackQuery(callbackQuery, TEST_TEXT);
+        ArgumentCaptor<AnswerCallbackQuery> messageCaptor =
+                ArgumentCaptor.forClass(AnswerCallbackQuery.class);
+        verify(webClient).send(messageCaptor.capture());
+        AnswerCallbackQuery answer = messageCaptor.getValue();
+        assertAll(
+                () -> assertNotNull(answer),
+                () -> assertEquals(CALLBACK_QUERY_ID, answer.getCallbackQueryId()),
+                () -> assertEquals(TEST_TEXT, answer.getText()));
         verifyNoMoreInteractions(webClient);
     }
 

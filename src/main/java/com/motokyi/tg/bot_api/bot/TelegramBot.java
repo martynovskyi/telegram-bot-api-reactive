@@ -229,8 +229,18 @@ public class TelegramBot implements Bot {
     }
 
     @Override
+    public Mono<Response<Boolean>> answerCallbackQuery(@NotNull String callbackQueryId, String text) {
+        return new AnswerCallbackQuery(callbackQueryId, client).text(text).send();
+    }
+
+    @Override
     public AnswerCallbackQuery answerCallbackQuery(CallbackQuery callbackQuery) {
         return new AnswerCallbackQuery(callbackQuery.getId(), client);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> answerCallbackQuery(CallbackQuery callbackQuery, String text) {
+        return new AnswerCallbackQuery(callbackQuery.getId(), client).text(text).send();
     }
 
     @Override
