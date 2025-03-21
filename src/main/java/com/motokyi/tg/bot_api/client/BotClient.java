@@ -8,6 +8,7 @@ import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
 import com.motokyi.tg.bot_api.api.type.bot.BotName;
 import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
+import com.motokyi.tg.bot_api.api.type.chat_member.ChatMember;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.update.Update;
@@ -127,6 +128,41 @@ class BotClient implements BotApiClient {
                 .exchangeToMono(
                         ClientUtils.responseHandler(
                                 "GetChat", new ParameterizedTypeReference<Response<ChatFullInfo>>() {}));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> leaveChat(@NotNull String chatId) {
+        return wc.get()
+                .uri(ApiUrls.LEAVE_CHAT, uri -> uri.queryParam(ApiProperties.CHAT_ID, chatId).build())
+                .exchangeToMono(
+                        ClientUtils.responseHandler(
+                                "leaveChat", new ParameterizedTypeReference<Response<Boolean>>() {}));
+    }
+
+    @Override
+    public Mono<Response<Integer>> getChatMemberCount(@NotNull String chatId) {
+        return wc.get()
+                .uri(
+                        ApiUrls.GET_CHAT_MEMBER_COUNT,
+                        uri -> uri.queryParam(ApiProperties.CHAT_ID, chatId).build())
+                .exchangeToMono(
+                        ClientUtils.responseHandler(
+                                "getChatMemberCount", new ParameterizedTypeReference<Response<Integer>>() {}));
+    }
+
+    @Override
+    public <T extends ChatMember> Mono<Response<T>> getChatMember(
+            @NotNull String chatId, @NotNull Long userId) {
+        return wc.get()
+                .uri(
+                        ApiUrls.GET_CHAT_MEMBER,
+                        uri ->
+                                uri.queryParam(ApiProperties.CHAT_ID, chatId)
+                                        .queryParam(ApiProperties.USER_ID, userId)
+                                        .build())
+                .exchangeToMono(
+                        ClientUtils.responseHandler(
+                                "getChatMember", new ParameterizedTypeReference<Response<T>>() {}));
     }
 
     @Override

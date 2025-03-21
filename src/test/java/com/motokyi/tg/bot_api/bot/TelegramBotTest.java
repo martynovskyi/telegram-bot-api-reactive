@@ -63,6 +63,48 @@ class TelegramBotTest extends TelegramBotTestSetup {
     }
 
     @Test
+    void leaveChat() {
+        bot.leaveChat(CHAT_ID);
+        verify(webClient).leaveChat((String.valueOf(CHAT_ID)));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void leaveChat_chatTag() {
+        bot.leaveChat(CHAT_TAG);
+        verify(webClient).leaveChat(CHAT_TAG);
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void getChatMemberCount() {
+        bot.getChatMemberCount(CHAT_ID);
+        verify(webClient).getChatMemberCount((String.valueOf(CHAT_ID)));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void getChatMemberCount_chatTag() {
+        bot.getChatMemberCount(CHAT_TAG);
+        verify(webClient).getChatMemberCount(CHAT_TAG);
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void getChatMember() {
+        bot.getChatMember(CHAT_ID, USER_ID);
+        verify(webClient).getChatMember(String.valueOf(CHAT_ID), USER_ID);
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void getChatMember_chatTag() {
+        bot.getChatMember(CHAT_ID, USER_ID);
+        verify(webClient).getChatMember(String.valueOf(CHAT_ID), USER_ID);
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
     void sendMessage() {
         SendMessage sendMessage = bot.sendMessage(CHAT_ID);
         assertNotNull(sendMessage);

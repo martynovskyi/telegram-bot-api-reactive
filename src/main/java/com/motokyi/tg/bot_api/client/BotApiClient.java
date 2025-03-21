@@ -6,6 +6,7 @@ import com.motokyi.tg.bot_api.api.type.bot.BotDescription;
 import com.motokyi.tg.bot_api.api.type.bot.BotName;
 import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
+import com.motokyi.tg.bot_api.api.type.chat_member.ChatMember;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
 import com.motokyi.tg.bot_api.api.type.update.Update;
@@ -38,6 +39,13 @@ public interface BotApiClient {
     Mono<Response<List<Update>>> getUpdates(@NotNull GetUpdates getUpdates);
 
     Mono<Response<ChatFullInfo>> getChat(@NotNull String chatTag);
+
+    Mono<Response<Boolean>> leaveChat(@NotNull String chatId);
+
+    Mono<Response<Integer>> getChatMemberCount(@NotNull String chatId);
+
+    <T extends ChatMember> Mono<Response<T>> getChatMember(
+            @NotNull String chatId, @NotNull Long userId);
 
     Mono<Response<Message>> send(@NotNull SendMessage message);
 

@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "result": {
+    "status": "member",
+    "user": {
+      "id": 123,
+      "is_bot": false,
+      "first_name": "user",
+      "username": "user_ex",
+      "language_code": "en"
+    }
+  },
+  "description": null,
+  "error_code": null
+}

@@ -1,6 +1,7 @@
 package com.motokyi.tg.bot_api.api.constant;
 
 public final class ApiUrls {
+    public static final String API_HOST = "https://api.telegram.org";
     public static final String GET_ME = "/getMe";
     public static final String GET_MY_NAME = "/getMyName";
     public static final String SET_MY_NAME = "/setMyName";
@@ -9,6 +10,9 @@ public final class ApiUrls {
     public static final String GET_MY_SHORT_DESCRIPTION = "/getMyShortDescription";
     public static final String SET_MY_SHORT_DESCRIPTION = "/setMyShortDescription";
     public static final String GET_CHAT = "/getChat";
+    public static final String LEAVE_CHAT = "/leaveChat";
+    public static final String GET_CHAT_MEMBER_COUNT = "/getChatMemberCount";
+    public static final String GET_CHAT_MEMBER = "/getChatMember";
     public static final String GET_UPDATES = "/getUpdates";
     public static final String FORWARD_MESSAGE = "/forwardMessage";
     public static final String SEND_MESSAGE = "/sendMessage";
@@ -26,7 +30,6 @@ public final class ApiUrls {
     public static final String DELETE_MY_COMMANDS = "/deleteMyCommands";
     public static final String GET_MY_COMMANDS = "/getMyCommands";
     public static final String DELETE_MESSAGE = "/deleteMessage";
-    public static final String API_HOST = "https://api.telegram.org";
     public static final String BOT_PREFIX = "/bot";
     public static final String SET_MESSAGE_REACTION = "/setMessageReaction";
     public static final String SET_WEBHOOK = "/setWebhook";

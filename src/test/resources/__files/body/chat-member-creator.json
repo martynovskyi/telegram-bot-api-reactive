@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "result": {
+    "status" : "creator",
+    "user" : {
+      "id" : 123,
+      "is_bot" : false,
+      "first_name" : "user",
+      "username" : "user_x",
+      "language_code" : "en",
+      "is_premium" : true
+    },
+    "is_anonymous" : false
+  },
+  "description": null,
+  "error_code": null
+}

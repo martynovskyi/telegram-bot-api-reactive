@@ -25,20 +25,24 @@ Currently, code/package structure is not finalized. Pretty raw implementations
     - [setWebhook](https://core.telegram.org/bots/api#setwebhook)
     - [getWebhookInfo](https://core.telegram.org/bots/api#getwebhookinfo)
     - [deleteWebhook](https://core.telegram.org/bots/api#deletewebhook)
-- [getUpdates](https://core.telegram.org/bots/api#getupdates)
+- Message
+  - [sendMessage](https://core.telegram.org/bots/api#sendmessage)
+  - [forwardMessage](https://core.telegram.org/bots/api#forwardmessage)
+  - [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
 - Updating messages
     - [editMessageText](https://core.telegram.org/bots/api#editmessagetext)
     - [editMessageReplyMarkup](https://core.telegram.org/bots/api#editmessagereplymarkup)
     - [deleteMessage](https://core.telegram.org/bots/api#deletemessage)
-- [getChat](https://core.telegram.org/bots/api#getchat)
-- sendMessage
+- Chat
+    - [getChat](https://core.telegram.org/bots/api#getchat)
+    - [leaveChat](https://core.telegram.org/bots/api#leavechat)
+    - [getChatMemberCount](https://core.telegram.org/bots/api#getchatmembercount)
+    - [getChatMember](https://core.telegram.org/bots/api#getchatmember)
 - sendDocument
 - sendAnimation
 - sendPhoto
-- forwardMessage
-- [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
 - [answerCallbackQuery](https://core.telegram.org/bots/api#answercallbackquery)
-
+- [getUpdates](https://core.telegram.org/bots/api#getupdates)
 
 ### Configuration
 

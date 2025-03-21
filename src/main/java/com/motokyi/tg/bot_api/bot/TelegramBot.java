@@ -7,6 +7,7 @@ import com.motokyi.tg.bot_api.api.type.bot.BotName;
 import com.motokyi.tg.bot_api.api.type.bot.BotShortDescription;
 import com.motokyi.tg.bot_api.api.type.chat.Chat;
 import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
+import com.motokyi.tg.bot_api.api.type.chat_member.ChatMember;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.command.BotCommandScope;
 import com.motokyi.tg.bot_api.api.type.markup.CallbackQuery;
@@ -110,6 +111,38 @@ public class TelegramBot implements Bot {
     @Override
     public Mono<Response<ChatFullInfo>> getChat(@NotNull String chatTag) {
         return client.getChat(chatTag);
+    }
+
+    @Override
+    public Mono<Response<Boolean>> leaveChat(@NotNull Long chatId) {
+        return client.leaveChat(String.valueOf(chatId));
+    }
+
+    @Override
+    public Mono<Response<Boolean>> leaveChat(@NotNull String chatId) {
+        return client.leaveChat(chatId);
+    }
+
+    @Override
+    public Mono<Response<Integer>> getChatMemberCount(@NotNull Long chatId) {
+        return client.getChatMemberCount(String.valueOf(chatId));
+    }
+
+    @Override
+    public Mono<Response<Integer>> getChatMemberCount(@NotNull String chatId) {
+        return client.getChatMemberCount(chatId);
+    }
+
+    @Override
+    public <T extends ChatMember> Mono<Response<T>> getChatMember(
+            @NotNull Long chatId, @NotNull Long userId) {
+        return client.getChatMember(String.valueOf(chatId), userId);
+    }
+
+    @Override
+    public <T extends ChatMember> Mono<Response<T>> getChatMember(
+            @NotNull String chatId, @NotNull Long userId) {
+        return client.getChatMember(chatId, userId);
     }
 
     @Override
