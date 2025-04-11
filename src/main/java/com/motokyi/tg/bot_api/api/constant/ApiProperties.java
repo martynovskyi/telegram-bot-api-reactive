@@ -65,6 +65,7 @@ public final class ApiProperties {
     public static final String EXPIRATION_DATE = "expiration_date";
     public static final String FORWARD_ORIGIN = "forward_origin";
     public static final String FROM_REQUEST = "from_request";
+    public static final String FROM_CHAT_ID = "from_chat_id";
     public static final String FROM_ATTACHMENT_MENU = "from_attachment_menu";
     public static final String FIRST_NAME = "first_name";
     public static final String FILE_ID = "file_id";
@@ -162,6 +163,7 @@ public final class ApiProperties {
     public static final String URL = "url";
     public static final String VIA_BOT = "via_bot";
     public static final String VIDEO_NOTE = "video_note";
+    public static final String VIDEO_START_TIMESTAMP = "video_start_timestamp";
     public static final String WAS_REFUNDED = "was_refunded";
     public static final String WEB_APP = "web_app";
     public static final String WEB_APP_DATA = "web_app_data";

@@ -22,22 +22,22 @@ public class ForwardMessage {
     protected String chatId;
 
     @JsonProperty(ApiProperties.MESSAGE_THREAD_ID)
-    private Long messageThreadId;
+    protected Long messageThreadId;
 
-    @JsonProperty("from_chat_id")
+    @JsonProperty(ApiProperties.FROM_CHAT_ID)
     protected Long fromChatId;
 
-    @JsonProperty("video_start_timestamp")
-    private Long videoStartTimestamp;
+    @JsonProperty(ApiProperties.MESSAGE_ID)
+    protected Long messageId;
+
+    @JsonProperty(ApiProperties.VIDEO_START_TIMESTAMP)
+    protected Long videoStartTimestamp;
 
     @JsonProperty(ApiProperties.DISABLE_NOTIFICATION)
     protected Boolean disableNotification;
 
     @JsonProperty(ApiProperties.PROTECT_CONTENT)
     protected Boolean protectContent;
-
-    @JsonProperty(ApiProperties.MESSAGE_ID)
-    protected Long messageId;
 
     public ForwardMessage(String chatId, Message message) {
         this.chatId = chatId;

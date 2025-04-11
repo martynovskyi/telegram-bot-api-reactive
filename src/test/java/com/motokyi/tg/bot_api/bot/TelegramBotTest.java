@@ -239,6 +239,42 @@ class TelegramBotTest extends TelegramBotTestSetup {
     }
 
     @Test
+    void copyMessage() {
+        CopyMessage copyMessage = bot.copyMessage(CHAT_TAG, CHAT_TAG, MESSAGE_ID);
+        assertAll(
+                () -> assertNotNull(copyMessage),
+                () -> assertEquals(CHAT_TAG, copyMessage.getChatId()),
+                () -> assertEquals(CHAT_TAG, copyMessage.getFromChatId()),
+                () -> assertEquals(MESSAGE_ID, copyMessage.getMessageId()));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void copyMessage_Objects() {
+        Message message = buildMessage();
+        Chat chat = buildChat();
+        CopyMessage copyMessage = bot.copyMessage(chat, message);
+        assertAll(
+                () -> assertNotNull(copyMessage),
+                () -> assertEquals(chat.getId().toString(), copyMessage.getChatId()),
+                () -> assertEquals(message.getChat().getId().toString(), copyMessage.getFromChatId()),
+                () -> assertEquals(message.getMessageId(), copyMessage.getMessageId()));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
+    void copyMessage_MessageObject() {
+        Message message = buildMessage();
+        CopyMessage copyMessage = bot.copyMessage(CHAT_TAG, message);
+        assertAll(
+                () -> assertNotNull(copyMessage),
+                () -> assertEquals(CHAT_TAG, copyMessage.getChatId()),
+                () -> assertEquals(message.getChat().getId().toString(), copyMessage.getFromChatId()),
+                () -> assertEquals(message.getMessageId(), copyMessage.getMessageId()));
+        verifyNoMoreInteractions(webClient);
+    }
+
+    @Test
     void answerCallbackQuery() {
         AnswerCallbackQuery answerCallbackQuery = bot.answerCallbackQuery(CALLBACK_QUERY_ID);
         assertNotNull(answerCallbackQuery);

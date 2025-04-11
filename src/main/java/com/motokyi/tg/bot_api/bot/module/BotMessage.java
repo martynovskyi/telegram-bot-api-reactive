@@ -1,5 +1,6 @@
 package com.motokyi.tg.bot_api.bot.module;
 
+import com.motokyi.tg.bot_api.api.method.CopyMessage;
 import com.motokyi.tg.bot_api.api.method.ForwardMessage;
 import com.motokyi.tg.bot_api.api.method.SendMessage;
 import com.motokyi.tg.bot_api.api.method.SetMessageReaction;
@@ -25,6 +26,13 @@ public interface BotMessage {
 
     ForwardMessage forwardMessage(
             @NotNull String chatId, @NotNull Long fromChatId, @NotNull Long messageId);
+
+    CopyMessage copyMessage(@NotNull Chat chat, @NotNull Message message);
+
+    CopyMessage copyMessage(@NotNull String chatId, @NotNull Message message);
+
+    CopyMessage copyMessage(
+            @NotNull String chatId, @NotNull String fromChatId, @NotNull Long messageId);
 
     Mono<Response<Boolean>> deleteMessage(@NotNull Long chatId, @NotNull Long messageId);
 

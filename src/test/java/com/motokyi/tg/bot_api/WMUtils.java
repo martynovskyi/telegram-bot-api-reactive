@@ -13,6 +13,10 @@ public class WMUtils {
         return fromJsonFile("body/true-result.json");
     }
 
+    public static ResponseDefinitionBuilder jsonWithResultMessageId() {
+        return fromJsonFile("body/message-id-result.json");
+    }
+
     public static ResponseDefinitionBuilder jsonWithResultMessage() {
         return fromJsonFile("body/message-result.json");
     }

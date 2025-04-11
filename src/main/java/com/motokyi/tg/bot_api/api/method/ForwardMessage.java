@@ -29,23 +29,23 @@ public class ForwardMessage extends com.motokyi.tg.bot_api.api.method.payload.Fo
         return client.forwardMessage(this);
     }
 
-    public ForwardMessage chatId(String chatId) {
-        super.setChatId(chatId);
+    public ForwardMessage messageThreadId(Long messageThreadId) {
+        super.messageThreadId = messageThreadId;
         return this;
     }
 
-    public ForwardMessage fromChatId(Long fromChatId) {
-        super.setFromChatId(fromChatId);
+    public ForwardMessage videoStartTimestamp(Long videoStartTimestamp) {
+        super.videoStartTimestamp = videoStartTimestamp;
         return this;
     }
 
     public ForwardMessage disableNotification(Boolean disableNotification) {
-        super.setDisableNotification(disableNotification);
+        super.disableNotification = disableNotification;
         return this;
     }
 
-    public ForwardMessage messageId(Long messageId) {
-        super.setMessageId(messageId);
+    public ForwardMessage protectContent(Boolean protectContent) {
+        super.protectContent = protectContent;
         return this;
     }
 }

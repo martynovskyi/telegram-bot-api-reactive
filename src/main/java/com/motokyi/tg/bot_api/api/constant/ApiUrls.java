@@ -15,6 +15,7 @@ public final class ApiUrls {
     public static final String GET_CHAT_MEMBER = "/getChatMember";
     public static final String GET_UPDATES = "/getUpdates";
     public static final String FORWARD_MESSAGE = "/forwardMessage";
+    public static final String COPY_MESSAGE = "/copyMessage";
     public static final String SEND_MESSAGE = "/sendMessage";
     public static final String SEND_PHOTO = "/sendPhoto";
     public static final String SEND_AUDIO = "/sendAudio";

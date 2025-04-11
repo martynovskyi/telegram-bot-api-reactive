@@ -234,6 +234,27 @@ public class TelegramBot implements Bot {
     }
 
     @Override
+    public CopyMessage copyMessage(@NotNull Chat chat, @NotNull Message message) {
+        return new CopyMessage(
+                String.valueOf(chat.getId()),
+                String.valueOf(message.getChat().getId()),
+                message.getMessageId(),
+                client);
+    }
+
+    @Override
+    public CopyMessage copyMessage(@NotNull String chatId, @NotNull Message message) {
+        return new CopyMessage(
+                chatId, String.valueOf(message.getChat().getId()), message.getMessageId(), client);
+    }
+
+    @Override
+    public CopyMessage copyMessage(
+            @NotNull String chatId, @NotNull String fromChatId, @NotNull Long messageId) {
+        return new CopyMessage(chatId, fromChatId, messageId, client);
+    }
+
+    @Override
     public EditMessageText editMessageText(@NotNull Long chatId, @NotNull Long messageId) {
         return new EditMessageText(String.valueOf(chatId), String.valueOf(messageId), client);
     }

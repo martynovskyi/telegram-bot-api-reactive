@@ -28,6 +28,7 @@ Currently, code/package structure is not finalized. Pretty raw implementations
 - Message
   - [sendMessage](https://core.telegram.org/bots/api#sendmessage)
   - [forwardMessage](https://core.telegram.org/bots/api#forwardmessage)
+  - [copyMessage](https://core.telegram.org/bots/api#copymessage)
   - [setMessageReaction](https://core.telegram.org/bots/api#setmessagereaction)
 - Updating messages
     - [editMessageText](https://core.telegram.org/bots/api#editmessagetext)

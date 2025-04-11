@@ -11,6 +11,7 @@ import com.motokyi.tg.bot_api.api.type.chat.ChatFullInfo;
 import com.motokyi.tg.bot_api.api.type.chat_member.ChatMember;
 import com.motokyi.tg.bot_api.api.type.command.BotCommand;
 import com.motokyi.tg.bot_api.api.type.message.Message;
+import com.motokyi.tg.bot_api.api.type.message.MessageId;
 import com.motokyi.tg.bot_api.api.type.update.Update;
 import com.motokyi.tg.bot_api.api.type.update.WebhookInfo;
 import com.motokyi.tg.bot_api.api.type.user.User;
@@ -273,6 +274,16 @@ class BotClient implements BotApiClient {
                 .exchangeToMono(
                         ClientUtils.responseHandler(
                                 forwardMessage.getClass(), new ParameterizedTypeReference<Response<Message>>() {}));
+    }
+
+    @Override
+    public Mono<Response<MessageId>> copyMessage(@NotNull CopyMessage copyMessage) {
+        return wc.post()
+                .uri(ApiUrls.COPY_MESSAGE)
+                .bodyValue(copyMessage)
+                .exchangeToMono(
+                        ClientUtils.responseHandler(
+                                copyMessage.getClass(), new ParameterizedTypeReference<Response<MessageId>>() {}));
     }
 
     @Override
